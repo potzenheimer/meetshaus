@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="meetshaus.landingpage">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading" tal:content="context/title" />
+        
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p class="documentDescription" tal:content="context/description" />
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+
+        <h2>Introduction:</h2>
+        
+        <div id="introduction" tal:content="structure context/introduction" />
+        
+        <div class="row">
+            <div class="cell position-0 width-1:3">
+                <h3>Splashbox Words</h3>
+        
+                <div id="box-words" tal:content="structure context/wordsbox" />
+            </div>
+            <div class="cell position-1:3 width-1:3">
+                <h3>Splashbox Adwords</h3>
+        
+                <div id="box-adwords" tal:content="structure context/adwordsbox" />
+            </div>
+            <div class="cell position-2:3 width-1:3">
+                <h3>Splashbox Social</h3>
+        
+                <div id="box-social" tal:content="structure context/socialbox" />
+            </div>
+            <div class="visualClear"><!-- --></div>
+        </div>
+        <div class="visualClear">&nbsp;</div>
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
