@@ -1,22 +1,29 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
-"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2011-10-02 13:42+0100\n"
-"Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
-"Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-10-17 23:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: de\n"
-"Language-Name: German\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: meetshaus.blog\n"
 
+#: ./../blogentry.py:22
+msgid ""
+msgstr ""
+
 #: ./../blog.py:31
 msgid "A short bio about the author of the blog."
-msgstr "Eine kurze Biographie oder Informationen über den Autor und/oder den Zweck dieses Blog."
+msgstr ""
 
 #: ./../profiles/default/types/meetshaus.blog.blogentry.xml
 msgid "A sinlge blog entry."
@@ -24,24 +31,24 @@ msgstr ""
 
 #: ./../blog.py:30
 msgid "About the Author"
-msgstr "Über diesen Blog"
+msgstr ""
 
 #: ./../portlets/archive.pt:7
 msgid "Archive"
-msgstr "Archiv"
+msgstr ""
 
 #: ./../portlets/archive.py:38
 #: ./../portlets/categories.py:25
 msgid "Archive view"
-msgstr "Archivansicht"
+msgstr ""
 
 #: ./../profiles/default/types/meetshaus.blog.blog.xml
 msgid "Blog"
-msgstr "Blog"
+msgstr ""
 
 #: ./../blogentry.py:21
 msgid "Blog Entry"
-msgstr "Blogbeitrag"
+msgstr ""
 
 #: ./../profiles/default/types/meetshaus.blog.blogentry.xml
 msgid "BlogEntry"
@@ -54,74 +61,74 @@ msgstr ""
 #: ./../portlets/categories.pt:7
 #: ./../portlets/categories.py:48
 msgid "Categories"
-msgstr "Themen"
+msgstr ""
 
 #: ./../portlets/blogrecent.py:25
 msgid "Entries"
-msgstr "Beiträge"
+msgstr ""
 
 #: ./../portlets/blogrecent.py:48
 msgid "Last entries"
-msgstr "Letzte Einträge"
+msgstr ""
 
 #: ./../portlets/archive.py:63
 msgid "Monthly archive"
-msgstr "Archiv"
+msgstr ""
 
 #: ./../portlets/archive.py:39
 #: ./../portlets/categories.py:26
 msgid "The name of the archive view"
-msgstr "Der Name der Archivansicht."
+msgstr ""
 
 #: ./../portlets/blogrecent.py:26
 msgid "The number of entries to show"
-msgstr "Anzahl der Blogbeiträge, die in der Aktionsbox gezeigt werden sollen."
+msgstr ""
 
 #: ./../portlets/archive.py:16
 msgid "month_1"
-msgstr "Januar"
+msgstr ""
 
 #: ./../portlets/archive.py:25
 msgid "month_10"
-msgstr "Oktober"
+msgstr ""
 
 #: ./../portlets/archive.py:26
 msgid "month_11"
-msgstr "November"
+msgstr ""
 
 #: ./../portlets/archive.py:27
 msgid "month_12"
-msgstr "Dezember"
+msgstr ""
 
 #: ./../portlets/archive.py:17
 msgid "month_2"
-msgstr "Februar"
+msgstr ""
 
 #: ./../portlets/archive.py:18
 msgid "month_3"
-msgstr "März"
+msgstr ""
 
 #: ./../portlets/archive.py:19
 msgid "month_4"
-msgstr "April"
+msgstr ""
 
 #: ./../portlets/archive.py:20
 msgid "month_5"
-msgstr "Mai"
+msgstr ""
 
 #: ./../portlets/archive.py:21
 msgid "month_6"
-msgstr "Juni"
+msgstr ""
 
 #: ./../portlets/archive.py:22
 msgid "month_7"
-msgstr "Juli"
+msgstr ""
 
 #: ./../portlets/archive.py:23
 msgid "month_8"
-msgstr "August"
+msgstr ""
 
 #: ./../portlets/archive.py:24
 msgid "month_9"
-msgstr "September"
+msgstr ""
 
