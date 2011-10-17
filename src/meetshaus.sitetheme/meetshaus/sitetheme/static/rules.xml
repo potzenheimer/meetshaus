@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rules xmlns="http://namespaces.plone.org/xdv"
-       xmlns:css="http://namespaces.plone.org/xdv+css"
-       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    
+    <xsl:template match="activity|add-profile-tab|bookmark|comments|friendpile|like|like-box|live-stream|login-button|pronoun|recommendations|serverFbml|profile-pic|user-status">
+      <xsl:element name="fb:{local-name()}" xmlns:fb="http://www.facebook.com/2008/fbml">
+        <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+    </xsl:template>
+    <xsl:template match="plusone">
+      <xsl:element name="g:{local-name()}" xmlns:g="http://base.google.com/ns/1.0">
+        <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+    </xsl:template>
+    
     <!-- The default theme, used for standard Plone web pages -->
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
     <theme href="contact.html" css:if-content="body.section-kontakt" />
@@ -11,72 +23,70 @@
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
         <theme href="theme.html" />
+        <notheme if="$ajax_load" />
         
-        <!-- Head: title -->
-        <replace theme="/html/head/title" content="/html/head/title" />
-        <!-- Base tag -->
+        <replace theme="/htm/head/title" content="/html/head/title" />
         <replace theme="/html/head/base" content="/html/head/base" />
         
         <!-- Add meta tags -->
-        <!-- <drop theme="/html/head/meta" /> -->
-        <append content="/html/head/meta" theme="/html/head" />
-        
-        <!-- Copy style, script and link tags in the order they appear in the content -->
-        <append
-            content="/html/head/style | /html/head/script | /html/head/link"
-            theme="/html/head"
-            />
-        
-            <drop theme="/html/head/style" />
-            <drop theme="/html/head/script" />
-            <drop theme="/html/head/link" />
-        
-            <append theme="/html/head">
-                <link rel="shortcut icon" href="/++resource++meetshaus.sitetheme/images/favicon.ico" type="image/x-icon" />
-            </append>
-        <!-- Copy over the id/class attributes on the body tag.
-             This is important for per-section styling -->
-        <prepend content="/html/body/@class" theme="/html/body" />
-        <prepend content="/html/body/@id"    theme="/html/body" />
-        <prepend content="/html/body/@dir"   theme="/html/body" />
+        <drop theme="/html/head/meta" />
+        <after content="/html/head/meta" theme-children="/html/head" />
 
-        <!-- Logo (link target) -->
-        <prepend content='//*[@id="portal-logo"]/@href' css:theme="#logo" />
+        <!-- Drop styles in the head - these are added back by including them from Plone -->
+        <drop theme="/html/head/link" />
+        <drop theme="/html/head/style" />
+        <drop theme="/html/head/script" />
+        <drop theme="/html/head/comment()" />
+
+        <after
+            content="/html/head/base | /html/head/style | /html/head/script | /html/head/link | /html/head/comment()"
+            theme-children="/html/head" />
         
-        <copy css:content="#introduction" css:theme="#about-me"
+            <after theme="/html/head">
+                <link rel="shortcut icon" href="/++theme++pressapp.sitetheme/images/favicon.ico" type="image/x-icon" />
+            </after>
+        <!-- replace over the id/class attributes on the body tag.
+             This is important for per-section styling -->
+        <merge attributes="class" css:content="body" css:theme="body" />
+        <copy attributes="id dir" css:content="body" css:theme="body" />
+            
+        <!-- Logo (link target) -->
+        <copy attributes="href" css:content='#portal-logo' css:theme="#logo" />
+        
+        <replace css:content="#introduction" css:theme="#about-me"
             css:if-content="body.section-front-page" />
         
-        <copy css:content="#content-core > *" css:theme="#contact-me"
+        <replace css:content="#content-core > *" css:theme="#contact-me"
             css:if-content="body.section-impressum" />
         
         <!-- Splashboxes (Landing Page) -->
         
-        <copy css:content="#box-words" css:theme="#splashbox-words-content"
+        <replace css:content="#box-words" css:theme="#splashbox-words-content"
             css:if-content="body.section-front-page" />
-        <copy css:content="#box-adwords" css:theme="#splashbox-adwords-content"
+        <replace css:content="#box-adwords" css:theme="#splashbox-adwords-content"
             css:if-content="body.section-front-page" />
-        <copy css:content="#box-social" css:theme="#splashbox-social-content"
+        <replace css:content="#box-social" css:theme="#splashbox-social-content"
             css:if-content="body.section-front-page" />
         
         <!-- Login Form -->
-        <copy css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content" 
             css:if-content="body.template-login_form" />
         
         <!-- Document Content -->
-        <copy css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content" 
             css:if-content="body.template-edit" />
-        <copy css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content" 
             css:if-content="body.template-atct_edit" />
-        <copy css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content" 
             css:if-content="body.template-base_edit" />
-        <copy css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content" 
             css:if-content="body.template-folder_contents" />
         
         <before css:content="#edit-bar" css:theme="#main-content" />
         <before css:content=".portalMessage" css:theme="#content" />
         
         <!-- Contact Form -->
-        <copy css:content=".formid-kontakt" css:theme="#contact-me"
+        <replace css:content=".formid-kontakt" css:theme="#contact-me"
             css:if-content="body.section-kontakt" />
         
     </rules>

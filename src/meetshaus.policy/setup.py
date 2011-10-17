@@ -3,9 +3,9 @@ import os
 
 version = '1.0'
 
-setup(name='meetshaus.sitetheme',
+setup(name='meetshaus.policy',
       version=version,
-      description="Diazo/xdv based site theme for meetshaus.de",
+      description="Policy product for the meetshaus site.",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -15,9 +15,9 @@ setup(name='meetshaus.sitetheme',
         "Programming Language :: Python",
         ],
       keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      author='Vorwaerts Werbung GbR',
+      author_email='hallo@vorwaerts-werbung.de',
+      url='http://dist.vorwaerts-werbung.de',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['meetshaus'],
@@ -25,8 +25,9 @@ setup(name='meetshaus.sitetheme',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'plone.app.theming',
-          'plone.app.themingplugins',
+          'Products.CMFPlone',
+          'meetshaus.landingpage',
+          'meetshaus.sitetheme',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
