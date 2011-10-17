@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="meetshaus.blog">
+
+    <include package="plone.app.portlets" />
+
+    <plone:portlet
+         name="meetshaus.blog.archive"
+         interface=".archive.IArchivePortlet"
+         assignment=".archive.Assignment"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         renderer=".archive.Renderer"
+         addview=".archive.AddForm"
+         editview=".archive.EditForm"
+         />
+    
+    <plone:portlet
+         name="meetshaus.blog.blogrecent"
+         interface=".blogrecent.IBlogRecentPortlet"
+         assignment=".blogrecent.Assignment"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         renderer=".blogrecent.Renderer"
+         addview=".blogrecent.AddForm"
+         editview=".blogrecent.EditForm"
+         />
+    
+    <plone:portlet
+         name="meetshaus.blog.categories"
+         interface=".categories.IBlogCategoriesPortlet"
+         assignment=".categories.Assignment"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         renderer=".categories.Renderer"
+         addview=".categories.AddForm"
+         editview=".categories.EditForm"
+         />
+</configure>

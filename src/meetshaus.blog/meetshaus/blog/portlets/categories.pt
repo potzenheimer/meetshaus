@@ -1,0 +1,24 @@
+<div class="infobox"
+     id="infobox-blog-categories"
+     i18n:domain="meetshaus.blog">
+     <div class="splashbox-content">
+
+    <h2>
+        <i18n:block translate="">Categories</i18n:block>
+    </h2>
+
+    <div id="blog-archive-box">
+        <tal:block repeat="subject view/keywords">
+            <div>
+                <a tal:attributes="href python:view.archive_url(subject)">
+                    <span class="archive-category"
+                        tal:content="subject">
+                        Category
+                    </span>
+                </a>
+            </div>
+        </tal:block>
+    </div>
+    </div>
+
+</div>
