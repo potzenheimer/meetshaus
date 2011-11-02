@@ -9,7 +9,7 @@ from zope.formlib import form
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from meetshaus.blog.utils import find_assignment_context
-from meetshaus.blog.blog_entry import IBlogEntry
+from meetshaus.blog.blogentry import IBlogEntry
 
 from meetshaus.blog import MessageFactory as _
 
