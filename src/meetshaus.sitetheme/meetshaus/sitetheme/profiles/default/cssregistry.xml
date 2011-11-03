@@ -3,12 +3,12 @@
 
  <!-- Set conditions on stylesheets we don't want to pull in -->
  <stylesheet
-     expression="not:request/HTTP_X_XDV | nothing"
+     expression="not:request/HTTP_X_THEME_ENABLED | nothing"
      id="public.css"
      />
  <stylesheet title="" authenticated="False" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="on"
-    expression="request/HTTP_X_XDV | nothing"
+    expression="request/HTTP_X_THEME_ENABLED | nothing"
     id="++resource++meetshaus.sitetheme/css/styles.css" media="" rel="stylesheet"
     rendering="link"
     applyPrefix="True"
