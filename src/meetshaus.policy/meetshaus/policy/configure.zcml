@@ -6,6 +6,8 @@
     i18n_domain="meetshaus.policy">
 
   <five:registerPackage package="." initialize=".initialize" />
+  
+  <includeDependencies package="." />
 
   <genericsetup:registerProfile
       name="default"

@@ -10,13 +10,16 @@
   <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
   <property name="factory">meetshaus.blog.blog</property>
   <property name="global_allow">True</property>
-  <property name="filter_content_types">False</property>  
-  <property name="allowed_content_types" />
+  <property name="filter_content_types">True</property>  
+  <property name="allowed_content_types">
+      <element value="Image" />
+      <elememt value="meetshaus.blog.blogentry" />
+  </property>
   <property name="allow_discussion">False</property>
 
   <!-- schema and class used for content items -->
   <property name="schema">meetshaus.blog.blog.IBlog</property> 
-  <property name="klass">meetshaus.blog.blog.Blog</property>
+  <property name="klass">plone.dexterity.content.Container</property>
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
@@ -26,9 +29,10 @@
   <!-- View information -->
   <property name="link_target"></property>
   <property name="immediate_view">view</property>
-  <property name="default_view">view</property>
+  <property name="default_view">blog-view</property>
   <property name="view_methods">
    <element value="view"/>
+   <element value="blog-view" />
   </property>
   <property name="default_view_fallback">False</property>
   <property name="add_permission">cmf.AddPortalContent</property>

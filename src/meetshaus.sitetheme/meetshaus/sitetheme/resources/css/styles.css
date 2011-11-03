@@ -318,7 +318,8 @@ html, body {
 
 /* @group Splash Boxes */
 
-.splashBox {
+.splashBox,
+.portlet {
     border: 0px solid #ddd;
     background: transparent;
     padding: 5px;
@@ -418,6 +419,13 @@ body#content {
     margin-top: 0;
 }
 
+#content h2 {
+    font-size: 1.5em;
+}
+#content h3 {
+    font-size: 1.2em;
+}
+
 #content p,
 #content table,
 #content dl,
@@ -433,18 +441,18 @@ dl.portlet {
 
 #content a:link,
 dl.portlet a:link {
-    color: #205c90;
+    color: #74C4EA;
     border-bottom: 0.1em solid #ccc;
 }
 
 #content a:visited,
 dl.portlet a:visited {
-    color: #427597;
+    color: #74C4EA;
     border-bottom: 0.1em solid #ccc;
 }
 #content a:hover,
 dl.portlet a:hover {
-    color: #75ad0a !important; /* This one gets an !important because it should always activate in the content area, even when state coloring is active */
+    color: #D3802A !important; /* This one gets an !important because it should always activate in the content area, even when state coloring is active */
 }
 #content a:target {
     background-color: #ffb;
@@ -462,7 +470,7 @@ dl.portlet a:hover {
 }
 
 #category a.link-category {
-    color: black;
+    color: #74C4EA;
     padding: 0.25em 0.5em;
     background: #ddd;
     border-radius: 0.5em;
@@ -635,7 +643,48 @@ dl.portlet li {
     display: none;
 }
 
+#blog-view {
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.entryDescription {
+    margin: 1em 0;
+    color: #666;
+    margin-left: 0;
+    font: italic 1.25em "Helvetica Neue", Arial, FreeSans, sans-serif;
+}
+
+#blog-view a:link {
+    color: #74C4EA !important;
+}
+
 /* @end */
+
+/* Portlets */
+
+.portletTwitterPortlet {
+    border: 1px solid #ccc;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+}
+
+.portlet dt {
+    color:#d3802a;
+    font-family: 'AurulentSansBold';
+    font-weight: normal;
+    padding-bottom: 1em;
+}
+
+.portlet dd {
+    margin: 0px !important;
+    padding: 10px 0px;
+    font-size: 0.9em;
+    line-height: 110%;
+    border-top: 1px solid #ccc;
+}
+
 
 /* @group Data tables */
 

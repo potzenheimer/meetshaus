@@ -4,34 +4,32 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="rgd.blog">
+      i18n:domain="meethaus.blog">
 <body>
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-  
-    <h1 class="documentFirstHeading" tal:content="context/Title" />
-    <p class="documentDescription" tal:content="context/Description" />
-
+    <div tal:replace="structure provider:plone.belowcontenttitle" />
+    
     <div id="blog-view" tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                                     Batch python:modules['Products.CMFPlone'].Batch;
                                     b_size python:5;b_start python:0;b_start request/b_start | b_start;">
                                     
         <tal:entries tal:define="batch view/batch">
             <div class="blogEntry" tal:repeat="item batch">
-                <h2>
+                <span class="documentModified"
+                    tal:define="date python:toLocalizedTime(item.EffectiveDate());">
+                    <span tal:content="date">effective date</span></span>
+                <h1>
                     <a href="" tal:attributes="href item/getURL"
                         tal:content="item/Title">
                         Title</a>
-                </h2>
+                </h1>
                 <div tal:define="date python:toLocalizedTime(item.EffectiveDate());"
                     class="documentByLine">
-                    <div class="row">
-                        <div class="cell position-0 width-1:2">
-                            <span class="documentModified"><span tal:content="date">effective date</span></span>
-                            <span tal:define="categories item/Subject|nothing"
+                        <span tal:define="categories item/Subject|nothing"
                                   tal:condition="categories">
-                              &middot;
+                              Abgelegt unter:
                               <span tal:repeat="category categories">
                                 <a href=""
                                    class="link-category"
@@ -42,24 +40,16 @@
                                 </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
                               </span>
                             </span>
-                        </div>
-                        <div class="cell position-1:2 width-1:2">
-                            <span class="documentAuthor">
-                                <tal:block tal:condition="item/Creator"
-                                    tal:define="author python:context.portal_membership.getMemberInfo(item.Creator())">
-                                    Posted by<br />
-                                  <span tal:content="python:author and author['fullname'] or item.Creator()">
-                                     Author
-                                  </span>
-                                </tal:block>
-                            </span>
-                        </div>
-                        <div class="visualClear"><!-- --></div>
-                    </div>
-                    <div class="visualClear"><!-- --></div>
                 </div>
                 
-                <div tal:content="structure item/Description" />
+                <div class="entryDescription"
+                    tal:condition="item/Description">
+                    <em tal:content="item/Description" />
+                </div>
+                
+                <div class="entry-body">
+                    <div tal:content="structure item/text/output" />
+                </div>
                 
                 <div class="row" id="blogEntryActions">
                     <div class="cell position-0 width-1:2">

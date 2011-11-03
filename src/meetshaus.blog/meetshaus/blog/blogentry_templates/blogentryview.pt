@@ -21,6 +21,10 @@
         
         <h2 class="blogentry-title" tal:content="context/Title" />
         
+        <blockquote tal:condition="context/Description">
+            <p><em tal:content="context/Description">Desc</em></p>
+        </blockquote>
+        
         <div tal:content="structure context/text/output" />
         
         <div tal:replace="structure provider:plone.belowcontenttitle" />

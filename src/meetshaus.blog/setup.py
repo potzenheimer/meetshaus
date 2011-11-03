@@ -32,6 +32,8 @@ setup(name='meetshaus.blog',
           'plone.formwidget.namedfile',
           'plone.formwidget.recaptcha',
           'sc.social.like',
+          'qi.portlet.TagClouds',
+          'fourdigits.portlet.twitter',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

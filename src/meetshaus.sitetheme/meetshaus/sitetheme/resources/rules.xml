@@ -19,7 +19,8 @@
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
     <theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />
-
+    <theme href="blog.html" css:if-content="body.section-blog" />
+    
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
         <theme href="theme.html" />
@@ -88,6 +89,12 @@
         <!-- Contact Form -->
         <replace css:content=".formid-kontakt" css:theme="#contact-me"
             css:if-content="body.section-kontakt" />
+        
+        <rules css:if-content="body.section-blog">
+            <replace css:content="#content > *" css:theme="#document-content" />
+            <replace css:content-children="#portal-column-one > *" css:theme-children="#sidebar-blog" />
+            <replace css:content-children="#portal-column-two > *" css:theme-children="#about-meetsblock" />
+        </rules>
         
     </rules>
 
