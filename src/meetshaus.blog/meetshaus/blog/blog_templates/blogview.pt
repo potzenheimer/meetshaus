@@ -58,7 +58,7 @@
                             class="blogEntryComments">
                             <a href="" tal:attributes="href item/getURL">
                                 <span tal:replace="python:view.commentCount(item_obj)" />
-                                <span i18n:translate="">Comments</span>
+                                <span i18n:translate="">Kommentare</span>
                             </a>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                     class="link-blog-more"
                                     i18n:translate=""
                                     tal:attributes="href item/getURL">
-                                        Read more &raquo;
+                                        Mehr &raquo;
                                  </a>
                         </div>
                     </div>

@@ -32,15 +32,6 @@
         <div tal:define="date python:toLocalizedTime(context.EffectiveDate());"
             class="documentByLine">
             <span class="documentModified">Verfasst am <span tal:content="date">effective date</span></span>
-            <span class="documentAuthor">
-                <tal:block tal:condition="context/Creator"
-                    tal:define="author python:context.portal_membership.getMemberInfo(context.Creator())">
-                    von
-                  <span tal:content="python:author and author['fullname'] or context.Creator()">
-                     Author
-                  </span>
-                </tal:block>
-            </span>
         </div>
         
         <div tal:replace="structure provider:plone.belowcontentbody" />
