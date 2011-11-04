@@ -97,6 +97,10 @@
             <replace css:content-children="#portal-column-two > *" css:theme-children="#about-meetsblock" />
         </rules>
         
+        <rules css:if-content="body.template-search">
+            <replace css:content="#content > *" css:theme="#content" />
+        </rules>
+        
     </rules>
 
 </rules>
