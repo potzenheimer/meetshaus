@@ -1582,8 +1582,15 @@ div.overlay .formControls a {
     float:right;
     right: -50px;
     bottom:55px;
-    text-indent: -3000px;
-    overflow: hidden;
+}
+#download-balloon a {
+    display: block;
+    position:absolute;
+    bottom: 100px;
+    right: 85px;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #fff !important;
 }
 
 
@@ -1612,6 +1619,11 @@ div.overlay .formControls a {
 #twitter-wrapper {
     float: left;
     width: 40px;
+    margin: 15px 0px 0px 0px;
+}
+#exali-wrapper {
+    float: left;
+    width: 60px;
     margin: 15px 0px 0px 0px;
 }
 
