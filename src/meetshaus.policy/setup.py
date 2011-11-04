@@ -25,7 +25,6 @@ setup(name='meetshaus.policy',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Products.CMFPlone',
           'meetshaus.blog',
           'meetshaus.landingpage',
           'meetshaus.sitetheme',
