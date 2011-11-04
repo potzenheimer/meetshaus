@@ -98,7 +98,7 @@
         </rules>
         
         <rules css:if-content="body.template-search">
-            <replace css:content="#content > *" css:theme="#content" />
+            <replace css:content="#content > *" css:theme="#about-me" />
         </rules>
         
     </rules>

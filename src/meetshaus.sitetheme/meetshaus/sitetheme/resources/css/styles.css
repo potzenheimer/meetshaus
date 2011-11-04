@@ -613,15 +613,18 @@ dl.portlet li {
 
 /* @group Contact Form */
 
-.formid-kontakt {
+.formid-kontakt,
+#searchform {
     font-family: 'AurulentSansRegular';
 }
 
-.formid-kontakt label {
+.formid-kontakt label,
+#searchform label {
     color: #D3802A;
 }
 
 .formid-kontakt input,
+#searchform input,
 .formid-kontakt textarea {
     background:#74C4EA;
     color: #D3802A;
@@ -634,13 +637,22 @@ dl.portlet li {
     border-radius: 8px;
 }
 
-.formid-kontakt input.context {
+.formid-kontakt input.context,
+#searchform input.searchButton {
     color: #fff;
     font-size: 1.2em;
 }
 
 .formid-kontakt .required {
     display: none;
+}
+
+.searchResults {
+    border: 1px solid #ddd;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+    padding: 1em;
 }
 
 #blog-view {
