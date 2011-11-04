@@ -51,12 +51,13 @@
                     <div tal:content="structure item/text/output" />
                 </div>
                 
-                <div class="row" id="blogEntryActions">
+                <div class="row" id="blogEntryActions"
+                    tal:define="item_obj item/getObject">
                     <div class="cell position-0 width-1:2">
-                        <div tal:condition="python:view.commentsEnabled(item.getObject())"
+                        <div tal:condition="python:view.commentsEnabled(item_obj)"
                             class="blogEntryComments">
                             <a href="" tal:attributes="href item/getURL">
-                                <span tal:replace="python:view.commentCount(item.getObject())" />
+                                <span tal:replace="python:view.commentCount(item_obj)" />
                                 <span i18n:translate="">Comments</span>
                             </a>
                         </div>
