@@ -1,0 +1,10 @@
+<layers>
+    
+    <!-- Custom Browser layer -->
+    
+    <layer
+        name="meetshaus.commentextender.layer"
+        interface="meetshaus.commentextender.interfaces.IMeetshausExtender"
+        />
+
+</layers>
