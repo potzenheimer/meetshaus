@@ -218,11 +218,18 @@ html, body {
     background:url(../images/bird-brown-flying.png) no-repeat 99% 40% #fff;
 }
 
+body.section-blog #content-wrapper {
+    background:#fff;
+}
+
 #main-content {
     border: 0px solid red;
     width: 900px;
 }
 
+body.section-blog #main-content {
+    width: 960px;
+}
 
 /* @end */
 
@@ -276,22 +283,67 @@ html, body {
     font-size: 2.5em;
 }
 
-#about-me {
+#about-me,
+#introduction {
     width: 425px;
     font-family: 'AurulentSansRegular';
 }
 
-#about-me b {
+#about-me b,
+#introduction b {
     color:#d3802a;
     font-family: 'AurulentSansBold';
     font-weight: normal;
 }
 
-#about-me p {
+#about-me p,
+#introduction p {
     margin-bottom: 0.5em;
     font-size: 0.9em;
     line-height: 1.25em;
 }
+
+#about-meetsblock {
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 5px solid #ddd;
+    border-radius: 10px 10px 10px 10px;
+    color: #333333;
+    margin: 1em 0 3em;
+    padding: 5px;
+    position: relative;
+    width: 415px;
+}
+
+#about-meetsblock p {font-size:28px; line-height:1.25em;}
+
+#about-meetsblock:after {
+    border-color: #FFFFFF transparent;
+    border-style: solid;
+    border-width: 13px 13px 0;
+    bottom: -13px;
+    content: "";
+    display: block;
+    left: 47px;
+    position: absolute;
+    width: 0;
+}
+#about-meetsblock:before {
+    border-color: #ddd transparent;
+    border-style: solid;
+    border-width: 20px 20px 0;
+    bottom: -20px;
+    content: "";
+    display: block;
+    left: 40px;
+    position: absolute;
+    width: 0;
+}
+
+#about-meetsblock a {
+    line-height: 150%;
+    border: none !important;
+}
+
 
 /* @end */
 
@@ -546,7 +598,8 @@ dl.portlet li {
 }
 
 #content .visualHighlight,
-#about-me .visualHighlight {
+#about-me .visualHighlight,
+#introduction .visualHighlight {
     background-color: transparent;
     color:#74c4ea !important;
     font-family:'AurulentSansBold';
@@ -655,9 +708,21 @@ dl.portlet li {
     padding: 1em;
 }
 
+body.template-search h1.documentFirstHeading {
+    color:#D3802A;
+}
+
 #blog-view {
     padding: 10px;
     font-size: 0.9em;
+}
+
+.blogEntry .documentModified {
+    color: #D3802A;
+    font-family: 'AurulentSansBold';
+    display: inline-block;
+    padding: 30px 65px 0px 0px;
+    background:url(../images/bird-brown-flying.png) no-repeat 100% 0% transparent;
 }
 
 .entryDescription {
@@ -669,6 +734,52 @@ dl.portlet li {
 
 #blog-view a:link {
     color: #74C4EA !important;
+}
+
+.blog-actions {
+  background: #fff;
+  margin-top: 5px;
+  margin-bottom: 2em;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.blog-actions a {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-transition: all 0.1s linear 0s;
+    background-color: #E6E6E6;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 25%, #E6E6E6);
+    background-repeat: no-repeat;
+    border-color: #CCCCCC #CCCCCC #BBBBBB;
+    border-radius: 8px 8px 8px 8px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.blogicon {
+    background:url(../images/blogicons.png) no-repeat 0px 100% transparent;
+    width: 20px;
+    height: 17px;
+    margin: 0px 5px -5px 0px;
+    text-indent: -99999px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.blogicon.plus {
+    background-position: -36px 100%;
 }
 
 /* @end */
@@ -686,7 +797,7 @@ dl.portlet li {
     color:#d3802a;
     font-family: 'AurulentSansBold';
     font-weight: normal;
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
 }
 
 .portlet dd {
@@ -1399,6 +1510,141 @@ textarea#form\.description {
 table.listing tbody tr.odd.selected td,
 tr.selected {
     background-color: #ffa;
+}
+
+/* @group Comments */
+
+.discussion:after {
+    border-width: 0 13px 13px;
+    bottom: auto;
+    left: auto;
+    right: 47px;
+    top: -13px;
+}
+.discussion:before {
+    border-color: #ddd transparent;
+    border-style: solid;
+    border-width: 0 20px 20px;
+    bottom: auto;
+    left: auto;
+    right: 40px;
+    top: -20px;
+    content: "";
+    display: block;
+    left: 40px;
+    position: absolute;
+    width: 0;
+}
+.discussion {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 2px solid #ddd;
+    border-radius: 8px 8px 8px 8px;
+    color: #333333;
+    margin: 1em 0 3em;
+    padding: 15px;
+    position: relative;
+}
+
+
+#commenting {
+    background: none repeat scroll 0 0 #D3802A;
+    border: 2px solid #D3802A;
+    border-radius: 8px 8px 8px 8px;
+    color: #fff;
+    margin: 1em 0 3em;
+    padding: 5px;
+    position: relative;
+}
+
+#commenting:after {
+    border-width: 0 13px 13px;
+    bottom: auto;
+    left: auto;
+    right: 47px;
+    top: -13px;
+}
+#commenting fieldset {
+    border: none !important;
+}
+
+#commenting legend {
+    font-size: 2em !important;
+    border: none;
+}
+
+#commenting input.context,
+.discussion button {
+        -moz-border-bottom-colors: none;
+        -moz-border-image: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        -moz-transition: all 0.1s linear 0s;
+        background-color: #E6E6E6;
+        background-image: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 25%, #E6E6E6);
+        background-repeat: no-repeat;
+        border-color: #CCCCCC #CCCCCC #BBBBBB;
+        border-radius: 8px 8px 8px 8px;
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 13px;
+        line-height: normal;
+        padding: 5px 14px 6px;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+#commenting textarea,
+#commenting input {
+    background:#fff;
+    color: #D3802A;
+    font-size:1.25em;
+    font-family: 'AurulentSansRegular';
+    padding: 5px;
+    border: 1px solid #D3802A;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+}
+
+.comment {
+    margin-top: 1.5em;
+    font-size: 80%;
+}
+
+.comment .documentByLine {
+    margin-left: 1em;
+}
+
+.comment .formControls {
+    margin-left: 0;
+}
+
+.commentTime {
+    color: #666;
+}
+
+.commentBody {
+    padding: 1em;
+    margin: 0.5em 0;
+    border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 #888;
+    -moz-box-shadow: 0 0 0.5em 0 #888;
+    -webkit-box-shadow: 0 0 0.5em #888;
+}
+
+.comment h1,
+.comment h2,
+.comment h3,
+.comment h4,
+.comment h5,
+.comment h6 {
+    font-weight: normal;
 }
 
 /* @group Login form */

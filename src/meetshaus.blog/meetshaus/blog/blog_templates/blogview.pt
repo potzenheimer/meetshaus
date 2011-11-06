@@ -9,6 +9,7 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
+    
     <div tal:replace="structure provider:plone.belowcontenttitle" />
     
     <div id="blog-view" tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
@@ -47,16 +48,29 @@
                     <em tal:content="item/Description" />
                 </div>
                 
-                <div class="entry-body">
-                    <div tal:content="structure item/text/output" />
-                </div>
+                <tal:block tal:define="count repeat/item/number;
+                                       bodytext item/text/output;
+                                       item_obj item/getObject;
+                                       rawtext item_obj/@@text-transform/text/text/plain">
+                    <div tal:condition="python:count == 1" class="entry-body">
+                        <div tal:content="structure item/text/output" />
+                    </div>
+                    <div tal:condition="python:count > 1"
+                        class="entry-body"
+                        tal:define="richtext python:context.restrictedTraverse('@@plone').cropText(rawtext, 320, '[...]')">
+                        <p><span tal:replace="richtext" />
+                            <a href="" tal:attributes="href item/getURL">weiterlesen</a>
+                        </p>
+                    </div>
+                </tal:block>
                 
-                <div class="row" id="blogEntryActions"
-                    tal:define="item_obj item/getObject">
+                <div class="blog-actions">
+                <div class="row" tal:define="item_obj item/getObject">
                     <div class="cell position-0 width-1:2">
                         <div tal:condition="python:view.commentsEnabled(item_obj)"
                             class="blogEntryComments">
                             <a href="" tal:attributes="href item/getURL">
+                                <span class="blogicon speech">Icon</span>
                                 <span tal:replace="python:view.commentCount(item_obj)" />
                                 <span i18n:translate="">Kommentare</span>
                             </a>
@@ -68,13 +82,15 @@
                                     class="link-blog-more"
                                     i18n:translate=""
                                     tal:attributes="href item/getURL">
-                                        Mehr &raquo;
+                                    <span class="blogicon plus">Icon</span>
+                                        Artikelansicht
                                  </a>
                         </div>
                     </div>
                     <div class="visualClear"><!-- --></div>
                 </div>
-                <div class="visualClear">&nbsp;</div>
+                <div class="visualClear"><!-- --></div>
+                </div>
             </div>
         </tal:entries>
     </div>
