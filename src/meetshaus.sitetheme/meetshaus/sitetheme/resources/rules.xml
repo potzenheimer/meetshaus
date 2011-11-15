@@ -54,6 +54,8 @@
         <!-- Logo (link target) -->
         <copy attributes="href" css:content='#portal-logo' css:theme="#logo" />
         
+        <drop css:theme="#tree-decorator" css:if-content="#user-name" />
+        
         <replace css:content="#introduction" css:theme="#about-me"
             css:if-content="body.section-front-page" />
         
