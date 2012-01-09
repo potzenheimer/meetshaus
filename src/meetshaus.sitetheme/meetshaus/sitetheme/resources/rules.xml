@@ -26,6 +26,8 @@
         <theme href="theme.html" />
         <notheme if="$ajax_load" />
         
+        <notheme if="$host = 'cms.meetshaus.de'" />
+        
         <replace theme="/htm/head/title" content="/html/head/title" />
         <replace theme="/html/head/base" content="/html/head/base" />
         
