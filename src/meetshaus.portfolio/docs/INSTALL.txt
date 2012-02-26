@@ -1,0 +1,17 @@
+meetshaus.portfolio Installation
+--------------------------------
+
+To install meetshaus.portfolio using zc.buildout and the plone.recipe.zope2instance
+recipe to manage your project, you can do this:
+
+* Add ``meetshaus.portfolio`` to the list of eggs to install, e.g.:
+
+    [buildout]
+    ...
+    eggs =
+        ...
+        meetshaus.portfolio
+       
+* Re-run buildout, e.g. with:
+
+    $ ./bin/buildout
