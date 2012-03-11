@@ -1,10 +1,8 @@
 from five import grok
 from AccessControl import Unauthorized
 from Acquisition import aq_inner, aq_parent
-from plone.directives import dexterity, form
-from zope import schema
+from plone.directives import form
 
-from z3c.form import group, field
 from plone.app.textfield import RichText
 
 from meetshaus.blog import MessageFactory as _
@@ -16,7 +14,6 @@ class IBlogEntry(form.Schema):
     """
     A single blog entry for the rgd blog
     """
-    
     text = RichText(
         title=_(u"Blog Entry"),
         description=_(u""),
@@ -28,7 +25,7 @@ class BlogEntryView(grok.View):
     grok.context(IBlogEntry)
     grok.require('zope2.View')
     grok.name('view')
-    
+
     def parent_info(self):
         context = aq_inner(self.context)
         parent = aq_parent(context)
