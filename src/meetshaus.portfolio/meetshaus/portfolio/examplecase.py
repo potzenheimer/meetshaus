@@ -30,7 +30,7 @@ class IExampleCase(form.Schema, IImageScaleTraversable):
         description=_(u"Enter optional internal or external link"),
         required=False,
     )
-    text = schema.RichText(
+    text = RichText(
         title=_(u"Case Summary"),
         description=_(u"Optional description of this example case"),
         required=False,

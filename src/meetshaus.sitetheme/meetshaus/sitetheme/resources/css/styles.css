@@ -791,7 +791,8 @@ body.template-search h1.documentFirstHeading {
 
 /* Portlets */
 
-.portletTwitterPortlet {
+.portletTwitterPortlet,
+.portletReferencesPortlet {
     border: 1px solid #ccc;
     -moz-border-radius:8px;
     -webkit-border-radius:8px;
@@ -1849,8 +1850,9 @@ div.overlay .formControls a {
 #download-balloon a {
     display: block;
     position:absolute;
-    bottom: 100px;
-    right: 85px;
+    padding: 75px;
+    top: 75px;
+    left: 40px;
     font-weight: bold;
     font-size: 1.5em;
     color: #fff !important;

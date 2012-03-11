@@ -20,6 +20,7 @@
     <theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />
     <theme href="blog.html" css:if-content="body.section-blog" />
+    <theme href="blog.html" css:if-content="body.section-referenzen" />
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
@@ -27,6 +28,12 @@
         <notheme if="$ajax_load" />
         
         <notheme if="$host = 'cms.meetshaus.de'" />
+        
+        <before css:theme-children="body" css:content="#plone-cmsui-trigger" />
+        <notheme css:if-content="#plone-cmsui-menu" />
+        <notheme css:if-content="body.template-cmsui-add-content-form" />
+        <notheme css:if-content="body.template-atct_edit" />
+        
         
         <replace theme="/htm/head/title" content="/html/head/title" />
         <replace theme="/html/head/base" content="/html/head/base" />
@@ -78,14 +85,19 @@
             css:if-content="body.template-login_form" />
         
         <!-- Document Content -->
-        <replace css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content"
             css:if-content="body.template-edit" />
-        <replace css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content"
             css:if-content="body.template-atct_edit" />
-        <replace css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content"
             css:if-content="body.template-base_edit" />
-        <replace css:content="#content > *" css:theme="#content" 
+        <replace css:content="#content > *" css:theme="#content"
             css:if-content="body.template-folder_contents" />
+        <replace css:content="#content > *" css:theme="#content"
+            css:if-content="body.template-folder_listing" />
+        <replace css:content="#content > *" css:theme="#document-content"
+            css:if-content="body.section-referenzen" />
+        
         
         <before css:content="#edit-bar" css:theme="#main-content" />
         <before css:content=".portalMessage" css:theme="#content" />
@@ -103,6 +115,7 @@
         
         <rules css:if-content="body.template-search">
             <replace css:content="#content > *" css:theme="#about-me" />
+            <drop css:theme="#main-content" />
         </rules>
         
     </rules>

@@ -1,0 +1,16 @@
+<dl class="portlet portletReferencesPortlet"
+    i18n:domain="meetshaus.portlet.references">
+
+    <dt class="portletHeader">
+        Referenzen
+    </dt>
+
+    <dd class="portletItem" tal:define="item view/selected_item">
+        <h3><a href=""
+                tal:attributes="href item/getRemoteUrl"
+                tal:content="item/Title" />
+        </h3>
+        <p class="discreet" tal:content="item/Description" />
+    </dd>
+
+</dl>

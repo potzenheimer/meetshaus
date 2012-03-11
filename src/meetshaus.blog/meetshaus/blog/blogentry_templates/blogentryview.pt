@@ -19,6 +19,8 @@
   <div id="blogentry-view"
         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
         
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+        
         <h2 class="blogentry-title" tal:content="context/Title" />
         
         <blockquote tal:condition="context/Description">
@@ -32,7 +34,6 @@
             <span class="documentModified">Verfasst am <span tal:content="date">effective date</span></span>
         </div>
         
-        <div tal:replace="structure provider:plone.belowcontentbody" />
         
         <div tal:condition="view/parent_info">
             <tal:block tal:define="parent view/parent_info">
