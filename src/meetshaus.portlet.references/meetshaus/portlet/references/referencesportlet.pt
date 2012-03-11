@@ -10,7 +10,7 @@
                 tal:attributes="href item/getRemoteUrl"
                 tal:content="item/Title" />
         </h3>
-        <p class="discreet" tal:content="item/Description" />
+        <p tal:content="item/Description" />
     </dd>
 
 </dl>
