@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <object name="portal_javascripts">
-    
- <!-- Add custom javascripts to the registry and make them
-      available when xdv is enabled -->
-
- <!-- <javascript authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="True"
-    expression="request/HTTP_X_XDV | nothing"
-    id="++resource++mth.xdvtheme/js/slide.js" inline="False"/> -->
+     <javascript authenticated="False" cacheable="True" compression="safe"
+     conditionalcomment="" cookable="True" enabled="True"
+     expression="request/HTTP_X_THEME_ENABLED | nothing"
+     id="++theme++meetshaus.sitetheme/js/jquery.masonry.js" inline="False"/>
+     <javascript authenticated="False" cacheable="True" compression="safe"
+     conditionalcomment="" cookable="True" enabled="True"
+     expression="request/HTTP_X_THEME_ENABLED | nothing"
+     id="++theme++meetshaus.sitetheme/js/main.js" inline="False"/>
 </object>

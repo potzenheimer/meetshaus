@@ -19,6 +19,7 @@
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
     <theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />
+    <theme href="impressum.html" css:if-content="body.template-references-listing" />
     <theme href="blog.html" css:if-content="body.section-blog" />
     <theme href="blog.html" css:if-content="body.section-referenzen" />
     
@@ -70,6 +71,9 @@
         
         <replace css:content="#content-core > *" css:theme="#contact-me"
             css:if-content="body.section-impressum" />
+
+        <replace css:content="#content" css:theme="#main-content"
+            css:if-content="body.template-references-listing" />
         
         <!-- Splashboxes (Landing Page) -->
         
