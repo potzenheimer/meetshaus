@@ -1,0 +1,1909 @@
+// Meetshaus site specfic styles
+
+/* @group Basics */
+
+body {
+    font: 100% Arial, FreeSans, sans-serif;
+    background: White;
+    color: Black;
+    /* width: 58em; margin: 1em auto; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Verdana, Arial, FreeSans, sans-serif;
+    font-weight: bold;
+    color: Black;
+    line-height: 1.5em;
+}
+h1, h2 {
+    letter-spacing: -0.05em;
+}
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.75em;
+}
+h3 {
+    font-size: 1.25em;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+    font-size: 0.8em;
+}
+h2, h3, h4, h5, h6 {
+    color: #444;
+}
+h2 a, h3 a, h4 a {
+    border-bottom: none !important;
+}
+
+p {
+}
+
+a:link, a:visited {
+    color: #74C4EA;
+}
+a:focus img {
+    outline: thin dotted;
+}
+dt {
+    font-weight: bold;
+}
+input {
+    font-family: "Lucida Grande", Arial, FreeSans;
+}
+
+q {
+    quotes: "“" "”" "‘" "’";
+}
+
+/* @end */
+
+/* @group custom font AurulenSans */
+
+@font-face {
+    font-family: 'AurulentSansRegular';
+    src: url('../fonts/AurulentSans-Regular-webfont.eot');
+    src: url('../fonts/AurulentSans-Regular-webfont.eot?iefix') format('eot'),
+         url('../fonts/AurulentSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/AurulentSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/AurulentSans-Regular-webfont.svg#webfont18nXzLYS') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AurulentSansItalic';
+    src: url('../fonts/AurulentSans-Italic-webfont.eot');
+    src: url('../fonts/AurulentSans-Italic-webfont.eot?iefix') format('eot'),
+         url('../fonts/AurulentSans-Italic-webfont.woff') format('woff'),
+         url('../fonts/AurulentSans-Italic-webfont.ttf') format('truetype'),
+         url('../fonts/AurulentSans-Italic-webfont.svg#webfontjDtVmWpR') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AurulentSansBold';
+    src: url('../fonts/AurulentSans-Bold-webfont.eot');
+    src: url('../fonts/AurulentSans-Bold-webfont.eot?iefix') format('eot'),
+         url('../fonts/AurulentSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/AurulentSans-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/AurulentSans-Bold-webfont.svg#webfontik3ET1p7') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AurulentSansBoldItalic';
+    src: url('../fonts/AurulentSans-BoldItalic-webfont.eot');
+    src: url('../fonts/AurulentSans-BoldItalic-webfont.eot?iefix') format('eot'),
+         url('../fonts/AurulentSans-BoldItalic-webfont.woff') format('woff'),
+         url('../fonts/AurulentSans-BoldItalic-webfont.ttf') format('truetype'),
+         url('../fonts/AurulentSans-BoldItalic-webfont.svg#webfontb8ZKI1ph') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* @end */
+
+/* @group Rounded Corners */
+
+.rounded {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+}
+
+.roundedtop {
+    -moz-border-radius: 8px 8px 0px 0px;
+    -webkit-border-radius:8px 8px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
+}
+.roundedbottom {
+    -moz-border-radius: 0px 0px 8px 8px;
+    -webkit-border-radius: 0px 0px 8px 8px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+/* @end */
+
+/* @group global colored classes */
+
+.meetshausBlue {
+    color:#74c4ea !important;
+}
+
+/* @group wrapper elements */
+
+html, body {
+/* Sticky footer */
+    height: 100%;
+    background:#d9e4e4;
+}
+
+#outer-wrapper {
+/* Sticky footer w/IE fixes*/
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#tree-decorator {
+    width:40%;
+    height:509px;
+    position:absolute;
+    top: 0px;
+    left: 60%;
+    z-index:1;
+    text-indent: -3000px;
+    overflow: hidden;
+    background: url(../images/tree.png) no-repeat 0% 0% transparent;
+}
+
+#inner-wrapper {
+    margin: 45px auto 50px auto;
+    border: 0px solid red;
+    padding-top: 30px;
+    width: 960px;
+}
+
+#top-wrapper {
+}
+
+#header-wrapper {
+    margin:0px auto;
+    background: #fff;
+    border: 1px solid white;
+    height: auto;
+}
+
+#content-wrapper {
+    margin: 0px auto;
+    border: 1px solid white;
+    width:958px;
+    background:url(../images/bird-brown-flying.png) no-repeat 99% 40% #fff;
+}
+
+body.section-blog #content-wrapper {
+    background:#fff;
+}
+
+#main-content {
+    border: 0px solid red;
+    width: 900px;
+}
+
+body.section-blog #main-content {
+    width: 960px;
+}
+
+/* @end */
+
+/* @group Header */
+
+#logo-wrapper {
+    position:relative;
+    width: 102px;
+    height: auto;
+    top: -30px;
+    left: 50px;
+    z-index: 2;
+    border: 0px solid red;
+}
+
+#logo {
+    background: url(../images/logo.png) 0px 0px no-repeat transparent;
+    margin: 0px;
+    width: 102px;
+    height: 343px;
+    display: block;
+    text-indent: -3000px;
+    overflow: hidden;
+    border: none;
+}
+
+#fb-like {
+    margin: 15px 0px 0px 30px;
+}
+
+#plusone-box {
+    margin: 15px 0px 0px 60px;
+}
+
+#header {
+    background:url(../images/bird-blue-starting-left.png) no-repeat 50% 10px transparent;
+    padding: 0px;
+    margin: 0px 400px 50px 0px;
+    padding-top: 50px;
+    width:460px;
+    min-height: 100px;
+    margin:0px;
+}
+
+#claim {
+    background:url(../images/bird-brown-left.png) no-repeat 33px 0px transparent;
+    padding-top: 5px;
+    color:#74c4ea;
+    font-family:Verdana, sans-serif;
+    font-weight: normal;
+    font-size: 2.5em;
+}
+
+#about-me,
+#introduction {
+    width: 425px;
+    font-family: 'AurulentSansRegular';
+}
+
+#about-me b,
+#introduction b {
+    color:#d3802a;
+    font-family: 'AurulentSansBold';
+    font-weight: normal;
+}
+
+#about-me p,
+#introduction p {
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+    line-height: 1.25em;
+}
+
+#about-meetsblock {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 5px solid #ddd;
+    border-radius: 10px 10px 10px 10px;
+    color: #333333;
+    margin: 1em 0 3em;
+    padding: 5px;
+    position: relative;
+    width: 415px;
+}
+
+#about-meetsblock p {font-size:28px; line-height:1.25em;}
+
+#about-meetsblock:after {
+    border-color: #FFFFFF transparent;
+    border-style: solid;
+    border-width: 13px 13px 0;
+    bottom: -13px;
+    content: "";
+    display: block;
+    left: 47px;
+    position: absolute;
+    width: 0;
+}
+#about-meetsblock:before {
+    border-color: #ddd transparent;
+    border-style: solid;
+    border-width: 20px 20px 0;
+    bottom: -20px;
+    content: "";
+    display: block;
+    left: 40px;
+    position: absolute;
+    width: 0;
+}
+
+#about-meetsblock a {
+    line-height: 150%;
+    border: none !important;
+}
+
+
+/* @end */
+
+/* @group sidebar */
+
+#sidebar {
+}
+
+#sidebar-header {
+    padding: 15px 10px;
+}
+
+#sidebar-header h2 {
+    font-size: 0.9em;
+}
+
+#sidebar-header h3 {
+    font-size: 0.8em;
+    color: #444;
+    font-weight: normal;
+}
+
+/* @end */
+
+/* @group Splash Boxes */
+
+.splashBox,
+.portlet {
+    border: 0px solid #ddd;
+    background: transparent;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.splashbox-bow {
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    border: 0px solid red;
+    width:89px;
+    height:64px;
+}
+#splashbox-words .splashbox-bow {
+    background:url(../images/bow-words.png) no-repeat 0% 0% transparent;
+}
+#splashbox-adwords .splashbox-bow {
+    background:url(../images/bow-adwords.png) no-repeat 0% 0% transparent;
+}
+#splashbox-social .splashbox-bow {
+    background:url(../images/bow-social.png) no-repeat 0% 0% transparent;
+}
+
+.splashBoxContent {
+    border: 1px solid #d8e4e4;
+    background: white;
+    padding: 5px 10px 15px 35px;
+}
+
+#splashbox-words .splashBoxContent {
+    background:url(../images/meetshaus-words.png) no-repeat 0% 90% transparent;
+}
+#splashbox-adwords .splashBoxContent {
+    background:url(../images/meetshaus-adwords.png) no-repeat 0% 75% transparent;
+}
+#splashbox-social .splashBoxContent {
+    background:url(../images/meetshaus-social.png) no-repeat 0% 90% transparent;
+}
+
+.splashBoxImage {
+    text-indent: -3000px;
+    overflow: hidden;
+}
+
+#splashbox-words .splashBoxImage {
+    background:url(../images/miss-wordy.png) no-repeat 50% 100% transparent;
+    height: 131px;
+}
+#splashbox-adwords .splashBoxImage {
+    background:url(../images/edward.png) no-repeat 50% 100% transparent;
+    height: 131px;
+}
+#splashbox-social .splashBoxImage {
+    background:url(../images/lovebirds.png) no-repeat 50% 100% transparent;
+    height: 131px;
+}
+
+.splashBoxText {
+    padding: 20px 0px 25px 10px;
+    min-height: 20px;
+    border: 0px solid red;
+}
+
+.splashBoxText b {
+    color:#d3802a;
+    font-family: 'AurulentSansBold';
+    font-weight: normal;
+}
+
+.splashBoxText p {
+    line-height: 110%;
+}
+
+.tilebox {
+    width: 200px;
+    margin: 10px 10px 10px 0;
+    padding: 10px;
+    float:left;
+    border:1px solid #d8e4e4;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+}
+.tilebox h3,
+.tilebox p.discreet {
+    line-height: 110%;
+}
+
+
+/* @ end */
+
+/* @group Content Area */
+
+#content {
+    line-height: 1.5em;
+    clear: both;
+    font-size: 85%;
+    margin: 1em 0.25em 2em 0.25em;
+    font-family: 'AurulentSansRegular';
+}
+
+/* Special case of #content - TinyMCE */
+body#content {
+    margin: 1em;
+}
+
+#content h1 {
+    margin-top: 0.5em;
+}
+
+#content h1.documentFirstHeading {
+    margin-top: 0;
+}
+
+#content h2 {
+    font-size: 1.5em;
+}
+#content h3 {
+    font-size: 1.2em;
+}
+
+#content p,
+#content table,
+#content dl,
+dl.portlet p,
+dl.portlet {
+    margin-bottom: 1em;
+}
+
+#content ul,
+#content ol {
+
+}
+
+#content a:link,
+dl.portlet a:link {
+    color: #74C4EA;
+    border-bottom: 0.1em solid #ccc;
+}
+
+#content a:visited,
+dl.portlet a:visited {
+    color: #74C4EA;
+    border-bottom: 0.1em solid #ccc;
+}
+#content a:hover,
+dl.portlet a:hover {
+    color: #D3802A !important; /* This one gets an !important because it should always activate in the content area, even when state coloring is active */
+}
+#content a:target {
+    background-color: #ffb;
+}
+#content span.link-external a {
+    background: transparent url(link_icon.png) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+
+#category {
+    font-size: 75%;
+    margin-bottom: 1em;
+    color: #666;
+    text-align: right;
+}
+
+#category a.link-category {
+    color: #74C4EA;
+    padding: 0.25em 0.5em;
+    background: #ddd;
+    border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+}
+#category a.link-category:hover {
+    background: #205c90;
+    color: White;
+    border-color: #205c90;
+}
+#category .separator {
+    display: none;
+}
+
+#content ul {
+    list-style-type: disc;
+    margin: 0em 0em 1em 2em;
+}
+
+#content ol,
+dl.portlet ol {
+    list-style-type: decimal;
+    margin-left: 2em;
+}
+
+#content li,
+dl.portlet li {
+    margin-bottom: 0.25em;
+    line-height: 1.25em;
+    font-size: 1em;
+    display: list-item;
+}
+
+#content dt {
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-right: 0;
+}
+#content dd {
+    margin: 0 0 1em 2em;
+}
+
+#content pre {
+    background-color: #222;
+    color: White;
+    font-family: Consolas, Inconsolata, Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+    padding: 1em;
+    overflow-x: auto;
+    font-size: 90%;
+    margin-bottom: 1em;
+    line-height: 1.25em;
+}
+#content pre.python {
+    background-color: White;
+}
+
+#content code {
+    font-family: Consolas, Inconsolata, Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
+#content div.documentByLine {
+    font-size: 85%;
+    display: block;
+    color: #666;
+}
+
+#content .discreet,
+#sidebar .discreet {
+    color: #666;
+    font-size: 85%;
+    font-weight: normal;
+}
+
+#content .visualHighlight,
+#about-me .visualHighlight,
+#introduction .visualHighlight {
+    background-color: transparent;
+    color:#74c4ea !important;
+    font-family:'AurulentSansBold';
+}
+
+#content .pullquote {
+    margin: 0 1em 0.5em 0.5em;
+    font-weight: bold;
+    line-height: 1.25em;
+    float: right;
+    width: 35%;
+    clear: right;
+    color: #444;
+    font-size: 1em;
+    padding: 1em;
+    letter-spacing: -0.08em !important;
+    border: 4px solid #D3802A;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+}
+#content .callout {
+    background: #eee;
+    padding: 1em;
+    border-left: 1em solid #ccc;
+    clear: both;
+}
+
+
+#content table {
+    text-align: left;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+#content .documentDescription,
+#content #description {
+    color: #666;
+    margin-left: 0;
+    font: bold 1.25em "Helvetica Neue", Arial, FreeSans, sans-serif;
+}
+
+#content img.tileImage,
+#content div.newsImageContainer {
+    float: right;
+    margin: 0 1em 0.5em 1em;
+}
+#content div.newsImageContainer a {
+    border-bottom: none;
+}
+#content div.newsImageContainer p.discreet {
+    margin: 0;
+    padding: 0.5em;
+    background-color: #666;
+    background-color: rgba(40,40,40,0.7);
+    color: White;
+    font-weight: bold;
+    position: relative;
+    width: 190px;
+    top: -3em;
+}
+.eventDetails {
+    float: right;
+    clear: right;
+    margin: 0 0 0.5em 1em;
+}
+
+/* @end */
+
+/* @group Contact Form */
+
+.formid-kontakt,
+#searchform {
+    font-family: 'AurulentSansRegular';
+}
+
+.formid-kontakt label,
+#searchform label {
+    color: #D3802A;
+}
+
+.formid-kontakt input,
+#searchform input,
+.formid-kontakt textarea {
+    background:#74C4EA;
+    color: #D3802A;
+    font-size:1.25em;
+    font-family: 'AurulentSansRegular';
+    padding: 5px;
+    border: 1px solid #D3802A;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+}
+
+.formid-kontakt input.context,
+#searchform input.searchButton {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.formid-kontakt .required {
+    display: none;
+}
+
+.searchResults {
+    border: 1px solid #ddd;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+    padding: 1em;
+}
+
+body.template-search h1.documentFirstHeading {
+    color:#D3802A;
+}
+
+#blog-view {
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.blogEntry .documentModified {
+    color: #D3802A;
+    font-family: 'AurulentSansBold';
+    display: inline-block;
+    padding: 30px 65px 0px 0px;
+    background:url(../images/bird-brown-flying.png) no-repeat 100% 0% transparent;
+}
+
+.entryDescription {
+    margin: 1em 0;
+    color: #666;
+    margin-left: 0;
+    font: italic 1.25em "Helvetica Neue", Arial, FreeSans, sans-serif;
+}
+
+#blog-view a:link {
+    color: #74C4EA !important;
+}
+
+.blog-actions {
+  background: #fff;
+  margin-top: 5px;
+  margin-bottom: 2em;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.blog-actions a {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-transition: all 0.1s linear 0s;
+    background-color: #E6E6E6;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 25%, #E6E6E6);
+    background-repeat: no-repeat;
+    border-color: #CCCCCC #CCCCCC #BBBBBB;
+    border-radius: 8px 8px 8px 8px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.blogicon {
+    background:url(../images/blogicons.png) no-repeat 0px 100% transparent;
+    width: 20px;
+    height: 17px;
+    margin: 0px 5px -5px 0px;
+    text-indent: -99999px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.blogicon.plus {
+    background-position: -36px 100%;
+}
+
+/* @end */
+
+/* Portlets */
+
+.portletTwitterPortlet,
+.portletReferencesPortlet {
+    border: 1px solid #ccc;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+}
+
+.portlet dt {
+    color:#d3802a;
+    font-family: 'AurulentSansBold';
+    font-weight: normal;
+    padding-bottom: 0.5em;
+}
+
+.portlet dd {
+    margin: 0px !important;
+    padding: 10px 0px;
+    font-size: 0.9em;
+    line-height: 110%;
+    border-top: 1px solid #ccc;
+}
+
+
+/* @group Data tables */
+
+table.listing,
+table.plain {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table.invisible td,
+table.invisible th,
+table.plain td,
+table.plain th,
+table.listing td,
+table.listing th {
+    padding: 0.5em 1em;
+    vertical-align: top;
+}
+table.plain th,
+table.plain td {
+    border: 1px solid #ddd;
+}
+
+table.listing td.listingCheckbox,
+table.listing th.listingCheckbox {
+    text-align: center;
+}
+
+
+table.listing {
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+table.listing .top {
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+table.listing th {
+    text-align: left;
+    color: #666;
+    border: 0.1em solid #e7e7e7;
+    border-style: solid solid none;
+    background: #ddd;
+}
+table.listing tr.odd th {
+    border: 0.1em solid #fff;
+    border-style: solid solid none none;
+}
+table.listing tbody th {
+    font-weight: bold;
+}
+table.listing tbody tr {
+    text-align:left;
+}
+table.listing tbody tr.odd {
+    background: #eee;
+}
+table.listing tbody tr td {
+    background: transparent;
+}
+table.listing tbody tr.odd td {
+    background: #eee;
+}
+table.listing td {
+    border-right: 1px solid #ddd;
+}
+table.listing a {
+    border: none;
+    display: inline-block;
+    border-bottom: none !important;
+}
+
+table.listing td.draggable {
+    text-shadow: White 1px 1px 1px;
+    background: #ddd !important;
+    border-bottom: 1px solid white;
+    padding: 0.4em 0.4em 0 0.5em;
+}
+/* Vertical table data listings */
+table.vertical {
+}
+table.vertical th {
+    text-align: right;
+}
+table.vertical td {
+    border-top: 0.1em solid #e7e7e7;
+    padding: 0.5em;
+}
+/* Grid table listings */
+table.grid td,
+table.grid th {
+    border: 1px solid #e7e7e7;
+    padding: 0.5em;
+}
+
+.dragindicator {
+    outline: 2px solid #FFD700;
+}
+
+#foldercontents-order-column {
+    padding: 0;
+}
+
+div.listingBar {
+    font-size: 80%;
+    margin: 1em 0;
+}
+
+div.listingBar .next {
+    display: inline-block;
+    float: right;
+}
+
+div.listingBar .previous {
+    display: inline-block;
+}
+
+div.listingBar a {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    border: 0.1em solid #ccc;
+}
+
+div.listingBar a:hover {
+    color: White;
+    background-color: #329fd7;
+    border-color: #329fd7;
+}
+
+/* @end */
+
+/* @group Status messages */
+
+dl.portalMessage {
+    margin: 1em 0;
+    font-size: 80%;
+    border: 1px solid #996;
+    background-color: #ffffe3;
+    clear:both;
+}
+dl.portalMessage a,
+#content dl.portalMessage a {
+    color: black;
+    border-bottom: 1px solid #888;
+}
+dl.portalMessage dt {
+    background-color: #996;
+    font-weight: bold;
+    float: left;
+    margin: 0 0.5em 0 0;
+    padding: 0.5em 0.75em;
+    color: White;
+    line-height: 1.25em;
+}
+dl.portalMessage dd {
+    padding: 0.5em 0.5em;
+    margin: 0;
+    line-height: 1.25em;
+}
+dl.warning {
+    border-color: #d80;
+}
+dl.warning dt {
+    background-color: #d80;
+}
+dl.error {
+    border-color: #d00;
+}
+dl.error dt {
+    background-color: #d00;
+}
+dl.warning {
+    border-color: #d80;
+}
+dl.warning dd {
+    background-color: #fd7;
+}
+dl.error {
+    border-color: red;
+}
+dl.error dd {
+    background-color: #fdc;
+}
+
+/* Additional specificity for when status is shown inside #content */
+#content dl.portalMessage {
+    font-size: 100%;
+}
+#content dl.portalMessage dt {
+    margin: 0 0.5em 0 0;
+    padding: 0.5em 0.75em;
+}
+#content dl.portalMessage dd {
+    margin: 0;
+}
+
+/* @end */
+
+/* @group Editing */
+
+/* @group Tabs */
+
+/* Color differences between the two tab types */
+#content ul.formTabs {
+    background-color: #ddd;
+    border: 0.3em solid #ddd;
+}
+#edit-bar {
+    background-color: #333;
+    border: 0.25em solid #333;
+    font-size: 80%;
+    min-height: 2em;
+    margin-bottom: 1em;
+    padding-top: 0.05em;
+}
+#content-views {
+    float: left;
+    background-color: #333;
+}
+#content-views a {
+    color: White;
+}
+
+/* Shared CSS between the two tab types */
+#edit-bar,
+#content ul.formTabs {
+    display: block;
+    border-style: solid solid none solid;
+    margin-left: 0;
+    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    -webkit-border-top-right-radius: 0.5em;
+    -webkit-border-top-left-radius: 0.5em;
+    -moz-border-radius-topleft: 0.5em;
+    -moz-border-radius-topright: 0.5em;
+}
+#content li.formTab {
+    display: inline;
+    margin-right:0.25em;
+}
+#content-views a,
+#content li.formTab a {
+    /* this isn't supported by all browsers, so we keep it in a separate rule */
+    display: inline-block;
+}
+#content-views a,
+#content li.formTab a {
+    line-height: 2em;
+    padding: 0 0.75em;
+    text-decoration: none;
+    border: none;
+    margin: 0 ;
+}
+#content-views li.selected a,
+#content li.formTab a.selected {
+    font-weight: bold;
+}
+#content-views li.selected a,
+#content-views li a:hover,
+#content li.formTab a.selected,
+#content li.formTab a:hover {
+    background: White;
+    color: Black;
+}
+#content-views li.selected a,
+#content-views li a:hover,
+#content li.formTab a.selected,
+#content li.formTab a:hover {
+    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    -webkit-border-top-right-radius: 0.5em;
+    -webkit-border-top-left-radius: 0.5em;
+    -moz-border-radius-topleft: 0.5em;
+    -moz-border-radius-topright: 0.5em;
+}
+#content li.formTab a.notify {
+    background-color: red;
+    color: White;
+}
+#content li.formTab a.required span {
+    background-image: url(required.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+    padding-right: 1em;
+}
+#content fieldset.formPanel {
+    border: none;
+}
+#content fieldset.formPanel.hidden {
+    display: none;
+}
+#content div.formControls input.hidden {
+    display: none;
+}
+
+/* @end */
+
+/* @group Pulldown menus */
+
+/* @group Personal tools pulldown */
+#portal-personaltools dl {
+}
+#portal-personaltools dt {
+    font-weight: normal;
+}
+#portal-personaltools dt.actionMenuHeader a:after {
+    content: " ▼";
+}
+#portal-personaltools dd {
+    right: 0;
+    padding-top: 0.5em;
+}
+#portal-personaltools dd {
+    background: #e3e3e3;
+    padding-bottom: 0.5em;
+}
+#portal-personaltools dd a {
+    line-height: 2em;
+    padding: 0 0.75em;
+}
+#portal-personaltools dd a:hover {
+    background: #205c90;
+    color: White;
+}
+
+/* @end */
+
+/* @group Content pulldowns */
+
+#contentActionMenus dl.actionMenu a,
+#contentActionMenus dl.actionMenu.activated dd {
+    background-color: #333;
+    color: White;
+    z-index: 5;
+}
+#contentActionMenus dl.actionMenu.activated dd {
+    border-bottom: 0.5em solid #333;
+        right: -3px;
+}
+#contentActionMenus dl.actionMenu.activated dd a:hover,
+#contentActionMenus dl.actionMenu.activated dd .actionMenuSelected {
+    background-color: White !important;
+    color: #666;
+}
+#contentActionMenus dl.actionMenu {
+    line-height: 2em;
+}
+
+#folderHeader, #contextHeader {
+        border-bottom: 2px solid white;
+}
+
+#contextHeader { margin-top: 5px; }
+
+
+/* @end */
+
+#contentActionMenus {
+    float: right;
+    background: #333;
+    margin: 0;
+    position: relative;
+    top: -0.23em;
+    right:-0.24em;
+    padding: 0.1em 0.24em 0 0;
+    border-radius: 0.5em;
+    border-top-left-radius: 0;
+    -webkit-border-radius: 0.5em;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius: 0.5em;
+    -moz-border-radius-topleft: 0;
+}
+
+.actionMenuContent {
+    padding: 0 0.25em;
+}
+
+dl.actionMenu {
+    float: right;
+    white-space: nowrap;
+    position: relative;
+    margin-left: 0.5em;
+}
+dl.actionMenu a,
+dl.actionMenu div {
+    display: block !important;
+    white-space: nowrap;
+}
+dl.actionMenu dt {
+    font-weight: normal;
+}
+span.arrowDownAlternative {
+    font-size: 80%;
+}
+dl.actionMenu.deactivated dt {
+    margin: 0 0.25em;
+}
+dl.actionMenu.deactivated dd {
+    display: none;
+}
+dl.actionMenu.activated dd {
+    position: absolute;
+    width: auto;
+    min-width: 100%;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    -webkit-border-bottom-right-radius: 0.5em;
+    -webkit-border-bottom-left-radius: 0.5em;
+    -moz-border-radius-bottomleft: 0.5em;
+    -moz-border-radius-bottomright: 0.5em;
+}
+dl.actionMenu.activated dt a,
+dl.actionMenu.activated dd a,
+dl.actionMenu.activated dd div {
+    margin: 0 0.25em;
+}
+
+/* @end */
+
+/* @group Control panel */
+
+#setup-link {
+    font-size: 90%;
+}
+
+#content ul.configlets {
+    margin: 1em 0;
+    list-style-image: none;
+    list-style: none;
+}
+#content ul.configlets li {
+    margin-bottom: 1em;
+    list-style: none;
+    display: block;
+}
+#content ul.configlets li a {
+    text-decoration: none;
+    border: none;
+}
+#content ul.configlets li a:visited {
+    color: #436976;
+    background-color: transparent;
+}
+#content ul.configlets li a:active {
+    color: #436976;
+    background-color: transparent;
+}
+#content ul.configlets li label {
+    font-weight: bold;
+}
+#content ul.configletDetails {
+    margin: 0em 1em 1em 4em;
+    list-style-image: none;
+    list-style: none;
+}
+#content ul.configletDetails li {
+    margin-bottom: 1em;
+    display: inline;
+}
+#content ul.configletDetails li a {
+    text-decoration: none;
+}
+#content ul.configletDetails li label {
+    font-weight: bold;
+}
+#content ul.configletDetails li.configletDescription {
+    display: block;
+    color: #76797c;
+    margin: 0;
+}
+.inlineDisplay {
+    display:inline
+}
+table.controlpanel-listing {
+    width:100%;
+}
+table.controlpanel-listing td, table.controlpanel-listing th {
+    font-size:120%;
+}
+table.controlpanel-listing dl {
+    margin-top:0;
+}
+table.controlpanel-listing dd {
+    margin-left: 1em;
+}
+table.controlpanel-listing dl dt a .trigger{
+    font-weight:normal;
+}
+table .controlpanel-listing td {
+    vertical-align:top;
+}
+table.controlpanel-listing td.checker{
+    text-align:center;
+}
+table.controlpanel-listing th.smallcolumn {
+    width:1.5em;
+}
+.chooser-right {
+    float:right;
+    margin-right:0;
+    margin-bottom:0;
+}
+.rule-element {
+    background-color:#EEF3F5;
+    margin:0.5em 0pt 0.5em;
+    padding:0.3em 1em 0.3em 1em;
+    width:auto;
+}
+.rule-element dl {
+}
+.rule-element dl dd {
+    margin-left:1em;
+}
+.rule-updown, .rule-operations {
+    float:right;
+    padding-top:0.8em;
+}
+/* @end */
+
+/* @group Image alignment classes */
+
+.image-left {
+   float: left;
+   clear: both;
+   margin: 0.5em 1em 0.5em 0;
+}
+.image-right {
+   float: right;
+   clear: both;
+   margin: 0.5em;
+}
+.image-inline {
+   float: none;
+}
+/*note: the tricky thing here is that image-inline|image-left|image-right
+can both be on an image and a wrapper element e.g. a dl tag*/
+img.image-left,
+img.image-right,
+.captioned img {
+    border: 1px solid #ddd;
+}
+dd.image-caption {
+    text-align: left;
+    padding: 0 0 0 3px; /*image padding+border with*/
+    margin: 0;
+    color: #666;
+    font-size: 85%;
+}
+
+/* @end */
+
+/* @group Forms */
+
+fieldset,
+.editionComment {
+    line-height:1.5em;
+    margin:1em 0;
+    padding:0 1em 1em;
+    width:auto;
+}
+
+/* Emulates the styling from the h1 tag */
+#content .field input[type="text"][name$=".title"],
+#archetypes-fieldname-title input {
+    font-family: "Helvetica Neue", Arial, FreeSans, sans-serif;
+    line-height: 125%;
+    color: Black;
+    letter-spacing: -0.05em;
+    margin: inherit -0.05em;
+    font-size: 2em; /* 26px equiv */
+    font-weight: bold;
+}
+
+/* Emulates styling from the description's view */
+#content .field textarea[name$=".description"],
+#archetypes-fieldname-description textarea#description {
+    font-family: Arial,FreeSans,sans-serif;
+    color:#666666;
+    font-size:1.25em;
+    font-weight: bold;
+}
+
+
+div.formControls {
+    margin: 1em;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    background-color: #ffffe0;
+}
+
+#content textarea {
+    font: 100% Monaco, "Courier New", Courier, monospace;
+    width: 100%;
+}
+#content select {
+    vertical-align: top;
+}
+#content fieldset {
+    border: 0.1em solid #329fd7;
+    border-style: solid none none none;
+}
+#content legend {
+    padding: 0.5em;
+    font-size: 85%;
+}
+label {
+    font-weight:bold;
+}
+
+#content label {
+}
+
+#content optgroup {
+    font-style: normal;
+    font-weight: bold;
+    color: #999;
+    padding-left: 0.25em;
+}
+#content option {
+    color: black;
+}
+#content optgroup > option {
+    padding: 0 0.25em 0 1em;
+}
+dl.enableFormTabbing dd {
+    margin-left: 0;
+    padding-top: 2em;
+}
+.searchSection {
+    color: #76797c;
+    margin-top: 0.25em;
+}
+.searchSection label:hover {
+    color: Black;
+}
+.field {
+    clear: both;
+    margin-bottom: 1em;
+}
+.field input[type="text"] {
+    /*width: 100%;*/
+}
+.field input[type="text"][name$=".title"],
+input#title {
+    width: 100%;
+}
+.field.error input[type="text"][name$=".title"],
+.error input#title {
+    width:99%;
+}
+
+.fieldRequired {
+    background: url(required.png) center left no-repeat;
+    padding: 0 0 0 1em;
+    color: White;
+}
+.fieldUploadFile {
+    text-align: right;
+    margin-right: 0.75em;
+    display: none;
+}
+.fieldTextFormat {
+    text-align: right;
+    margin-right: 0.75em
+}
+.formHelp {
+    color: #555;
+    margin: 0 0 0.2em 0;
+}
+div.field.error {
+    background-color: #fdc;
+    border:  1px solid red;
+    padding: 0.5em;
+    margin:  1em 0;
+}
+.error .fieldRequired {
+    color: #d00;
+}
+div.error.warning {
+    background-color: transparent;
+    border: none;
+    margin-top: 0;
+    padding: 0;
+}
+
+div.error.warning input {
+    border: 2px solid red;
+}
+
+input.inputLabelActive {
+    color: #76797c;
+}
+textarea#form\.description {
+    height: 6em;
+    width: 99%;
+}
+table.listing tbody tr.odd.selected td,
+tr.selected {
+    background-color: #ffa;
+}
+
+/* @group Comments */
+
+.discussion:after {
+    border-width: 0 13px 13px;
+    bottom: auto;
+    left: auto;
+    right: 47px;
+    top: -13px;
+}
+.discussion:before {
+    border-color: #ddd transparent;
+    border-style: solid;
+    border-width: 0 20px 20px;
+    bottom: auto;
+    left: auto;
+    right: 40px;
+    top: -20px;
+    content: "";
+    display: block;
+    left: 40px;
+    position: absolute;
+    width: 0;
+}
+.discussion {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 2px solid #ddd;
+    border-radius: 8px 8px 8px 8px;
+    color: #333333;
+    margin: 1em 0 3em;
+    padding: 15px;
+    position: relative;
+}
+
+
+#commenting {
+    background: none repeat scroll 0 0 #D3802A;
+    border: 2px solid #D3802A;
+    border-radius: 8px 8px 8px 8px;
+    color: #fff;
+    margin: 1em 0 3em;
+    padding: 5px;
+    position: relative;
+}
+
+#commenting:after {
+    border-width: 0 13px 13px;
+    bottom: auto;
+    left: auto;
+    right: 47px;
+    top: -13px;
+}
+#commenting fieldset {
+    border: none !important;
+}
+
+#commenting legend {
+    font-size: 2em !important;
+    border: none;
+}
+
+#commenting input.context,
+.discussion button {
+        -moz-border-bottom-colors: none;
+        -moz-border-image: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        -moz-transition: all 0.1s linear 0s;
+        background-color: #E6E6E6;
+        background-image: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 25%, #E6E6E6);
+        background-repeat: no-repeat;
+        border-color: #CCCCCC #CCCCCC #BBBBBB;
+        border-radius: 8px 8px 8px 8px;
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 13px;
+        line-height: normal;
+        padding: 5px 14px 6px;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+#commenting textarea,
+#commenting input {
+    background:#fff;
+    color: #D3802A;
+    font-size:1.25em;
+    font-family: 'AurulentSansRegular';
+    padding: 5px;
+    border: 1px solid #D3802A;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 8px;
+}
+
+.comment {
+    margin-top: 1.5em;
+    font-size: 80%;
+}
+
+.comment .documentByLine {
+    margin-left: 1em;
+}
+
+.comment .formControls {
+    margin-left: 0;
+}
+
+.commentTime {
+    color: #666;
+}
+
+.commentBody {
+    padding: 1em;
+    margin: 0.5em 0;
+    border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 #888;
+    -moz-box-shadow: 0 0 0.5em 0 #888;
+    -webkit-box-shadow: 0 0 0.5em #888;
+}
+
+.comment h1,
+.comment h2,
+.comment h3,
+.comment h4,
+.comment h5,
+.comment h6 {
+    font-weight: normal;
+}
+
+/* @group Login form */
+
+body.template-logged_out #content,
+body.template-login_form #content,
+.pb-ajax #login-form {
+    text-align: center;
+}
+
+#fieldset-openid-login input, #login-form input {
+    font-size: 150%;
+}
+
+
+body.template-register #content input,
+body.template-new-user #content input {
+    font-size: 150%;
+    width: inherit;
+
+}
+
+#fieldset-openid-login label, #login-form label {
+    margin-right:0.5em;
+    padding-top:0.2em;
+    text-align:right;
+    width: 10em;
+    display: inline-block;
+}
+
+#fieldset-openid-login .formControls input, #login-form .formControls input {
+margin-left: 0.25em;
+}
+
+/* @end */
+
+/* @group Overlay windows */
+
+/* styling for overlays (popups) */
+
+div.overlay {
+    width: auto;
+    height: auto;
+    /* initially overlay is hidden */
+    display: none;
+    /* some padding to layout nested elements nicely  */
+    margin: 1em;
+    font-size: 80%;
+}
+
+div.overlay-iframe,
+div.overlay-ajax {
+    width: 60%;
+    min-height: 100px;
+    z-index: 99; /* overlays should be above everything */
+}
+
+div.overlay-iframe {
+    height: 60%;
+}
+
+/* default close button positioned on upper-left corner */
+div.overlaybg div.close,
+div.overlay div.close {
+    background-image: url(pb_close.png);
+    position: absolute;
+    left: -14px;
+    top: -14px;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
+
+.pb-ajax {
+    overflow-y: auto;
+}
+
+.pb-ajax, .pb-image {
+    background-color: #fff;
+    border: 1px solid #999;
+    white-space: normal;
+    box-shadow: 0 0 3em 0.5em #666;
+    -moz-box-shadow: 0 0 3em 0.5em #666;
+    -webkit-box-shadow: 0 0 3em #666;
+}
+
+.pb-ajax > div {
+    width: 92%;
+    padding: 1em;
+}
+
+.pb-ajax .documentActions {display:none}
+
+div.overlay div.close span {
+    display: block;
+    height: 1px;
+    margin: -1px 0 0 -1px;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;
+}
+
+div.overlay textarea { width: 100%; }
+
+/* Hide form elements that don't make sense within an overlay. */
+div.overlay .link-parent { display: none; }
+div.overlay #createGroup legend { display: none; }
+div.overlay #createGroup fieldset { border: none; }
+
+/* lets play nice with paragraphs, links, tabbed pages in overlay e.g. when plone.openid is installed */
+div.overlay p {
+    margin-bottom: 1em;
+}
+div.overlay label {
+    margin-bottom: 0.25em;
+}
+div.overlay a:hover {
+    color: #75ad0a;
+}
+div.overlay a.selected {
+    color: #000000;
+}
+div.overlay .formTab {
+    margin-right:1em;
+    font-weight: bold;
+}
+div.overlay .formTab.lastFormTab {
+    margin-right:0em;
+}
+div.overlay .formControls a {
+    display: block;
+    margin: 0.75em;
+}
+
+/* @end */
+
+
+/* @group Footer */
+
+#footer-wrapper {
+/* Sticky footer */
+    height: 16em;
+    background:url(../images/landscape.png) no-repeat 0% 100% #fff;
+    border:1px solid #fff;
+}
+
+#footer {
+    color: #d3802a;
+    background: transparent;
+    font-family: "Lucida Grande", Verdana, FreeSans, sans-serif;
+    margin: 0 auto;
+    padding: 0 0 2em 0;
+    width: 960px;
+}
+
+#footer h2 {
+    color:#d3802a;
+    font-weight: normal;
+    font-family: Verdana, sans-serif;
+}
+
+#footer h2 a {
+    font-size: 100%;
+}
+
+#footer p {
+    font-size: 0.65em;
+}
+
+#footer-contact {
+    background:url(../images/envelope.png) no-repeat 15px 15px transparent;
+    padding: 5px 5px 5px 75px;
+}
+#footer-contact a {
+    color:#d3802a !important;
+    font-size: 1.25em;
+}
+
+#copyright {
+    margin-top: 150px;
+    color: #fff;
+}
+
+#copyright a {
+    color: #fff !important;
+}
+
+#download-balloon {
+    background:url(../images/blue-balloon.png) no-repeat 100% 0% transparent;
+    width: 259px;
+    height: 289px;
+    position: relative;
+    float:right;
+    right: -50px;
+    bottom:55px;
+}
+#download-balloon a {
+    display: block;
+    position:absolute;
+    padding: 75px;
+    top: 75px;
+    left: 40px;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #fff !important;
+}
+
+
+/* @end */
+
+/* @group social bar */
+
+#social-bar {
+    border: 0px solid red;
+    width:960px;
+    margin:0px auto 0px auto;
+}
+
+#xing-wrapper {
+    float: left;
+    margin: 20px 10px 0px 0px;
+    border: 0px solid blue;
+    width: 100px;
+}
+
+#facebook-wrapper {
+    float: left;
+    width: 40px;
+    margin: 15px 0px 0px 0px;
+}
+#twitter-wrapper {
+    float: left;
+    width: 40px;
+    margin: 15px 0px 0px 0px;
+}
+#exali-wrapper {
+    float: left;
+    width: 60px;
+    margin: 15px 0px 0px 0px;
+}
+
+/* @end */
+
+/* @group Invisibles */
+
+.hiddenStructure {
+    display: none;
+    background: transparent;
+    background-image: none; /* safari bug */
+    border: none;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    margin: -1px 0 0 -1px;
+    width: 1px;
+}
+
+.visualClear {
+    clear: both;
+}
+
+/* @end */
