@@ -26,3 +26,7 @@ class ReferencesListing(grok.View):
         results = catalog(object_provides=IATLink.__identifier__,
                          review_state='published')
         return results
+
+    def random_size(self):
+        size = 'sized-%s' % random.randint(1, 5)
+        return size

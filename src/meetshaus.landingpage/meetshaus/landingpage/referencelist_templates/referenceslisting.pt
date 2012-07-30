@@ -22,11 +22,12 @@
 
     <tal:block tal:repeat="item view/contained_links">
       <article class="tilebox">
-        <h3><a href=""
-                tal:attributes="href item/getRemoteUrl"
-                tal:content="item/Title" />
+        <h3 tal:attributes="class python:'sized ' + view.random_size()">
+          <a href=""
+            tal:attributes="href item/getRemoteUrl"
+            tal:content="item/Title" />
         </h3>
-        <p tal:content="item/Description" />
+        <p class="discreet" tal:content="item/Description" />
       </article>
     </tal:block>
 

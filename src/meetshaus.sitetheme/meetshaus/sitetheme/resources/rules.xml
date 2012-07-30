@@ -16,6 +16,7 @@
     </xsl:template>
     
     <!-- The default theme, used for standard Plone web pages -->
+    <theme href="minimal.html" if-path="@@edit-tile" />
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
     <theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />
@@ -65,7 +66,10 @@
         <copy attributes="href" css:content='#portal-logo' css:theme="#logo" />
         
         <drop css:theme="#tree-decorator" css:if-content="#user-name" />
-        
+
+            <replace css:content="#infobar"
+                css:theme="#contact-me" />
+
         <replace css:content="#introduction" css:theme="#about-me"
             css:if-content="body.section-front-page" />
         
