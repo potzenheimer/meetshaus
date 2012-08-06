@@ -144,6 +144,23 @@ q {
     color:#74c4ea !important;
 }
 
+body.section-site {
+    background: url(../images/tree.png) no-repeat 100% 0% transparent;
+}
+
+#site-wrapper {
+    margin-top: @baseLineHeight * 2;
+    border: 1px solid @white;
+    .border-radius(8px);
+    background:url(../images/landscape.png) no-repeat 0% 100% @white;
+    footer {
+        #copyright {
+            font-size: @baseFontSize;
+        }
+    }
+}
+
+
 /* @group wrapper elements */
 
 html, body {
@@ -263,7 +280,7 @@ body.section-blog #main-content {
 
 #about-me,
 #introduction {
-    width: 425px;
+    width: 370px;
     font-family: 'AurulentSansRegular';
 }
 

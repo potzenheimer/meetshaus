@@ -1,49 +1,120 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>meet meetshaus</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta property="og:title" content="meetshaus.de"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://meetshaus.de"/>
+    <meta property="og:image" content="http://meetshaus.de/static/images/facebook-logo.jpg"/>
+    <meta property="og:site_name" content="meetshaus - das trifft sich gut!"/>
+    <meta property="fb:admins" content="30985318"/>
+    <meta property="og:description"
+          content="Das meetshaus Netzwerk hilft Ihnen bei der inhaltlichen und redaktionellen Arbeit an Ihrer Webseite oder Ihrem Blog, erstellt Ihre Online Marketing Kampagnen mit Google Adwords und steht Ihnen bei der Nutzung Ihrer sozialen Netzwerke (Social Media Marketing) zur Seite."/>
+    <title>meet meetshaus</title>
     <base href="#" />
     <link rel="stylesheet" href="css/grid16.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
-
-	<!--[if IE]><style type="text/css" media="all">@import url(/ie.css);</style><![endif]-->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
-    <script type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+    <!--<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />-->
+    <link href="less/styles.less" rel="stylesheet/less" type="text/css">
+    <!--[if IE]><style type="text/css" media="all">@import url(/ie.css);</style><![endif]-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <script type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="js/less-1.3.0.min.js"></script>
 </head>
-<body>
-
-<div id="outer-wrapper">
-    <div id="tree-decorator">
-        Tree Decorator
+<body class="section-site">
+<!--<div id="editbar-wrapper" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container" id="editbar">Editbar</div>
     </div>
+</div>-->
+<section class="container" id="site-wrapper">
+    <div class="row-fixed">
+        <div class="span4">
+            <div id="logo-wrapper">
+                <a href="/" id="logo">Logo</a>                
+            </div>
+            <div id="sidebar">
+            </div>
+        </div>
+        <div class="span8">
+            <h1 id="claim">
+                meet meetshaus
+            </h1>
+            <div id="about-me">
+                <!-- hero content -->
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="footer-contact">
+            <h2><a href="/kontakt">kontakt me<span class="meetshausBlue">etshaus:</span></a></h2>
+            <p><a href="/kontakt">
+                    lisafigas@meetshaus.de
+                </a>
+            </p>                    
+        </div>
+        <div id="copyright">
+            <p>Copyright &copy; 2011 Meetshaus. All rights reserved.<br />
+                Webdesign &amp; Development
+                <a href="http://vorwaerts-werbung.de">Vorw&auml;rts Werbung GbR</a> |
+                <a href="/impressum">Impressum</a></p>
+        </div>
+    </footer>
+</section>
+<footer>
+    <div id="social-bar">
+        <div id="xing-wrapper">
+            <a href="https://www.xing.com/companies/meetshaus" target="_blank"><img src="http://www.xing.com/img/xing/xe/corporate_pages/cp_button.png" width="98" height="23" border="0" title="meetshaus" alt="meetshaus" /></a>
+        </div>
+        <div id="facebook-wrapper">
+            <a href="https://www.facebook.com/meetshaus" target="_blank">
+                <img src="images/icon-facebook.png" alt="Facebook Icon" />
+            </a>
+        </div>
+        <div id="twitter-wrapper">
+            <a href="http://twitter.com/#!/meet_lisa" target="_blank">
+                <img src="images/icon-twitter.png" alt="Twitter Icon" />
+            </a>
+        </div>
+        <div id="exali-wrapper" class="xvisualClear">
+            <a href="http://www.exali.de/siegel/meetshaus" target="_blank" title="Weitere Informationen zur  Haftpflicht von meetshaus, Augsburg"><img border="0" src="http://www.exali.de/siegel/Haftpflicht_media_Siegel_0_e392e0a1276e5ec82523f1b4943b7105.png" width="60" height="60" alt="Weitere Informationen zur  Haftpflicht von meetshaus, Augsburg"></a>
+        </div>
+    </div>  
+</footer>
+<div id="outer-wrapper">
+    <!--<div id="tree-decorator">
+        Tree Decorator
+    </div>-->
 <div id="inner-wrapper">
 <div id="top-wrapper">
-    <div id="header-wrapper" class="roundedtop">
-        <div class="row">
-            <div class="cell position-0 width-1:4">
-                <div id="logo-wrapper">
-                    <a href="/" id="logo">Logo</a>                
-                </div>
+<div id="header-wrapper" class="roundedtop">
+    <div class="row">
+        <div class="cell position-0 width-1:3">
+            <div id="logo-wrapper">
+                <a href="/" id="logo">Logo</a>                
             </div>
-            <div class="cell position-1:4 width-1:2">
-                <div id="header">
-                    <h1 id="claim">
-                        meet meetshaus
-                    </h1>
-                    <div id="about-me">
-                        <!-- About me block -->
-                    </div>
-
-
-                </div>
+            <div id="plusone-box">
+                <div class="g-plusone" data-size='standard' data-count='true'></div>
             </div>
-        <div class="visualClear"><!-- --></div>
+            <div id="fb-like">
+                <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmeetshaus&amp;width=272&amp;colorscheme=light&amp;show_faces=false&amp;stream=false&amp;header=true&amp;height=72" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:272px; height:72px;" allowTransparency="true"></iframe>
+            </div>
         </div>
-        <div class="visualClear">&nbsp;</div>
+        <div class="cell position-1:3 width-2:3">
+            <div id="header">
+                <h1 id="claim">
+                    meet meetshaus
+                </h1>
+                <div id="about-me">
+                    <!-- hero content -->
+                </div>
+                
+                
+            </div>
+        </div>
+    <div class="visualClear"><!-- --></div>
     </div>
+    <div class="visualClear">&nbsp;</div>
+</div>
 </div>
 <div id="editbar-wrapper">
     <div id="editbar"></div>
@@ -69,8 +140,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="cell position-1:3 width-1:3">
                 <div class="splashBox" id="splashbox-adwords">
                     <div class="splashbox-bow">
                         &nbsp;
@@ -87,8 +156,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="cell position-2:3 width-1:3">
                 <div class="splashBox" id="splashbox-social">
                     <div class="splashbox-bow">
                         &nbsp;
@@ -106,6 +173,10 @@
                     </div>
                 </div>
             </div>
+            <div class="cell position-1:3 width-2:3">
+                <h2>Main content</h2>
+                <p>Blog entries will be listed here</p>
+            </div>
         </div>
     <div class="visualClear"><!-- --></div>
     </div>
@@ -114,26 +185,26 @@
 </div>
 <div style="clear:both"><!-- --></div>
 <div id="footer-wrapper" class="roundedbottom">
-	<div id="footer">
-	    <div class="row">
-	        <div class="cell position-0 width-1:2">
-	            <div id="footer-contact">
-	                <h2><a href="/kontakt">kontakt me<span class="meetshausBlue">etshaus:</span></a></h2>
-	                <p><a href="/kontakt">
-	                    lisafigas@meetshaus.de
-	                    </a>
-	                </p>
-	            </div>
-	        <div class="visualClear"><!-- --></div>
-	        </div>
-	    </div>
-	    <div class="row">
+    <div id="footer">
+        <div class="row">
+            <div class="cell position-0 width-1:2">
+                <div id="footer-contact">
+                    <h2><a href="/kontakt">kontakt me<span class="meetshausBlue">etshaus:</span></a></h2>
+                    <p><a href="/kontakt">
+                        lisafigas@meetshaus.de
+                        </a>
+                    </p>                    
+                </div>
+            <div class="visualClear"><!-- --></div>
+            </div>
+        </div>
+        <div class="row">
             <div class="cell position-0 width-3:4">
                 <div id="copyright">
-	            <p>Copyright &copy; 2011 Meetshaus. All rights reserved.<br />
-                    Webdesign &amp; Development
-                    <a href="http://vorwaerts-werbung.de">Vorw&auml;rts Werbung GbR</a> |
-                    <a href="/impressum">Impressum</a></p>
+                    <p>Copyright &copy; 2011 Meetshaus. All rights reserved.<br />
+                        Webdesign &amp; Development
+                        <a href="http://vorwaerts-werbung.de">Vorw&auml;rts Werbung GbR</a> |
+                        <a href="/impressum">Impressum</a></p>
                 </div>
                 <div id="social-bar">
                     <div id="xing-wrapper">
@@ -149,19 +220,22 @@
                             <img src="images/icon-twitter.png" alt="Twitter Icon" />
                         </a>
                     </div>
-                    <div id="exali-wrapper">
+                    <div id="exali-wrapper" class="xvisualClear">
                         <a href="http://www.exali.de/siegel/meetshaus" target="_blank" title="Weitere Informationen zur  Haftpflicht von meetshaus, Augsburg"><img border="0" src="http://www.exali.de/siegel/Haftpflicht_media_Siegel_0_e392e0a1276e5ec82523f1b4943b7105.png" width="60" height="60" alt="Weitere Informationen zur  Haftpflicht von meetshaus, Augsburg"></a>
                     </div>
                 </div>
-	        </div>
-	        <div class="cell position-3:4 width-1:4" id="portfolio">
-	            <div id="download-balloon">
-            	    <a href="/blog">Blog</a>
-            	</div>
-	        </div>
-	        <div class="visualClear"><!-- --></div>
-	    </div>
-	</div>
+                
+            </div>
+            <div class="cell position-3:4 width-1:4" id="portfolio">
+                <div id="download-balloon">
+                    <a href="/meetshaus/blog">
+                        Blog
+                    </a>
+                </div>
+            </div>
+            <div class="visualClear"><!-- --></div>
+        </div>
+    </div>
 </div>
 </div><!-- end inner-wrapper -->
 </div> <!-- end outer-wrapper -->
@@ -174,6 +248,9 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+</script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+  {lang: 'de'}
 </script>
 </body>
 </html>
