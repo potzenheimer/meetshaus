@@ -20,6 +20,9 @@
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
     <theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />
+
+    <theme href="references.html" css:if-content="body.template-references-listing" />
+
     <theme href="blog.html" css:if-content="body.section-blog" />
     <theme href="impressum.html" css:if-content="body.section-referenzen" />
     
@@ -54,7 +57,7 @@
             theme-children="/html/head" />
         
             <after theme="/html/head">
-                <link rel="shortcut icon" href="/++theme++pressapp.sitetheme/images/favicon.ico" type="image/x-icon" />
+                <link rel="shortcut icon" href="/++theme++meetshaus.sitetheme/images/favicon.ico" type="image/x-icon" />
             </after>
         <!-- replace over the id/class attributes on the body tag.
              This is important for per-section styling -->
@@ -77,7 +80,7 @@
         <replace css:content="#content-core > *" css:theme="#contact-me"
             css:if-content="body.section-impressum" />
 
-        <replace css:content="#content" css:theme="#main-content"
+        <replace css:content="#content > *" css:theme="#content"
             css:if-content="body.template-references-listing" />
         
         <!-- Splashboxes (Landing Page) -->
