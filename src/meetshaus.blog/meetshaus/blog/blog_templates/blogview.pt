@@ -21,11 +21,11 @@
                 <span class="documentModified"
                     tal:define="date python:toLocalizedTime(item.EffectiveDate());">
                     <span tal:content="date">effective date</span></span>
-                <h1>
+                <h2>
                     <a href="" tal:attributes="href item/getURL"
                         tal:content="item/Title">
                         Title</a>
-                </h1>
+                </h2>
                 <div tal:define="date python:toLocalizedTime(item.EffectiveDate());"
                     class="documentByLine">
                         <span tal:define="categories item/Subject|nothing"
@@ -43,7 +43,7 @@
                             </span>
                 </div>
                 
-                <div class="entryDescription"
+                <div class="entryDescription lead"
                     tal:condition="item/Description">
                     <em tal:content="item/Description" />
                 </div>
@@ -66,23 +66,23 @@
                 
                 <div class="blog-actions">
                 <div class="row" tal:define="item_obj item/getObject">
-                    <div class="cell position-0 width-1:2">
+                    <div class="span6">
                         <div tal:condition="python:view.commentsEnabled(item_obj)"
                             class="blogEntryComments">
-                            <a href="" tal:attributes="href item/getURL">
-                                <span class="blogicon speech">Icon</span>
+                            <a href=""
+                              class="btn"
+                              tal:attributes="href item/getURL">
                                 <span tal:replace="python:view.commentCount(item_obj)" />
                                 <span i18n:translate="">Kommentare</span>
                             </a>
                         </div>
                     </div>
-                    <div class="cell position-1:2 width-1:2">
+                    <div class="span6">
                         <div class="blogEntryReadMore">
                                  <a href=""
-                                    class="link-blog-more"
+                                    class="btn link-blog-more"
                                     i18n:translate=""
                                     tal:attributes="href item/getURL">
-                                    <span class="blogicon plus">Icon</span>
                                         Artikelansicht
                                  </a>
                         </div>
@@ -91,6 +91,7 @@
                 </div>
                 <div class="visualClear"><!-- --></div>
                 </div>
+                <hr>
             </div>
         </tal:entries>
     </div>

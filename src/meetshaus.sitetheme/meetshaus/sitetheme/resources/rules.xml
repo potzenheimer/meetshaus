@@ -16,19 +16,19 @@
     </xsl:template>
     
     <!-- The default theme, used for standard Plone web pages -->
-    <theme href="minimal.html" if-path="@@edit-tile" />
+    <!--<theme href="minimal.html" if-path="@@edit-tile" />
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
     <theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />
 
     <theme href="references.html" css:if-content="body.template-references-listing" />
 
-    <theme href="blog.html" css:if-content="body.section-blog" />
-    <theme href="impressum.html" css:if-content="body.section-referenzen" />
+    <theme href="newtheme.html" css:if-content="body.section-blog" />
+    <theme href="impressum.html" css:if-content="body.section-referenzen" />-->
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
-        <theme href="theme.html" />
+        <theme href="newtheme.html" />
         <notheme if="$ajax_load" />
         
         <notheme if="$host = 'cms.meetshaus.de'" />
@@ -92,11 +92,17 @@
         <replace css:content="#box-social" css:theme="#splashbox-social-content"
             css:if-content="body.section-front-page" />
         
-        <!-- Login Form -->
-        <replace css:content="#content > *" css:theme="#content" 
-            css:if-content="body.template-login_form" />
+        <!-- Content -->
+        <replace css:content-children="#content" 
+            css:theme-children="#content" />
+
+        <replace css:content-children="#portal-column-one > *"
+            css:theme-children="#sidebar" />
+
+        <replace css:content-children="#portal-column-two > *"
+            css:theme-children="#about-me" />
         
-        <!-- Document Content -->
+        <!-- Document Content
         <replace css:content="#content > *" css:theme="#content"
             css:if-content="body.template-edit" />
         <replace css:content="#content > *" css:theme="#content"
@@ -112,23 +118,24 @@
         
         
         <replace css:content="#edit-bar" css:theme="#edit-bar" />
-        <before css:content=".portalMessage" css:theme="#content" />
+        <before css:content=".portalMessage" css:theme="#content" /> -->
         
         <!-- Contact Form -->
         <replace css:content=".formid-kontakt" css:theme="#contact-me"
             css:if-content="body.section-kontakt" />
         
-        <rules css:if-content="body.section-blog">
-            <replace css:content="#content > *" css:theme="#document-content" />
+       <!-- <rules css:if-content="body.section-blog">
+            <replace css:content="#content" css:theme="#content" />
             <after css:theme="#document-content" css:content="#viewlet-below-content" />
-            <replace css:content-children="#portal-column-one > *" css:theme-children="#sidebar-blog" />
-            <replace css:content-children="#portal-column-two > *" css:theme-children="#about-meetsblock" />
+            <replace css:content-children="#portal-column-one > *" css:theme-children="#sidebar" />
+            <replace css:content-children="#portal-column-two > *" css:theme-children="#sidebar" />
         </rules>
         
         <rules css:if-content="body.template-search">
             <replace css:content="#content > *" css:theme="#about-me" />
             <drop css:theme="#main-content" />
-        </rules>
+        </rules>-->
+
         
     </rules>
 

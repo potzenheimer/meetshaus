@@ -25,7 +25,7 @@ setup(name='meetshaus.landingpage',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'plone.app.dexterity',
+          'plone.app.dexterity [grok, relations]',
           'collective.autopermission',
           # -*- Extra requirements: -*-
       ],
