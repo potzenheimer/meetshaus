@@ -1,5 +1,251 @@
 // Plone CMS UI styles
 
+// User portrait editbar
+
+.avatar {
+    margin-right: 2px;
+    line-height: @line-height-base;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    .box-shadow(0 1px 3px rgba(0,0,0,.055));
+    .transition(all .2s ease-in-out);
+    &.avatar-small {
+        .square(@font-size-base);
+    }
+}
+
+// Basic content formatting
+
+.discreet {
+    color: #666;
+    font-size: 85%;
+    font-weight: normal;
+}
+
+.visualHighlight {
+    background-color: @state-warning-text;
+}
+
+.pullquote {
+    //margin: 0 1em 0.5em 0.5em;
+    line-height: @line-height-base;
+    float: right;
+    width: 35%;
+    clear: right;
+    color: @grayLight;
+    font-family: @font-family-monospace;
+    line-height: @line-height-base - 3;
+    padding: @line-height-base / 2 @line-height-base;
+    margin: @line-height-base 0 @line-height-base @line-height-base;
+    border-left: 5px solid @grayLight;
+    background: @grayLighter;
+}
+.callout {
+    background: @grayLighter;
+    padding: @line-height-base;
+    margin: 0 0 @line-height-base;
+    border-left: 5px solid @grayLight;
+    font-family: @font-family-monospace;
+    clear: both;
+}
+
+/* @group Image alignment classes */
+
+.image-left {
+   float: left;
+   margin: @line-height-base / 2 @line-height-base @line-height-base 0;
+}
+.image-right {
+   float: right;
+   margin: @line-height-base / 2 0 @line-height-base @line-height-base;
+}
+.image-inline {
+   float: none;
+}
+/*note: the tricky thing here is that image-inline|image-left|image-right
+can both be on an image and a wrapper element e.g. a dl tag*/
+img.image-left,
+img.image-right,
+.captioned img {
+    .thumbnail();
+}
+dd.image-caption {
+    text-align: left;
+    padding: 0 0 0 3px; /*image padding+border with*/
+    margin: 0;
+    color: #666;
+    font-size: 85%;
+}
+
+/* @end */
+
+
+input.context,
+input.standalone {
+    //.btn();
+}
+
+#category {
+    font-size: 11px;
+    margin: @line-height-base 0px;
+    a.link-category,
+    span.selectedTag {
+        padding: 0.25em 0.5em;
+        background: @link-color;
+        color: #fff;
+        border-radius: 0.5em;
+        border-radius:4px;
+    }
+    a.link-category:hover {
+        background: @link-color-hover;
+    }
+    .separator {
+        display: none;
+    }
+}
+
+.listingBar {
+    .pager();
+    a {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: #fff;
+        border: 1px solid @grayLight;
+        border-radius: 4px;
+        font-size: 11px;
+        &.next {
+            float: right;
+        }
+        &.previous {
+            float: left;
+        }   
+    }
+    a:hover {
+      text-decoration: none;
+      background-color: #f5f5f5;
+    }
+}
+
+/* Form overrides */
+
+input[type="checkbox"] + label,
+.ArchetypesBooleanWidget label {
+    display: inline-block;
+    margin-left: @line-height-base / 4;
+}
+
+input.datetime-widget,
+select.datetime-widget,
+.ArchetypesCalendarWidget select {
+    width: auto;
+}
+
+/* Emulates the styling from the h1 tag */
+#content .field input[type="text"][name$=".title"],
+#form-widgets-IBasic-title,
+#archetypes-fieldname-title input {
+    height: @line-height-base * 1.5;
+    line-height: @line-height-base * 1.5;
+    font-size: @font-size-base * 1.25;
+    font-weight: bold;
+    width: 100%;
+    color: @gray;
+}
+
+/* Emulates styling from the description's view */
+#content .field textarea[name$=".description"],
+#form-widgets-IBasic-description,
+#archetypes-fieldname-description textarea#description {
+    color:@gray;
+    font-size: @font-size-base;
+    font-weight: bold;
+    width: 100%;
+}
+
+div.fieldTextFormat {
+    //padding: @line-height-base;
+    text-align: right;
+    label {
+        font-weight: normal;
+        .muted();
+    }
+    select {
+        width: 120px;
+    }
+}
+
+#content-core label {
+    font-weight: bold;
+    span.formHelp {
+        .help-block();
+        .muted();
+        font-weight: normal;
+    }
+}
+
+div.field {
+    margin-bottom: @line-height-base / 2;
+}
+
+div.formHelp {
+    .help-block();
+}
+
+.formControls {
+    .form-actions();
+}
+
+input.context,
+input.standalone {
+    //.btn();
+}
+
+.fieldRequired,
+span.required {
+    display: inline-block;
+}
+
+/* Portal messages are styled like alerts */
+
+dl.portalMessage {
+    .alert();
+    dt {
+        margin: 0;
+    }
+    dd {
+        margin-left: 0px;
+    }
+}
+
+/* Pulldown menu state indicators */
+
+#plone-contentmenu-workflow {
+    .state-private,
+    .state-visible,
+    .state-published,
+    .state-pending,
+    .state-expired {
+        text-shadow: none;
+        border: none;
+        .badge();
+    }
+    .state-private {
+        background-color: @state-error-text;
+    }
+    .state-published {
+        background-color: @state-success-text;
+    }
+    .state-pending {
+        background-color: @state-info-text;
+    }
+    .state-expired {
+        background-color: @state-warning-text;
+    }
+    .state-visible {
+        background-color: @grayDark;
+    }
+}
+
 /* styling for overlays (popups) */
 
 div.overlay {
@@ -42,7 +288,7 @@ div.overlay div.close {
 .pb-ajax, .pb-image, .overlay iframe {
     background-color: #fff;
     border: 1px solid #999;
-    .border-radius(4px);
+    border-radius: 4px;
     white-space: normal;
     box-shadow: 0 0 3em 0.5em #666;
     -moz-box-shadow: 0 0 3em 0.5em #666;
@@ -56,46 +302,54 @@ div.overlay div.close {
 
 .pb-ajax .documentActions {display:none}
 
-div.overlay div.close span,
-div.overlay div.close a {
-    display: block;
-    height: 1px;
-    margin: -1px 0 0 -1px;
-    overflow: hidden;
-    padding: 0;
-    width: 1px;
-}
 
-div.overlay textarea { width: 100%; }
-
-/* Hide form elements that don't make sense within an overlay. */
-div.overlay .link-parent { display: none; }
-div.overlay #createGroup legend { display: none; }
-div.overlay #createGroup fieldset { border: none; }
-
-/* lets play nice with paragraphs, links, tabbed pages in overlay e.g. when plone.openid is installed */
-div.overlay p {
-    margin-bottom: 1em;
-}
-div.overlay label {
-    margin-bottom: 0.25em;
-}
-div.overlay a:hover {
-    color: #75ad0a;
-}
-div.overlay a.selected {
-    color: #000000;
-}
-div.overlay .formTab {
-    margin-right:1em;
-    font-weight: bold;
-}
-div.overlay .formTab.lastFormTab {
-    margin-right:0em;
-}
-div.overlay .formControls a {
-    display: block;
-    margin: 0.75em;
+div.overlay {
+    div.close span,
+    div.close a {
+        display: block;
+        height: 1px;
+        margin: -1px 0 0 -1px;
+        overflow: hidden;
+        padding: 0;
+        width: 1px;
+    }
+    textarea {
+        width: 100%;
+    }
+    /* Hide form elements that don't make sense within an overlay. */
+    .link-parent {
+        display: none;
+    }
+    #createGroup {
+        legend,
+        fieldset {
+            display: none;
+        }
+    }
+    /* lets play nice with paragraphs, links, tabbed pages in overlay e.g. when plone.openid is installed */
+    p {
+        margin-bottom: 1em;
+    }
+    label {
+        margin-bottom: 0.25em;
+    }
+    a:hover {
+        color: #75ad0a;
+    }
+    a.selected {
+        color: #000000;
+    }
+    .formTab {
+        margin-right:1em;
+        font-weight: bold;
+        &.lastFormTab {
+            margin-right:0em;
+        }
+    }
+    .formControls a {
+        display: block;
+        margin: 0.75em;
+    }
 }
 
 /* @end */
@@ -178,13 +432,39 @@ a.historyComparePrevious span {
 
 /* @group Editing */
 
+ul.formTabs {
+    background: transparent;
+    .nav();
+    .nav-tabs();
+    margin: 0 0 @line-height-base / 2;
+    list-style-type: none;
+    li {
+        float: left;
+        margin-bottom: -1px;
+        a {
+        padding: 8px 12px;
+        display: block;
+        line-height: @line-height-base - 6;
+        border: 1px solid transparent;
+        border-radius: 4px 4px 0 0;
+            &:hover {
+                border-color: @grayLighter @grayLighter #ddd;
+            }
+            &.selected {
+                color: @gray;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-bottom-color: transparent;
+                cursor: default;
+            }
+        }
+    }
+    
+}
+
+
 /* @group Tabs */
 
-/* Color differences between the two tab types */
-#content ul.formTabs {
-    background-color: #ddd;
-    border: 0.3em solid #ddd;
-}
 #edit-bar {
 }
 #content-views {
@@ -206,55 +486,33 @@ a.historyComparePrevious span {
 }
 
 /* Shared CSS between the two tab types */
-#content ul.formTabs,
-#content-core ul.formTabs {
-    display: block;
-    border-style: solid solid none solid;
-    margin-left: 0;
-    .border-radius(4px);
-}
-#content li.formTab,
-#content-core li.formTab {
-    display: inline;
-    margin-right:0.25em;
-}
-#content-views a,
-#content li.formTab a,
-#content-core li.formTab a {
+
+#content-views a {
     /* this isn't supported by all browsers, so we keep it in a separate rule */
     display: inline-block;
 }
-#content-views a,
-#content li.formTab a,
-#content-core li.formTab a {
+#content-views a {
     line-height: 2em;
     padding: 0 0.75em;
     text-decoration: none;
     border: none;
     margin: 0 ;
 }
-#content-views li.selected a,
-#content li.formTab a.selected,
-#content-core li.formTab a.selected {
+#content-views li.selected a {
     font-weight: bold;
 }
 #content-views li.selected a,
-#content-views li a:hover,
-#content li.formTab a.selected,
-#content li.formTab a:hover,
-#content-core li.formTab a.selected,
-#content-core li.formTab a:hover {
+#content-views li a:hover {
     background: White;
     color: Black;
-    .border-radius(4px);
+    border-radius: 4px;
 }
 #content li.formTab a.notify,
 #content-core li.formTab a.notify {
     background-color: red;
     color: White;
 }
-#content li.formTab a.required span:after, 
-#content-core li.formTab a.required span:after, 
+ 
 div.field span.required:after {
     content: "■";
     color: Red;
@@ -334,7 +592,7 @@ div.field span.required:after {
     color: #666;
 }
 #contentActionMenus dl.actionMenu {
-    line-height: @baseLineHeight;
+    line-height: @line-height-base;
 }
 
 #folderHeader, #contextHeader {
@@ -408,8 +666,7 @@ dl.actionMenu.activated dd div {
 
 table.listing,
 table.plain {
-    border-spacing: 0;
-    border-collapse: collapse;
+    margin-bottom: @line-height-base;
 }
 
 table.invisible td,
@@ -423,7 +680,7 @@ table.listing th {
 }
 table.plain th,
 table.plain td {
-    border: 1px solid #ddd;
+    //border: 1px solid #ddd;
 }
 
 table.listing td.listingCheckbox,
@@ -443,10 +700,10 @@ table.listing .top {
 }
 table.listing th {
     text-align: left;
-    color: #666;
+    color: @grayLight;
     border: 0.1em solid #e7e7e7;
     border-style: solid solid none;
-    background: #ddd;
+    background: @grayLighter;
 }
 table.listing tr.odd th {
     border: 0.1em solid #fff;

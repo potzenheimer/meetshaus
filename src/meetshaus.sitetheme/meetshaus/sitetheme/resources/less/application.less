@@ -1,0 +1,61 @@
+// Application specific styles
+// ---------------------------
+
+body {
+    background:#d9e4e4;
+}
+
+#site-wrapper {
+    margin-top: @line-height-base * 2;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background:url(../images/landscape.png) no-repeat 0% 100% #fff;
+    footer {
+        #copyright {
+            font-size: @font-size-base;
+        }
+    }
+}
+
+#logo-wrapper {
+    position:relative;
+    width: 102px;
+    height: auto;
+    top: -30px;
+    left: 50px;
+    z-index: 2;
+    border: 0px solid red;
+}
+
+#logo {
+    background: url(../images/logo.png) 0px 0px no-repeat transparent;
+    margin: 0px;
+    width: 102px;
+    height: 343px;
+    display: block;
+    text-indent: -3000px;
+    overflow: hidden;
+    border: none;
+}
+
+
+// Footer styles 
+footer {
+    #copyright {
+    margin-top: 150px;
+    color: #fff;
+        a {
+            color: #fff;
+        }
+    }
+    #footer-contact {
+        .container();
+        background:url(../images/envelope.png) no-repeat 15px 15px transparent;
+        padding: 5px 5px 5px 75px;
+    }
+    #footer-contact a {
+        color:#d3802a !important;
+        font-size: @font-size-base * 1.25;
+    }
+}
+
