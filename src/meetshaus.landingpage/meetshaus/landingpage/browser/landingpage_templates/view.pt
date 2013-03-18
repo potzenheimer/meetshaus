@@ -28,23 +28,31 @@
         <section id="content-core">
         <div class="row">
             <div class="span4">
-                <h3>Splashbox Words</h3>
-        
-                <div id="box-words" class="splashbox"
-                    tal:content="structure context/wordsbox" />
+                <div class="splashbox splash-words">
+                    <div class="splashbox-body">
+                        <div class="splashbox-content"
+                            tal:content="structure context/wordsbox">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="span4">
-                <h3>Splashbox Adwords</h3>
-        
-                <div id="box-adwords" class="splashbox"
-                    tal:content="structure context/adwordsbox" />
+                <div class="splashbox splash-adwords">
+                    <div class="splashbox-body">
+                        <div class="splashbox-content"
+                            tal:content="structure context/adwordsbox">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="span4">
-                <h3>Splashbox Social</h3>
-        
-                <div id="box-social"
-                    class="splashbox"
-                    tal:content="structure context/socialbox" />
+                <div class="splashbox splash-social">
+                    <div class="splashbox-body">
+                        <div class="splashbox-content"
+                            tal:content="structure context/socialbox">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="visualClear"><!-- --></div>
         </div>

@@ -74,8 +74,10 @@
                 css:theme="#contact-me"
                 css:if-content="body.section-referenzen" />
 
-        <replace css:content="#introduction" css:theme="#about-me"
-            css:if-content="body.section-front-page" />
+        <rules css:if-content="body.section-front-page">
+            <replace css:content="#introduction" css:theme="#about-me" />
+            <replace css:content="#content-core" css:theme-children="#content-wrapper" />
+        </rules>
         
         <replace css:content="#content-core > *" css:theme="#contact-me"
             css:if-content="body.section-impressum" />
@@ -85,12 +87,12 @@
         
         <!-- Splashboxes (Landing Page) -->
         
-        <replace css:content="#box-words" css:theme="#splashbox-words-content"
+        <!--<replace css:content="#box-words" css:theme="#splashbox-words-content"
             css:if-content="body.section-front-page" />
         <replace css:content="#box-adwords" css:theme="#splashbox-adwords-content"
             css:if-content="body.section-front-page" />
         <replace css:content="#box-social" css:theme="#splashbox-social-content"
-            css:if-content="body.section-front-page" />
+            css:if-content="body.section-front-page" />-->
         
         <!-- Content -->
         <replace css:content-children="#content" 

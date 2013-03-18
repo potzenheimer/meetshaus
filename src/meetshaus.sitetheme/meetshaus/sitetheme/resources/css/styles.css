@@ -5160,9 +5160,28 @@ body.section-frontpage #tree-decorator {
   font-weight: normal;
   font-size: 21;
 }
+#about-me,
+#introduction {
+  font-family: 'AurulentSansRegular';
+  font-weight: normal;
+}
+#about-me b,
+#introduction b {
+  color: #d3802a;
+  font-family: 'AurulentSansBold';
+  font-weight: normal;
+}
+#about-me .visualHighlight,
+#introduction .visualHighlight {
+  background-color: transparent;
+  color: #74c4ea;
+  font-family: 'AurulentSansBold';
+}
+#content-wrapper {
+  padding: 20px;
+}
 #blog-view {
   padding: 10px;
-  font-size: 0.9em;
 }
 #blog-view .documentModified {
   color: #D3802A;
@@ -5175,83 +5194,83 @@ body.section-frontpage #tree-decorator {
   padding: 10px;
 }
 #sidebar .portlet {
-  border: 1px solid #999999;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+#sidebar .portlet .portletHeader {
+  font-size: 21;
+  padding: 20px;
+  color: #74c4ea;
+  font-family: 'AurulentSansBold';
 }
 .splashbox {
   border: 1px solid #d8e4e4;
+  border-radius: 8px;
   background: white;
-  padding: 5px 10px 15px 35px;
+  padding: 20px 20px 0px 35px;
+  position: relative;
 }
-.splashbox .splashbox-bow {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  border: 0px solid red;
-  width: 89px;
-  height: 64px;
+.splashbox.splash-words {
+  background: url(../images/meetshaus-words.png) no-repeat 0% 95% transparent;
 }
-.splashbox-bow {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  border: 0px solid red;
-  width: 89px;
-  height: 64px;
+.splashbox.splash-words .splashbox-body {
+  background: url(../images/miss-wordy.png) no-repeat 50% 0 transparent;
+  padding-top: 150px;
 }
-#splashbox-words .splashbox-bow {
+.splashbox.splash-words:before {
+  content: "";
   background: url(../images/bow-words.png) no-repeat 0% 0% transparent;
+  display: block;
+  width: 88px;
+  height: 75px;
+  position: absolute;
+  top: -4px;
+  right: -4px;
 }
-#splashbox-adwords .splashbox-bow {
+.splashbox.splash-adwords {
+  background: url(../images/meetshaus-adwords.png) no-repeat 0% 95% transparent;
+}
+.splashbox.splash-adwords .splashbox-body {
+  background: url(../images/edward.png) no-repeat 50% 0 transparent;
+  padding-top: 150px;
+}
+.splashbox.splash-adwords:before {
+  content: "";
   background: url(../images/bow-adwords.png) no-repeat 0% 0% transparent;
+  display: block;
+  width: 88px;
+  height: 75px;
+  position: absolute;
+  top: -4px;
+  right: -4px;
 }
-#splashbox-social .splashbox-bow {
+.splashbox.splash-social {
+  background: url(../images/meetshaus-social.png) no-repeat 0% 95% transparent;
+}
+.splashbox.splash-social .splashbox-body {
+  background: url(../images/lovebirds.png) no-repeat 50% 0 transparent;
+  padding-top: 150px;
+}
+.splashbox.splash-social:before {
+  content: "";
   background: url(../images/bow-social.png) no-repeat 0% 0% transparent;
+  display: block;
+  width: 88px;
+  height: 75px;
+  position: absolute;
+  top: -4px;
+  right: -4px;
 }
-.splashBoxContent {
-  border: 1px solid #d8e4e4;
-  background: white;
-  padding: 5px 10px 15px 35px;
+.splashbox .splashbox-content {
+  padding: 0px 20px 20px 20px;
 }
-#splashbox-words .splashBoxContent {
-  background: url(../images/meetshaus-words.png) no-repeat 0% 90% transparent;
-}
-#splashbox-adwords .splashBoxContent {
-  background: url(../images/meetshaus-adwords.png) no-repeat 0% 75% transparent;
-}
-#splashbox-social .splashBoxContent {
-  background: url(../images/meetshaus-social.png) no-repeat 0% 90% transparent;
-}
-.splashBoxImage {
-  text-indent: -3000px;
-  overflow: hidden;
-}
-#splashbox-words .splashBoxImage {
-  background: url(../images/miss-wordy.png) no-repeat 50% 100% transparent;
-  height: 131px;
-}
-#splashbox-adwords .splashBoxImage {
-  background: url(../images/edward.png) no-repeat 50% 100% transparent;
-  height: 131px;
-}
-#splashbox-social .splashBoxImage {
-  background: url(../images/lovebirds.png) no-repeat 50% 100% transparent;
-  height: 131px;
-}
-.splashBoxText {
-  padding: 20px 0px 25px 10px;
-  min-height: 20px;
-  border: 0px solid red;
-}
-.splashBoxText b {
+.splashbox .splashbox-content b {
   color: #d3802a;
   font-family: 'AurulentSansBold';
   font-weight: normal;
 }
-.splashBoxText p {
-  line-height: 110%;
-}
 footer #copyright {
-  margin-top: 150px;
+  margin-top: 75px;
   color: #fff;
 }
 footer #copyright p {

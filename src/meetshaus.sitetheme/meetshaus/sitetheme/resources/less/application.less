@@ -68,12 +68,31 @@ body.section-frontpage {
     }
 }
 
+#about-me,
+#introduction {
+    font-family: 'AurulentSansRegular';
+    font-weight: normal;
+    b {
+        color:#d3802a;
+        font-family: 'AurulentSansBold';
+        font-weight: normal;
+    }
+    .visualHighlight {
+        background-color: transparent;
+        color:#74c4ea;
+        font-family:'AurulentSansBold';
+    }
+}
+
+#content-wrapper {
+    padding: @line-height-base;
+}
+
 // Blog
 // ------------------
 
 #blog-view {
     padding: @line-height-base / 2;
-    font-size: 0.9em;
     .documentModified {
         color: #D3802A;
         font-family: 'AurulentSansBold';
@@ -86,7 +105,14 @@ body.section-frontpage {
 #sidebar {
     padding: @line-height-base / 2;
     .portlet {
-        border: 1px solid @grayLight;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        .portletHeader {
+            font-size: @font-size-base * 1.5;
+            padding: @line-height-base;
+            color:#74c4ea;
+            font-family:'AurulentSansBold';
+        }
     }
 }
 
@@ -94,91 +120,73 @@ body.section-frontpage {
 
 .splashbox {
     border: 1px solid #d8e4e4;
+    border-radius: 8px;
     background: white;
-    padding: 5px 10px 15px 35px;
-    .splashbox-bow {
-        position:absolute;
-        top: 0px;
-        right: 0px;
-        border: 0px solid red;
-        width:89px;
-        height:64px;
+    padding: @line-height-base @line-height-base 0px @line-height-base * 1.75;
+    position:relative;
+    &.splash-words {
+        background:url(../images/meetshaus-words.png) no-repeat 0% 95% transparent;
+        .splashbox-body {
+            background:url(../images/miss-wordy.png) no-repeat 50% 0 transparent;
+            padding-top: @navbar-height * 3;   
+        }
+        &:before {
+            content:"";
+            background:url(../images/bow-words.png) no-repeat 0% 0% transparent;
+            display: block;
+            .size(88px, 75px);
+            position: absolute;
+            top: -4px;
+            right: -4px;
+        }
     }
-}
-
-.splashbox-bow {
-    position:absolute;
-    top: 0px;
-    right: 0px;
-    border: 0px solid red;
-    width:89px;
-    height:64px;
-}
-#splashbox-words .splashbox-bow {
-    background:url(../images/bow-words.png) no-repeat 0% 0% transparent;
-}
-#splashbox-adwords .splashbox-bow {
-    background:url(../images/bow-adwords.png) no-repeat 0% 0% transparent;
-}
-#splashbox-social .splashbox-bow {
-    background:url(../images/bow-social.png) no-repeat 0% 0% transparent;
-}
-
-.splashBoxContent {
-    border: 1px solid #d8e4e4;
-    background: white;
-    padding: 5px 10px 15px 35px;
-}
-
-#splashbox-words .splashBoxContent {
-    background:url(../images/meetshaus-words.png) no-repeat 0% 90% transparent;
-}
-#splashbox-adwords .splashBoxContent {
-    background:url(../images/meetshaus-adwords.png) no-repeat 0% 75% transparent;
-}
-#splashbox-social .splashBoxContent {
-    background:url(../images/meetshaus-social.png) no-repeat 0% 90% transparent;
-}
-
-.splashBoxImage {
-    text-indent: -3000px;
-    overflow: hidden;
-}
-
-#splashbox-words .splashBoxImage {
-    background:url(../images/miss-wordy.png) no-repeat 50% 100% transparent;
-    height: 131px;
-}
-#splashbox-adwords .splashBoxImage {
-    background:url(../images/edward.png) no-repeat 50% 100% transparent;
-    height: 131px;
-}
-#splashbox-social .splashBoxImage {
-    background:url(../images/lovebirds.png) no-repeat 50% 100% transparent;
-    height: 131px;
-}
-
-.splashBoxText {
-    padding: 20px 0px 25px 10px;
-    min-height: 20px;
-    border: 0px solid red;
-}
-
-.splashBoxText b {
-    color:#d3802a;
-    font-family: 'AurulentSansBold';
-    font-weight: normal;
-}
-
-.splashBoxText p {
-    line-height: 110%;
+    &.splash-adwords {
+        background:url(../images/meetshaus-adwords.png) no-repeat 0% 95% transparent;
+        .splashbox-body {
+            background:url(../images/edward.png) no-repeat 50% 0 transparent;
+            padding-top: @navbar-height * 3;   
+        }
+        &:before {
+            content:"";
+            background:url(../images/bow-adwords.png) no-repeat 0% 0% transparent;
+            display: block;
+            .size(88px, 75px);
+            position: absolute;
+            top: -4px;
+            right: -4px;
+        }
+    }
+    &.splash-social {
+        background:url(../images/meetshaus-social.png) no-repeat 0% 95% transparent;
+        .splashbox-body {
+            background:url(../images/lovebirds.png) no-repeat 50% 0 transparent;
+            padding-top: @navbar-height * 3;   
+        }
+        &:before {
+            content:"";
+            background:url(../images/bow-social.png) no-repeat 0% 0% transparent;
+            display: block;
+            .size(88px, 75px);
+            position: absolute;
+            top: -4px;
+            right: -4px;
+        }
+    }
+    .splashbox-content {
+       padding: 0px @line-height-base @line-height-base @line-height-base;
+        b {
+            color:#d3802a;
+            font-family: 'AurulentSansBold';
+            font-weight: normal;
+        }
+    }
 }
 
 
 // Footer styles 
 footer {
     #copyright {
-    margin-top: 150px;
+    margin-top: @navbar-height * 1.5;
     color: #fff;
     p {
         margin: @line-height-base / 2;
