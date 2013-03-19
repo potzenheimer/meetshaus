@@ -93,6 +93,9 @@ body.section-frontpage {
 
 #blog-view {
     padding: @line-height-base / 2;
+    h2 {
+        font-family:'AurulentSansBold';
+    }
     .documentModified {
         color: #D3802A;
         font-family: 'AurulentSansBold';
@@ -100,18 +103,30 @@ body.section-frontpage {
         padding: 30px 65px 0px 0px;
         background:url(../images/bird-brown-flying.png) no-repeat 100% 0% transparent;
     }
+    p.lead {
+        font-family: 'AurulentSansRegular';
+    }
 }
 
 #sidebar {
     padding: @line-height-base / 2;
-    .portlet {
+    .portlet,
+    .infobox {
         border: 1px solid #ccc;
         border-radius: 8px;
         .portletHeader {
             font-size: @font-size-base * 1.5;
-            padding: @line-height-base;
-            color:#74c4ea;
+            padding: @line-height-base @line-height-base @line-height-base / 2;
+            color:#D3802A;
             font-family:'AurulentSansBold';
+            border-bottom: 1px solid #ccc;
+        }
+        .portletItem {
+            padding: 0px @line-height-base / 2 @line-height-base;
+            .tweetText {
+                .muted();
+                font-size: @font-size-small;
+            }
         }
     }
 }

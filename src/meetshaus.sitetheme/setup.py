@@ -27,6 +27,7 @@ setup(name='meetshaus.sitetheme',
           'setuptools',
           'plone.app.theming',
           'plone.app.themingplugins',
+          'plone.app.toolbar',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
