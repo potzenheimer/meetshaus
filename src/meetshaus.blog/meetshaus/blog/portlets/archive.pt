@@ -1,17 +1,13 @@
-<div class="infobox"
+<div class="well"
      id="infobox-blog-archive"
      i18n:domain="meetshaus.blog">
-     <div class="splashbox-content">
-
-    <h2>
-        <i18n:block translate="">Archive</i18n:block>
-    </h2>
-
-    <div id="blog-archive-box">
-        <tal:block repeat="year view/years">
-        <div class="archive-year" tal:content="year">1970</div>
-        <ul>
-            <li tal:repeat="month python:view.months(year)">
+      <h4>
+          <i18n:block translate="">Blog Archive</i18n:block>
+      </h4>
+      <ul class="nav nav-list">
+        <tal:block tal:repeat="year view/years">
+          <li class="xxnav-header" tal:content="year">1999</li>
+          <li tal:repeat="month python:view.months(year)">
                 <a tal:attributes="href python:view.archive_url(year, month)">
                     <span class="archive-month"
                         tal:content="string:month_${month}"
@@ -23,9 +19,7 @@
                     </span>
                 </a>
             </li>
-        </ul>
-        </tal:block>
-    </div>
-    </div>
+       </tal:block>
+      </ul>
 
 </div>

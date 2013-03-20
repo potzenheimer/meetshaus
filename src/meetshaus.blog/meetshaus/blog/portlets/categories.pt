@@ -1,24 +1,31 @@
-<div class="infobox"
+<div class="well"
      id="infobox-blog-categories"
-     i18n:domain="meetshaus.blog">
-     <div class="splashbox-content">
+     i18n:domain="meethaus.blog">
 
-    <h2>
+    <h4>
         <i18n:block translate="">Categories</i18n:block>
-    </h2>
+    </h4>
 
-    <div id="blog-archive-box">
-        <tal:block repeat="subject view/keywords">
-            <div>
-                <a tal:attributes="href python:view.archive_url(subject)">
-                    <span class="archive-category"
-                        tal:content="subject">
-                        Category
-                    </span>
-                </a>
-            </div>
-        </tal:block>
-    </div>
-    </div>
+    <ul class="nav nav-pills nav-stacked"
+        tal:define="keywords view/keywords">
+        <li tal:define="blog_url view/blog_url">
+          <a href="" tal:attributes="href blog_url">
+            Alle Artikel
+            (<span tal:content="view/count_all_entries" />)
+          </a>
+        </li>
+      <tal:block tal:repeat="item keywords">
+        <li tal:define="search_url python:view.archive_url(item);
+                        category request/category | nothing;
+                        active python: category == item"
+            tal:attributes="class python: active and 'active' or 'inactive'">
+            <a href="" tal:attributes="href search_url">
+              <i class="icon-tag" />
+              <span tal:content="item" />
+              (<span tal:content="python:view.count_entries(item)" />)
+            </a>
+        </li>
+      </tal:block>
+    </ul>
 
 </div>

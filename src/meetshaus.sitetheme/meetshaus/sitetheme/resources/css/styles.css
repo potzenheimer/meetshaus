@@ -5216,6 +5216,11 @@ body.section-frontpage #tree-decorator {
 #sidebar .infobox .portletItem {
   padding: 0px 10px 20px;
 }
+#sidebar .portlet .portletItem h3,
+#sidebar .infobox .portletItem h3 {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
 #sidebar .portlet .portletItem .tweetText,
 #sidebar .infobox .portletItem .tweetText {
   color: #999999;
