@@ -1,12 +1,12 @@
-<div class="well"
+<div class="infobox"
      id="infobox-blog-archive"
      i18n:domain="meetshaus.blog">
       <h4>
           <i18n:block translate="">Blog Archive</i18n:block>
       </h4>
-      <ul class="nav nav-list">
+      <ul class="nav nav-stacked">
         <tal:block tal:repeat="year view/years">
-          <li class="xxnav-header" tal:content="year">1999</li>
+          <li class="nav-header" tal:content="year">1999</li>
           <li tal:repeat="month python:view.months(year)">
                 <a tal:attributes="href python:view.archive_url(year, month)">
                     <span class="archive-month"

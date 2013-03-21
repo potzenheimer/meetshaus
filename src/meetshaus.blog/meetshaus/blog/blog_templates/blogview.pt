@@ -47,16 +47,17 @@
                         </p>
                     </div>
                 </tal:block>
-                
+
                 <div class="blog-actions">
                 <div class="row" tal:define="item_obj item/getObject">
                   <div class="span8">
                     <span tal:define="categories item/Subject|nothing"
-                          tal:condition="categories">
+                          tal:condition="categories"
+                          class="muted">
                       Abgelegt unter:
                       <span tal:repeat="category categories">
                         <a href=""
-                           class="label link-category"
+                           class="link-category"
                            rel="tag"
                            tal:content="category"
                            tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@search?Subject%3Alist=${category}">

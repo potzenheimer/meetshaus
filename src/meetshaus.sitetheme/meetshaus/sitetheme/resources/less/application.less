@@ -9,6 +9,14 @@ body {
     color:#74c4ea !important;
 }
 
+// Global components and bs overrides
+//-----------------------------------
+
+input.context,
+input.standalone {
+    .btn();
+}
+
 #site-wrapper {
     margin: @line-height-base * 2 auto;
     border: 1px solid #fff;
@@ -20,18 +28,19 @@ body {
     display: none;
 }
 
-body.section-frontpage {
+body.section-front-page {
     #tree-decorator {
-    width:40%;
-    height:509px;
-    position:absolute;
-    top: 0px;
-    left: 60%;
-    z-index:1;
-    text-indent: -3000px;
-    overflow: hidden;
-    background: url(../images/tree.png) no-repeat 0% 0% transparent;
-}
+        width:40%;
+        height:509px;
+        position:absolute;
+        top: 0px;
+        left: 60%;
+        z-index:1;
+        text-indent: -3000px;
+        overflow: hidden;
+        display: block;
+        background: url(../images/tree.png) no-repeat 0% 0% transparent;
+    }
 }
 
 
@@ -60,11 +69,11 @@ body.section-frontpage {
     background:url(../images/bird-blue-starting-left.png) no-repeat 50% 10px transparent;
     #claim {
         background:url(../images/bird-brown-left.png) no-repeat 33px 0px transparent;
-        padding-top: @line-height-base - 2;
+        padding: @line-height-base - 2 @line-height-base / 2 0;
         color: #74c4ea;
         font-family:Verdana, sans-serif;
         font-weight: normal;
-        font-size: @font-size-base * 1.5;
+        .font-size((@font-size-base * 2.25));
     }
 }
 
@@ -72,6 +81,7 @@ body.section-frontpage {
 #introduction {
     font-family: 'AurulentSansRegular';
     font-weight: normal;
+    padding: @line-height-base / 2;
     b {
         color:#d3802a;
         font-family: 'AurulentSansBold';
@@ -106,6 +116,16 @@ body.section-frontpage {
     p.lead {
         font-family: 'AurulentSansRegular';
     }
+    .blog-actions {
+        margin-top: @line-height-base;
+    }
+}
+
+#blogentry-view {
+    h2 {
+        font-family:'AurulentSansBold';
+        color:#D3802A;
+    }
 }
 
 #sidebar {
@@ -114,9 +134,17 @@ body.section-frontpage {
     .infobox {
         border: 1px solid #ccc;
         border-radius: 8px;
+        margin-bottom: @line-height-base;
         .portletHeader {
             font-size: @font-size-base * 1.5;
             padding: @line-height-base @line-height-base @line-height-base / 2;
+            color:#D3802A;
+            font-family:'AurulentSansBold';
+            border-bottom: 1px solid #ccc;
+        }
+        h4 {
+            font-size: @font-size-base;
+            padding: @line-height-base / 2 @line-height-base @line-height-base / 2;
             color:#D3802A;
             font-family:'AurulentSansBold';
             border-bottom: 1px solid #ccc;
@@ -130,6 +158,20 @@ body.section-frontpage {
             .tweetText {
                 .muted();
                 font-size: @font-size-small;
+            }
+        }
+        .nav > li > a {
+            padding: @line-height-base / 4 @line-height-base;
+        }
+        .nav .divider {
+            border-color: @grayLighter;
+        }
+        .nav-header {
+            font-size: 14px;
+        }
+        &.whitespaced {
+            .nav {
+                padding: @padding-small;
             }
         }
     }

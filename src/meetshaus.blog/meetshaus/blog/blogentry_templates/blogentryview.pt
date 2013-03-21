@@ -23,30 +23,29 @@
         
         <h2 class="blogentry-title" tal:content="context/Title" />
         
-        <blockquote tal:condition="context/Description">
-            <p><em tal:content="context/Description">Desc</em></p>
-        </blockquote>
+        <p class="lead" tal:condition="context/Description">
+            <span tal:content="context/Description">Desc</span>
+        </p>
         
         <div tal:content="structure context/text/output" />
         
-        <div tal:define="date python:toLocalizedTime(context.EffectiveDate());"
-            class="documentByLine">
+        <hr>
+        <p tal:define="date python:toLocalizedTime(context.EffectiveDate());"
+            class="documentByLine muted">
             <span class="documentModified">Verfasst am <span tal:content="date">effective date</span></span>
-        </div>
+        </p>
         
         
         <div tal:condition="view/parent_info">
             <tal:block tal:define="parent view/parent_info">
-                <div class="parent-link">
-                    <a href="" class="btn small"
+                <div class="pull-right parent-link">
+                    <a href="" class="btn btn-small btn-primary"
                         tal:attributes="href parent/absolute_url">
                         Zur&uuml;ck zur &Uuml;bersicht Blogbeitr&auml;ge</a>
                 </div>
             </tal:block>
         </div>
-        
-        <div tal:replace="structure provider:plone.belowcontenttitle" />
-        
+                
   </div>
   </metal:content-core>
 </metal:main>

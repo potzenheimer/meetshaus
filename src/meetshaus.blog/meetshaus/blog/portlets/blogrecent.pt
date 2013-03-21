@@ -1,24 +1,24 @@
-<div class="splashbox"
+<div class="infobox whitespaced"
     id="splashbox-blog-recent"
-    i18n:domain="mth.blog.portlets">
+    i18n:domain="bh.blog">
 
-    <div class="splashbox-content">
-        <h3 i18n:translate="">Last entries</h3>
-    <div id="splashbox-blog-recent-content">
-    <tal:block define="plone_view context/@@plone;"
+    <h4>
+        Letzte Blogbeitr&auml;ge
+    </h4>
+    <ul class="nav nav-list">
+      <tal:block define="plone_view context/@@plone;"
         repeat="item view/items">
-        <div class="blogEntry">
-            <h5 class="blogEntryTitle"
-                  tal:content="python:plone_view.toLocalizedTime(item.ModificationDate)"
-                  >23.05.2010</h5>
-            <p class="blogEntryDescription">
-            <span tal:replace="item/pretty_title_or_id" />
+        <li>
+          <p class="muted">
+            <small tal:content="python:plone_view.toLocalizedTime(item.Date)">
+              1779</small><br />
+            <span tal:content="item/Title">Entry Title</span><br />
             <a tal:attributes="href python:view.item_url(item)" class="link-more">
-                mehr&hellip;
+                mehr
             </a>
-            </p>
-        </div>
-    </tal:block>
-    </div>
-    </div>
+          </p>
+        </li>
+        <li class="divider"></li>
+      </tal:block>
+    </ul>
 </div>
