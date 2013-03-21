@@ -41,6 +41,9 @@ body.section-front-page {
         display: block;
         background: url(../images/tree.png) no-repeat 0% 0% transparent;
     }
+    #site-header {
+        margin-bottom: @navbar-height;
+    }
 }
 
 
@@ -49,7 +52,7 @@ body.section-front-page {
     width: 102px;
     height: auto;
     top: -30px;
-    left: 50px;
+    left: 25px;
     z-index: 2;
     border: 0px solid red;
 }
@@ -185,6 +188,7 @@ body.section-front-page {
     background: white;
     padding: @line-height-base @line-height-base 0px @line-height-base * 1.75;
     position:relative;
+    margin-bottom: @line-height-base;
     &.splash-words {
         background:url(../images/meetshaus-words.png) no-repeat 0% 95% transparent;
         .splashbox-body {

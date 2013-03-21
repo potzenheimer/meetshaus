@@ -5227,12 +5227,15 @@ body.section-front-page #tree-decorator {
   display: block;
   background: url(../images/tree.png) no-repeat 0% 0% transparent;
 }
+body.section-front-page #site-header {
+  margin-bottom: 50px;
+}
 #logo-wrapper {
   position: relative;
   width: 102px;
   height: auto;
   top: -30px;
-  left: 50px;
+  left: 25px;
   z-index: 2;
   border: 0px solid red;
 }
@@ -5363,6 +5366,7 @@ body.section-front-page #tree-decorator {
   background: white;
   padding: 20px 20px 0px 35px;
   position: relative;
+  margin-bottom: 20px;
 }
 .splashbox.splash-words {
   background: url(../images/meetshaus-words.png) no-repeat 0% 95% transparent;
