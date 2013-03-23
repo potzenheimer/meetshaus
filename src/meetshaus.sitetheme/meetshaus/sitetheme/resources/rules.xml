@@ -121,9 +121,6 @@
         
         <replace css:content="#edit-bar" css:theme="#edit-bar" />
         <before css:content=".portalMessage" css:theme="#content" /> -->
-
-        <after css:content-children="#viewlet-below-content"
-            css:theme-children="#below-main-content" />
         
         <!-- Contact Form -->
         <replace css:content=".formid-kontakt" css:theme="#contact-me"

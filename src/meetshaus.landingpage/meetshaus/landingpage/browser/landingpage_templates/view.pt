@@ -56,6 +56,73 @@
             </div>
             <div class="visualClear"><!-- --></div>
         </div>
+        <div class="row">
+            <div class="span8">
+            <section id="blog-view">
+                <div id="blog-preview-listing"
+                    tal:condition="view/has_blogentries">
+                    <tal:entries tal:repeat="item view/blogentries">
+                        <article tal:define="count repeat/item/number"
+                             class="blogEntry">
+                            <header>
+                                <span class="documentModified"
+                                    tal:define="date python:toLocalizedTime(item.EffectiveDate());">
+                                    <span tal:content="date">effective date</span>
+                                </span>
+                                <h2>
+                                    <a href="" tal:attributes="href item/getURL"
+                                        tal:content="item/Title">
+                                        Title</a>
+                                </h2>
+                            </header>
+                            <p class="lead"
+                                tal:condition="item/Description">
+                                <span tal:replace="item/Description" />
+                            </p>
+                            <tal:block tal:define="count repeat/item/number;">
+                                <div tal:condition="python:count == 1" class="entry-body">
+                                    <div tal:content="structure item/text/output" />
+                                </div>
+                            </tal:block>
+                            <div class="blog-actions">
+                                <div class="row" tal:define="item_obj item/getObject">
+                                  <div class="span8">
+                                    <span tal:define="categories item/Subject|nothing"
+                                          tal:condition="categories"
+                                          class="muted">
+                                      Abgelegt unter:
+                                      <span tal:repeat="category categories">
+                                        <a href=""
+                                           class="link-category"
+                                           rel="tag"
+                                           tal:content="category"
+                                           tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@search?Subject%3Alist=${category}">
+                                          Category
+                                        </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
+                                      </span>
+                                    </span>
+                                  </div>
+                                    <div class="span4">
+                                        <div class="blogEntryReadMore pull-right">
+                                                 <a href=""
+                                                    class="btn btn-primary"
+                                                    i18n:translate=""
+                                                    tal:attributes="href item/getURL">
+                                                        Artikelansicht
+                                                 </a>
+                                        </div>
+                                    </div>
+                                    <div class="visualClear"><!-- --></div>
+                                </div>
+                            <div class="visualClear"><!-- --></div>
+                            </div>
+                            <hr>
+                        </article>
+                    </tal:entries>
+                </div>
+            </section>
+            </div>
+        </div>
         </section>
         <div class="visualClear">&nbsp;</div>
         <div tal:replace="structure provider:plone.belowcontentbody" />
