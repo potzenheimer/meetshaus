@@ -16,9 +16,9 @@
     </xsl:template>
     
     <!-- The default theme, used for standard Plone web pages -->
-    <!--<theme href="minimal.html" if-path="@@edit-tile" />
+    <theme href="minimal.html" if-path="@@edit-tile" />
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
-    <theme href="contact.html" css:if-content="body.section-kontakt" />
+    <!--<theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />
 
     <theme href="references.html" css:if-content="body.template-references-listing" />
@@ -63,12 +63,15 @@
              This is important for per-section styling -->
         <merge attributes="class" css:content="body" css:theme="body" />
         <copy attributes="id dir" css:content="body" css:theme="body" />
+
+        <drop css:theme="#toolbar"
+            css:if-content="#anon-personalbar" />
+        <replace css:theme="#toolbar" css:content="#toolbar" />
             
         <!-- Logo (link target) -->
         <copy attributes="href" css:content='#portal-logo' css:theme="#logo" />
         
-        <drop css:theme="#tree-decorator" css:if-content="#user-name" />
-
+        <!--<drop css:theme="#tree-decorator" css:if-content="#user-name" />-->
             
         <replace css:content="#infobar"
                 css:theme="#contact-me"
@@ -77,6 +80,9 @@
         <rules css:if-content="body.section-front-page">
             <replace css:content="#introduction" css:theme="#about-me" />
             <replace css:content="#content-core" css:theme-children="#content-wrapper" />
+            <replace css:content="#content-blog-listing" css:theme="#blog-preview" />
+            <replace css:content-children="#portal-column-two > *"
+                css:theme-children="#sidebar" />
         </rules>
         
         <replace css:content="#content-core > *" css:theme="#contact-me"
@@ -98,10 +104,16 @@
         <replace css:content-children="#content" 
             css:theme-children="#content" />
 
+        <replace css:content-children="#content" 
+            css:theme-children="#main-content" />
+
         <replace css:content-children="#portal-column-one > *"
             css:theme-children="#sidebar" />
 
-        <replace css:content-children="#portal-column-two > *"
+        <!--<replace css:content-children="#portal-column-two > *"
+            css:theme-children="#about-me" />-->
+
+        <replace css:content-children="#infobar"
             css:theme-children="#about-me" />
         
         <!-- Document Content

@@ -1,3 +1,3 @@
 <section id="infobar">
-  <div tal:attributes="data-tile string:${viewlet/context_url}/@@vwc.tiles.richtext/infobar" />
+  <div tal:attributes="data-tile string:${context/absolute_url}/@@vwc.tiles.richtext/infobar-text" />
 </section>

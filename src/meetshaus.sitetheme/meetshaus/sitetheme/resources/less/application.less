@@ -24,6 +24,10 @@ input.standalone {
     background:url(../images/landscape.png) no-repeat 0% 100% #fff;
 }
 
+#toolbar + #site-wrapper {
+    margin-top: @navbar-height + (@line-height-base * 2);
+}
+
 #tree-decorator {
     display: none;
 }
@@ -85,7 +89,8 @@ body.section-front-page {
     font-family: 'AurulentSansRegular';
     font-weight: normal;
     padding: @line-height-base / 2;
-    b {
+    b,
+    strong {
         color:#d3802a;
         font-family: 'AurulentSansBold';
         font-weight: normal;
@@ -97,14 +102,16 @@ body.section-front-page {
     }
 }
 
-#content-wrapper {
+#content-wrapper,
+#blog-teaser {
     padding: @line-height-base;
 }
 
 // Blog
 // ------------------
 
-#blog-view {
+#blog-view,
+#blog-preview-listing {
     padding: @line-height-base / 2;
     h2 {
         font-family:'AurulentSansBold';
@@ -245,6 +252,22 @@ body.section-front-page {
             font-weight: normal;
         }
     }
+}
+
+// Tileboxes (masonry references view)
+//-----------------------------------
+
+.tilebox {
+    width: 200px;
+    margin: 10px 10px 10px 0;
+    padding: 10px;
+    float:left;
+    border:1px solid #d8e4e4;
+    border-radius: 8px;
+}
+.tilebox h3,
+.tilebox p.discreet {
+    line-height: 110%;
 }
 
 

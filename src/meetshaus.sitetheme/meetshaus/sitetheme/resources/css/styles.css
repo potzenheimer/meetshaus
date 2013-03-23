@@ -5212,6 +5212,9 @@ input.standalone .badge {
   border-radius: 8px;
   background: url(../images/landscape.png) no-repeat 0% 100% #ffffff;
 }
+#toolbar + #site-wrapper {
+  margin-top: 90px;
+}
 #tree-decorator {
   display: none;
 }
@@ -5268,7 +5271,9 @@ body.section-front-page #site-header {
   padding: 10px;
 }
 #about-me b,
-#introduction b {
+#introduction b,
+#about-me strong,
+#introduction strong {
   color: #d3802a;
   font-family: 'AurulentSansBold';
   font-weight: normal;
@@ -5279,26 +5284,32 @@ body.section-front-page #site-header {
   color: #74c4ea;
   font-family: 'AurulentSansBold';
 }
-#content-wrapper {
+#content-wrapper,
+#blog-teaser {
   padding: 20px;
 }
-#blog-view {
+#blog-view,
+#blog-preview-listing {
   padding: 10px;
 }
-#blog-view h2 {
+#blog-view h2,
+#blog-preview-listing h2 {
   font-family: 'AurulentSansBold';
 }
-#blog-view .documentModified {
+#blog-view .documentModified,
+#blog-preview-listing .documentModified {
   color: #D3802A;
   font-family: 'AurulentSansBold';
   display: inline-block;
   padding: 30px 65px 0px 0px;
   background: url(../images/bird-brown-flying.png) no-repeat 100% 0% transparent;
 }
-#blog-view p.lead {
+#blog-view p.lead,
+#blog-preview-listing p.lead {
   font-family: 'AurulentSansRegular';
 }
-#blog-view .blog-actions {
+#blog-view .blog-actions,
+#blog-preview-listing .blog-actions {
   margin-top: 20px;
 }
 #blogentry-view h2 {
@@ -5426,6 +5437,18 @@ body.section-front-page #site-header {
   color: #d3802a;
   font-family: 'AurulentSansBold';
   font-weight: normal;
+}
+.tilebox {
+  width: 200px;
+  margin: 10px 10px 10px 0;
+  padding: 10px;
+  float: left;
+  border: 1px solid #d8e4e4;
+  border-radius: 8px;
+}
+.tilebox h3,
+.tilebox p.discreet {
+  line-height: 110%;
 }
 footer #copyright {
   margin-top: 75px;
