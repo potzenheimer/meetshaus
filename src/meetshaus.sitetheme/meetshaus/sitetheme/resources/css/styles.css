@@ -5446,6 +5446,10 @@ body.section-front-page #site-header {
   border: 1px solid #d8e4e4;
   border-radius: 8px;
 }
+.tilebox h3 {
+  font-size: 17.5px;
+  font-size: 1.75rem;
+}
 .tilebox h3,
 .tilebox p.discreet {
   line-height: 110%;
