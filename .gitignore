@@ -25,6 +25,7 @@ src/plone.app.blocks
 src/plone.app.tiles
 src/plone.tiles
 src/vwc.tiles
+src/vwc.toolbar
 src/vwc.opengraph
 src/collective.disqus
 src/sauna.reload
