@@ -12,7 +12,7 @@ $(document).ready(function () {
     $('#link-container').masonry({
     // options
         itemSelector : '.tilebox',
-        columnWidth : 240
+        columnWidth : 220
     });
 });
 }(jQuery));

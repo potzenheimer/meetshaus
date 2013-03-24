@@ -5265,20 +5265,24 @@ body.section-front-page #site-header {
   font-size: 3.15rem;
 }
 #about-me,
+#about-the-author,
 #introduction {
   font-family: 'AurulentSansRegular';
   font-weight: normal;
   padding: 10px;
 }
 #about-me b,
+#about-the-author b,
 #introduction b,
 #about-me strong,
+#about-the-author strong,
 #introduction strong {
   color: #d3802a;
   font-family: 'AurulentSansBold';
   font-weight: normal;
 }
 #about-me .visualHighlight,
+#about-the-author .visualHighlight,
 #introduction .visualHighlight {
   background-color: transparent;
   color: #74c4ea;
@@ -5287,6 +5291,9 @@ body.section-front-page #site-header {
 #content-wrapper,
 #blog-teaser {
   padding: 20px;
+}
+.page-header {
+  background: url(../images/bird-brown-flying.png) 100% 50% no-repeat transparent;
 }
 #blog-view,
 #blog-preview-listing {
@@ -5357,7 +5364,7 @@ body.section-front-page #site-header {
 }
 #sidebar .portlet .nav > li > a,
 #sidebar .infobox .nav > li > a {
-  padding: 5px 20px;
+  padding: 0 20px;
 }
 #sidebar .portlet .nav .divider,
 #sidebar .infobox .nav .divider {

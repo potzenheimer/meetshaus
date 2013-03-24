@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2011-10-02 13:42+0100\n"
+"PO-Revision-Date: 2013-03-24 17:10+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -14,24 +14,20 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: meetshaus.blog\n"
 
-#: ./../blog.py:31
+#: ./../blog.py:29
 msgid "A short bio about the author of the blog."
 msgstr "Eine kurze Biographie oder Informationen über den Autor und/oder den Zweck dieses Blog."
 
 #: ./../profiles/default/types/meetshaus.blog.blogentry.xml
 msgid "A sinlge blog entry."
-msgstr ""
+msgstr "Blogartikel Ansicht"
 
-#: ./../blog.py:30
+#: ./../blog.py:28
 msgid "About the Author"
 msgstr "Über diesen Blog"
 
-#: ./../portlets/archive.pt:7
-msgid "Archive"
-msgstr "Archiv"
-
 #: ./../portlets/archive.py:38
-#: ./../portlets/categories.py:25
+#: ./../portlets/categories.py:27
 msgid "Archive view"
 msgstr "Archivansicht"
 
@@ -39,24 +35,31 @@ msgstr "Archivansicht"
 msgid "Blog"
 msgstr "Blog"
 
-#: ./../blogentry.py:21
+#: ./../portlets/archive.pt:5
+msgid "Blog Archive"
+msgstr "Archiv"
+
+#: ./../blogentry.py:18
 msgid "Blog Entry"
 msgstr "Blogbeitrag"
 
+#: ./../portlets/archive.py:64
+msgid "Blog Monthly archive"
+msgstr "Archiv"
+
 #: ./../profiles/default/types/meetshaus.blog.blogentry.xml
 msgid "BlogEntry"
-msgstr ""
+msgstr "Blogeintrag"
 
 #: ./../profiles/default/types/meetshaus.blog.blog.xml
 msgid "Blogging folder to enable a complete sitewide blog."
-msgstr ""
+msgstr "Blogordner, der einen kompletten seitenweiten  Blog bereitstellt"
 
-#: ./../portlets/categories.pt:7
-#: ./../portlets/categories.py:48
+#: ./../portlets/categories.py:51
 msgid "Categories"
 msgstr "Themen"
 
-#: ./../portlets/blogrecent.py:25
+#: ./../portlets/blogrecent.py:24
 msgid "Entries"
 msgstr "Beiträge"
 
@@ -64,16 +67,12 @@ msgstr "Beiträge"
 msgid "Last entries"
 msgstr "Letzte Einträge"
 
-#: ./../portlets/archive.py:63
-msgid "Monthly archive"
-msgstr "Archiv"
-
 #: ./../portlets/archive.py:39
-#: ./../portlets/categories.py:26
+#: ./../portlets/categories.py:28
 msgid "The name of the archive view"
 msgstr "Der Name der Archivansicht."
 
-#: ./../portlets/blogrecent.py:26
+#: ./../portlets/blogrecent.py:25
 msgid "The number of entries to show"
 msgstr "Anzahl der Blogbeiträge, die in der Aktionsbox gezeigt werden sollen."
 

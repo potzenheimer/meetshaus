@@ -14,7 +14,7 @@
     <h1 tal:content="context/Title">Title inserted here</h1>
   </header>
 
-  <p class="documentDescription lead" tal:condition="context/Description"
+  <p class="lead" tal:condition="context/Description"
     tal:content="context/Description" />
 
   <section tal:condition="view/has_links"

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-17 23:53+0000\n"
+"POT-Creation-Date: 2013-03-24 16:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: meetshaus.blog\n"
 
-#: ./../blogentry.py:22
+#: ./../blogentry.py:19
 msgid ""
 msgstr ""
 
-#: ./../blog.py:31
+#: ./../blog.py:29
 msgid "A short bio about the author of the blog."
 msgstr ""
 
@@ -29,16 +29,12 @@ msgstr ""
 msgid "A sinlge blog entry."
 msgstr ""
 
-#: ./../blog.py:30
+#: ./../blog.py:28
 msgid "About the Author"
 msgstr ""
 
-#: ./../portlets/archive.pt:7
-msgid "Archive"
-msgstr ""
-
 #: ./../portlets/archive.py:38
-#: ./../portlets/categories.py:25
+#: ./../portlets/categories.py:27
 msgid "Archive view"
 msgstr ""
 
@@ -46,8 +42,16 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: ./../blogentry.py:21
+#: ./../portlets/archive.pt:5
+msgid "Blog Archive"
+msgstr ""
+
+#: ./../blogentry.py:18
 msgid "Blog Entry"
+msgstr ""
+
+#: ./../portlets/archive.py:64
+msgid "Blog Monthly archive"
 msgstr ""
 
 #: ./../profiles/default/types/meetshaus.blog.blogentry.xml
@@ -58,12 +62,11 @@ msgstr ""
 msgid "Blogging folder to enable a complete sitewide blog."
 msgstr ""
 
-#: ./../portlets/categories.pt:7
-#: ./../portlets/categories.py:48
+#: ./../portlets/categories.py:51
 msgid "Categories"
 msgstr ""
 
-#: ./../portlets/blogrecent.py:25
+#: ./../portlets/blogrecent.py:24
 msgid "Entries"
 msgstr ""
 
@@ -71,16 +74,12 @@ msgstr ""
 msgid "Last entries"
 msgstr ""
 
-#: ./../portlets/archive.py:63
-msgid "Monthly archive"
-msgstr ""
-
 #: ./../portlets/archive.py:39
-#: ./../portlets/categories.py:26
+#: ./../portlets/categories.py:28
 msgid "The name of the archive view"
 msgstr ""
 
-#: ./../portlets/blogrecent.py:26
+#: ./../portlets/blogrecent.py:25
 msgid "The number of entries to show"
 msgstr ""
 

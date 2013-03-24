@@ -19,11 +19,11 @@
     <theme href="minimal.html" if-path="@@edit-tile" />
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
     <!--<theme href="contact.html" css:if-content="body.section-kontakt" />
-    <theme href="impressum.html" css:if-content="body.section-impressum" />
+    <theme href="impressum.html" css:if-content="body.section-impressum" />-->
 
-    <theme href="references.html" css:if-content="body.template-references-listing" />
+    <theme href="fullscreen.html" css:if-content="body.template-references-listing" />
 
-    <theme href="newtheme.html" css:if-content="body.section-blog" />
+    <!--<theme href="newtheme.html" css:if-content="body.section-blog" />
     <theme href="impressum.html" css:if-content="body.section-referenzen" />-->
     
     <!-- Rules applying to a standard Plone web page -->
@@ -115,6 +115,9 @@
 
         <replace css:content-children="#infobar"
             css:theme-children="#about-me" />
+
+        <replace css:content-children="#infobar-author"
+            css:theme-children="#about-the-author" />
         
         <!-- Document Content
         <replace css:content="#content > *" css:theme="#content"
