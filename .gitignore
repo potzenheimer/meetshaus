@@ -20,6 +20,7 @@ var
 .svn
 *.pyc
 *.pyo
+*-ck.js
 .codeintel
 etc/**/*
 src/plone.app.blocks
