@@ -1,5 +1,5 @@
 <section id="infobar">
-  <div tal:attributes="data-tile string:${context/absolute_url}/@@vwc.tiles.richtext/infobar-text" />
+  <div tal:attributes="data-tile string:${context/portal_url}/@@vwc.tiles.richtext/infobar-text" />
 </section>
 <section id="infobar-author">
     <ul class="nav nav-tabs">

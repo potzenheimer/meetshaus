@@ -31,7 +31,7 @@
         
         <section id="content-core">
         <div class="row">
-            <div class="span4">
+            <div class="col-span-4">
                 <div class="splashbox splash-words">
                     <div class="splashbox-body">
                         <div class="splashbox-content"
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="span4">
+            <div class="col-span-4">
                 <div class="splashbox splash-adwords">
                     <div class="splashbox-body">
                         <div class="splashbox-content"
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="span4">
+            <div class="col-span-4">
                 <div class="splashbox splash-social">
                     <div class="splashbox-body">
                         <div class="splashbox-content"
@@ -59,11 +59,6 @@
                 </div>
             </div>
             <div class="visualClear"><!-- --></div>
-        </div>
-        <div class="row">
-            <div class="span8">
-            
-            </div>
         </div>
         </section>
         <div class="visualClear">&nbsp;</div>
@@ -96,7 +91,7 @@
                         </tal:block>
                         <div class="blog-actions">
                             <div class="row" tal:define="item_obj item/getObject">
-                              <div class="span8">
+                              <div class="col-span-8">
                                 <span tal:define="categories item/Subject|nothing"
                                       tal:condition="categories"
                                       class="muted">
@@ -112,7 +107,7 @@
                                   </span>
                                 </span>
                               </div>
-                                <div class="span4">
+                                <div class="col-span-4">
                                     <div class="blogEntryReadMore pull-right">
                                              <a href=""
                                                 class="btn btn-primary"

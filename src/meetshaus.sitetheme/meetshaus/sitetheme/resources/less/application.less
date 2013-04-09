@@ -7,6 +7,9 @@
 body {
     background:#d9e4e4;
 }
+body.mceContentBody {
+    padding: @line-height-base;
+}
 
 .mh-blue {
     color:#74c4ea !important;
@@ -15,11 +18,19 @@ body {
 // Global components and bs overrides
 //-----------------------------------
 
-@link-color:    @mth-blue;
+@brand-primary:             @mth-blue;
+
+@font-family-sans-serif:    Arial, "Helvetica Neue", Helvetica, sans-serif;
+@font-family-serif:         Verdana, Georgia, "Times New Roman", Times, serif;
 
 input.context,
-input.standalone {
+input.standalone,
+input.searchButton {
     .btn();
+}
+
+input.context {
+    margin-right: @line-height-base / 2;
 }
 
 #site-wrapper {
@@ -135,6 +146,7 @@ body.section-front-page {
     }
     p.lead {
         font-family: 'AurulentSansRegular';
+        color: @gray;
     }
     .blog-actions {
         margin-top: @line-height-base;
@@ -145,6 +157,10 @@ body.section-front-page {
     h2 {
         font-family:'AurulentSansBold';
         color:#D3802A;
+    }
+    p.lead {
+        font-family: 'AurulentSansRegular';
+        color: @gray;
     }
 }
 
@@ -192,6 +208,11 @@ body.section-front-page {
         &.whitespaced {
             .nav {
                 padding: @padding-small;
+            }
+        }
+        &.portletReferencesPortlet {
+            p {
+                .text-muted();
             }
         }
     }
@@ -274,13 +295,13 @@ body.section-front-page {
     float:left;
     border:1px solid #d8e4e4;
     border-radius: 8px;
-    h3 {
-        .font-size(@font-size-base * 1.25);
+    h3 a {
+        font-size: @font-size-base * 1.25;
     }
 }
 .tilebox h3,
 .tilebox p.discreet {
-    line-height: 110%;
+    line-height: @line-height-base;
 }
 
 

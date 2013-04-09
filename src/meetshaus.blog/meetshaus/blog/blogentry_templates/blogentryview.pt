@@ -34,7 +34,8 @@
             class="documentByLine muted">
             <span class="documentModified">Verfasst am <span tal:content="date">effective date</span></span>
         </p>
-        
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
         
         <div tal:condition="view/parent_info">
             <tal:block tal:define="parent view/parent_info">
