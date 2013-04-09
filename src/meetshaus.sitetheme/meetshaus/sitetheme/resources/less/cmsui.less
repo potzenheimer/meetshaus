@@ -97,7 +97,7 @@ input.standalone {
         border-radius:4px;
     }
     a.link-category:hover {
-        background: @link-color-hover;
+        background: @link-hover-color;
     }
     .separator {
         display: none;
@@ -167,7 +167,7 @@ div.fieldTextFormat {
     text-align: right;
     label {
         font-weight: normal;
-        .muted();
+        .text-muted();
     }
     select {
         width: 120px;
@@ -178,7 +178,7 @@ div.fieldTextFormat {
     font-weight: bold;
     span.formHelp {
         .help-block();
-        .muted();
+        .text-muted();
         font-weight: normal;
     }
 }
@@ -230,7 +230,7 @@ dl.portalMessage {
         .badge();
     }
     .state-private {
-        background-color: @state-error-text;
+        background-color: @state-danger-text;
     }
     .state-published {
         background-color: @state-success-text;

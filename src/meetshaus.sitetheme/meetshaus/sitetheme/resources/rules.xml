@@ -107,6 +107,9 @@
         <replace css:content-children="#content" 
             css:theme-children="#main-content" />
 
+        <replace css:theme="#below-main-content"
+            css:content="#viewlet-below-content" />
+
         <replace css:content-children="#portal-column-one > *"
             css:theme-children="#sidebar" />
 

@@ -1,6 +1,9 @@
 // Application specific styles
 // ---------------------------
 
+@mth-blue:      #74c4ea;
+@mth-brown:     #428bca;
+
 body {
     background:#d9e4e4;
 }
@@ -11,6 +14,8 @@ body {
 
 // Global components and bs overrides
 //-----------------------------------
+
+@link-color:    @mth-blue;
 
 input.context,
 input.standalone {
@@ -171,7 +176,7 @@ body.section-front-page {
                 line-height: 1.75rem;
             }
             .tweetText {
-                .muted();
+                .text-muted();
                 font-size: @font-size-small;
             }
         }
