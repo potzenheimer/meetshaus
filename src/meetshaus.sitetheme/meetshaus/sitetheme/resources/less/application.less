@@ -1,8 +1,8 @@
 // Application specific styles
 // ---------------------------
 
-@mth-blue:      #74c4ea;
-@mth-brown:     #428bca;
+@mh-blue:      #74c4ea;
+@mh-brown:     #d3802a;
 
 body {
     background:#d9e4e4;
@@ -18,9 +18,9 @@ body.mceContentBody {
 // Global components and bs overrides
 //-----------------------------------
 
-@brand-primary:             @mth-blue;
+@brand-primary:             @mh-blue;
 
-@font-family-sans-serif:    Arial, "Helvetica Neue", Helvetica, sans-serif;
+@font-family-sans-serif:    'Noto Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
 @font-family-serif:         Verdana, Georgia, "Times New Roman", Times, serif;
 
 input.context,
@@ -136,6 +136,13 @@ body.section-front-page {
 
 .page-header {
     background:url(../images/bird-brown-flying.png) 100% 50% no-repeat transparent;
+    h1, h2 {
+        color: #d3802a;
+    }
+}
+
+h1.documentFirstHeading {
+    color: @mh-brown;
 }
 
 // Blog

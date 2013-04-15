@@ -245,7 +245,7 @@ html {
   }
 }
 body {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Noto Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -4514,20 +4514,18 @@ a.list-group-item.active > .badge,
   width: 35%;
   clear: right;
   color: #999999;
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-family: 'AurulentSansItalic';
   line-height: 17px;
   padding: 10px 20px;
   margin: 20px 0 20px 20px;
   border-left: 5px solid #999999;
-  background: #eeeeee;
 }
 .callout {
-  background: transparent;
+  background: #eeeeee;
   padding: 20px;
   margin: 0 0 20px;
   border-left: 5px solid #999999;
   font-family: 'Noto Sans';
-  font-size: 16px;
   clear: both;
 }
 /* @group Image alignment classes */
@@ -5568,6 +5566,13 @@ body.section-front-page .entry-body {
 }
 .page-header {
   background: url(../images/bird-brown-flying.png) 100% 50% no-repeat transparent;
+}
+.page-header h1,
+.page-header h2 {
+  color: #d3802a;
+}
+h1.documentFirstHeading {
+  color: #d3802a;
 }
 #blog-view,
 #blog-preview-listing {

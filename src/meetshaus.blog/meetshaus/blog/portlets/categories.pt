@@ -3,7 +3,7 @@
      i18n:domain="meethaus.blog">
 
     <h4>
-        <i18n:block translate="">Categories</i18n:block>
+        <i18n:block translate="">Themen</i18n:block>
     </h4>
 
     <ul class="nav nav-pills nav-stacked"

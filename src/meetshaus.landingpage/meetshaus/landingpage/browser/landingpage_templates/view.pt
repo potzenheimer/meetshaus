@@ -65,7 +65,7 @@
 
         <section id="content-blog-listing">
             <header class="page-header">
-                <h2>Letzte Blogeinträge</h2>
+                    <h2>Letzte Blogeintr&auml;ge</h2>
             </header>
             <div id="blog-preview-listing"
                 tal:condition="view/has_blogentries">

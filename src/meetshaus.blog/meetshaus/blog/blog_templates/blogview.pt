@@ -54,7 +54,7 @@
 
                 <div class="blog-actions">
                 <div class="row" tal:define="item_obj item/getObject">
-                  <div class="span8">
+                  <div class="col-span-8">
                     <span tal:define="categories item/Subject|nothing"
                           tal:condition="categories"
                           class="muted">
@@ -70,7 +70,7 @@
                       </span>
                     </span>
                   </div>
-                    <div class="span4">
+                    <div class="col-span-4">
                         <div class="blogEntryReadMore pull-right">
                                  <a href=""
                                     class="btn btn-primary"
