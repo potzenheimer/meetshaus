@@ -86,6 +86,7 @@
                 </div>
                 <hr>
             </div>
+          <div metal:use-macro="context/batch_macros/macros/navigation" />
         </tal:entries>
     </div>
     
