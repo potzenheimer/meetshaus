@@ -5556,6 +5556,12 @@ body.section-front-page .entry-body {
   color: #74c4ea;
   font-family: 'AurulentSansBold';
 }
+#about-the-author {
+  padding: 40px 20px 0 0;
+}
+#about-the-author .tab-content {
+  padding: 20px 0;
+}
 #content-wrapper,
 #blog-teaser {
   padding: 20px;

@@ -64,6 +64,9 @@
         <div class="visualClear">&nbsp;</div>
 
         <section id="content-blog-listing">
+            <header class="page-header">
+                <h2>Letzte Blogeinträge</h2>
+            </header>
             <div id="blog-preview-listing"
                 tal:condition="view/has_blogentries">
                 <tal:entries tal:repeat="item view/blogentries">

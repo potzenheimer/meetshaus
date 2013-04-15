@@ -2,7 +2,7 @@
   <div tal:attributes="data-tile string:${context/portal_url}/@@vwc.tiles.richtext/infobar-text" />
 </section>
 <section id="infobar-author">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs nav-justified">
       <li class="active"><a href="#profile" data-toggle="tab">Profil</a></li>
       <li><a href="#imprint" data-toggle="tab">Kontakt</a></li>
     </ul>

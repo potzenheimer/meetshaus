@@ -9,6 +9,10 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
+
+    <header class="page-header">
+      <h1 tal:content="context/Title" />
+    </header>
     
     <div tal:replace="structure provider:plone.belowcontenttitle" />
     
