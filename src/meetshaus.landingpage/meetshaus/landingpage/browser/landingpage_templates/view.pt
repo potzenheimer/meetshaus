@@ -127,7 +127,7 @@
                         <hr>
                     </article>
                 </tal:entries>
-                <a class="btn btn-block"
+                <a class=""
                     tal:define="portal_url context/portal_url;"
                     tal:attributes="href string:${portal_url}/blog">
                     Weitere Artikel anzeigen
