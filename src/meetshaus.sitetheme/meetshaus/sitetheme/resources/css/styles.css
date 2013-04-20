@@ -4571,11 +4571,48 @@ dd.image-caption {
 }
 #category a.link-category,
 #category span.selectedTag {
-  padding: 0.25em 0.5em;
-  background: #74c4ea;
+  padding: .25em .6em;
+  font-size: 75%;
+  font-weight: 500;
   color: #fff;
-  border-radius: 0.5em;
-  border-radius: 4px;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #999999;
+  border-radius: .25em;
+}
+#category a.link-category-danger,
+#category span.selectedTag-danger {
+  background-color: #d9534f;
+}
+#category a.link-category-danger[href],
+#category span.selectedTag-danger[href] {
+  background-color: #c9302c;
+}
+#category a.link-category-warning,
+#category span.selectedTag-warning {
+  background-color: #f0ad4e;
+}
+#category a.link-category-warning[href],
+#category span.selectedTag-warning[href] {
+  background-color: #ec971f;
+}
+#category a.link-category-success,
+#category span.selectedTag-success {
+  background-color: #5cb85c;
+}
+#category a.link-category-success[href],
+#category span.selectedTag-success[href] {
+  background-color: #449d44;
+}
+#category a.link-category-info,
+#category span.selectedTag-info {
+  background-color: #5bc0de;
+}
+#category a.link-category-info[href],
+#category span.selectedTag-info[href] {
+  background-color: #31b0d5;
 }
 #category a.link-category:hover {
   background: #32a8e0;
