@@ -1,0 +1,42 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    {% include head.html %}
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip navigation</a>
+    {% include toolbar.html %}
+    <!-- Docs master nav -->
+    <div class="container app-container">
+
+        {% include brandbar.html %}
+        
+        <div class="app-content" role="main">
+              {{ content }}
+        </div>
+
+        <ul class="nav nav-pills nav-justified" id="filters">
+          <li class="active"><a href="#" data-filter="*">show all</a></li>
+          <li><a href="#" data-filter=".metal">metal</a></li>
+          <li><a href="#" data-filter=".transition">transition</a></li>
+          <li><a href="#" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</a></li>
+          <li><a href="#" data-filter=":not(.transition)">not transition</a></li>
+          <li><a href="#" data-filter=".metal:not(.transition)">metal but not transition</a></li>
+        </ul>
+
+        {% include tile-listing.html %}
+
+        {% include footer.html %}
+
+    </div>
+    {% include javascript.html %}
+    <div id="app-js-slot">
+        {% include webfonts.html %}
+        {% include analytics.html %}
+    </div>
+  </body>
+</html>

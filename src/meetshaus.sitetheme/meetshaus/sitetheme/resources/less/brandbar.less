@@ -1,0 +1,83 @@
+//
+// Brandbar including logo and introduction
+// -----------------------------------------
+
+
+.app-brandbar-deco {
+    display: block;
+    position:absolute;
+    top: 0px;
+    left: 60%;
+    z-index:1;
+    width:40%;
+    height:509px;
+    text-indent: -3000px;
+    overflow: hidden;
+    display: block;
+    background: url(../../assets/img/tree.png) no-repeat 0% 0% transparent;
+}
+
+body.section-front-page {
+    .app-brandbar-deco {
+        .show();
+    }
+}
+
+.app-brandbar-content {
+    padding-top: @line-height-computed;
+    background:url(../../assets/img/bird-blue-starting-left.png) no-repeat 50% 10px transparent;
+    .app-brand-claim {
+        background:url(../../assets/img/bird-brown-left.png) no-repeat 33px 0px transparent;
+        padding: (@line-height-computed - 2) (@line-height-computed / 2) 0;
+        color: #74c4ea;
+        font-family:Verdana, sans-serif;
+        font-weight: normal;
+        font-size:(@font-size-base * 2.25);
+    }
+}
+
+.app-brand-about {
+    padding: (@line-height-computed / 2);
+    font-family: @app-font-default;
+    b,
+    strong,
+    .text-highlight,
+    .visualHighlight {
+        font-family: @app-font-strong;
+    }
+    b,
+    strong {
+        color: @app-brown;
+    }
+    .text-highlight,
+    .visualHighlight {
+        background-color: transparent;
+        color: @app-primary;
+    }
+}
+
+#about-me,
+#about-the-author,
+#introduction {
+    font-family: 'AurulentSansRegular';
+    font-weight: normal;
+    padding: @line-height-base / 2;
+    b,
+    strong {
+        color:#d3802a;
+        font-family: 'AurulentSansBold';
+        font-weight: normal;
+    }
+    .visualHighlight {
+        background-color: transparent;
+        color:#74c4ea;
+        font-family:'AurulentSansBold';
+    }
+}
+
+#about-the-author {
+    padding: @line-height-base * 2 @line-height-base 0 0;
+    .tab-content {
+        padding: @line-height-base 0;
+    }
+}

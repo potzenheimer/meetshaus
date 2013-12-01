@@ -35,7 +35,7 @@ NBSPACE = u'\xa0'.encode('utf-8')
 
 def quote_chars(s):
     if MULTISPACE in s:
-        s = s.replace(MULTISPACE, ' ')
+        s = s.replace(MULTISPACE, ' ') 
     if NBSPACE in s:
         s = s.replace(NBSPACE, '')
     return s
@@ -91,26 +91,18 @@ class DomainImportForm(form.SchemaForm):
         processed_records = 0
         transaction_threshold = 50
         # com/net/org Domains
+        tld_list = ('.com', '.net', '.org')
         # ohne Bindestrich im Domainnamen
+        data = []
         for row in reader:
-            code = self.getSpecificRecord(header, row, name=u'productCode')
-            title = self.getSpecificRecord(header, row, name=u'title_de')
-            title_en = self.getSpecificRecord(header, row, name=u'title_en')
-            data = {
-                'title': title,
-                'title_de': title,
-                'title_en': title_en,
-                'productCode': code}
-            if not code:
-                logger.info('Product code missing for record %s' % title)
+            import pdb; pdb.set_trace( )
+            item = self.getSpecificRecord(header, row, name=u'domain')
+            if not item:
+                logger.info('Domain missing for record')
             else:
-                logger.info('Processing file: %s' % title)
-                item = createContentInContainer(
-                    context,
-                    'chromsystems.shopcontent.orderableitem',
-                    checkConstraints=True, **data)
-                modified(item)
-            processed_records += 1
+                logger.info('Processing file: {0}').format(item)
+                import pdb; pdb.set_trace( )
+                processed_records += 1
             if processed_records % transaction_threshold == 0:
                 transaction.commit()
         return processed_records

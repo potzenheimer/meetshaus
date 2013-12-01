@@ -15,6 +15,11 @@
       </xsl:element>
     </xsl:template>
     
+    <!-- Setup custom login form -->
+    <theme href="dist/signin.html" css:if-content="body.template-login_form" />
+    <theme href="dist/signin.html" css:if-content="body.template-logged_out" />
+    <theme href="dist/signin.html" css:if-content="body.template-login_failed" />
+    <theme href="dist/signin.html" css:if-content="body.template-mail_password_form" />
     <!-- The default theme, used for standard Plone web pages -->
     <theme href="minimal.html" if-path="@@edit-tile" />
     <theme href="frontpage.html" css:if-content="body.section-front-page" />
@@ -28,8 +33,9 @@
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
-        <theme href="newtheme.html" />
-        <notheme if="$ajax_load" />
+        
+        <notheme if="$ajax_load" />          
+        <theme href="dist/index.html" />
         
         <notheme if="$host = 'cms.meetshaus.de'" />
         
@@ -61,9 +67,9 @@
         <merge attributes="class" css:content="body" css:theme="body" />
         <copy attributes="id dir" css:content="body" css:theme="body" />
 
-        <drop css:theme="#toolbar"
+        <drop css:theme="#app-toolbar"
             css:if-content="#anon-personalbar" />
-        <replace css:theme="#toolbar" css:content="#toolbar" />
+        <replace css:theme="#app-toolbar" css:content="#app-toolbar" />
             
         <!-- Logo (link target) -->
         <copy attributes="href" css:content='#portal-logo' css:theme="#logo" />
@@ -88,14 +94,19 @@
         <replace css:content="#content > *" css:theme="#content"
             css:if-content="body.template-references-listing" />
         
-        <!-- Splashboxes (Landing Page) -->
-        
-        <!--<replace css:content="#box-words" css:theme="#splashbox-words-content"
-            css:if-content="body.section-front-page" />
-        <replace css:content="#box-adwords" css:theme="#splashbox-adwords-content"
-            css:if-content="body.section-front-page" />
-        <replace css:content="#box-social" css:theme="#splashbox-social-content"
-            css:if-content="body.section-front-page" />-->
+        <!-- Login form rules -->
+        <replace css:content-children="#content-core"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-login_form" />
+        <replace css:content-children="#content-core"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-login_failed" />
+        <replace css:content-children="#content-core"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-logged_out" />
+        <replace css:content-children="#content"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-mail_password_form" />
         
         <!-- Content -->
         <replace css:content-children="#content" 
@@ -108,7 +119,7 @@
             css:content="#viewlet-below-content" />
 
         <replace css:content-children="#portal-column-one > *"
-            css:theme-children="#sidebar" />
+            css:theme-children="#app-sidebar" />
 
         <!--<replace css:content-children="#portal-column-two > *"
             css:theme-children="#about-me" />-->

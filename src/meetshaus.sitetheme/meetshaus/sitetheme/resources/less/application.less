@@ -11,37 +11,20 @@ body.mceContentBody {
     padding: @line-height-base;
 }
 
-.mh-blue {
-    color:#74c4ea !important;
+.app-primary {
+    color:@app-primary;
 }
 
-// Global components and bs overrides
-//-----------------------------------
 
-@brand-primary:             @mh-blue;
-
-@font-family-sans-serif:    'Noto Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
-@font-family-serif:         Verdana, Georgia, "Times New Roman", Times, serif;
-
-input.context,
-input.standalone,
-input.searchButton {
-    .btn();
-}
-
-input.context {
-    margin-right: @line-height-base / 2;
-}
-
-#site-wrapper {
-    margin: @line-height-base * 2 auto;
+.app-container {
+    margin: @line-height-computed * 2 auto;
     border: 1px solid #fff;
     border-radius: 8px;
-    background:url(../images/landscape.png) no-repeat 0% 100% #fff;
+    background:url(../../assets/img/landscape.png) no-repeat 0% 100% #fff;
 }
 
-#toolbar + #site-wrapper {
-    margin-top: @navbar-height + (@line-height-base * 2);
+.app-toolbar + .app-container {
+    margin-top: @navbar-height + (@line-height-computed * 2);
 }
 
 #tree-decorator {
@@ -99,7 +82,7 @@ body.section-front-page {
         color: #74c4ea;
         font-family:Verdana, sans-serif;
         font-weight: normal;
-        .font-size((@font-size-base * 2.25));
+        font-size:(@font-size-base * 2.25);
     }
 }
 
@@ -221,14 +204,14 @@ h1.documentFirstHeading {
             padding: 0 @line-height-base;
         }
         .nav .divider {
-            border-color: @grayLighter;
+            border-color: @gray-lighter;
         }
         .nav-header {
             font-size: 14px;
         }
         &.whitespaced {
             .nav {
-                padding: @padding-small;
+                padding: @padding-small-vertical;
             }
         }
         &.portletReferencesPortlet {
@@ -319,35 +302,67 @@ h1.documentFirstHeading {
     h3 a {
         font-size: @font-size-base * 1.25;
     }
+    &.metal {
+        background: @app-brown;
+        color: #fff;
+    }
 }
 .tilebox h3,
 .tilebox p.discreet {
-    line-height: @line-height-base;
+    line-height: @line-height-computed;
 }
 
 
-// Footer styles 
-footer {
-    #copyright {
-    margin-top: @navbar-height * 1.5;
-    color: #fff;
-    p {
-        margin: @line-height-base / 2;
-        font-size: 12px;
-        line-height: @line-height-base - 4px;
-    }
-        a {
-            color: #fff;
-        }
-    }
-    #footer-contact {
-        .container();
-        background:url(../images/envelope.png) no-repeat 15px 15px transparent;
-        padding: 5px 5px 5px 75px;
-    }
-    #footer-contact a {
-        color:#d3802a !important;
-        font-size: @font-size-base * 1.25;
-    }
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
 }
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
 

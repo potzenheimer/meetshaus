@@ -1,0 +1,39 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    {% include head.html %}
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip navigation</a>
+    {% include toolbar.html %}
+    <!-- Docs master nav -->
+    <div class="container app-container">
+
+        {% include brandbar.html %}
+        
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+                <div class="app-content" role="main">
+                      {{ content }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <aside class="app-sidebar" id="app-sidebar" role="contentinfo">
+                </aside>
+            </div>
+        </div>
+
+        {% include footer.html %}
+
+    </div>
+    {% include javascript.html %}
+    <div id="app-js-slot">
+        {% include webfonts.html %}
+        {% include analytics.html %}
+    </div>
+  </body>
+</html>
