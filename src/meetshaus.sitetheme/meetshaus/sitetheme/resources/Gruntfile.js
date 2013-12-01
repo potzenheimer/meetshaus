@@ -50,16 +50,17 @@ module.exports = function (grunt) {
                     'bower_components/jquery/jquery.js',
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
-                    'js/main.js'
+                    'bower_components/isotope/jquery.isotope.js',
+                    'js/application.js'
                 ],
                 dest: 'dist/js/<%= pkg.name %>.js'
             },
             theme: {
                 src: [
                     'bower_components/bootstrap/dist/js/bootstrap.js',
-                    'js/main.js'
+                    'js/application.js'
                 ],
-                dest: 'dist/js/main.js'
+                dest: 'dist/js/application.js'
             }
         },
 
@@ -95,8 +96,14 @@ module.exports = function (grunt) {
                 expand: true,
                 flatten: true,
                 cwd: 'bower_components/',
-                src: ['font-awesome/font/*'],
+                src: ['font-awesome/fonts/*'],
                 dest: 'assets/fonts/'
+            },
+            staticfonts: {
+                expand: true,
+                flatten: true,
+                src: ['assets/fonts/*'],
+                dest: 'dist/assets/fonts/'
             },
             ico: {
                 expand: true,
@@ -166,8 +173,8 @@ module.exports = function (grunt) {
                 pattern: '../../assets/',
                 replacement: '/++theme++meetshaus.sitetheme/assets/'
             },
-            'compile-template-fullpage': {
-                path: 'dist/fullpage.html',
+            'compile-template-frontpage': {
+                path: 'dist/frontpage.html',
                 pattern: '../../assets/',
                 replacement: '/++theme++meetshaus.sitetheme/assets/'
             }
@@ -232,6 +239,7 @@ module.exports = function (grunt) {
     grunt.registerTask('copy-templates', '', function () {
         grunt.file.copy('_site/index.html', 'dist/index.html');
         grunt.file.copy('_site/signin/index.html', 'dist/signin.html');
+        grunt.file.copy('_site/frontpage/index.html', 'dist/frontpage.html');
     });
 
     // Docs HTML validation task

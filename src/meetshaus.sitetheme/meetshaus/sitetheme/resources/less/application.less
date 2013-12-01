@@ -8,7 +8,7 @@ body {
     background:#d9e4e4;
 }
 body.mceContentBody {
-    padding: @line-height-base;
+    padding: @line-height-computed;
 }
 
 .app-primary {
@@ -27,108 +27,32 @@ body.mceContentBody {
     margin-top: @navbar-height + (@line-height-computed * 2);
 }
 
-#tree-decorator {
-    display: none;
-}
-
-body.section-front-page {
-    #tree-decorator {
-        width:40%;
-        height:509px;
-        position:absolute;
-        top: 0px;
-        left: 60%;
-        z-index:1;
-        text-indent: -3000px;
-        overflow: hidden;
-        display: block;
-        background: url(../images/tree.png) no-repeat 0% 0% transparent;
-    }
-    #site-header {
-        margin-bottom: @navbar-height;
-    }
-    .entry-body {
-        font-family: 'Noto Sans';
-    }
-}
-
-
-#logo-wrapper {
-    position:relative;
-    width: 102px;
-    height: auto;
-    top: -30px;
-    left: 25px;
-    z-index: 2;
-    border: 0px solid red;
-}
-
-#logo {
-    background: url(../images/logo.png) 0px 0px no-repeat transparent;
-    margin: 0px;
-    width: 102px;
-    height: 343px;
-    display: block;
-    text-indent: -3000px;
-    overflow: hidden;
-    border: none;
-}
-
-#site-header {
-    background:url(../images/bird-blue-starting-left.png) no-repeat 50% 10px transparent;
-    #claim {
-        background:url(../images/bird-brown-left.png) no-repeat 33px 0px transparent;
-        padding: @line-height-base - 2 @line-height-base / 2 0;
-        color: #74c4ea;
-        font-family:Verdana, sans-serif;
-        font-weight: normal;
-        font-size:(@font-size-base * 2.25);
-    }
-}
-
-#about-me,
-#about-the-author,
-#introduction {
-    font-family: 'AurulentSansRegular';
-    font-weight: normal;
-    padding: @line-height-base / 2;
-    b,
-    strong {
-        color:#d3802a;
-        font-family: 'AurulentSansBold';
-        font-weight: normal;
-    }
-    .visualHighlight {
-        background-color: transparent;
-        color:#74c4ea;
-        font-family:'AurulentSansBold';
-    }
-}
 
 #about-the-author {
-    padding: @line-height-base * 2 @line-height-base 0 0;
+    padding: @line-height-computed * 2 @line-height-computed 0 0;
     .tab-content {
-        padding: @line-height-base 0;
+        padding: @line-height-computed 0;
     }
 }
 
 #content-wrapper,
 #blog-teaser {
-    padding: @line-height-base;
+    padding: @line-height-computed;
 }
 
+.app-page-header,
 .page-header {
-    background:url(../images/bird-blue-starting-left.png) 100% 50% no-repeat transparent;
+    background:url(../../assets/img/bird-blue-starting-left.png) 100% 50% no-repeat transparent;
     h1, h2 {
         color: #d3802a;
     }
 }
 
 h1.documentFirstHeading {
-    color: @mh-brown;
-    background:url(../images/bird-brown-left.png) 100% 100% no-repeat transparent;
-    padding-bottom: @line-height-base / 2;
-    margin-bottom: @line-height-base;
+    color: @app-brown;
+    background:url(../../assets/img/bird-brown-left.png) 100% 100% no-repeat transparent;
+    padding-bottom: @line-height-computed / 2;
+    margin-bottom: @line-height-computed;
     border-bottom: 1px solid #EEEEEE;
 }
 
@@ -137,7 +61,7 @@ h1.documentFirstHeading {
 
 #blog-view,
 #blog-preview-listing {
-    padding: @line-height-base / 2;
+    padding: @line-height-computed / 2;
     h2 {
         font-family:'AurulentSansBold';
     }
@@ -146,14 +70,14 @@ h1.documentFirstHeading {
         font-family: 'AurulentSansBold';
         display: inline-block;
         padding: 30px 65px 0px 0px;
-        background:url(../images/bird-brown-flying.png) no-repeat 100% 0% transparent;
+        background:url(../../assets/img/bird-brown-flying.png) no-repeat 100% 0% transparent;
     }
     p.lead {
         font-family: 'AurulentSansRegular';
         color: @gray;
     }
     .blog-actions {
-        margin-top: @line-height-base;
+        margin-top: @line-height-computed;
     }
 }
 
@@ -169,28 +93,28 @@ h1.documentFirstHeading {
 }
 
 #sidebar {
-    padding: @line-height-base / 2;
+    padding: @line-height-computed / 2;
     .portlet,
     .infobox {
         border: 1px solid #ccc;
         border-radius: 8px;
-        margin-bottom: @line-height-base;
+        margin-bottom: @line-height-computed;
         .portletHeader {
             font-size: @font-size-base * 1.5;
-            padding: @line-height-base @line-height-base @line-height-base / 2;
+            padding: @line-height-computed @line-height-computed @line-height-computed / 2;
             color:#D3802A;
             font-family:'AurulentSansBold';
             border-bottom: 1px solid #ccc;
         }
         h4 {
             font-size: @font-size-base;
-            padding: @line-height-base / 2 @line-height-base @line-height-base / 2;
+            padding: @line-height-computed / 2 @line-height-computed @line-height-computed / 2;
             color:#D3802A;
             font-family:'AurulentSansBold';
             border-bottom: 1px solid #ccc;
         }
         .portletItem {
-            padding: 0px @line-height-base / 2 @line-height-base;
+            padding: 0px @line-height-computed / 2 @line-height-computed;
             h3 {
                 font-size: 1.5rem;
                 line-height: 1.75rem;
@@ -201,7 +125,7 @@ h1.documentFirstHeading {
             }
         }
         .nav > li > a {
-            padding: 0 @line-height-base;
+            padding: 0 @line-height-computed;
         }
         .nav .divider {
             border-color: @gray-lighter;
@@ -228,18 +152,18 @@ h1.documentFirstHeading {
     border: 1px solid #d8e4e4;
     border-radius: 8px;
     background: white;
-    padding: @line-height-base @line-height-base 0px @line-height-base * 1.75;
+    padding: @line-height-computed @line-height-computed 0px @line-height-computed * 1.75;
     position:relative;
-    margin-bottom: @line-height-base;
+    margin-bottom: @line-height-computed;
     &.splash-words {
-        background:url(../images/meetshaus-words.png) no-repeat 0% 95% transparent;
+        background:url(../../assets/img/meetshaus-words.png) no-repeat 0% 95% transparent;
         .splashbox-body {
-            background:url(../images/miss-wordy.png) no-repeat 50% 0 transparent;
+            background:url(../../assets/img/miss-wordy.png) no-repeat 50% 0 transparent;
             padding-top: @navbar-height * 3;   
         }
         &:before {
             content:"";
-            background:url(../images/bow-words.png) no-repeat 0% 0% transparent;
+            background:url(../../assets/img/bow-words.png) no-repeat 0% 0% transparent;
             display: block;
             .size(88px, 75px);
             position: absolute;
@@ -248,14 +172,14 @@ h1.documentFirstHeading {
         }
     }
     &.splash-adwords {
-        background:url(../images/meetshaus-adwords.png) no-repeat 0% 95% transparent;
+        background:url(../../assets/img/meetshaus-adwords.png) no-repeat 0% 95% transparent;
         .splashbox-body {
-            background:url(../images/edward.png) no-repeat 50% 0 transparent;
+            background:url(../../assets/img/edward.png) no-repeat 50% 0 transparent;
             padding-top: @navbar-height * 3;   
         }
         &:before {
             content:"";
-            background:url(../images/bow-adwords.png) no-repeat 0% 0% transparent;
+            background:url(../../assets/img/bow-adwords.png) no-repeat 0% 0% transparent;
             display: block;
             .size(88px, 75px);
             position: absolute;
@@ -264,14 +188,14 @@ h1.documentFirstHeading {
         }
     }
     &.splash-social {
-        background:url(../images/meetshaus-social.png) no-repeat 0% 95% transparent;
+        background:url(../../assets/img/meetshaus-social.png) no-repeat 0% 95% transparent;
         .splashbox-body {
-            background:url(../images/lovebirds.png) no-repeat 50% 0 transparent;
+            background:url(../../assets/img/lovebirds.png) no-repeat 50% 0 transparent;
             padding-top: @navbar-height * 3;   
         }
         &:before {
             content:"";
-            background:url(../images/bow-social.png) no-repeat 0% 0% transparent;
+            background:url(../../assets/img/bow-social.png) no-repeat 0% 0% transparent;
             display: block;
             .size(88px, 75px);
             position: absolute;
@@ -280,7 +204,7 @@ h1.documentFirstHeading {
         }
     }
     .splashbox-content {
-       padding: 0px @line-height-base @line-height-base @line-height-base;
+       padding: 0px @line-height-computed @line-height-computed @line-height-computed;
         b {
             color:#d3802a;
             font-family: 'AurulentSansBold';

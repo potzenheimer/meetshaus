@@ -31,7 +31,7 @@
         
         <section id="content-core">
         <div class="row">
-            <div class="col-span-4">
+            <div class="col-xs-12 col-md-4">
                 <div class="splashbox splash-words">
                     <div class="splashbox-body">
                         <div class="splashbox-content"
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-4">
+            <div class="col-xs-12 col-md-4">
                 <div class="splashbox splash-adwords">
                     <div class="splashbox-body">
                         <div class="splashbox-content"
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-4">
+            <div class="col-xs-12 col-md-4">
                 <div class="splashbox splash-social">
                     <div class="splashbox-body">
                         <div class="splashbox-content"

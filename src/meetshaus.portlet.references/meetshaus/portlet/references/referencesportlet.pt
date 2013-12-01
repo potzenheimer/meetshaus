@@ -1,11 +1,11 @@
-<dl class="portlet portletReferencesPortlet"
+<dl class="panel portletReferencesPortlet"
     i18n:domain="meetshaus.portlet.references"
     tal:define="pstate context/@@plone_portal_state;
                 portal_url pstate/portal_url">
-    <dt class="portletHeader">
+    <dt class="panel-header app-panel-header">
         Referenzen
     </dt>
-    <dd class="portletItem" tal:define="item view/selected_item">
+    <dd class="panel-body app-panel-body" tal:define="item view/selected_item">
         <h3><a href=""
                 tal:attributes="href item/getRemoteUrl"
                 tal:content="item/Title" />

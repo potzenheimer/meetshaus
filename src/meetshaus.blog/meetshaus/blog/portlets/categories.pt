@@ -1,7 +1,7 @@
-<div class="panel panel-default blog-panel-categories"
+<div class="panel panel-default app-panel blog-panel-categories"
     id="infobox-blog-categories"
      i18n:domain="meetshaus.blog">
-    <div class="panel-heading">
+    <div class="panel-heading app-panel-heading">
          <span class="badge pull-right" tal:content="view/count_all_entries" />
         <a i18n:translate="" tal:define="blog_url view/blog_url"
             tal:attributes="href blog_url">Categories</a>

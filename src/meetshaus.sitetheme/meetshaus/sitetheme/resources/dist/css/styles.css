@@ -10691,6 +10691,10 @@ dd.image-caption {
   padding: 20px 0;
 }
 
+.app-brand {
+  display: block;
+}
+
 .app-brandbar-deco {
   position: absolute;
   top: 0;
@@ -10780,6 +10784,30 @@ body.section-front-page .app-brandbar-deco {
   padding: 1.428571429 0;
 }
 
+.app-panel-heading {
+  padding: 20px 20px 10px 10px;
+  font-family: 'AurulentSansRegular', 'Noto Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: inherit;
+  color: #d3802a;
+  background: transparent;
+}
+
+.app-panel-heading small,
+.app-panel-heading .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #999999;
+}
+
+.app-panel-heading > a {
+  color: #d3802a;
+}
+
 .app-footer .app-footer-body {
   padding: 5px 5px 5px 50px;
   margin: 50px 0 75px;
@@ -10807,7 +10835,7 @@ body {
 }
 
 body.mceContentBody {
-  padding: 1.428571429;
+  padding: 20px;
 }
 
 .app-primary {
@@ -10825,125 +10853,42 @@ body.mceContentBody {
   margin-top: 90px;
 }
 
-#tree-decorator {
-  display: none;
-}
-
-body.section-front-page #tree-decorator {
-  position: absolute;
-  top: 0;
-  left: 60%;
-  z-index: 1;
-  display: block;
-  width: 40%;
-  height: 509px;
-  overflow: hidden;
-  text-indent: -3000px;
-  background: url(../images/tree.png) no-repeat 0 0% transparent;
-}
-
-body.section-front-page #site-header {
-  margin-bottom: 50px;
-}
-
-body.section-front-page .entry-body {
-  font-family: 'Noto Sans';
-}
-
-#logo-wrapper {
-  position: relative;
-  top: -30px;
-  left: 25px;
-  z-index: 2;
-  width: 102px;
-  height: auto;
-  border: 0 solid red;
-}
-
-#logo {
-  display: block;
-  width: 102px;
-  height: 343px;
-  margin: 0;
-  overflow: hidden;
-  text-indent: -3000px;
-  background: url(../images/logo.png) 0 0px no-repeat transparent;
-  border: none;
-}
-
-#site-header {
-  background: url(../images/bird-blue-starting-left.png) no-repeat 50% 10px transparent;
-}
-
-#site-header #claim {
-  padding: -0.571428571 0.7142857145 0;
-  font-family: Verdana, sans-serif;
-  font-size: 31.5px;
-  font-weight: normal;
-  color: #74c4ea;
-  background: url(../images/bird-brown-left.png) no-repeat 33px 0 transparent;
-}
-
-#about-me,
-#about-the-author,
-#introduction {
-  padding: 0.7142857145;
-  font-family: 'AurulentSansRegular';
-  font-weight: normal;
-}
-
-#about-me b,
-#about-the-author b,
-#introduction b,
-#about-me strong,
-#about-the-author strong,
-#introduction strong {
-  font-family: 'AurulentSansBold';
-  font-weight: normal;
-  color: #d3802a;
-}
-
-#about-me .visualHighlight,
-#about-the-author .visualHighlight,
-#introduction .visualHighlight {
-  font-family: 'AurulentSansBold';
-  color: #74c4ea;
-  background-color: transparent;
-}
-
 #about-the-author {
-  padding: 2.857142858 1.428571429 0 0;
+  padding: 40px 20px 0 0;
 }
 
 #about-the-author .tab-content {
-  padding: 1.428571429 0;
+  padding: 20px 0;
 }
 
 #content-wrapper,
 #blog-teaser {
-  padding: 1.428571429;
+  padding: 20px;
 }
 
+.app-page-header,
 .page-header {
-  background: url(../images/bird-blue-starting-left.png) 100% 50% no-repeat transparent;
+  background: url(../../assets/img/bird-blue-starting-left.png) 100% 50% no-repeat transparent;
 }
 
+.app-page-header h1,
 .page-header h1,
+.app-page-header h2,
 .page-header h2 {
   color: #d3802a;
 }
 
 h1.documentFirstHeading {
-  padding-bottom: 0.7142857145;
-  margin-bottom: 1.428571429;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
   color: #d3802a;
-  background: url(../images/bird-brown-left.png) 100% 100% no-repeat transparent;
+  background: url(../../assets/img/bird-brown-left.png) 100% 100% no-repeat transparent;
   border-bottom: 1px solid #EEEEEE;
 }
 
 #blog-view,
 #blog-preview-listing {
-  padding: 0.7142857145;
+  padding: 10px;
 }
 
 #blog-view h2,
@@ -10957,7 +10902,7 @@ h1.documentFirstHeading {
   padding: 30px 65px 0 0px;
   font-family: 'AurulentSansBold';
   color: #D3802A;
-  background: url(../images/bird-brown-flying.png) no-repeat 100% 0 transparent;
+  background: url(../../assets/img/bird-brown-flying.png) no-repeat 100% 0 transparent;
 }
 
 #blog-view p.lead,
@@ -10968,7 +10913,7 @@ h1.documentFirstHeading {
 
 #blog-view .blog-actions,
 #blog-preview-listing .blog-actions {
-  margin-top: 1.428571429;
+  margin-top: 20px;
 }
 
 #blogentry-view h2 {
@@ -10982,19 +10927,19 @@ h1.documentFirstHeading {
 }
 
 #sidebar {
-  padding: 0.7142857145;
+  padding: 10px;
 }
 
 #sidebar .portlet,
 #sidebar .infobox {
-  margin-bottom: 1.428571429;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
 
 #sidebar .portlet .portletHeader,
 #sidebar .infobox .portletHeader {
-  padding: 1.428571429 1.428571429 0.7142857145;
+  padding: 20px 20px 10px;
   font-family: 'AurulentSansBold';
   font-size: 21px;
   color: #D3802A;
@@ -11003,7 +10948,7 @@ h1.documentFirstHeading {
 
 #sidebar .portlet h4,
 #sidebar .infobox h4 {
-  padding: 0.7142857145 1.428571429 0.7142857145;
+  padding: 10px 20px 10px;
   font-family: 'AurulentSansBold';
   font-size: 14px;
   color: #D3802A;
@@ -11012,7 +10957,7 @@ h1.documentFirstHeading {
 
 #sidebar .portlet .portletItem,
 #sidebar .infobox .portletItem {
-  padding: 0 0.7142857145 1.428571429;
+  padding: 0 10px 20px;
 }
 
 #sidebar .portlet .portletItem h3,
@@ -11029,7 +10974,7 @@ h1.documentFirstHeading {
 
 #sidebar .portlet .nav > li > a,
 #sidebar .infobox .nav > li > a {
-  padding: 0 1.428571429;
+  padding: 0 20px;
 }
 
 #sidebar .portlet .nav .divider,
@@ -11054,20 +10999,20 @@ h1.documentFirstHeading {
 
 .splashbox {
   position: relative;
-  padding: 1.428571429 1.428571429 0 2.50000000075;
-  margin-bottom: 1.428571429;
+  padding: 20px 20px 0 35px;
+  margin-bottom: 20px;
   background: white;
   border: 1px solid #d8e4e4;
   border-radius: 8px;
 }
 
 .splashbox.splash-words {
-  background: url(../images/meetshaus-words.png) no-repeat 0 95% transparent;
+  background: url(../../assets/img/meetshaus-words.png) no-repeat 0 95% transparent;
 }
 
 .splashbox.splash-words .splashbox-body {
   padding-top: 150px;
-  background: url(../images/miss-wordy.png) no-repeat 50% 0 transparent;
+  background: url(../../assets/img/miss-wordy.png) no-repeat 50% 0 transparent;
 }
 
 .splashbox.splash-words:before {
@@ -11077,17 +11022,17 @@ h1.documentFirstHeading {
   display: block;
   width: 88px;
   height: 75px;
-  background: url(../images/bow-words.png) no-repeat 0 0% transparent;
+  background: url(../../assets/img/bow-words.png) no-repeat 0 0% transparent;
   content: "";
 }
 
 .splashbox.splash-adwords {
-  background: url(../images/meetshaus-adwords.png) no-repeat 0 95% transparent;
+  background: url(../../assets/img/meetshaus-adwords.png) no-repeat 0 95% transparent;
 }
 
 .splashbox.splash-adwords .splashbox-body {
   padding-top: 150px;
-  background: url(../images/edward.png) no-repeat 50% 0 transparent;
+  background: url(../../assets/img/edward.png) no-repeat 50% 0 transparent;
 }
 
 .splashbox.splash-adwords:before {
@@ -11097,17 +11042,17 @@ h1.documentFirstHeading {
   display: block;
   width: 88px;
   height: 75px;
-  background: url(../images/bow-adwords.png) no-repeat 0 0% transparent;
+  background: url(../../assets/img/bow-adwords.png) no-repeat 0 0% transparent;
   content: "";
 }
 
 .splashbox.splash-social {
-  background: url(../images/meetshaus-social.png) no-repeat 0 95% transparent;
+  background: url(../../assets/img/meetshaus-social.png) no-repeat 0 95% transparent;
 }
 
 .splashbox.splash-social .splashbox-body {
   padding-top: 150px;
-  background: url(../images/lovebirds.png) no-repeat 50% 0 transparent;
+  background: url(../../assets/img/lovebirds.png) no-repeat 50% 0 transparent;
 }
 
 .splashbox.splash-social:before {
@@ -11117,12 +11062,12 @@ h1.documentFirstHeading {
   display: block;
   width: 88px;
   height: 75px;
-  background: url(../images/bow-social.png) no-repeat 0 0% transparent;
+  background: url(../../assets/img/bow-social.png) no-repeat 0 0% transparent;
   content: "";
 }
 
 .splashbox .splashbox-content {
-  padding: 0 1.428571429 1.428571429 1.428571429;
+  padding: 0 20px 20px 20px;
 }
 
 .splashbox .splashbox-content b {

@@ -22,7 +22,7 @@
     <theme href="dist/signin.html" css:if-content="body.template-mail_password_form" />
     <!-- The default theme, used for standard Plone web pages -->
     <theme href="minimal.html" if-path="@@edit-tile" />
-    <theme href="frontpage.html" css:if-content="body.section-front-page" />
+    <theme href="dist/frontpage.html" css:if-content="body.section-front-page" />
     <!--<theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />-->
 
@@ -72,7 +72,7 @@
         <replace css:theme="#app-toolbar" css:content="#app-toolbar" />
             
         <!-- Logo (link target) -->
-        <copy attributes="href" css:content='#portal-logo' css:theme="#logo" />
+        <copy attributes="href" css:content='#portal-logo' css:theme=".app-brand" />
         
         <!--<drop css:theme="#tree-decorator" css:if-content="#user-name" />-->
             
@@ -82,10 +82,10 @@
 
         <rules css:if-content="body.section-front-page">
             <replace css:content="#introduction" css:theme="#about-me" />
-            <replace css:content="#content-core" css:theme-children="#content-wrapper" />
-            <replace css:content="#content-blog-listing" css:theme="#blog-preview" />
+            <replace css:content="#content-core" css:theme-children="#app-hero" />
+            <replace css:content="#content-blog-listing" css:theme-children="#content" />
             <replace css:content-children="#portal-column-two > *"
-                css:theme-children="#sidebar" />
+                css:theme-children="#app-sidebar" />
         </rules>
         
         <replace css:content="#content-core > *" css:theme="#contact-me"
@@ -115,7 +115,7 @@
         <replace css:content-children="#content" 
             css:theme-children="#main-content" />
 
-        <replace css:theme="#below-main-content"
+        <after css:theme="#app-page-aside"
             css:content="#viewlet-below-content" />
 
         <replace css:content-children="#portal-column-one > *"
@@ -128,42 +128,13 @@
             css:theme-children="#about-me" />
 
         <replace css:content-children="#infobar-author"
-            css:theme-children="#about-the-author" />
+            css:theme-children="#app-brand-aside" />
         
-        <!-- Document Content
-        <replace css:content="#content > *" css:theme="#content"
-            css:if-content="body.template-edit" />
-        <replace css:content="#content > *" css:theme="#content"
-            css:if-content="body.template-atct_edit" />
-        <replace css:content="#content > *" css:theme="#content"
-            css:if-content="body.template-base_edit" />
-        <replace css:content="#content > *" css:theme="#content"
-            css:if-content="body.template-folder_contents" />
-        <replace css:content="#content > *" css:theme="#content"
-            css:if-content="body.template-folder_listing" />
-        <replace css:content="#content > *" css:theme="#document-content"
-            css:if-content="body.section-referenzen" />
-        
-        
-        <replace css:content="#edit-bar" css:theme="#edit-bar" />
         <before css:content=".portalMessage" css:theme="#content" /> -->
         
         <!-- Contact Form -->
         <replace css:content=".formid-kontakt" css:theme="#contact-me"
             css:if-content="body.section-kontakt" />
-        
-       <!-- <rules css:if-content="body.section-blog">
-            <replace css:content="#content" css:theme="#content" />
-            <after css:theme="#document-content" css:content="#viewlet-below-content" />
-            <replace css:content-children="#portal-column-one > *" css:theme-children="#sidebar" />
-            <replace css:content-children="#portal-column-two > *" css:theme-children="#sidebar" />
-        </rules>
-        
-        <rules css:if-content="body.template-search">
-            <replace css:content="#content > *" css:theme="#about-me" />
-            <drop css:theme="#main-content" />
-        </rules>-->
-
         
     </rules>
 
