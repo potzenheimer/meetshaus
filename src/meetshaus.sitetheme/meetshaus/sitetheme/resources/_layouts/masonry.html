@@ -19,15 +19,6 @@
               {{ content }}
         </div>
 
-        <ul class="nav nav-pills nav-justified" id="filters">
-          <li class="active"><a href="#" data-filter="*">show all</a></li>
-          <li><a href="#" data-filter=".metal">metal</a></li>
-          <li><a href="#" data-filter=".transition">transition</a></li>
-          <li><a href="#" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</a></li>
-          <li><a href="#" data-filter=":not(.transition)">not transition</a></li>
-          <li><a href="#" data-filter=".metal:not(.transition)">metal but not transition</a></li>
-        </ul>
-
         {% include tile-listing.html %}
 
         {% include footer.html %}

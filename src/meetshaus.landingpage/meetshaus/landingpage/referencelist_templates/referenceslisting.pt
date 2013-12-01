@@ -17,21 +17,33 @@
   <p class="lead" tal:condition="context/Description"
     tal:content="context/Description" />
 
-  <section tal:condition="view/has_links"
-    id="link-container">
+    <div class="app-list-filter">
+        <ul class="nav nav-pills nav-justified" id="filters">
+            <li class="active"><a href="#" data-filter="*">show all</a></li>
+            <li><a href="#" data-filter=".metal">metal</a></li>
+            <li><a href="#" data-filter=".transition">transition</a></li>
+            <li><a href="#" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</a></li>
+            <li><a href="#" data-filter=":not(.transition)">not transition</a></li>
+            <li><a href="#" data-filter=".metal:not(.transition)">metal but not transition</a></li>
+        </ul>
+    </div>
 
-    <tal:block tal:repeat="item view/contained_links">
-      <article class="tilebox">
-        <h3 tal:attributes="class python:'sized ' + view.random_size()">
-          <a href=""
-            tal:attributes="href item/getRemoteUrl"
-            tal:content="item/Title" />
-        </h3>
-        <p class="discreet" tal:content="item/Description" />
-      </article>
-    </tal:block>
-
-  </section>
+    <section tal:condition="view/has_links"
+        class="row app-list-tile"
+        id="link-container">
+    
+        <tal:block tal:repeat="item view/contained_links">
+            <article class="col-xs-12 col-sm-3 tilebox">
+              <h3 tal:attributes="class python:'sized ' + view.random_size()">
+                <a href=""
+                  tal:attributes="href item/getRemoteUrl"
+                  tal:content="item/Title" />
+              </h3>
+              <p class="discreet" tal:content="item/Description" />
+            </article>
+        </tal:block>
+    
+    </section>
     
   </metal:content-core>
 </metal:main>

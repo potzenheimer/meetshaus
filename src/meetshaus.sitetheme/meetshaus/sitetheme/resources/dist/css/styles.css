@@ -10700,6 +10700,7 @@ dd.image-caption {
   top: 0;
   left: 60%;
   z-index: 1;
+  display: none !important;
   display: block;
   width: 40%;
   height: 509px;
@@ -10749,39 +10750,12 @@ body.section-front-page .app-brandbar-deco {
   background-color: transparent;
 }
 
-#about-me,
-#about-the-author,
-#introduction {
-  padding: 0.7142857145;
-  font-family: 'AurulentSansRegular';
-  font-weight: normal;
+.app-brand-aside {
+  padding: 40px 20px 0 0;
 }
 
-#about-me b,
-#about-the-author b,
-#introduction b,
-#about-me strong,
-#about-the-author strong,
-#introduction strong {
-  font-family: 'AurulentSansBold';
-  font-weight: normal;
-  color: #d3802a;
-}
-
-#about-me .visualHighlight,
-#about-the-author .visualHighlight,
-#introduction .visualHighlight {
-  font-family: 'AurulentSansBold';
-  color: #74c4ea;
-  background-color: transparent;
-}
-
-#about-the-author {
-  padding: 2.857142858 1.428571429 0 0;
-}
-
-#about-the-author .tab-content {
-  padding: 1.428571429 0;
+.app-brand-aside .tab-content {
+  padding: 20px 0;
 }
 
 .app-panel-heading {
@@ -11078,11 +11052,9 @@ h1.documentFirstHeading {
 
 .tilebox {
   float: left;
-  width: 200px;
   padding: 10px;
-  margin: 10px 10px 10px 0;
   border: 1px solid #d8e4e4;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .tilebox h3 a {

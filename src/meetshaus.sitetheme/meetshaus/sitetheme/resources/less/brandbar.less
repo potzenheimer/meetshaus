@@ -7,7 +7,7 @@
 }
 
 .app-brandbar-deco {
-    display: block;
+    .hide();
     position:absolute;
     top: 0px;
     left: 60%;
@@ -59,28 +59,9 @@ body.section-front-page {
     }
 }
 
-#about-me,
-#about-the-author,
-#introduction {
-    font-family: 'AurulentSansRegular';
-    font-weight: normal;
-    padding: @line-height-base / 2;
-    b,
-    strong {
-        color:#d3802a;
-        font-family: 'AurulentSansBold';
-        font-weight: normal;
-    }
-    .visualHighlight {
-        background-color: transparent;
-        color:#74c4ea;
-        font-family:'AurulentSansBold';
-    }
-}
-
-#about-the-author {
-    padding: @line-height-base * 2 @line-height-base 0 0;
+.app-brand-aside {
+    padding: @line-height-computed * 2 @line-height-computed 0 0;
     .tab-content {
-        padding: @line-height-base 0;
+        padding: @line-height-computed 0;
     }
 }

@@ -177,6 +177,11 @@ module.exports = function (grunt) {
                 path: 'dist/frontpage.html',
                 pattern: '../../assets/',
                 replacement: '/++theme++meetshaus.sitetheme/assets/'
+            },
+            'compile-template-fullscreen': {
+                path: 'dist/fullscreen.html',
+                pattern: '../../assets/',
+                replacement: '/++theme++meetshaus.sitetheme/assets/'
             }
         },
 
@@ -240,6 +245,7 @@ module.exports = function (grunt) {
         grunt.file.copy('_site/index.html', 'dist/index.html');
         grunt.file.copy('_site/signin/index.html', 'dist/signin.html');
         grunt.file.copy('_site/frontpage/index.html', 'dist/frontpage.html');
+        grunt.file.copy('_site/references/index.html', 'dist/fullscreen.html');
     });
 
     // Docs HTML validation task
