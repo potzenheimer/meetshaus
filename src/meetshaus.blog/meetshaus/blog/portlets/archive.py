@@ -8,23 +8,25 @@ from zope import schema
 from zope.formlib import form
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from meetshaus.blog.utils import find_assignment_context
+from meetshaus.blog.utils import find_portlet_assignment_context
 from meetshaus.blog.blogentry import IBlogEntry
 
 from meetshaus.blog import MessageFactory as _
 
-MONTHVOCAB = {'month_1': _(u'month_1'),
-              'month_2': _(u'month_2'),
-              'month_3': _(u'month_3'),
-              'month_4': _(u'month_4'),
-              'month_5': _(u'month_5'),
-              'month_6': _(u'month_6'),
-              'month_7': _(u'month_7'),
-              'month_8': _(u'month_8'),
-              'month_9': _(u'month_9'),
-              'month_10': _(u'month_10'),
-              'month_11': _(u'month_11'),
-              'month_12': _(u'month_12')}
+MONTHVOCAB = {
+    'month_1': _(u'month_1'),
+    'month_2': _(u'month_2'),
+    'month_3': _(u'month_3'),
+    'month_4': _(u'month_4'),
+    'month_5': _(u'month_5'),
+    'month_6': _(u'month_6'),
+    'month_7': _(u'month_7'),
+    'month_8': _(u'month_8'),
+    'month_9': _(u'month_9'),
+    'month_10': _(u'month_10'),
+    'month_11': _(u'month_11'),
+    'month_12': _(u'month_12'),
+}
 
 
 class IArchivePortlet(IPortletDataProvider):
@@ -78,7 +80,10 @@ class Renderer(base.Renderer):
         self._counts = {}
         catalog = getToolByName(self.context, 'portal_catalog')
         # Get the path of where the portlet is created. That's the blog.
-        assignment_context = find_assignment_context(self.data, self.context)
+        assignment_context = find_portlet_assignment_context(self.data,
+                                                             self.context)
+        if assignment_context is None:
+            assignment_context = self.context
         self.folder_path = '/'.join(assignment_context.getPhysicalPath())
         self.folder_url = assignment_context.absolute_url()
         brains = catalog(path={'query': self.folder_path, 'depth': 3},
