@@ -1,31 +1,23 @@
-<div class="infobox xwell"
-     id="infobox-blog-categories"
-     i18n:domain="meethaus.blog">
-
-    <h4>
-        <i18n:block translate="">Themen</i18n:block>
-    </h4>
-
-    <ul class="nav nav-pills nav-stacked"
+<div class="panel panel-default blog-panel-categories"
+    id="infobox-blog-categories"
+     i18n:domain="meetshaus.blog">
+    <div class="panel-heading">
+         <span class="badge pull-right" tal:content="view/count_all_entries" />
+        <a i18n:translate="" tal:define="blog_url view/blog_url"
+            tal:attributes="href blog_url">Categories</a>
+    </div>
+    <div class="list-group" role="menu" aria-labelledby="blogCategories"
         tal:define="keywords view/keywords">
-        <li tal:define="blog_url view/blog_url">
-          <a href="" tal:attributes="href blog_url">
-            Alle Artikel
-            (<span tal:content="view/count_all_entries" />)
-          </a>
-        </li>
-      <tal:block tal:repeat="item keywords">
-        <li tal:define="search_url python:view.archive_url(item);
-                        category request/category | nothing;
-                        active python: category == item"
-            tal:attributes="class python: active and 'active' or 'inactive'">
-            <a href="" tal:attributes="href search_url">
-              <i class="icon-tag" />
-              <span tal:content="item" />
-              (<span tal:content="python:view.count_entries(item)" />)
+        <tal:block tal:repeat="item keywords">
+            <a tal:define="search_url python:view.archive_url(item);
+                            category request/category | nothing;
+                            active python: category == item"
+                tal:attributes="class python: active and 'list-group-item active' or 'list-group-item';
+                                role string:menuitem;
+                                href search_url">
+                <span class="badge" tal:content="python:view.count_entries(item)" />
+                  <span tal:content="item" />
             </a>
-        </li>
-      </tal:block>
-    </ul>
-
+        </tal:block>
+    </div>
 </div>
