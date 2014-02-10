@@ -42,7 +42,7 @@ module.exports = function (grunt) {
 
         concat: {
             options: {
-                banner: '<%= banner %><%= jqueryCheck %>',
+                banner: '<%= banner %>',
                 stripBanners: false
             },
             dist: {
@@ -64,6 +64,41 @@ module.exports = function (grunt) {
             }
         },
 
+        less: {
+            compileTheme: {
+                options: {
+                    strictMath: false,
+                    sourceMap: true,
+                    outputSourceFiles: true,
+                    sourceMapURL: '<%= pkg.name %>.css.map',
+                    sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+                },
+                files: {
+                    'dist/css/<%= pkg.name %>.css': 'less/styles.less'
+                }
+            },
+            minify: {
+                options: {
+                    cleancss: true,
+                    report: 'min'
+                },
+                files: {
+                    'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
+                }
+            }
+        },
+
+        csscomb: {
+            sort: {
+                options: {
+                    config: 'less/.csscomb.json'
+                },
+                files: {
+                    'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css']
+                }
+            }
+        },
+
         uglify: {
             options: {
                 banner: '<%= banner %>'
@@ -71,23 +106,6 @@ module.exports = function (grunt) {
             dist: {
                 src: ['<%= concat.dist.dest %>'],
                 dest: 'dist/js/<%= pkg.name %>.min.js'
-            }
-        },
-
-        recess: {
-            options: {
-                compile: true
-            },
-            theme: {
-                src: ['less/styles.less'],
-                dest: 'dist/css/styles.css'
-            },
-            min: {
-                options: {
-                    compress: true
-                },
-                src: ['less/styles.less'],
-                dest: 'dist/css/styles.min.css'
             }
         },
 
@@ -214,22 +232,6 @@ module.exports = function (grunt) {
         }
     });
 
-
-    // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-html-validation');
-    grunt.loadNpmTasks('grunt-jekyll');
-    grunt.loadNpmTasks('grunt-recess');
-    grunt.loadNpmTasks('grunt-rev');
-    grunt.loadNpmTasks('grunt-sed');
-
     // -------------------------------------------------
     // These are the available tasks provided
     // Run them in the Terminal like e.g. grunt dist-css
@@ -251,8 +253,11 @@ module.exports = function (grunt) {
     // Docs HTML validation task
     grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
+    // Javascript Unittests
+    grunt.registerTask('unit-test', ['qunit']);
+
     // Test task.
-    var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
+    var testSubtasks = ['dist-css', 'jshint', 'validate-html'];
 
     grunt.registerTask('test', testSubtasks);
 
@@ -260,7 +265,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dist-js', ['concat', 'uglify']);
 
     // CSS distribution task.
-    grunt.registerTask('dist-css', ['recess']);
+    grunt.registerTask('dist-css', ['less', 'csscomb']);
 
     // Assets distribution task.
     grunt.registerTask('dist-assets', ['copy']);
@@ -271,9 +276,18 @@ module.exports = function (grunt) {
     // Template distribution task.
     grunt.registerTask('dist-html', ['jekyll:theme', 'copy-templates', 'sed']);
 
+    // Concurrent distribution task
+    grunt.registerTask('dist-cc', ['test', 'concurrent:cj', 'concurrent:ha']);
+
+    // Development task.
+    grunt.registerTask('dev', ['dist-css', 'dist-js', 'dist-html']);
+
     // Full distribution task.
     grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'dist-html', 'dist-assets']);
 
     // Default task.
-    grunt.registerTask('default', ['test', 'dist']);
+    grunt.registerTask('compile-theme', ['dist']);
+
+    // Default task.
+    grunt.registerTask('default', ['dev']);
 };
