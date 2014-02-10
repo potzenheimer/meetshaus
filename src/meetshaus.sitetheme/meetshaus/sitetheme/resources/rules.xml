@@ -38,7 +38,7 @@
         <notheme if="$host = 'cms.meetshaus.de'" />
         
         <replace css:theme="title" css:content="title" />
-        <replace css:theme="base" css:content="base" />
+
         <!-- Add meta tags -->
         <drop theme="/html/head/meta" />
         
@@ -50,7 +50,6 @@
             />
 
         <drop theme="/html/head/style" />
-        <drop theme="/html/head/script" />
         <drop theme="/html/head/link" />
 
         <!-- Drop scripts from theme footer if present -->

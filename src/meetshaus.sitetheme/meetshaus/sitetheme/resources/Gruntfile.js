@@ -185,22 +185,22 @@ module.exports = function (grunt) {
             'compile-template-index': {
                 path: 'dist/index.html',
                 pattern: '../assets/',
-                replacement: '/++theme++meetshaus.sitetheme/assets/'
+                replacement: '/++theme++meetshaus.sitetheme/dist/assets/'
             },
             'compile-template-signin': {
                 path: 'dist/signin.html',
                 pattern: '../../assets/',
-                replacement: '/++theme++meetshaus.sitetheme/assets/'
+                replacement: '/++theme++meetshaus.sitetheme/dist/assets/'
             },
             'compile-template-frontpage': {
                 path: 'dist/frontpage.html',
                 pattern: '../../assets/',
-                replacement: '/++theme++meetshaus.sitetheme/assets/'
+                replacement: '/++theme++meetshaus.sitetheme/dist/assets/'
             },
             'compile-template-fullscreen': {
                 path: 'dist/fullscreen.html',
                 pattern: '../../assets/',
-                replacement: '/++theme++meetshaus.sitetheme/assets/'
+                replacement: '/++theme++meetshaus.sitetheme/dist/assets/'
             }
         },
 

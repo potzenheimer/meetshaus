@@ -14683,6 +14683,31 @@ h1.documentFirstHeading
     border-radius: 8px;
     background: white;
 }
+.splashbox.splash-adwords
+{
+    background: url('../../assets/img/meetshaus-adwords.png') no-repeat 0 95% transparent;
+}
+.splashbox.splash-adwords .splashbox-body
+{
+    padding-top: 150px;
+
+    background: url(../../assets/img/edward.png) no-repeat 50% 0 transparent;
+}
+.splashbox.splash-adwords:before
+{
+    position: absolute;
+    top: -4px;
+    right: -4px;
+
+    display: block;
+
+    width: 88px;
+    height: 75px;
+
+    content: '';
+
+    background: url(../../assets/img/bow-adwords.png) no-repeat 0 0 transparent;
+}
 .splashbox.splash-words
 {
     background: url(../../assets/img/meetshaus-words.png) no-repeat 0 95% transparent;
@@ -14707,31 +14732,6 @@ h1.documentFirstHeading
     content: '';
 
     background: url(../../assets/img/bow-words.png) no-repeat 0 0 transparent;
-}
-.splashbox.splash-adwords
-{
-    background: url(../../assets/img/meetshaus-adwords.png) no-repeat 0 95% transparent;
-}
-.splashbox.splash-adwords .splashbox-body
-{
-    padding-top: 150px;
-
-    background: url(../../assets/img/edward.png) no-repeat 50% 0 transparent;
-}
-.splashbox.splash-adwords:before
-{
-    position: absolute;
-    top: -4px;
-    right: -4px;
-
-    display: block;
-
-    width: 88px;
-    height: 75px;
-
-    content: '';
-
-    background: url(../../assets/img/bow-adwords.png) no-repeat 0 0 transparent;
 }
 .splashbox.splash-social
 {

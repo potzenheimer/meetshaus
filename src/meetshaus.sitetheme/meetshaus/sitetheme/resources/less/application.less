@@ -155,6 +155,22 @@ h1.documentFirstHeading {
     padding: @line-height-computed @line-height-computed 0px @line-height-computed * 1.75;
     position:relative;
     margin-bottom: @line-height-computed;
+    &.splash-adwords {
+        background: url('../../assets/img/meetshaus-adwords.png') no-repeat 0% 95% transparent;
+        .splashbox-body {
+            background:url(../../assets/img/edward.png) no-repeat 50% 0 transparent;
+            padding-top: @navbar-height * 3;   
+        }
+        &:before {
+            content:"";
+            background:url(../../assets/img/bow-adwords.png) no-repeat 0% 0% transparent;
+            display: block;
+            .size(88px, 75px);
+            position: absolute;
+            top: -4px;
+            right: -4px;
+        }
+    }
     &.splash-words {
         background:url(../../assets/img/meetshaus-words.png) no-repeat 0% 95% transparent;
         .splashbox-body {
@@ -164,22 +180,6 @@ h1.documentFirstHeading {
         &:before {
             content:"";
             background:url(../../assets/img/bow-words.png) no-repeat 0% 0% transparent;
-            display: block;
-            .size(88px, 75px);
-            position: absolute;
-            top: -4px;
-            right: -4px;
-        }
-    }
-    &.splash-adwords {
-        background:url(../../assets/img/meetshaus-adwords.png) no-repeat 0% 95% transparent;
-        .splashbox-body {
-            background:url(../../assets/img/edward.png) no-repeat 50% 0 transparent;
-            padding-top: @navbar-height * 3;   
-        }
-        &:before {
-            content:"";
-            background:url(../../assets/img/bow-adwords.png) no-repeat 0% 0% transparent;
             display: block;
             .size(88px, 75px);
             position: absolute;
