@@ -20,11 +20,12 @@
     <div class="app-list-filter">
         <ul class="nav nav-pills nav-justified" id="filters">
             <li class="active"><a href="#" data-filter="*">show all</a></li>
-            <li><a href="#" data-filter=".metal">metal</a></li>
-            <li><a href="#" data-filter=".transition">transition</a></li>
-            <li><a href="#" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</a></li>
+            <li><a href="#" data-filter=".tilebox-sized-1">Size 1</a></li>
+            <li><a href="#" data-filter=".tilebox-sized-2">Size 2</a></li>
+            <li><a href="#" data-filter=".tilebox-sized-3">Size 3</a></li>
+            <li><a href="#" data-filter=".tilebox-sized-4">Size 4</a></li>
+            <li><a href="#" data-filter=".tilebox-sized-5">Size 5</a></li>
             <li><a href="#" data-filter=":not(.transition)">not transition</a></li>
-            <li><a href="#" data-filter=".metal:not(.transition)">metal but not transition</a></li>
         </ul>
     </div>
 
@@ -33,7 +34,8 @@
         id="link-container">
     
         <tal:block tal:repeat="item view/contained_links">
-            <article class="col-xs-12 col-sm-3 tilebox">
+            <article class="col-xs-12 col-sm-3 tilebox"
+                tal:attributes="class python:'col-xs-12 col-sm-3 tilebox tilebox-' + view.random_size()">
               <h3 tal:attributes="class python:'sized ' + view.random_size()">
                 <a href=""
                   tal:attributes="href item/getRemoteUrl"
