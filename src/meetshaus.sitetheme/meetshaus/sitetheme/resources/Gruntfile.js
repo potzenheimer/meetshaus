@@ -58,6 +58,7 @@ module.exports = function (grunt) {
             theme: {
                 src: [
                     'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'bower_components/isotope/jquery.isotope.js',
                     'js/application.js'
                 ],
                 dest: 'dist/js/application.js'
