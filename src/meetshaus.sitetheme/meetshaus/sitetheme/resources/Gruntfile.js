@@ -182,28 +182,31 @@ module.exports = function (grunt) {
         },
 
         sed: {
-            'compile-template-index': {
-                path: 'dist/index.html',
-                pattern: '../assets/',
-                replacement: '/++theme++meetshaus.sitetheme/dist/assets/'
-            },
-            'compile-template-signin': {
-                path: 'dist/signin.html',
+            cleanSourceAssets: {
+                path: 'dist/',
                 pattern: '../../assets/',
-                replacement: '/++theme++meetshaus.sitetheme/dist/assets/'
+                replacement: '../assets/',
+                recursive: true
             },
-            'compile-template-frontpage': {
-                path: 'dist/frontpage.html',
-                pattern: '../../assets/',
-                replacement: '/++theme++meetshaus.sitetheme/dist/assets/'
+            cleanSourceCSS: {
+                path: 'dist/',
+                pattern: '../dist/css/meetshaus.css',
+                replacement: 'css/meetshaus.css',
+                recursive: true
             },
-            'compile-template-fullscreen': {
-                path: 'dist/fullscreen.html',
-                pattern: '../../assets/',
-                replacement: '/++theme++meetshaus.sitetheme/dist/assets/'
+            cleanSourceJS: {
+                path: 'dist/',
+                pattern: '../dist/js/meetshaus.js',
+                replacement: 'js/meetshaus.min.js',
+                recursive: true
+            },
+            cleanLogo: {
+                path: 'dist/',
+                pattern: '../assets/img/logo.png',
+                replacement: 'assets/img/logo.png',
+                recursive: true
             }
         },
-
         validation: {
             options: {
                 reset: true
@@ -266,10 +269,11 @@ module.exports = function (grunt) {
     grunt.registerTask('dist-js', ['concat', 'uglify']);
 
     // CSS distribution task.
-    grunt.registerTask('dist-css', ['less', 'csscomb']);
+    grunt.registerTask('less-compile', ['less:compileTheme']);
+    grunt.registerTask('dist-css', ['less-compile', 'csscomb', 'less:minify']);
 
     // Assets distribution task.
-    grunt.registerTask('dist-assets', ['copy']);
+    grunt.registerTask('dist-assets', ['newer:copy', 'newer:imagemin']);
 
     // Cache buster distribution task.
     grunt.registerTask('dist-cb', ['rev']);
@@ -281,12 +285,12 @@ module.exports = function (grunt) {
     grunt.registerTask('dist-cc', ['test', 'concurrent:cj', 'concurrent:ha']);
 
     // Development task.
-    grunt.registerTask('dev', ['dist-css', 'dist-js', 'dist-html']);
+    grunt.registerTask('dev', ['less-compile', 'dist-js', 'dist-html']);
 
     // Full distribution task.
     grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'dist-html', 'dist-assets']);
 
-    // Default task.
+    // Shim theme compilation alias
     grunt.registerTask('compile-theme', ['dist']);
 
     // Default task.

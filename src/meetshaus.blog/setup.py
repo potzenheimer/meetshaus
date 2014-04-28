@@ -26,6 +26,7 @@ setup(name='meetshaus.blog',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'plone.api',
           'plone.app.contentlisting',
           'plone.app.dexterity [grok,relations]',
           'plone.app.discussion',
