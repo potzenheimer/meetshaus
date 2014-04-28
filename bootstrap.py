@@ -167,4 +167,4 @@ if options.config_file is not None:
     args[0:0] = ['-c', options.config_file]
 
 zc.buildout.buildout.main(args)
-shutil.rmtree(tmpeggs)π
+shutil.rmtree(tmpeggs)
