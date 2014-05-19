@@ -19,23 +19,23 @@
 
     <div class="app-list-filter">
         <ul class="nav nav-pills nav-justified" id="filters">
-            <li class="active"><a href="#" data-filter="*">show all</a></li>
-            <li><a href="#" data-filter=".tilebox-sized-1">Size 1</a></li>
-            <li><a href="#" data-filter=".tilebox-sized-2">Size 2</a></li>
-            <li><a href="#" data-filter=".tilebox-sized-3">Size 3</a></li>
-            <li><a href="#" data-filter=".tilebox-sized-4">Size 4</a></li>
-            <li><a href="#" data-filter=".tilebox-sized-5">Size 5</a></li>
-            <li><a href="#" data-filter=":not(.transition)">not transition</a></li>
+            <li class="active"><a href="#" data-filter="*">Alle</a></li>
+            <li><a href="#" data-filter=".tilebox-texte">Texte</a></li>
+            <li><a href="#" data-filter=".tilebox-social-media">Social Media</a></li>
+            <li><a href="#" data-filter=".tilebox-suchmaschinenoptimierung">SEO</a></li>
+            <li><a href="#" data-filter=".tilebox-smm">SMM</a></li>
+            <li><a href="#" data-filter=".tilebox-facebook">Facebook</a></li>
         </ul>
     </div>
 
     <section tal:condition="view/has_links"
         class="row app-list-tile"
         id="link-container">
-    
+
         <tal:block tal:repeat="item view/contained_links">
             <article class="col-xs-12 col-sm-3 tilebox"
-                tal:attributes="class python:'col-xs-12 col-sm-3 tilebox tilebox-' + view.random_size()">
+                tal:define="klass python:view.computed_klass(item)"
+                tal:attributes="class python:'col-xs-12 col-sm-3 tilebox ' + klass">
               <h3 tal:attributes="class python:'sized ' + view.random_size()">
                 <a href=""
                   tal:attributes="href item/getRemoteUrl"
@@ -44,9 +44,9 @@
               <p class="discreet" tal:content="item/Description" />
             </article>
         </tal:block>
-    
+
     </section>
-    
+
   </metal:content-core>
 </metal:main>
 
