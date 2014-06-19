@@ -37,7 +37,7 @@
                 tal:define="klass python:view.computed_klass(item)"
                 tal:attributes="class python:'col-xs-12 col-sm-3 tilebox ' + klass">
               <h3 tal:attributes="class python:'sized ' + view.random_size()">
-                <a href=""
+                <a href="" rel-="no-follow"
                   tal:attributes="href item/getRemoteUrl"
                   tal:content="item/Title" />
               </h3>
