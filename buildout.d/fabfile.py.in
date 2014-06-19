@@ -17,7 +17,7 @@ env.hosts = ['${fabric:host}']
 env.webserver = '${fabric:webserver}'
 env.code_root = '${fabric:directory}'
 env.local_root = '${buildout:directory}'
-env.sitename = '${plone-site:site-id}'
+env.sitename = 'meetshaus'
 env.code_user = 'root'
 env.prod_user = 'www'
 
