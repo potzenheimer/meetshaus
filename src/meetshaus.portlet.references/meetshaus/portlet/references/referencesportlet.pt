@@ -1,18 +1,23 @@
-<dl class="panel portletReferencesPortlet"
+<div class="panel panel-default app-panel app-panel-references"
+    id="infobox-blog-categories"
     i18n:domain="meetshaus.portlet.references"
     tal:define="pstate context/@@plone_portal_state;
                 portal_url pstate/portal_url">
-    <dt class="panel-header app-panel-header">
-        Referenzen
-    </dt>
-    <dd class="panel-body app-panel-body" tal:define="item view/selected_item">
-        <h3><a href=""
+    <div class="panel-heading app-panel-heading">
+        <a i18n:translate=""
+            tal:attributes="href python:portal_url + '/referenzen'">
+            Referenzen</a>
+    </div>
+    <div class="panel-body app-panel-body"
+        tal:define="item view/selected_item">
+        <h3><a href="" rel="no-follow"
                 tal:attributes="href item/getRemoteUrl"
                 tal:content="item/Title" />
         </h3>
         <p tal:content="item/Description" />
-        <a href=""
-            tal:attributes="href python:portal_url + '/referenzen'">
+    </div>
+    <div class="panel-footer app-panel-footer">
+        <a tal:attributes="href python:portal_url + '/referenzen'">
             Weitere Referenzen</a>
-    </dd>
-</dl>
+    </div>
+</div>
