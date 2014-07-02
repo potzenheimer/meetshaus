@@ -13,13 +13,13 @@
     <header class="page-header">
       <h1 tal:content="context/Title" />
     </header>
-    
+
     <div tal:replace="structure provider:plone.belowcontenttitle" />
-    
+
     <div id="blog-view" tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                                     Batch python:modules['Products.CMFPlone'].Batch;
                                     b_size python:5;b_start python:0;b_start request/b_start | b_start;">
-                                    
+
         <tal:entries tal:define="batch view/batch">
             <div class="blogEntry" tal:repeat="item batch">
                 <span class="documentModified"
@@ -30,12 +30,12 @@
                         tal:content="item/Title">
                         Title</a>
                 </h2>
-                
+
                 <div class="entryDescription lead"
                     tal:condition="item/Description">
                     <span tal:content="item/Description" />
                 </div>
-                
+
                 <tal:block tal:define="count repeat/item/number;
                                        bodytext item/text/output;
                                        item_obj item/getObject;
@@ -54,10 +54,10 @@
 
                 <div class="blog-actions">
                 <div class="row" tal:define="item_obj item/getObject">
-                  <div class="col-span-8">
+                  <div class="col-xs-12 col-sm-8">
                     <span tal:define="categories item/Subject|nothing"
                           tal:condition="categories"
-                          class="muted">
+                          class="text-muted">
                       Abgelegt unter:
                       <span tal:repeat="category categories">
                         <a href=""
@@ -70,7 +70,7 @@
                       </span>
                     </span>
                   </div>
-                    <div class="col-span-4">
+                    <div class="col-xs-12 col-sm-4">
                         <div class="blogEntryReadMore pull-right">
                                  <a href=""
                                     class="btn btn-primary"
@@ -89,7 +89,7 @@
           <div metal:use-macro="context/batch_macros/macros/navigation" />
         </tal:entries>
     </div>
-    
+
   </metal:content-core>
 </metal:main>
 
