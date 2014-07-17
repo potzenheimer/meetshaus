@@ -47,7 +47,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-                    'bower_components/jquery/jquery.js',
+                    'bower_components/jquery/dist/jquery.js',
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
                     'bower_components/isotope/jquery.isotope.js',
@@ -188,23 +188,44 @@ module.exports = function (grunt) {
                 replacement: '../assets/',
                 recursive: true
             },
+            cleanFPSourceCSS: {
+                path: 'dist/',
+                pattern: '../../dist/css/meetshaus.min.css',
+                replacement: 'dist/css/meetshaus.min.css',
+                recursive: true
+            },
             cleanSourceCSS: {
                 path: 'dist/',
-                pattern: '../dist/css/meetshaus.css',
-                replacement: 'css/meetshaus.css',
+                pattern: '../dist/css/meetshaus.min.css',
+                replacement: 'dist/css/meetshaus.min.css',
                 recursive: true
             },
             cleanSourceJS: {
                 path: 'dist/',
-                pattern: '../dist/js/meetshaus.js',
-                replacement: 'js/meetshaus.min.js',
+                pattern: '../dist/js/meetshaus.min.js',
+                replacement: '/++theme++meetshaus.sitetheme/dist/js/meetshaus.min.js',
                 recursive: true
             },
-            cleanLogo: {
+            cleanFPSourceJS: {
                 path: 'dist/',
-                pattern: '../assets/img/logo.png',
-                replacement: 'assets/img/logo.png',
+                pattern: '../../dist/js/meetshaus.min.js',
+                replacement: '/++theme++meetshaus.sitetheme/dist/js/meetshaus.min.js',
                 recursive: true
+            },
+            cleanImgPath: {
+                path: 'dist/index.html',
+                pattern: '../assets/img/',
+                replacement: 'assets/img/',
+            },
+            cleanImgPathFrontpage: {
+                path: 'dist/frontpage.html',
+                pattern: '../assets/img/',
+                replacement: 'assets/img/',
+            },
+            cleanImgPathSignin: {
+                path: 'dist/signin.html',
+                pattern: '../assets/img/',
+                replacement: 'assets/img/',
             }
         },
         validation: {

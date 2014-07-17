@@ -6,15 +6,47 @@
 
 body {
     background:#d9e4e4;
-}
-body.mceContentBody {
+    &.template-theming-controlpanel .row {
+        // Fix theming control panel
+        margin: 0 @line-height-computed;
+    }
+    // Set font weights if webfont is active
+  &.ws-active {
+    // Default twbs weight for headings 500 not provided by Open Sans
+    @headings-font-weight: 600;
+    b,
+    strong {
+        font-weight: 600;
+    }
+  }
+  &.mceContentBody {
     padding: @line-height-computed;
+  }
+}
+// prevent fake bolds
+b,
+strong {
+    font-weight: 600;
+    .ws-active & {
+        font-weight: 600;
+    }
+}
+
+a {
+    outline: none;
+}
+
+a:hover {
+  .transition(color .5s linear);
 }
 
 .app-primary {
     color:@app-primary;
 }
 
+.visualClear {
+    clear: both;
+}
 
 .app-container {
     margin: @line-height-computed * 2 auto;
@@ -54,6 +86,12 @@ h1.documentFirstHeading {
     padding-bottom: @line-height-computed / 2;
     margin-bottom: @line-height-computed;
     border-bottom: 1px solid #EEEEEE;
+}
+
+#content {
+    img {
+        .img-responsive();
+    }
 }
 
 // Blog
@@ -159,7 +197,7 @@ h1.documentFirstHeading {
         background: url('../../assets/img/meetshaus-adwords.png') no-repeat 0% 95% transparent;
         .splashbox-body {
             background:url(../../assets/img/edward.png) no-repeat 50% 0 transparent;
-            padding-top: @navbar-height * 3;   
+            padding-top: @navbar-height * 3;
         }
         &:before {
             content:"";
@@ -175,7 +213,7 @@ h1.documentFirstHeading {
         background:url(../../assets/img/meetshaus-words.png) no-repeat 0% 95% transparent;
         .splashbox-body {
             background:url(../../assets/img/miss-wordy.png) no-repeat 50% 0 transparent;
-            padding-top: @navbar-height * 3;   
+            padding-top: @navbar-height * 3;
         }
         &:before {
             content:"";
@@ -191,7 +229,7 @@ h1.documentFirstHeading {
         background:url(../../assets/img/meetshaus-social.png) no-repeat 0% 95% transparent;
         .splashbox-body {
             background:url(../../assets/img/lovebirds.png) no-repeat 50% 0 transparent;
-            padding-top: @navbar-height * 3;   
+            padding-top: @navbar-height * 3;
         }
         &:before {
             content:"";

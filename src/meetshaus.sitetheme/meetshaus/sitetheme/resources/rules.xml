@@ -3,7 +3,7 @@
     xmlns="http://namespaces.plone.org/diazo"
     xmlns:css="http://namespaces.plone.org/diazo/css"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    
+
     <xsl:template match="activity|add-profile-tab|bookmark|comments|friendpile|like|like-box|live-stream|login-button|pronoun|recommendations|serverFbml|profile-pic|user-status">
       <xsl:element name="fb:{local-name()}" xmlns:fb="http://www.facebook.com/2008/fbml">
         <xsl:apply-templates select="@*|node()"/>
@@ -14,7 +14,7 @@
         <xsl:apply-templates select="@*|node()"/>
       </xsl:element>
     </xsl:template>
-    
+
     <!-- Setup custom login form -->
     <theme href="dist/signin.html" css:if-content="body.template-login_form" />
     <theme href="dist/signin.html" css:if-content="body.template-logged_out" />
@@ -27,55 +27,61 @@
 
     <!--<theme href="newtheme.html" css:if-content="body.section-blog" /> -->
     <theme href="dist/fullscreen.html" css:if-content="body.section-referenzen" />
-    
+
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
-        
+
         <notheme if="$ajax_load" />
 
         <theme href="dist/index.html" />
-        
-        <notheme if="$host = 'cms.meetshaus.de'" />
-        
-        <replace css:theme="title" css:content="title" />
 
+        <notheme if="$host = 'cms.meetshaus.de'" />
+
+        <replace css:theme="title" css:content="title" />
         <!-- Add meta tags -->
         <drop theme="/html/head/meta" />
-        
+
         <after content="/html/head/meta" theme-children="/html/head" />
-        <!-- Copy style, script and link tags in the order they appear in the content -->
-        <after
-            content="/html/head/style | /html/head/script | /html/head/link"
-            theme-children="/html/head"
-            />
 
-        <drop theme="/html/head/style" />
-        <drop theme="/html/head/link" />
+        <rules css:if-content="body.userrole-authenticated">
+            <!-- Copy style, script and link tags in the order they appear in the content -->
+            <after
+                content="/html/head/style | /html/head/script | /html/head/link"
+                theme-children="/html/head"
+                />
 
-        <!-- Drop scripts from theme footer if present -->
-        <drop theme="/html/body/script" />
+            <drop theme="/html/head/style" />
+            <drop theme="/html/head/script" />
+            <drop theme="/html/head/link" />
 
-        <after theme="/html/head/title">
-            <meta name="google-site-verification" content="Kr0I9aKFAgojLJV7mcpdK-cGtC0ivQcyKbs3Mhc9_v4" /> 
-        </after>
-        
-            <after theme="/html/head">
-                <link rel="shortcut icon" href="/++theme++meetshaus.sitetheme/images/favicon.ico" type="image/x-icon" />
-            </after>
-        <!-- replace over the id/class attributes on the body tag.
+            <!-- Drop scripts from theme footer if present -->
+            <drop theme="/html/body/script" />
+        </rules>
+
+        <!-- Custom favicon implementation -->
+        <drop css:content="head link[rel='apple-touch-icon']" />
+        <drop css:content="head link[rel='shortcut icon']" />
+        <!--<drop content="link[@type='image/x-icon']" />
+        <after theme="/html/head">
+            <link rel="shortcut icon" href="/++theme++example.jmstheme/img/favicon.ico" type="images/x-icon" />
+        </after>-->
+
+        <!-- Copy over the id/class attributes on the body tag.
              This is important for per-section styling -->
         <merge attributes="class" css:content="body" css:theme="body" />
-        <copy attributes="id dir" css:content="body" css:theme="body" />
+        <copy attributes="*" css:content="body" css:theme="body" />
 
+        <!-- CMSUI Editbar replacements -->
         <drop css:theme="#app-toolbar"
-            css:if-content="#anon-personalbar" />
+            css:if-content=".userrole-anonymous" />
+
         <replace css:theme="#app-toolbar" css:content="#app-toolbar" />
-            
+
         <!-- Logo (link target) -->
         <copy attributes="href" css:content='#portal-logo' css:theme=".app-brand" />
-        
+
         <!--<drop css:theme="#tree-decorator" css:if-content="#user-name" />-->
-            
+
         <replace css:content="#infobar"
                 css:theme="#contact-me"
                 css:if-content="body.section-referenzen" />
@@ -87,13 +93,13 @@
             <replace css:content-children="#portal-column-two > *"
                 css:theme-children="#app-sidebar" />
         </rules>
-        
+
         <replace css:content="#content-core > *" css:theme="#contact-me"
             css:if-content="body.section-impressum" />
 
         <replace css:content="#content > *" css:theme="#content"
             css:if-content="body.template-references-listing" />
-        
+
         <!-- Login form rules -->
         <replace css:content-children="#content-core"
                 css:theme-children="#app-signin-content"
@@ -107,12 +113,12 @@
         <replace css:content-children="#content"
                 css:theme-children="#app-signin-content"
                 css:if-content="body.template-mail_password_form" />
-        
+
         <!-- Content -->
-        <replace css:content-children="#content" 
+        <replace css:content-children="#content"
             css:theme-children="#content" />
 
-        <replace css:content-children="#content" 
+        <replace css:content-children="#content"
             css:theme-children="#main-content" />
 
         <after css:theme="#app-page-aside"
@@ -130,13 +136,13 @@
         <replace css:content-children="#infobar-author"
             css:theme-children="#app-brand-aside"
             css:if-not-content="body.section-front-page" />
-        
+
         <before css:content=".portalMessage" css:theme="#content" /> -->
-        
+
         <!-- Contact Form -->
         <replace css:content=".formid-kontakt" css:theme="#contact-me"
             css:if-content="body.section-kontakt" />
-        
+
     </rules>
 
 </rules>
