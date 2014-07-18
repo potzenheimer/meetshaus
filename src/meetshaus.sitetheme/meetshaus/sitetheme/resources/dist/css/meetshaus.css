@@ -1168,7 +1168,7 @@ html
 body
 {
     font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.42857143;
 
     color: #333;
@@ -1257,8 +1257,8 @@ img.image-right a > img,
 }
 hr
 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 22px;
+    margin-bottom: 22px;
 
     border: 0;
     border-top: 1px solid #eee;
@@ -1345,8 +1345,8 @@ h2,
 h3,
 .h3
 {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 22px;
+    margin-bottom: 11px;
 }
 h1 small,
 .h1 small,
@@ -1370,8 +1370,8 @@ h5,
 h6,
 .h6
 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 11px;
+    margin-bottom: 11px;
 }
 h4 small,
 .h4 small,
@@ -1391,50 +1391,50 @@ h6 .small,
 h1,
 .h1
 {
-    font-size: 36px;
+    font-size: 41px;
 }
 h2,
 .h2
 {
-    font-size: 30px;
+    font-size: 34px;
 }
 h3,
 .h3
 {
-    font-size: 24px;
+    font-size: 28px;
 }
 h4,
 .h4
 {
-    font-size: 18px;
+    font-size: 20px;
 }
 h5,
 .h5
 {
-    font-size: 14px;
+    font-size: 16px;
 }
 h6,
 .h6
 {
-    font-size: 12px;
+    font-size: 14px;
 }
 p
 {
-    margin: 0 0 10px;
+    margin: 0 0 11px;
 }
 .lead
 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 300;
     line-height: 1.4;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 @media (min-width: 768px)
 {
     .lead
     {
-        font-size: 21px;
+        font-size: 24px;
     }
 }
 small,
@@ -1572,8 +1572,8 @@ a.bg-danger:hover
 }
 .page-header
 {
-    margin: 40px 0 20px;
-    padding-bottom: 9px;
+    margin: 44px 0 22px;
+    padding-bottom: 10px;
 
     border-bottom: 1px solid #eee;
 }
@@ -1581,7 +1581,7 @@ ul,
 ol
 {
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 11px;
 }
 ul ul,
 ol ul,
@@ -1613,7 +1613,7 @@ ol ol
 dl
 {
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 dt,
 dd
@@ -1662,10 +1662,10 @@ abbr[data-original-title]
 }
 blockquote
 {
-    font-size: 17.5px;
+    font-size: 20px;
 
-    margin: 0 0 20px;
-    padding: 10px 20px;
+    margin: 0 0 22px;
+    padding: 11px 22px;
 
     border-left: 5px solid #eee;
 }
@@ -1731,7 +1731,7 @@ address
     font-style: normal;
     line-height: 1.42857143;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 code,
 kbd,
@@ -1771,13 +1771,13 @@ kbd kbd
 }
 pre
 {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.42857143;
 
     display: block;
 
-    margin: 0 0 10px;
-    padding: 9.5px;
+    margin: 0 0 11px;
+    padding: 10.5px;
 
     word-wrap: break-word;
     word-break: break-all;
@@ -2706,7 +2706,7 @@ th
 {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2921,7 +2921,7 @@ table th[class*='col-']
         overflow-y: hidden;
 
         width: 100%;
-        margin-bottom: 15px;
+        margin-bottom: 16.5px;
 
         border: 1px solid #ddd;
 
@@ -2981,13 +2981,13 @@ fieldset
 }
 legend
 {
-    font-size: 21px;
+    font-size: 24px;
     line-height: inherit;
 
     display: block;
 
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     padding: 0;
 
     color: #333;
@@ -3042,7 +3042,7 @@ input[type='checkbox']:focus
 }
 output
 {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.42857143;
 
     display: block;
@@ -3053,13 +3053,13 @@ output
 }
 .form-control
 {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.42857143;
 
     display: block;
 
     width: 100%;
-    height: 34px;
+    height: 36px;
     padding: 6px 12px;
 
     -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
@@ -3116,7 +3116,7 @@ input[type='time'],
 input[type='datetime-local'],
 input[type='month']
 {
-    line-height: 34px;
+    line-height: 36px;
     line-height: 1.42857143 \0;
 }
 input[type='date'].input-sm,
@@ -3124,14 +3124,14 @@ input[type='time'].input-sm,
 input[type='datetime-local'].input-sm,
 input[type='month'].input-sm
 {
-    line-height: 30px;
+    line-height: 33px;
 }
 input[type='date'].input-lg,
 input[type='time'].input-lg,
 input[type='datetime-local'].input-lg,
 input[type='month'].input-lg
 {
-    line-height: 46px;
+    line-height: 49px;
 }
 .form-group
 {
@@ -3144,7 +3144,7 @@ input[type='month'].input-lg
 
     display: block;
 
-    min-height: 20px;
+    min-height: 22px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -3217,19 +3217,19 @@ fieldset[disabled] .checkbox label
 }
 .input-sm
 {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
 
-    height: 30px;
+    height: 33px;
     padding: 5px 10px;
 
     border-radius: 3px;
 }
 select.input-sm
 {
-    line-height: 30px;
+    line-height: 33px;
 
-    height: 30px;
+    height: 33px;
 }
 textarea.input-sm,
 select[multiple].input-sm
@@ -3238,19 +3238,19 @@ select[multiple].input-sm
 }
 .input-lg
 {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.33;
 
-    height: 46px;
+    height: 49px;
     padding: 10px 16px;
 
     border-radius: 6px;
 }
 select.input-lg
 {
-    line-height: 46px;
+    line-height: 49px;
 
-    height: 46px;
+    height: 49px;
 }
 textarea.input-lg,
 select[multiple].input-lg
@@ -3263,37 +3263,37 @@ select[multiple].input-lg
 }
 .has-feedback .form-control
 {
-    padding-right: 42.5px;
+    padding-right: 45px;
 }
 .form-control-feedback
 {
-    line-height: 34px;
+    line-height: 36px;
 
     position: absolute;
     z-index: 2;
-    top: 25px;
+    top: 27px;
     right: 0;
 
     display: block;
 
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
 
     text-align: center;
 }
 .input-lg + .form-control-feedback
 {
-    line-height: 46px;
+    line-height: 49px;
 
-    width: 46px;
-    height: 46px;
+    width: 49px;
+    height: 49px;
 }
 .input-sm + .form-control-feedback
 {
-    line-height: 30px;
+    line-height: 33px;
 
-    width: 30px;
-    height: 30px;
+    width: 33px;
+    height: 33px;
 }
 .has-success .help-block,
 .has-success .control-label,
@@ -3484,7 +3484,7 @@ select[multiple].input-lg
 .form-horizontal .radio,
 .form-horizontal .checkbox
 {
-    min-height: 27px;
+    min-height: 29px;
 }
 .form-horizontal .form-group
 {
@@ -3513,7 +3513,7 @@ select[multiple].input-lg
 }
 .btn
 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     line-height: 1.42857143;
 
@@ -3892,7 +3892,7 @@ fieldset[disabled] .btn-link:focus
 .btn-lg,
 .btn-group-lg > .btn
 {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.33;
 
     padding: 10px 16px;
@@ -3902,7 +3902,7 @@ fieldset[disabled] .btn-link:focus
 .btn-sm,
 .btn-group-sm > .btn
 {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
 
     padding: 5px 10px;
@@ -3912,7 +3912,7 @@ fieldset[disabled] .btn-link:focus
 .btn-xs,
 .btn-group-xs > .btn
 {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
 
     padding: 1px 5px;
@@ -4001,7 +4001,7 @@ tbody.collapse.in
 }
 .dropdown-menu
 {
-    font-size: 14px;
+    font-size: 16px;
 
     position: absolute;
     z-index: 1000;
@@ -4037,7 +4037,7 @@ tbody.collapse.in
     overflow: hidden;
 
     height: 1px;
-    margin: 9px 0;
+    margin: 10px 0;
 
     background-color: #e5e5e5;
 }
@@ -4110,7 +4110,7 @@ tbody.collapse.in
 }
 .dropdown-header
 {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.42857143;
 
     display: block;
@@ -4411,10 +4411,10 @@ tbody.collapse.in
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn
 {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.33;
 
-    height: 46px;
+    height: 49px;
     padding: 10px 16px;
 
     border-radius: 6px;
@@ -4423,9 +4423,9 @@ select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
 select.input-group-lg > .input-group-btn > .btn
 {
-    line-height: 46px;
+    line-height: 49px;
 
-    height: 46px;
+    height: 49px;
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
@@ -4440,9 +4440,9 @@ select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
 select.input-group-lg > .input-group-btn > .btn
 {
-    line-height: 46px;
+    line-height: 49px;
 
-    height: 46px;
+    height: 49px;
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
@@ -4457,10 +4457,10 @@ select[multiple].input-group-lg > .input-group-btn > .btn
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn
 {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
 
-    height: 30px;
+    height: 33px;
     padding: 5px 10px;
 
     border-radius: 3px;
@@ -4469,9 +4469,9 @@ select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
 select.input-group-sm > .input-group-btn > .btn
 {
-    line-height: 30px;
+    line-height: 33px;
 
-    height: 30px;
+    height: 33px;
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon,
@@ -4486,9 +4486,9 @@ select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
 select.input-group-sm > .input-group-btn > .btn
 {
-    line-height: 30px;
+    line-height: 33px;
 
-    height: 30px;
+    height: 33px;
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon,
@@ -4521,7 +4521,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 }
 .input-group-addon
 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     line-height: 1;
 
@@ -4536,7 +4536,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 }
 .input-group-addon.input-sm
 {
-    font-size: 12px;
+    font-size: 14px;
 
     padding: 5px 10px;
 
@@ -4544,7 +4544,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 }
 .input-group-addon.input-lg
 {
-    font-size: 18px;
+    font-size: 20px;
 
     padding: 10px 16px;
 
@@ -4670,7 +4670,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
     overflow: hidden;
 
     height: 1px;
-    margin: 9px 0;
+    margin: 10px 0;
 
     background-color: #e5e5e5;
 }
@@ -4882,7 +4882,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
     position: relative;
 
     min-height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 
     border: 1px solid transparent;
 }
@@ -5025,13 +5025,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 }
 .navbar-brand
 {
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 22px;
 
     float: left;
 
     height: 50px;
-    padding: 15px 15px;
+    padding: 14px 15px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus
@@ -5088,11 +5088,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 }
 .navbar-nav
 {
-    margin: 7.5px -15px;
+    margin: 7px -15px;
 }
 .navbar-nav > li > a
 {
-    line-height: 20px;
+    line-height: 22px;
 
     padding-top: 10px;
     padding-bottom: 10px;
@@ -5119,7 +5119,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
     }
     .navbar-nav .open .dropdown-menu > li > a
     {
-        line-height: 20px;
+        line-height: 22px;
     }
     .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-nav .open .dropdown-menu > li > a:focus
@@ -5141,8 +5141,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn
     }
     .navbar-nav > li > a
     {
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 14px;
+        padding-bottom: 14px;
     }
     .navbar-nav.navbar-right:last-child
     {
@@ -5164,9 +5164,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 }
 .navbar-form
 {
-    margin-top: 8px;
+    margin-top: 7px;
     margin-right: -15px;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     margin-left: -15px;
     padding: 10px 15px;
 
@@ -5282,13 +5282,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 }
 .navbar-btn
 {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 .navbar-btn.btn-sm
 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 8.5px;
+    margin-bottom: 8.5px;
 }
 .navbar-btn.btn-xs
 {
@@ -5297,8 +5297,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 }
 .navbar-text
 {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
 @media (min-width: 768px)
 {
@@ -5562,7 +5562,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus
 }
 .breadcrumb
 {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     padding: 8px 15px;
 
     list-style: none;
@@ -5590,7 +5590,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus
 {
     display: inline-block;
 
-    margin: 20px 0;
+    margin: 22px 0;
     padding-left: 0;
 
     border-radius: 4px;
@@ -5671,7 +5671,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus
 .pagination-lg > li > a,
 .pagination-lg > li > span
 {
-    font-size: 18px;
+    font-size: 20px;
 
     padding: 10px 16px;
 }
@@ -5690,7 +5690,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus
 .pagination-sm > li > a,
 .pagination-sm > li > span
 {
-    font-size: 12px;
+    font-size: 14px;
 
     padding: 5px 10px;
 }
@@ -5708,7 +5708,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus
 }
 .pager
 {
-    margin: 20px 0;
+    margin: 22px 0;
     padding-left: 0;
 
     list-style: none;
@@ -5847,7 +5847,7 @@ a.label:focus
 }
 .badge
 {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 1;
 
@@ -5912,7 +5912,7 @@ a.list-group-item.active > .badge,
 }
 .jumbotron p
 {
-    font-size: 21px;
+    font-size: 24px;
     font-weight: 200;
 
     margin-bottom: 15px;
@@ -5944,7 +5944,7 @@ a.list-group-item.active > .badge,
     .jumbotron h1,
   .jumbotron .h1
     {
-        font-size: 63px;
+        font-size: 72px;
     }
 }
 .thumbnail
@@ -5953,7 +5953,7 @@ a.list-group-item.active > .badge,
 
     display: block;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     padding: 4px;
 
     -webkit-transition: all .2s ease-in-out;
@@ -5984,7 +5984,7 @@ a.thumbnail.active
 }
 .alert
 {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     padding: 15px;
 
     border: 1px solid transparent;
@@ -6094,8 +6094,8 @@ a.thumbnail.active
 {
     overflow: hidden;
 
-    height: 20px;
-    margin-bottom: 20px;
+    height: 22px;
+    margin-bottom: 22px;
 
     border-radius: 4px;
     background-color: #f5f5f5;
@@ -6104,8 +6104,8 @@ a.thumbnail.active
 }
 .progress-bar
 {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 22px;
 
     float: left;
 
@@ -6449,7 +6449,7 @@ a.list-group-item-danger.active:focus
 }
 .panel
 {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 
     border: 1px solid transparent;
     border-radius: 4px;
@@ -6475,7 +6475,7 @@ a.list-group-item-danger.active:focus
 }
 .panel-title
 {
-    font-size: 16px;
+    font-size: 18px;
 
     margin-top: 0;
     margin-bottom: 0;
@@ -6661,7 +6661,7 @@ a.list-group-item-danger.active:focus
 }
 .panel-group
 {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 .panel-group .panel
 {
@@ -6891,7 +6891,7 @@ a.list-group-item-danger.active:focus
 }
 .close
 {
-    font-size: 21px;
+    font-size: 24px;
     font-weight: bold;
     line-height: 1;
 
@@ -7087,7 +7087,7 @@ button.close
 }
 .tooltip
 {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.4;
 
     position: absolute;
@@ -7261,7 +7261,7 @@ button.close
 }
 .popover-title
 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     line-height: 18px;
 
@@ -10105,7 +10105,7 @@ ul.formTabs:after,
 #plone-contentmenu-workflow .state-pending,
 #plone-contentmenu-workflow .state-expired
 {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 1;
 
@@ -10359,7 +10359,7 @@ div.field span.required:after
 }
 #contentActionMenus dl.actionMenu
 {
-    line-height: 20px;
+    line-height: 22px;
 }
 #folderHeader,
 #contextHeader
@@ -10520,7 +10520,7 @@ a.historyComparePrevious span
 /* @end */
 ul.formTabs
 {
-    margin: 0 0 10px;
+    margin: 0 0 11px;
     margin-bottom: 0;
     padding-left: 0;
 
@@ -10576,7 +10576,7 @@ ul.formTabs .nav-divider
     overflow: hidden;
 
     height: 1px;
-    margin: 9px 0;
+    margin: 10px 0;
 
     background-color: #e5e5e5;
 }
@@ -10682,7 +10682,7 @@ ul.formTabs li
 }
 ul.formTabs li a
 {
-    line-height: 14px;
+    line-height: 16px;
 
     display: block;
 
@@ -10709,13 +10709,13 @@ input.standalone,
 input.addreference,
 input.submit-widget
 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     line-height: 1.42857143;
 
     display: inline-block;
 
-    margin-right: 10px;
+    margin-right: 11px;
     margin-bottom: 0;
     padding: 6px 12px;
 
@@ -10976,13 +10976,13 @@ input[type='search'],
 input[type='tel'],
 input[type='color']
 {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.42857143;
 
     display: block;
 
     width: 100%;
-    height: 34px;
+    height: 36px;
     padding: 6px 12px;
 
     -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
@@ -11156,19 +11156,19 @@ textarea
 }
 .input-sm
 {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
 
-    height: 30px;
+    height: 33px;
     padding: 5px 10px;
 
     border-radius: 3px;
 }
 select.input-sm
 {
-    line-height: 30px;
+    line-height: 33px;
 
-    height: 30px;
+    height: 33px;
 }
 textarea.input-sm,
 select[multiple].input-sm
@@ -11177,19 +11177,19 @@ select[multiple].input-sm
 }
 .input-lg
 {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.33;
 
-    height: 46px;
+    height: 49px;
     padding: 10px 16px;
 
     border-radius: 6px;
 }
 select.input-lg
 {
-    line-height: 46px;
+    line-height: 49px;
 
-    height: 46px;
+    height: 49px;
 }
 textarea.input-lg,
 select[multiple].input-lg
@@ -11201,7 +11201,7 @@ input[type='checkbox'] + label,
 {
     display: inline-block;
 
-    margin-left: 5px;
+    margin-left: 5.5px;
 }
 input.datetime-widget,
 select.datetime-widget,
@@ -11217,10 +11217,10 @@ select.datetime-widget,
 #form-widgets-title,
 #archetypes-fieldname-title input
 {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.33;
 
-    height: 46px;
+    height: 49px;
     padding: 10px 16px;
 
     border-radius: 6px;
@@ -11231,9 +11231,9 @@ select#form-widgets-IBasic-title,
 select#form-widgets-title,
 select#archetypes-fieldname-title input
 {
-    line-height: 46px;
+    line-height: 49px;
 
-    height: 46px;
+    height: 49px;
 }
 textarea#content .field input[type='text'][name$='.title'],
 textarea#form-widgets-IBasic-title,
@@ -11251,9 +11251,9 @@ select#form-widgets-IBasic-title,
 select#form-widgets-title,
 select#archetypes-fieldname-title input
 {
-    line-height: 46px;
+    line-height: 49px;
 
-    height: 46px;
+    height: 49px;
 }
 textarea#content .field input[type='text'][name$='.title'],
 textarea#form-widgets-IBasic-title,
@@ -11307,9 +11307,9 @@ div.field div.label,
 div.field span.label,
 div.field label
 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
-    line-height: 20px;
+    line-height: 22px;
 
     padding: 0;
 
@@ -11343,7 +11343,7 @@ div.formHelp
 }
 .formControls
 {
-    padding-top: 10px;
+    padding-top: 11px;
 }
 .fieldRequired,
 span.required
@@ -11379,8 +11379,8 @@ div.overlaybg div.close,
 div.overlay div.close
 {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 11px;
+    right: 11px;
 
     width: 30px;
     height: 30px;
@@ -11451,7 +11451,7 @@ div.overlay #createGroup fieldset
 }
 div.overlay p
 {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 div.overlay label
 {
@@ -11479,7 +11479,7 @@ table.plain
 {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 table.listing > thead > tr > th,
 table.plain > thead > tr > th,
@@ -11651,7 +11651,7 @@ table.grid th
 {
     font-size: 11px;
 
-    margin: 20px 0;
+    margin: 22px 0;
 }
 #category a.link-category,
 #category span.selectedTag
@@ -11674,7 +11674,7 @@ table.grid th
 dl.portalMessage
 {
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     margin-bottom: 0;
     padding: 15px;
 
@@ -11756,11 +11756,11 @@ dl.portalMessage.error .alert-link
 }
 body > .portalMessage
 {
-    padding-top: 60px;
+    padding-top: 61px;
 }
 .listingBar
 {
-    margin: 20px 0;
+    margin: 22px 0;
     padding-left: 0;
 
     list-style: none;
@@ -11837,7 +11837,7 @@ body > .portalMessage
 }
 .avatar
 {
-    line-height: 20px;
+    line-height: 22px;
 
     margin-right: 2px;
 
@@ -11852,21 +11852,21 @@ body > .portalMessage
 }
 .avatar.avatar-small
 {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
 }
 /* @group Image alignment classes */
 .image-left
 {
     float: left;
 
-    margin: 10px 20px 20px 0;
+    margin: 11px 22px 22px 0;
 }
 .image-right
 {
     float: right;
 
-    margin: 10px 0 20px 20px;
+    margin: 11px 0 22px 22px;
 }
 .image-inline
 {
@@ -11882,7 +11882,7 @@ img.image-right,
 
     display: block;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     padding: 4px;
 
     -webkit-transition: all .2s ease-in-out;
@@ -11938,7 +11938,7 @@ dd.image-caption
 .text-discreet,
 .discreet
 {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 1;
 
     color: #777;
@@ -11951,15 +11951,15 @@ dd.image-caption
 .text-pullquote,
 .pullquote
 {
-    line-height: 20px;
-    line-height: 17px;
+    line-height: 22px;
+    line-height: 19px;
 
     float: right;
     clear: right;
 
     width: 35%;
-    margin: 20px 0 20px 20px;
-    padding: 10px 20px;
+    margin: 22px 0 22px 22px;
+    padding: 11px 22px;
 
     color: #777;
     border-left: 5px solid #777;
@@ -11970,8 +11970,8 @@ dd.image-caption
 {
     clear: both;
 
-    margin: 0 0 20px;
-    padding: 20px;
+    margin: 0 0 22px;
+    padding: 22px;
 
     border-left: 5px solid #777;
     background: #eee;
@@ -15280,7 +15280,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 {
     margin-top: 50px;
 
-    border-top: 10px solid #74c4ea;
+    border-top: 11px solid #74c4ea;
 }
 .app-signin
 {
@@ -15306,7 +15306,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 {
     position: relative;
 
-    padding: 40px 20px;
+    padding: 44px 22px;
 }
 .page-signin
 {
@@ -15315,7 +15315,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 .page-signin .page-content
 {
-    padding: 20px 20px 80px;
+    padding: 22px 22px 88px;
 }
 @media (min-width: 768px)
 {
@@ -15326,7 +15326,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 .page-signin .documentDescription
 {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 .page-signin p
 {
@@ -15340,7 +15340,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 .app-register-actions
 {
-    padding: 20px 0;
+    padding: 22px 0;
 }
 .app-brand
 {
@@ -15370,17 +15370,17 @@ body.section-front-page .app-brandbar-deco
 }
 .app-brandbar-content
 {
-    padding-top: 20px;
+    padding-top: 22px;
 
     background: url(../assets/img/bird-blue-starting-left.png) no-repeat 50% 10px transparent;
 }
 .app-brandbar-content .app-brand-claim
 {
     font-family: Verdana, sans-serif;
-    font-size: 31.5px;
+    font-size: 36px;
     font-weight: normal;
 
-    padding: 18px 10px 0;
+    padding: 20px 11px 0;
 
     color: #74c4ea;
     background: url(../assets/img/bird-brown-left.png) no-repeat 33px 0 transparent;
@@ -15389,7 +15389,7 @@ body.section-front-page .app-brandbar-deco
 {
     font-family: 'AurulentSansRegular';
 
-    padding: 10px;
+    padding: 11px;
 }
 .app-brand-about b,
 .app-brand-about strong,
@@ -15411,25 +15411,25 @@ body.section-front-page .app-brandbar-deco
 }
 .app-brand-aside
 {
-    padding: 40px 20px 0 0;
+    padding: 44px 22px 0 0;
 }
 .app-brand-aside .tab-content
 {
-    padding: 20px 0;
+    padding: 22px 0;
 }
 .app-panel-heading
 {
     font-family: 'AurulentSansRegular', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 28px;
     font-size: 24px;
-    font-size: 21px;
     font-weight: 600;
     line-height: 1.1;
 
-    margin-top: 20px;
+    margin-top: 22px;
     margin-top: 0;
-    margin-bottom: 10px;
-    padding: 20px 20px 10px 10px;
+    margin-bottom: 11px;
+    padding: 22px 22px 11px 11px;
 
     color: inherit;
     color: #d3802a;
@@ -15466,10 +15466,10 @@ body.section-front-page .app-brandbar-deco
 }
 .app-footer-aside p
 {
-    font-size: 12px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 18px;
 
-    margin: 10px 0;
+    margin: 11px 0;
 
     color: #fff;
 }
@@ -15483,7 +15483,7 @@ body
 }
 body.template-theming-controlpanel .row
 {
-    margin: 0 20px;
+    margin: 0 22px;
 }
 body.ws-active b,
 body.ws-active strong
@@ -15492,7 +15492,7 @@ body.ws-active strong
 }
 body.mceContentBody
 {
-    padding: 20px;
+    padding: 22px;
 }
 b,
 strong
@@ -15524,7 +15524,7 @@ a:hover
 }
 .app-container
 {
-    margin: 40px auto;
+    margin: 44px auto;
 
     border: 1px solid #fff;
     border-radius: 8px;
@@ -15532,20 +15532,20 @@ a:hover
 }
 .app-toolbar + .app-container
 {
-    margin-top: 90px;
+    margin-top: 94px;
 }
 #about-the-author
 {
-    padding: 40px 20px 0 0;
+    padding: 44px 22px 0 0;
 }
 #about-the-author .tab-content
 {
-    padding: 20px 0;
+    padding: 22px 0;
 }
 #content-wrapper,
 #blog-teaser
 {
-    padding: 20px;
+    padding: 22px;
 }
 .app-page-header,
 .page-header
@@ -15561,8 +15561,8 @@ a:hover
 }
 h1.documentFirstHeading
 {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    margin-bottom: 22px;
+    padding-bottom: 11px;
 
     color: #d3802a;
     border-bottom: 1px solid #eee;
@@ -15578,12 +15578,12 @@ h1.documentFirstHeading
 }
 .app-content
 {
-    padding: 20px;
+    padding: 22px;
 }
 #blog-view,
 #blog-preview-listing
 {
-    padding: 10px;
+    padding: 11px;
 }
 #blog-view h2,
 #blog-preview-listing h2
@@ -15612,7 +15612,7 @@ h1.documentFirstHeading
 #blog-view .blog-actions,
 #blog-preview-listing .blog-actions
 {
-    margin-top: 20px;
+    margin-top: 22px;
 }
 #blogentry-view h2
 {
@@ -15628,12 +15628,12 @@ h1.documentFirstHeading
 }
 #sidebar
 {
-    padding: 10px;
+    padding: 11px;
 }
 #sidebar .portlet,
 #sidebar .infobox
 {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -15642,9 +15642,9 @@ h1.documentFirstHeading
 #sidebar .infobox .portletHeader
 {
     font-family: 'AurulentSansBold';
-    font-size: 21px;
+    font-size: 24px;
 
-    padding: 20px 20px 10px;
+    padding: 22px 22px 11px;
 
     color: #d3802a;
     border-bottom: 1px solid #ccc;
@@ -15653,9 +15653,9 @@ h1.documentFirstHeading
 #sidebar .infobox h4
 {
     font-family: 'AurulentSansBold';
-    font-size: 14px;
+    font-size: 16px;
 
-    padding: 10px 20px 10px;
+    padding: 11px 22px 11px;
 
     color: #d3802a;
     border-bottom: 1px solid #ccc;
@@ -15663,7 +15663,7 @@ h1.documentFirstHeading
 #sidebar .portlet .portletItem,
 #sidebar .infobox .portletItem
 {
-    padding: 0 10px 20px;
+    padding: 0 11px 22px;
 }
 #sidebar .portlet .portletItem h3,
 #sidebar .infobox .portletItem h3
@@ -15674,14 +15674,14 @@ h1.documentFirstHeading
 #sidebar .portlet .portletItem .tweetText,
 #sidebar .infobox .portletItem .tweetText
 {
-    font-size: 12px;
+    font-size: 14px;
 
     color: #777;
 }
 #sidebar .portlet .nav > li > a,
 #sidebar .infobox .nav > li > a
 {
-    padding: 0 20px;
+    padding: 0 22px;
 }
 #sidebar .portlet .nav .divider,
 #sidebar .infobox .nav .divider
@@ -15705,11 +15705,11 @@ h1.documentFirstHeading
 }
 .app-sidebar
 {
-    font-size: 12px;
+    font-size: 14px;
 }
 .app-aside-header
 {
-    padding: 20px;
+    padding: 22px;
 
     text-align: center;
 }
@@ -15717,8 +15717,8 @@ h1.documentFirstHeading
 {
     position: relative;
 
-    margin-bottom: 20px;
-    padding: 20px 20px 0 35px;
+    margin-bottom: 22px;
+    padding: 22px 22px 0 38.5px;
 
     border: 1px solid #d8e4e4;
     border-radius: 8px;
@@ -15801,7 +15801,7 @@ h1.documentFirstHeading
 }
 .splashbox .splashbox-content
 {
-    padding: 0 20px 20px 20px;
+    padding: 0 22px 22px 22px;
 }
 .splashbox .splashbox-content b
 {
@@ -15814,14 +15814,14 @@ h1.documentFirstHeading
 {
     float: left;
 
-    padding: 10px;
+    padding: 11px;
 
     border: 1px solid #d8e4e4;
     border-radius: 4px;
 }
 .tilebox h3 a
 {
-    font-size: 17.5px;
+    font-size: 20px;
 }
 .tilebox.metal
 {
@@ -15831,7 +15831,7 @@ h1.documentFirstHeading
 .tilebox h3,
 .tilebox p.discreet
 {
-    line-height: 20px;
+    line-height: 22px;
 }
 /**** Isotope Filtering ****/
 .isotope-item
