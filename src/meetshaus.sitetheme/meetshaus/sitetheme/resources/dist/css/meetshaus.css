@@ -15576,6 +15576,10 @@ h1.documentFirstHeading
     max-width: 100%;
     height: auto;
 }
+.app-content
+{
+    padding: 22px;
+}
 #blog-view,
 #blog-preview-listing
 {
@@ -15698,6 +15702,16 @@ h1.documentFirstHeading
 #sidebar .infobox.portletReferencesPortlet p
 {
     color: #777;
+}
+.app-sidebar
+{
+    font-size: 14px;
+}
+.app-aside-header
+{
+    padding: 22px;
+
+    text-align: center;
 }
 .splashbox
 {
