@@ -38,6 +38,7 @@
         <notheme if="$host = 'cms.meetshaus.de'" />
 
         <replace css:theme="title" css:content="title" />
+        <!-- <after theme="/html/head/title" css:content="base" /> -->
         <!-- Add meta tags -->
         <!-- <drop theme="/html/head/meta" />-->
         <before content="/html/head/meta" theme="/html/head/title" />
@@ -60,10 +61,9 @@
         <!-- Custom favicon implementation -->
         <drop css:content="head link[rel='apple-touch-icon']" />
         <drop css:content="head link[rel='shortcut icon']" />
-        <!--<drop content="link[@type='image/x-icon']" />
         <after theme="/html/head">
-            <link rel="shortcut icon" href="/++theme++example.jmstheme/img/favicon.ico" type="images/x-icon" />
-        </after>-->
+            <link rel="shortcut icon" href="/++theme++meetshaus.sitetheme/assets/ico/favicon.ico" type="images/x-icon" />
+        </after>
 
         <!-- Copy over the id/class attributes on the body tag.
              This is important for per-section styling -->
