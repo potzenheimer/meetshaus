@@ -9,6 +9,7 @@ $(document).ready(function () {
         // enhancement.
         return;
     }
+    $("#header").headroom();
     $('#link-container').masonry({
     // options
         itemSelector : '.tilebox',

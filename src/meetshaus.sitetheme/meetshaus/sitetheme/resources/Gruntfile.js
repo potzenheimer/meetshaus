@@ -51,6 +51,8 @@ module.exports = function (grunt) {
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
                     'bower_components/isotope/jquery.isotope.js',
+                    'bower_components/headroom.js/dist/headroom.js',
+                    'bower_components/headroom.js/dist/jQuery.headroom.js',
                     'js/application.js'
                 ],
                 dest: 'dist/js/<%= pkg.name %>.js'
@@ -59,6 +61,8 @@ module.exports = function (grunt) {
                 src: [
                     'bower_components/bootstrap/dist/js/bootstrap.js',
                     'bower_components/isotope/jquery.isotope.js',
+                    'bower_components/headroom.js/dist/headroom.js',
+                    'bower_components/headroom.js/dist/jQuery.headroom.js',
                     'js/application.js'
                 ],
                 dest: 'dist/js/application.js'
