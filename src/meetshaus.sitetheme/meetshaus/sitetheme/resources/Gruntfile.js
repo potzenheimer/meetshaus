@@ -69,41 +69,72 @@ module.exports = function (grunt) {
             }
         },
 
-        less: {
-            compileTheme: {
-                options: {
-                    strictMath: false,
-                    sourceMap: true,
-                    outputSourceFiles: true,
-                    sourceMapURL: '<%= pkg.name %>.css.map',
-                    sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
-                },
-                files: {
-                    'dist/css/<%= pkg.name %>.css': 'less/styles.less'
-                }
-            },
-            minify: {
-                options: {
-                    cleancss: true,
-                    report: 'min'
-                },
-                files: {
-                    'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
-                }
-            }
+    less: {
+      compileTheme: {
+        options: {
+          strictMath: false,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: '<%= pkg.name %>.css.map',
+          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
         },
+        files: {
+          'dist/css/<%= pkg.name %>.css': 'less/styles.less'
+        }
+      }
+    },
 
-        csscomb: {
-            sort: {
-                options: {
-                    config: 'less/.csscomb.json'
-                },
-                files: {
-                    'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css']
-                }
-            }
+    autoprefixer: {
+      options: {
+        browsers: [
+          'Android 2.3',
+          'Android >= 4',
+          'Chrome >= 20',
+          'Firefox >= 24', // Firefox 24 is the latest ESR
+          'Explorer >= 8',
+          'iOS >= 6',
+          'Opera >= 12',
+          'Safari >= 6'
+        ]
+      },
+      core: {
+        options: {
+          map: true
         },
+        src: 'dist/css/<%= pkg.name %>.css'
+      }
+    },
 
+    csslint: {
+      options: {
+        csslintrc: 'less/.csslintrc'
+      },
+      src: 'dist/css/<%= pkg.name %>.css'
+    },
+
+    cssmin: {
+      options: {
+        compatibility: 'ie8',
+        keepSpecialComments: '*',
+        noAdvanced: true
+      },
+      core: {
+        files: {
+          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
+        }
+      }
+    },
+
+    csscomb: {
+      sort: {
+        options: {
+          config: 'less/.csscomb.json'
+        },
+        files: {
+          'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css']
+        }
+      }
+    },
         uglify: {
             options: {
                 banner: '<%= banner %>'
@@ -185,6 +216,21 @@ module.exports = function (grunt) {
             theme: {}
         },
 
+        htmlmin: {
+          dist: {
+            options: {
+              removeComments: true,
+              collapseWhitespace: true
+            },
+            files: {
+              'dist/index.html': '_site/index.html',
+              'dist/signin.html': '_site/signin/index.html',
+              'dist/frontpage.html': '_site/frontpage/index.html',
+              'dist/fullscreen.html': '_site/references/index.html',
+            }
+          },
+        },
+
         sed: {
             cleanSourceAssets: {
                 path: 'dist/',
@@ -192,30 +238,36 @@ module.exports = function (grunt) {
                 replacement: '../assets/',
                 recursive: true
             },
-            cleanFPSourceCSS: {
-                path: 'dist/',
-                pattern: '../../dist/css/meetshaus.min.css',
-                replacement: 'dist/css/meetshaus.min.css',
-                recursive: true
+            cleanCSSFrontpage: {
+              path: 'dist/',
+              pattern: '../../dist/css/<%= pkg.name %>.min.css',
+              replacement: 'dist/css/<%= pkg.name %>.min.css',
+              recursive: true
             },
-            cleanSourceCSS: {
-                path: 'dist/',
-                pattern: '../dist/css/meetshaus.min.css',
-                replacement: 'dist/css/meetshaus.min.css',
-                recursive: true
+            cleanCSS: {
+              path: 'dist/',
+              pattern: '../dist/css/<%= pkg.name %>.min.css',
+              replacement: 'dist/css/<%= pkg.name %>.min.css',
+              recursive: true
             },
-            cleanSourceJS: {
-                path: 'dist/',
-                pattern: '../dist/js/meetshaus.min.js',
-                replacement: '/++theme++meetshaus.sitetheme/dist/js/meetshaus.min.js',
-                recursive: true
+            cleanJS: {
+              path: 'dist/',
+              pattern: '../dist/js/<%= pkg.name %>.min.js',
+              replacement: 'dist/js/<%= pkg.name %>.min.js',
+              recursive: true
             },
-            cleanFPSourceJS: {
-                path: 'dist/',
-                pattern: '../../dist/js/meetshaus.min.js',
-                replacement: '/++theme++meetshaus.sitetheme/dist/js/meetshaus.min.js',
-                recursive: true
+            cleanJSFrontpage: {
+              path: 'dist/',
+              pattern: '../../dist/js/<%= pkg.name %>.min.js',
+              replacement: 'dist/js/<%= pkg.name %>.min.js',
+              recursive: true
             },
+            // cleanFPSourceJS: {
+            //     path: 'dist/',
+            //     pattern: '../../dist/js/meetshaus.min.js',
+            //     replacement: '/++theme++meetshaus.sitetheme/dist/js/meetshaus.min.js',
+            //     recursive: true
+            // },
             cleanImgPath: {
                 path: 'dist/index.html',
                 pattern: '../assets/img/',
@@ -271,14 +323,6 @@ module.exports = function (grunt) {
         grunt.file.mkdir('dist/assets/');
     });
 
-    // Copy jekyll generated templates and rename for diazo
-    grunt.registerTask('copy-templates', '', function () {
-        grunt.file.copy('_site/index.html', 'dist/index.html');
-        grunt.file.copy('_site/signin/index.html', 'dist/signin.html');
-        grunt.file.copy('_site/frontpage/index.html', 'dist/frontpage.html');
-        grunt.file.copy('_site/references/index.html', 'dist/fullscreen.html');
-    });
-
     // Docs HTML validation task
     grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
@@ -295,7 +339,7 @@ module.exports = function (grunt) {
 
     // CSS distribution task.
     grunt.registerTask('less-compile', ['less:compileTheme']);
-    grunt.registerTask('dist-css', ['less-compile', 'csscomb', 'less:minify']);
+    grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'csscomb', 'cssmin']);
 
     // Assets distribution task.
     grunt.registerTask('dist-assets', ['newer:copy', 'newer:imagemin']);
@@ -304,7 +348,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dist-cb', ['rev']);
 
     // Template distribution task.
-    grunt.registerTask('dist-html', ['jekyll:theme', 'copy-templates', 'sed']);
+    grunt.registerTask('dist-html', ['jekyll:theme', 'htmlmin', 'sed']);
 
     // Concurrent distribution task
     grunt.registerTask('dist-cc', ['test', 'concurrent:cj', 'concurrent:ha']);
