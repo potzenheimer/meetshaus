@@ -3,6 +3,7 @@
 
 from five import grok
 from plone import api
+from plone.app.layout.viewlets.interfaces import IBelowContentBody
 from AccessControl import Unauthorized
 from Acquisition import aq_inner, aq_parent
 from plone.directives import form
@@ -44,6 +45,32 @@ class BlogEntryView(grok.View):
             return parent
         except Unauthorized:
             return None
+
+    def _readable_text(self):
+        context = aq_inner(self.context)
+        meta = context.title + ' ' + context.description
+        if context.text:
+            html = context.text.raw
+            transforms = api.portal.get_tool(name='portal_transforms')
+            stream = transforms.convertTo('text/plain',
+                                          html,
+                                          mimetype='text/html')
+            text = stream.getData().strip()
+            body = meta + ' ' + text
+        return body
+
+    def reading_time(self):
+        text = self._readable_text()
+        text_count = len(text.split(' '))
+        rt = text_count / 200
+        return rt
+
+
+class BlogEntryViewlet(grok.Viewlet):
+    grok.context(IBlogEntry)
+    grok.viewletmanager(IBelowContentBody)
+    grok.require('zope2.View')
+    grok.name('meetshaus.blog.BlogEntryViewlet')
 
     def _readable_text(self):
         context = aq_inner(self.context)

@@ -16,32 +16,19 @@
         tal:attributes="href parent/absolute_url">Blog</a>
     </h1>
 
-  <div id="blogentry-view"
+  <div class="blogentry-view" id="content-core"
         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
 
-        <div tal:replace="structure provider:plone.belowcontentbody" />
+    <div class="blogentry-header">
+      <h2 class="blogentry-title" tal:content="context/Title" />
+    </div>
 
-        <h6>Reading Time:</h6>
-        <p><span tal:content="view/reading_time" />
-          <small i18n:translate="">minutes</small>
-        </p>
-
-        <h2 class="blogentry-title" tal:content="context/Title" />
-
-        <p class="lead" tal:condition="context/Description">
-            <span tal:content="context/Description">Desc</span>
-        </p>
-
-        <div tal:content="structure context/text/output" />
-
-        <hr>
-        <p tal:define="date python:toLocalizedTime(context.EffectiveDate());"
-            class="documentByLine muted">
-            <span class="documentModified">Verfasst am <span tal:content="date">effective date</span></span>
-        </p>
-
-        <div tal:replace="structure provider:plone.belowcontenttitle" />
-
+    <p class="blogentry-abstract" tal:condition="context/Description">
+        <span tal:content="context/Description">Desc</span>
+    </p>
+    <div class="blogentry-body">
+        <div tal:replace="structure context/text/output" />
+    </div>
         <div tal:condition="view/parent_info">
             <tal:block tal:define="parent view/parent_info">
                 <div class="pull-right parent-link">
@@ -51,8 +38,8 @@
                 </div>
             </tal:block>
         </div>
-
   </div>
+  <div tal:replace="structure provider:plone.belowcontentbody" />
   </metal:content-core>
 </metal:main>
 

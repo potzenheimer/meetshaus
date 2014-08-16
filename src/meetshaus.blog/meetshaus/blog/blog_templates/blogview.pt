@@ -16,9 +16,50 @@
 
     <div tal:replace="structure provider:plone.belowcontenttitle" />
 
-    <div id="blog-view" tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                                    Batch python:modules['Products.CMFPlone'].Batch;
-                                    b_size python:5;b_start python:0;b_start request/b_start | b_start;">
+    <div class="blogentry-list" id="content-core"
+      tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                  Batch python:modules['Products.CMFPlone'].Batch;
+                  b_size python:5;b_start python:0;b_start request/b_start | b_start;">
+
+        <div class="blogentry-list" tal:define="batch view/batch">
+          <div class="blogentry-list-item" tal:repeat="item batch">
+            <div class="row">
+              <div class="col-xs-12 col-sm-3">
+              </div>
+              <div class="col-sm-9">
+                <span class="documentModified"
+                    tal:define="date python:toLocalizedTime(item.EffectiveDate());">
+                    <span tal:content="date">effective date</span></span>
+                <h2>
+                    <a href="" tal:attributes="href item/getURL"
+                        tal:content="item/Title">
+                        Title</a>
+                </h2>
+
+                <div class="entryDescription lead"
+                    tal:condition="item/Description">
+                    <span tal:content="item/Description" />
+                </div>
+
+                <tal:block tal:define="count repeat/item/number;
+                                       bodytext item/text/output;
+                                       item_obj item/getObject;
+                                       rawtext item_obj/@@text-transform/text/text/plain">
+                    <div tal:condition="python:count == 1" class="entry-body">
+                        <div tal:content="structure item/text/output" />
+                    </div>
+                    <div tal:condition="python:count > 1"
+                        class="entry-body"
+                        tal:define="richtext python:context.restrictedTraverse('@@plone').cropText(rawtext, 320, '[...]')">
+                        <p><span tal:replace="richtext" />
+                            <a href="" tal:attributes="href item/getURL">weiterlesen</a>
+                        </p>
+                    </div>
+                </tal:block>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <tal:entries tal:define="batch view/batch">
             <div class="blogEntry" tal:repeat="item batch">
