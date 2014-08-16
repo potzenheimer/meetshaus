@@ -9,26 +9,31 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-  
+
     <h1 class="documentFirstHeading">
       <a href="" tal:define="parent view/parent_info"
         tal:condition="parent"
         tal:attributes="href parent/absolute_url">Blog</a>
     </h1>
-  
+
   <div id="blogentry-view"
         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
-        
+
         <div tal:replace="structure provider:plone.belowcontentbody" />
-        
+
+        <h6>Reading Time:</h6>
+        <p><span tal:content="view/reading_time" />
+          <small i18n:translate="">minutes</small>
+        </p>
+
         <h2 class="blogentry-title" tal:content="context/Title" />
-        
+
         <p class="lead" tal:condition="context/Description">
             <span tal:content="context/Description">Desc</span>
         </p>
-        
+
         <div tal:content="structure context/text/output" />
-        
+
         <hr>
         <p tal:define="date python:toLocalizedTime(context.EffectiveDate());"
             class="documentByLine muted">
@@ -36,7 +41,7 @@
         </p>
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
-        
+
         <div tal:condition="view/parent_info">
             <tal:block tal:define="parent view/parent_info">
                 <div class="pull-right parent-link">
@@ -46,7 +51,7 @@
                 </div>
             </tal:block>
         </div>
-                
+
   </div>
   </metal:content-core>
 </metal:main>
