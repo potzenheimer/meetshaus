@@ -7,6 +7,9 @@
 // Brown
 @app-brown:         #d3802a;
 
+@mh-blue:           @app-primary;
+@mh-brown:          @app-brown;
+
 // Gray
 @app-gray:                      #5a5f64;
 @app-gray-light:                #e3e4e5;
@@ -26,8 +29,29 @@
 @headings-font-weight:    600;
 
 
+// Basics of a navbar
+@navbar-height:                    75px;
+@navbar-margin-bottom:             @line-height-computed;
+@navbar-border-radius:             0;
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height:       340px;
+
+@navbar-default-color:             #777;
+@navbar-default-bg:                #fff;
+@navbar-default-border:            #fff;
+
+// Navbar links
+@navbar-default-link-color:                @app-primary;
+@navbar-default-link-hover-color:          darken(@app-brown, 5%);
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         @app-brown;
+@navbar-default-link-active-bg:            transparent;
+@navbar-default-link-disabled-color:       #ccc;
+@navbar-default-link-disabled-bg:          transparent;
+
+
 // Custom application navbar
-@navbar-border-radius:                      0;
 @navbar-inverse-bg:                         @app-gray;
 @navbar-inverse-link-color:                 @gray-lighter;
 @navbar-inverse-link-hover-color:           @brand-primary;

@@ -28,6 +28,9 @@
     <!--<theme href="newtheme.html" css:if-content="body.section-blog" /> -->
     <theme href="dist/fullscreen.html" css:if-content="body.section-referenzen" />
 
+    <theme href="dist/blog.html" css:if-content="body.section-blog" />
+    <theme href="dist/blog.html" css:if-content="body.portaltype-meetshaus-blog-blogentry" />
+
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
 
@@ -79,25 +82,13 @@
         <!-- Logo (link target) -->
         <copy attributes="href" css:content='#portal-logo' css:theme=".app-brand" />
 
+        <replace css:content="#portal-globalnav li"
+            css:theme-children="#app-navbar-nav" />
         <!--<drop css:theme="#tree-decorator" css:if-content="#user-name" />-->
 
         <replace css:content="#infobar"
                 css:theme="#contact-me"
                 css:if-content="body.section-referenzen" />
-
-        <rules css:if-content="body.section-front-page">
-            <replace css:content="#introduction" css:theme="#about-me" />
-            <replace css:content="#content-core" css:theme-children="#app-hero" />
-            <replace css:content="#content-blog-listing" css:theme-children="#content" />
-            <replace css:content-children="#portal-column-two > *"
-                css:theme-children="#app-sidebar" />
-        </rules>
-
-        <replace css:content="#content-core > *" css:theme="#contact-me"
-            css:if-content="body.section-impressum" />
-
-        <replace css:content="#content > *" css:theme="#content"
-            css:if-content="body.template-references-listing" />
 
         <!-- Login form rules -->
         <replace css:content-children="#content-core"
@@ -112,6 +103,27 @@
         <replace css:content-children="#content"
                 css:theme-children="#app-signin-content"
                 css:if-content="body.template-mail_password_form" />
+
+        <rules css:if-content="body.portaltype-meetshaus-blog-blogentry">
+            <replace css:content-children="#content-core"
+                css:theme-children="#content" />
+            <replace css:content="#blogentry-aside"
+                css:theme="#blogentry-aside" />
+        </rules>
+
+        <rules css:if-content="body.section-front-page">
+            <replace css:content="#introduction" css:theme="#about-me" />
+            <replace css:content="#content-core" css:theme-children="#app-hero" />
+            <replace css:content="#content-blog-listing" css:theme-children="#content" />
+            <replace css:content-children="#portal-column-two > *"
+                css:theme-children="#app-sidebar" />
+        </rules>
+
+        <replace css:content="#content-core > *" css:theme="#contact-me"
+            css:if-content="body.section-impressum" />
+
+        <replace css:content="#content > *" css:theme="#content"
+            css:if-content="body.template-references-listing" />
 
         <!-- Content -->
         <replace css:content-children="#content"

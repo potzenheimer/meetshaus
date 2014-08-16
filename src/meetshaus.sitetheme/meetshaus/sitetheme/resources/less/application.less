@@ -1,64 +1,6 @@
 // Application specific styles
 // ---------------------------
 
-@mh-blue:      #74c4ea;
-@mh-brown:     #d3802a;
-
-body {
-    background:#d9e4e4;
-    &.template-theming-controlpanel .row {
-        // Fix theming control panel
-        margin: 0 @line-height-computed;
-    }
-    // Set font weights if webfont is active
-  &.ws-active {
-    // Default twbs weight for headings 500 not provided by Open Sans
-    @headings-font-weight: 600;
-    b,
-    strong {
-        font-weight: 600;
-    }
-  }
-  &.mceContentBody {
-    padding: @line-height-computed;
-  }
-}
-// prevent fake bolds
-b,
-strong {
-    font-weight: 600;
-    .ws-active & {
-        font-weight: 600;
-    }
-}
-
-a {
-    outline: none;
-}
-
-a:hover {
-  .transition(color .5s linear);
-}
-
-.app-primary {
-    color:@app-primary;
-}
-
-.visualClear {
-    clear: both;
-}
-
-.headroom,
-.app-toolbar {
-    .transition(transform 200ms linear);
-}
-.headroom--pinned {
-    .translate(0%, 0%);
-}
-.headroom--unpinned {
-    .translate(0, -100%);
-}
-
 .app-container {
     margin: @line-height-computed * 2 auto;
     border: 1px solid #fff;
@@ -107,6 +49,16 @@ h1.documentFirstHeading {
 
 .app-content {
     padding: @line-height-computed;
+}
+
+.app-content-body {
+    @media (min-width: @screen-md-min) {
+        padding-right: ceil((@line-height-computed * 2));
+        padding-left: ceil((@line-height-computed * 2));
+        p {
+            margin-bottom: @line-height-computed;
+        }
+    }
 }
 
 // Blog
@@ -207,148 +159,5 @@ h1.documentFirstHeading {
     padding: @line-height-computed;
     .text-center();
 }
-
-// Content boxes
-
-.splashbox {
-    border: 1px solid #d8e4e4;
-    border-radius: 8px;
-    background: white;
-    padding: @line-height-computed @line-height-computed 0px @line-height-computed * 1.75;
-    position:relative;
-    margin-bottom: @line-height-computed;
-    &.splash-adwords {
-        background: url('../../assets/img/meetshaus-adwords.png') no-repeat 0% 95% transparent;
-        .splashbox-body {
-            background:url(../../assets/img/edward.png) no-repeat 50% 0 transparent;
-            padding-top: @navbar-height * 3;
-        }
-        &:before {
-            content:"";
-            background:url(../../assets/img/bow-adwords.png) no-repeat 0% 0% transparent;
-            display: block;
-            .size(88px, 75px);
-            position: absolute;
-            top: -4px;
-            right: -4px;
-        }
-    }
-    &.splash-words {
-        background:url(../../assets/img/meetshaus-words.png) no-repeat 0% 95% transparent;
-        .splashbox-body {
-            background:url(../../assets/img/miss-wordy.png) no-repeat 50% 0 transparent;
-            padding-top: @navbar-height * 3;
-        }
-        &:before {
-            content:"";
-            background:url(../../assets/img/bow-words.png) no-repeat 0% 0% transparent;
-            display: block;
-            .size(88px, 75px);
-            position: absolute;
-            top: -4px;
-            right: -4px;
-        }
-    }
-    &.splash-social {
-        background:url(../../assets/img/meetshaus-social.png) no-repeat 0% 95% transparent;
-        .splashbox-body {
-            background:url(../../assets/img/lovebirds.png) no-repeat 50% 0 transparent;
-            padding-top: @navbar-height * 3;
-        }
-        &:before {
-            content:"";
-            background:url(../../assets/img/bow-social.png) no-repeat 0% 0% transparent;
-            display: block;
-            .size(88px, 75px);
-            position: absolute;
-            top: -4px;
-            right: -4px;
-        }
-    }
-    .splashbox-content {
-       padding: 0px @line-height-computed @line-height-computed @line-height-computed;
-        b {
-            color:#d3802a;
-            font-family: 'AurulentSansBold';
-            font-weight: normal;
-        }
-    }
-}
-
-// Tileboxes (masonry references view)
-//-----------------------------------
-
-.tilebox {
-    //width: 200px;
-    //margin: 10px 10px 10px 0;
-    padding: @line-height-computed / 2;
-    float:left;
-    border:1px solid #d8e4e4;
-    border-radius: @border-radius-base;
-    h3 a {
-        font-size: @font-size-base * 1.25;
-    }
-    &.metal {
-        background: @app-brown;
-        color: #fff;
-    }
-}
-.tilebox h3,
-.tilebox p.discreet {
-    line-height: @line-height-computed;
-}
-
-
-/**** Isotope Filtering ****/
-
-.isotope-item {
-  z-index: 2;
-}
-
-.isotope-hidden.isotope-item {
-  pointer-events: none;
-  z-index: 1;
-}
-
-/**** Isotope CSS3 transitions ****/
-
-.isotope,
-.isotope .isotope-item {
-  -webkit-transition-duration: 0.8s;
-     -moz-transition-duration: 0.8s;
-      -ms-transition-duration: 0.8s;
-       -o-transition-duration: 0.8s;
-          transition-duration: 0.8s;
-}
-
-.isotope {
-  -webkit-transition-property: height, width;
-     -moz-transition-property: height, width;
-      -ms-transition-property: height, width;
-       -o-transition-property: height, width;
-          transition-property: height, width;
-}
-
-.isotope .isotope-item {
-  -webkit-transition-property: -webkit-transform, opacity;
-     -moz-transition-property:    -moz-transform, opacity;
-      -ms-transition-property:     -ms-transform, opacity;
-       -o-transition-property:      -o-transform, opacity;
-          transition-property:         transform, opacity;
-}
-
-/**** disabling Isotope CSS3 transitions ****/
-
-.isotope.no-transition,
-.isotope.no-transition .isotope-item,
-.isotope .isotope-item.no-transition {
-  -webkit-transition-duration: 0s;
-     -moz-transition-duration: 0s;
-      -ms-transition-duration: 0s;
-       -o-transition-duration: 0s;
-          transition-duration: 0s;
-}
-
-/* End: Recommended Isotope styles */
 
 

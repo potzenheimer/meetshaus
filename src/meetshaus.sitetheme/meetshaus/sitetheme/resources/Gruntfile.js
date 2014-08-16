@@ -226,6 +226,7 @@ module.exports = function (grunt) {
               'dist/index.html': '_site/index.html',
               'dist/signin.html': '_site/signin/index.html',
               'dist/frontpage.html': '_site/frontpage/index.html',
+              'dist/blog.html': '_site/blog/index.html',
               'dist/fullscreen.html': '_site/references/index.html',
             }
           },
@@ -253,7 +254,7 @@ module.exports = function (grunt) {
             cleanJS: {
               path: 'dist/',
               pattern: '../dist/js/<%= pkg.name %>.min.js',
-              replacement: 'dist/js/<%= pkg.name %>.min.js',
+              replacement: '/++theme++meetshaus.sitetheme/dist/js/<%= pkg.name %>.min.js',
               recursive: true
             },
             cleanJSFrontpage: {
@@ -280,6 +281,11 @@ module.exports = function (grunt) {
             },
             cleanImgPathSignin: {
                 path: 'dist/signin.html',
+                pattern: '../assets/img/',
+                replacement: 'assets/img/',
+            },
+            leanImgPathBlog: {
+                path: 'dist/blog.html',
                 pattern: '../assets/img/',
                 replacement: 'assets/img/',
             }
