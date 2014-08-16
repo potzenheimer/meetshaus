@@ -1,0 +1,64 @@
+//
+// Basic scaffolding and resets
+// -----------------------------------------------
+
+body {
+    background:#d9e4e4;
+    &.template-theming-controlpanel .row {
+        // Fix theming control panel
+        margin: 0 @line-height-computed;
+    }
+    // Set font weights if webfont is active
+  &.ws-active {
+    // Default twbs weight for headings 500 not provided by Open Sans
+    @headings-font-weight: 600;
+    b,
+    strong {
+        font-weight: 600;
+    }
+  }
+  &.mceContentBody {
+    padding: @line-height-computed;
+  }
+}
+// prevent fake bolds
+b,
+strong {
+    font-weight: 600;
+    .ws-active & {
+        font-weight: 600;
+    }
+}
+
+a {
+    outline: none;
+}
+
+a:hover {
+  .transition(color .5s linear);
+}
+
+.visualClear {
+    clear: both;
+}
+
+.headroom,
+.app-toolbar {
+    .transition(transform 200ms linear);
+}
+.headroom--pinned {
+    .translate(0%, 0%);
+}
+.headroom--unpinned {
+    .translate(0, -100%);
+}
+
+// Application highlight colors
+
+.app-primary {
+    color: @app-primary;
+}
+
+.app-secondary {
+    color: @app-brown;
+}

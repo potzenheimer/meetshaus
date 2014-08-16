@@ -1,0 +1,51 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    {% include head.html %}
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip to main content</a>
+    {% include toolbar.html %}
+    <!-- Docs master nav -->
+    <div class="container app-container">
+
+    {% include brandbar-blog.html %}
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <div class="blogentry-aside" id="blogentry-aside">
+                    <h6>Verfasst am</h6>
+                    <p>13.07.2014</p>
+                    <h6>Reading Time</h6>
+                    <p><span>4</span>
+                        <small>minutes</small>
+                    </p>
+                    <hr>
+                    <p>
+                    <a class="app-brand" href="/">
+                        <img class="img-responsive" src="{{ page.base_url }}assets/img/logo.png" />
+                    </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9">
+                <div class="app-content" role="main">
+                      {{ content }}
+                </div>
+            </div>
+        </div>
+
+        {% include footer.html %}
+
+    </div>
+    {% include javascript.html %}
+    <div id="app-js-slot">
+        {% include webfonts.html %}
+        {% include analytics.html %}
+    </div>
+  </body>
+</html>

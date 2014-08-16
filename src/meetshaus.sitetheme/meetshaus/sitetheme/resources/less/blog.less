@@ -1,0 +1,37 @@
+//
+// Blog listing and entries
+// ------------------------------------
+
+
+.blogentry-header {
+  margin-bottom: ceil((@line-height-computed * 1.5));
+}
+
+.blogentry-title {
+  font-family:'AurulentSansBold';
+  color: @app-primary;
+}
+
+.blogentry-abstract {
+  margin-bottom: @line-height-computed;
+  font-family: 'AurulentSansRegular';
+  font-size: floor((@font-size-base * 1.5));
+  font-weight: 300;
+  line-height: 1.4;
+  color: @gray;
+
+  @media (min-width: @screen-sm-min) {
+    font-size: (@font-size-base * 1.75);
+  }
+}
+
+.blogentry-body {
+  @media (min-width: @screen-sm-min) {
+    font-size: (@font-size-base + 2);
+    h2,
+    h3 {
+      margin-top: ceil((@line-height-computed * 2));
+      margin-bottom: @line-height-computed;
+    }
+  }
+}
