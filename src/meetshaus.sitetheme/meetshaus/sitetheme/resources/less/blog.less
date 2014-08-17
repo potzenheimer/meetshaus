@@ -11,7 +11,7 @@
 
 .blogentry-header {
   padding-bottom: ((@line-height-computed / 2) - 1);
-  margin: (@line-height-computed * 2) 0 ceil((@line-height-computed * 1.5));
+  margin: (@line-height-computed * 2) 0 @line-height-computed;
   border-top: 1px solid @page-header-border-color;
 }
 
@@ -51,5 +51,16 @@
   @media (min-width: @screen-sm-min) {
     margin-bottom: ceil((@navbar-height * 2));
   }
+}
+
+.blogentry-aside-title {
+  font-family: @app-font-default;
+  color: @gray-light;
+}
+
+.blogentry-aside-text {
+  font-size: floor((@font-size-base * 1.5));
+  font-weight: 300;
+  color: @gray;
 }
 

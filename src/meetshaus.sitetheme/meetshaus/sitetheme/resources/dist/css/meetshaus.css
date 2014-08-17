@@ -17505,7 +17505,7 @@ a:hover
 }
 .app-brandbar
 {
-    margin-bottom: 75px;
+    margin-bottom: 38px;
 }
 .app-navbar-nav
 {
@@ -18038,7 +18038,7 @@ fieldset[disabled] .btn-xing.active
 }
 .blogentry-header
 {
-    margin: 44px 0 33px;
+    margin: 44px 0 22px;
     padding-bottom: 10px;
 
     border-top: 1px solid #eee;
@@ -18093,6 +18093,19 @@ fieldset[disabled] .btn-xing.active
     {
         margin-bottom: 150px;
     }
+}
+.blogentry-aside-title
+{
+    font-family: 'AurulentSansRegular';
+
+    color: #777;
+}
+.blogentry-aside-text
+{
+    font-size: 24px;
+    font-weight: 300;
+
+    color: #555;
 }
 .app-footer .app-footer-body
 {

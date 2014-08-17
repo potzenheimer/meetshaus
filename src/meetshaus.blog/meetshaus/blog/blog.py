@@ -43,7 +43,7 @@ class BlogView(grok.View):
         return self.get_entries(year=year, month=month, subject=subject)
 
     def batch(self):
-        b_size = 5
+        b_size = 10
         b_start = self.request.form.get('b_start', 0)
         return Batch(self.blogitems(), b_size, b_start, orphan=1)
 

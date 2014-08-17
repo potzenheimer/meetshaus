@@ -150,6 +150,13 @@
 
         <before css:content=".portalMessage" css:theme="#content" />
 
+        <replace css:content=".configlets">
+          <ul class="nav nav-list checkbox">
+            <xsl:apply-templates />
+          </ul>
+        </replace>
+
+
         <!-- Contact Form -->
         <replace css:content=".formid-kontakt" css:theme="#contact-me"
             css:if-content="body.section-kontakt" />

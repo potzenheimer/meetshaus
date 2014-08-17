@@ -260,7 +260,7 @@ module.exports = function (grunt) {
             cleanJSFrontpage: {
               path: 'dist/',
               pattern: '../../dist/js/<%= pkg.name %>.min.js',
-              replacement: 'dist/js/<%= pkg.name %>.min.js',
+              replacement: '/++theme++meetshaus.sitetheme/dist/js/<%= pkg.name %>.min.js',
               recursive: true
             },
             // cleanFPSourceJS: {
