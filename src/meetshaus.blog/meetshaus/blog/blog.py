@@ -1,19 +1,18 @@
-from five import grok
-from Acquisition import aq_inner
+# -*- coding: UTF-8 -*-
+""" Module providing folderish blog content type """
 import calendar
+from Acquisition import aq_inner
 from DateTime import DateTime
-from plone.directives import form
-from zope import schema
-from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
-try:
-    from plone.app.discussion.interfaces import IConversation
-    USE_PAD = True
-except ImportError:
-    USE_PAD = False
-
+from five import grok
+from plone import api
 from plone.app.contentlisting.interfaces import IContentListing
+from plone.app.discussion.interfaces import IConversation
+from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
+from plone.directives import form
+from zope import schema
+
 from meetshaus.blog.blogentry import IBlogEntry
 
 from meetshaus.blog import MessageFactory as _
@@ -49,19 +48,12 @@ class BlogView(grok.View):
         return Batch(self.blogitems(), b_size, b_start, orphan=1)
 
     def commentsEnabled(self, ob):
-        if USE_PAD:
-            conversation = IConversation(ob)
-            return conversation.enabled()
-        else:
-            return self.portal_discussion.isDiscussionAllowedFor(ob)
+        conversation = IConversation(ob)
+        return conversation.enabled()
 
     def commentCount(self, ob):
-        if USE_PAD:
-            conversation = IConversation(ob)
-            return len(conversation)
-        else:
-            discussion = self.portal_discussion.getDiscussionFor(ob)
-            return discussion.replyCount(ob)
+        conversation = IConversation(ob)
+        return len(conversation)
 
     def _base_query(self):
         context = aq_inner(self.context)
@@ -89,3 +81,22 @@ class BlogView(grok.View):
                                       range='minmax')
         results = catalog.searchResults(**query)
         return IContentListing(results)
+
+    def _readable_text(self, uid):
+        context = api.content.get(UID=uid)
+        meta = context.title + ' ' + context.description
+        if context.text:
+            html = context.text.raw
+            transforms = api.portal.get_tool(name='portal_transforms')
+            stream = transforms.convertTo('text/plain',
+                                          html,
+                                          mimetype='text/html')
+            text = stream.getData().strip()
+            body = meta + ' ' + text
+        return body
+
+    def reading_time(self, uid):
+        text = self._readable_text(uid)
+        text_count = len(text.split(' '))
+        rt = text_count / 200
+        return rt

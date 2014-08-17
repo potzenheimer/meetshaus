@@ -105,7 +105,7 @@
                 css:if-content="body.template-mail_password_form" />
 
         <rules css:if-content="body.portaltype-meetshaus-blog-blogentry">
-            <replace css:content-children="#content-core"
+            <replace css:content-children="#content"
                 css:theme-children="#content" />
             <replace css:content="#blogentry-aside"
                 css:theme="#blogentry-aside" />
@@ -133,7 +133,7 @@
             css:theme-children="#main-content" />
 
         <after css:theme="#app-page-aside"
-            css:content="#viewlet-below-content" />
+            css:content="#disqus_thread_wrapper" />
 
         <replace css:content-children="#portal-column-one > *"
             css:theme-children="#app-sidebar" />
@@ -148,7 +148,7 @@
             css:theme-children="#app-brand-aside"
             css:if-not-content="body.section-front-page" />
 
-        <before css:content=".portalMessage" css:theme="#content" /> -->
+        <before css:content=".portalMessage" css:theme="#content" />
 
         <!-- Contact Form -->
         <replace css:content=".formid-kontakt" css:theme="#contact-me"

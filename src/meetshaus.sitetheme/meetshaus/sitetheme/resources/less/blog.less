@@ -3,13 +3,21 @@
 // ------------------------------------
 
 
+.blogentry {
+  @media (min-width: @screen-md-min) {
+    padding-left: ceil((@line-height-computed * 2));
+  }
+}
+
 .blogentry-header {
-  margin-bottom: ceil((@line-height-computed * 1.5));
+  padding-bottom: ((@line-height-computed / 2) - 1);
+  margin: (@line-height-computed * 2) 0 ceil((@line-height-computed * 1.5));
+  border-top: 1px solid @page-header-border-color;
 }
 
 .blogentry-title {
   font-family:'AurulentSansBold';
-  color: @app-primary;
+  color: @app-brown;
 }
 
 .blogentry-abstract {
@@ -35,3 +43,13 @@
     }
   }
 }
+
+.blogentry-aside {
+  margin-top: floor((@line-height-computed * 2));
+  margin-bottom: @navbar-height;
+  border-top: 1px solid @page-header-border-color;
+  @media (min-width: @screen-sm-min) {
+    margin-bottom: ceil((@navbar-height * 2));
+  }
+}
+

@@ -13,30 +13,11 @@
     <!-- Docs master nav -->
     <div class="container app-container">
 
-    {% include brandbar-blog.html %}
+        {% include brandbar-blog.html %}
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-3">
-                <div class="blogentry-aside" id="blogentry-aside">
-                    <h6>Verfasst am</h6>
-                    <p>13.07.2014</p>
-                    <h6>Reading Time</h6>
-                    <p><span>4</span>
-                        <small>minutes</small>
-                    </p>
-                    <hr>
-                    <p>
-                    <a class="app-brand" href="/">
-                        <img class="img-responsive" src="{{ page.base_url }}assets/img/logo.png" />
-                    </a>
-                    </p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-9">
-                <div class="app-content" role="main">
-                      {{ content }}
-                </div>
-            </div>
+
+        <div class="app-content" role="main">
+          {{ content }}
         </div>
 
         {% include footer.html %}

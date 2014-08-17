@@ -13,7 +13,7 @@
   <include package=".portlets" />
   <!-- Grok the package to initialise schema interfaces and content classes -->
   <grok:grok package="." />
-  
+
   <i18n:registerTranslations directory="locales" />
 
   <!-- Register an extension profile to make the product installable
@@ -27,5 +27,12 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+
+  <plone:behavior
+    title="Sisosha Simple Social Sharing"
+    description="Make all items of this type display simple sharing buttons"
+    provides="meetshaus.blog.socialsharing.ISocialSharing"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    />
 
 </configure>

@@ -25,6 +25,31 @@
           <div class="blogentry-list-item" tal:repeat="item batch">
             <div class="row">
               <div class="col-xs-12 col-sm-3">
+                <div class="blogentry-aside" id="blogentry-aside">
+                  <div class="blogentry-aside-section" tal:define="date python:toLocalizedTime(item.EffectiveDate());">
+                      <div class="h5 blogentry-aside-title">Verfasst am</div>
+                      <p tal:content="date">effective date</p>
+                  </div>
+                  <div class="blogentry-aside-section" tal:define="categories item/Subject|nothing"
+                        tal:condition="categories">
+                      <div class="h5 blogentry-aside-title">Abgelegt unter</div>
+                      <p>
+                      <span tal:repeat="category categories">
+                        <a href=""
+                           class="blogentry-aside-category"
+                           rel="tag"
+                           tal:content="category"
+                           tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@search?Subject%3Alist=${category}">
+                          Category
+                        </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
+                      </span>
+                      </p>
+                  </div>
+                  <div class="blogentry-aside-section">
+                    <div class="h5 blogentry-aside-title">Reading Time:</div>
+                    <p><span tal:replace="viewlet/reading_time" /> <span i18n:translate="">minutes</span></p>
+                  </div>
+                </div>
               </div>
               <div class="col-sm-9">
                 <span class="documentModified"

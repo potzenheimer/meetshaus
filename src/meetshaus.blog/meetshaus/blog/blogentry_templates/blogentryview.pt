@@ -10,36 +10,65 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-    <h1 class="documentFirstHeading">
-      <a href="" tal:define="parent view/parent_info"
-        tal:condition="parent"
-        tal:attributes="href parent/absolute_url">Blog</a>
-    </h1>
+  <div class="row">
+    <div class="col-sm-3">
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+      <div class="app-socialsharing" id="app-socialsharing">
+          <div class="app-socialsharing-list btn-group"
+              tal:define="url context/absolute_url;
+                          title context/Title;
+                          summary context/Description | nothing">
 
-  <div class="blogentry-view" id="content-core"
-        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+              <a class="btn btn-socialshare btn-facebook"
+                  target="_blank"
+                  href="https://www.facebook.com/sharer/sharer.php?u=YOUR-URL"
+                  tal:attributes="href string:https://www.facebook.com/sharer/sharer.php?u=${url}">
+                  <i class="fa fa-facebook"></i>
+                  Share</a>
 
-    <div class="blogentry-header">
-      <h2 class="blogentry-title" tal:content="context/Title" />
+              <a class="btn btn-socialshare btn-twitter"
+                  target="_blank"
+                  href="https://twitter.com/intent/tweet?text=YOUR-TITLE&url=YOUR-URL&via=TWITTER-HANDLE"
+                  tal:attributes="href string:https://twitter.com/intent/tweet?text=${title}&url=${url}&via=meetshaus.de">
+                  <i class="fa fa-twitter"></i>
+                  Tweet</a>
+
+              <a class="btn btn-socialshare btn-google"
+                  target="_blank"
+                  href="https://plus.google.com/share?url=YOUR-URL"
+                  tal:attributes="href string:https://plus.google.com/share?url=${url}">
+                  <i class="fa fa-google-plus"></i>
+                  Plus</a>
+
+          </div>
+      </div>
     </div>
+    <div class="col-sm-9">
+      <div class="blogentry" id="content-core"
+            tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
 
-    <p class="blogentry-abstract" tal:condition="context/Description">
-        <span tal:content="context/Description">Desc</span>
-    </p>
-    <div class="blogentry-body">
-        <div tal:replace="structure context/text/output" />
-    </div>
-        <div tal:condition="view/parent_info">
-            <tal:block tal:define="parent view/parent_info">
-                <div class="pull-right parent-link">
-                    <a href="" class="btn btn-small btn-primary"
-                        tal:attributes="href parent/absolute_url">
-                        Zur&uuml;ck zur &Uuml;bersicht Blogbeitr&auml;ge</a>
-                </div>
-            </tal:block>
+        <div class="blogentry-header">
+          <h2 class="blogentry-title" tal:content="context/Title" />
         </div>
-  </div>
-  <div tal:replace="structure provider:plone.belowcontentbody" />
+
+        <p class="blogentry-abstract" tal:condition="context/Description">
+          <span tal:content="context/Description">Desc</span>
+        </p>
+
+        <div class="blogentry-body">
+            <div tal:replace="structure context/text/output" />
+        </div>
+            <div tal:condition="view/parent_info">
+                <tal:block tal:define="parent view/parent_info">
+                    <div class="pull-right parent-link">
+                        <a href="" class="btn btn-small btn-primary"
+                            tal:attributes="href parent/absolute_url">
+                            Zur&uuml;ck zur &Uuml;bersicht Blogbeitr&auml;ge</a>
+                    </div>
+                </tal:block>
+            </div>
+      </div>
+    </div>
   </metal:content-core>
 </metal:main>
 
