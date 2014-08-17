@@ -17837,6 +17837,7 @@ body.section-front-page .app-brandbar-deco
 /* End: Recommended Isotope styles */
 .app-socialsharing
 {
+    margin-top: 150px;
     margin-bottom: 22px;
 }
 .btn-socialshare
@@ -18091,21 +18092,21 @@ fieldset[disabled] .btn-xing.active
 {
     .blogentry-aside
     {
-        margin-bottom: 150px;
+        padding-top: 22px;
     }
 }
 .blogentry-aside-title
 {
     font-family: 'AurulentSansRegular';
 
-    color: #777;
+    color: #72797f;
 }
 .blogentry-aside-text
 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 300;
 
-    color: #555;
+    color: #5a5f64;
 }
 .app-footer .app-footer-body
 {
@@ -18134,15 +18135,34 @@ fieldset[disabled] .btn-xing.active
 }
 .app-container
 {
-    margin: 44px auto;
+    margin: 0 auto 22px;
 
     border: 1px solid #fff;
     border-radius: 8px;
     background: url(../assets/img/landscape.png) no-repeat 0 100% #fff;
 }
+@media (min-width: 768px)
+{
+    .app-container
+    {
+        margin-top: 44px;
+    }
+}
 .app-toolbar + .app-container
 {
     margin-top: 119px;
+}
+.app-navbar
+{
+    border-top: 1px solid #5a5f64;
+    border-bottom: 1px solid #5a5f64;
+}
+@media (min-width: 768px)
+{
+    .app-navbar
+    {
+        border: none;
+    }
 }
 #about-the-author
 {
@@ -18188,7 +18208,14 @@ h1.documentFirstHeading
 }
 .app-content
 {
-    padding: 22px;
+    padding: 0 22px;
+}
+@media (min-width: 768px)
+{
+    .app-content
+    {
+        padding: 22px;
+    }
 }
 .app-page
 {

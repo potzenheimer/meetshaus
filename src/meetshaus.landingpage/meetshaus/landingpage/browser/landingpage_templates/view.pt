@@ -64,74 +64,76 @@
         <div class="visualClear">&nbsp;</div>
 
         <section id="content-blog-listing">
-            <header class="page-header">
-                    <h2>Letzte Blogeintr&auml;ge</h2>
-            </header>
             <div id="blog-preview-listing"
                 tal:condition="view/has_blogentries">
-                <tal:entries tal:repeat="item view/blogentries">
-                    <article tal:define="count repeat/item/number"
-                         class="blogEntry">
-                        <header>
-                            <span class="documentModified"
-                                tal:define="date python:toLocalizedTime(item.EffectiveDate());">
-                                <span tal:content="date">effective date</span>
-                            </span>
-                            <h2>
-                                <a href="" tal:attributes="href item/getURL"
-                                    tal:content="item/Title">
-                                    Title</a>
+
+                <div class="blogentry-list" tal:define="item view/latest_blogentry">
+                  <div class="blogentry-list-item">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="blogentry-header visible-xs-block">
+                            <h2 class="blogentry-title">
+                              <a tal:attributes="href item/getURL" tal:content="item/Title" />
                             </h2>
-                        </header>
-                        <p class="lead"
-                            tal:condition="item/Description">
-                            <span tal:replace="item/Description" />
-                        </p>
-                        <tal:block tal:define="count repeat/item/number;">
-                            <div tal:condition="python:count == 1" class="entry-body">
-                                <div tal:content="structure item/text/output" />
-                            </div>
-                        </tal:block>
-                        <div class="blog-actions">
-                            <div class="row" tal:define="item_obj item/getObject">
-                              <div class="col-xs-12 col-sm-8">
-                                <span tal:define="categories item/Subject|nothing"
-                                      tal:condition="categories"
-                                      class="muted">
-                                  Abgelegt unter:
-                                  <span tal:repeat="category categories">
-                                    <a href=""
-                                       class="link-category"
-                                       rel="tag"
-                                       tal:content="category"
-                                       tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@search?Subject%3Alist=${category}">
-                                      Category
-                                    </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
-                                  </span>
-                                </span>
-                              </div>
-                                <div class="col-xs-12 col-sm-4">
-                                    <div class="blogEntryReadMore pull-right">
-                                             <a href=""
-                                                class="btn btn-primary"
-                                                i18n:translate=""
-                                                tal:attributes="href item/getURL">
-                                                    Artikelansicht
-                                             </a>
-                                    </div>
-                                </div>
-                                <div class="visualClear"><!-- --></div>
-                            </div>
-                        <div class="visualClear"><!-- --></div>
                         </div>
-                        <hr>
-                    </article>
-                </tal:entries>
-                <a class=""
-                    tal:define="portal_url context/portal_url;"
-                    tal:attributes="href string:${portal_url}/blog">
-                    Weitere Artikel anzeigen
+                        <div class="blogentry-aside" id="blogentry-aside">
+                          <div class="blogentry-aside-section" tal:define="date python:toLocalizedTime(item.EffectiveDate());">
+                              <div class="h6 blogentry-aside-title">Verfasst am</div>
+                              <p class="blogentry-aside-text" tal:content="date">effective date</p>
+                          </div>
+                          <div class="blogentry-aside-section" tal:define="categories item/Subject|nothing"
+                                tal:condition="categories">
+                              <div class="h6 blogentry-aside-title">Abgelegt unter</div>
+                              <p>
+                              <span tal:repeat="category categories">
+                                <a href=""
+                                   class="blogentry-aside-category"
+                                   rel="tag"
+                                   tal:content="category"
+                                   tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@search?Subject%3Alist=${category}">
+                                  Category
+                                </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
+                              </span>
+                              </p>
+                          </div>
+                          <div class="blogentry-aside-section"
+                            tal:define="item_uid item/UID">
+                            <div class="h6 blogentry-aside-title">Reading Time:</div>
+                            <p class="blogentry-aside-text"><span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">minutes</span></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-9">
+                        <div class="blogentry">
+                          <div class="blogentry-header hidden-xs">
+                            <h2 class="blogentry-title">
+                              <a tal:attributes="href item/getURL" tal:content="item/Title" />
+                            </h2>
+                          </div>
+
+                          <p class="blogentry-abstract" tal:condition="item/Description">
+                            <span tal:content="item/Description">Desc</span>
+                          </p>
+
+                           <div class="blogentry-body">
+                               <span tal:replace="structure item/text/output" />
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            <hr>
+
+            <div class="app-frontpage-actionbar text-center">
+                <a class="btn btn-default" tal:attributes="href string:${view/portal_url}/themen">
+                 Weitere Themen durchstöbern
                 </a>
+                <a class="btn btn-primary" tal:attributes="href string:${view/portal_url}/blog">
+                    Ältere Beitrage zeigen
+                </a>
+            </div>
             </div>
         </section>
 

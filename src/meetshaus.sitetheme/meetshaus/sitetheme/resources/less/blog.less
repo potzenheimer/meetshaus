@@ -49,18 +49,18 @@
   margin-bottom: @navbar-height;
   border-top: 1px solid @page-header-border-color;
   @media (min-width: @screen-sm-min) {
-    margin-bottom: ceil((@navbar-height * 2));
+    padding-top: @line-height-computed;
   }
 }
 
 .blogentry-aside-title {
   font-family: @app-font-default;
-  color: @gray-light;
+  color: lighten(@app-gray, 10%);
 }
 
 .blogentry-aside-text {
-  font-size: floor((@font-size-base * 1.5));
+  font-size: floor((@font-size-base * 1.25));
   font-weight: 300;
-  color: @gray;
+  color: @app-gray;
 }
 

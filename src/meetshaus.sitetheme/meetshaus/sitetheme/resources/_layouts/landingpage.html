@@ -15,20 +15,11 @@
 
         {% include brandbar.html %}
 
-        <div class="app-hero" id="app-hero">
-            {% include heroboxes.html %}
+        <div class="app-brandbar-nav">
+            {% include navbar.html %}
         </div>
-
-        <div class="row">
-            <div class="col-md-8">
-                <div class="app-content" role="main">
-                      {{ content }}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <aside class="app-sidebar" id="app-sidebar" role="contentinfo">
-                </aside>
-            </div>
+        <div class="app-content" role="main">
+            {{ content }}
         </div>
 
         {% include footer.html %}

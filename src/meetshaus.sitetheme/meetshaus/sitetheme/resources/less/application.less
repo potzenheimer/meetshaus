@@ -2,14 +2,25 @@
 // ---------------------------
 
 .app-container {
-    margin: @line-height-computed * 2 auto;
+    margin: 0 auto @line-height-computed;
     border: 1px solid #fff;
     border-radius: 8px;
     background:url(../../assets/img/landscape.png) no-repeat 0% 100% #fff;
+    @media (min-width: @screen-sm-min) {
+        margin-top: ceil((@line-height-computed * 2));
+    }
 }
 
 .app-toolbar + .app-container {
     margin-top: @navbar-height + (@line-height-computed * 2);
+}
+
+.app-navbar {
+    border-top: 1px solid @app-gray;
+    border-bottom: 1px solid @app-gray;
+    @media (min-width: @screen-sm-min) {
+        border: none;
+    }
 }
 
 
@@ -48,7 +59,10 @@ h1.documentFirstHeading {
 }
 
 .app-content {
-    padding: @line-height-computed;
+    padding: 0 @line-height-computed;
+    @media (min-width: @screen-sm-min) {
+        padding: @line-height-computed;
+    }
 }
 
 .app-page {

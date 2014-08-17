@@ -20,6 +20,15 @@
             <div class="row">
               <div class="col-xs-12 col-sm-3">
                 <div class="blogentry-aside" id="blogentry-aside">
+                  <div class="blogentry-header visible-xs-block">
+                      <h2 class="blogentry-title">
+                        <a tal:attributes="href item/getURL" tal:content="item/Title" />
+                      </h2>
+                  </div>
+                  <div class="blogentry-aside-section" tal:define="author item/Creator">
+                      <div class="h6 blogentry-aside-title">Author</div>
+                      <p class="blogentry-aside-text" tal:content="author">effective date</p>
+                  </div>
                   <div class="blogentry-aside-section" tal:define="date python:toLocalizedTime(item.EffectiveDate());">
                       <div class="h6 blogentry-aside-title">Verfasst am</div>
                       <p class="blogentry-aside-text" tal:content="date">effective date</p>
@@ -41,14 +50,14 @@
                   </div>
                   <div class="blogentry-aside-section"
                     tal:define="item_uid item/UID">
-                    <div class="h6 blogentry-aside-title">Reading Time:</div>
-                    <p class="blogentry-aside-text"><span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">minutes</span></p>
+                    <div class="h6 blogentry-aside-title">Lesezeit:</div>
+                    <p class="blogentry-aside-text"><span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span></p>
                   </div>
                 </div>
               </div>
               <div class="col-sm-9">
                 <div class="blogentry">
-                  <div class="blogentry-header">
+                  <div class="blogentry-header hidden-xs">
                     <h2 class="blogentry-title">
                       <a tal:attributes="href item/getURL" tal:content="item/Title" />
                     </h2>
