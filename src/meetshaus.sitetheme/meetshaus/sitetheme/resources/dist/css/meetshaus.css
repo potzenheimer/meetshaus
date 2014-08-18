@@ -17357,6 +17357,15 @@ a:hover
 {
     clear: both;
 }
+.template-navigation-controlpanel .label:empty
+{
+    display: inline;
+}
+.hiddenStructure
+{
+    display: none !important;
+    visibility: hidden !important;
+}
 .headroom,
 .app-toolbar
 {
@@ -18099,6 +18108,13 @@ fieldset[disabled] .btn-xing.active
         padding-top: 22px;
     }
 }
+@media (min-width: 768px)
+{
+    .blogentry-aside-section
+    {
+        text-align: center;
+    }
+}
 .blogentry-aside-title
 {
     font-family: 'AurulentSansRegular';
@@ -18167,6 +18183,14 @@ fieldset[disabled] .btn-xing.active
     {
         border: none;
     }
+}
+.text-secondary
+{
+    color: #d3802a;
+}
+.timestamp-text
+{
+    color: #fff;
 }
 #about-the-author
 {

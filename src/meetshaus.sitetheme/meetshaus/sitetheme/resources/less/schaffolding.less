@@ -42,6 +42,16 @@ a:hover {
     clear: both;
 }
 
+// Reenable tpye selection in navigation control panel
+.template-navigation-controlpanel .label:empty {
+    display: inline;
+}
+// Combat plone hidden element class via mixin
+.hiddenStructure {
+    .hidden();
+}
+
+// Styles for headroom script
 .headroom,
 .app-toolbar {
     .transition(transform 200ms linear);

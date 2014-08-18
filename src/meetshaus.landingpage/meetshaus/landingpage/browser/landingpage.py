@@ -1,10 +1,12 @@
 # -*- coding: UTF-8 -*-
 """ Module providing landing pages """
 
+from Acquisition import aq_inner
 from five import grok
 from plone import api
 
 from plone.app.contentlisting.interfaces import IContentListing
+from plone.event.utils import pydt
 
 from meetshaus.blog.blogentry import IBlogEntry
 from meetshaus.landingpage.content.landingpage import ILandingPage
@@ -31,6 +33,17 @@ class View(grok.View):
 
     def latest_blogentry(self):
         return self.blogentries()[0]
+
+    def timestamp(self):
+        item = self.latest_blogentry()
+        date = item.getObject().effective()
+        date = pydt(date)
+        timestamp = {}
+        timestamp['day'] = date.strftime("%d")
+        timestamp['month'] = date.strftime("%B")
+        timestamp['year'] = date.strftime("%Y")
+        timestamp['date'] = date
+        return timestamp
 
     def _readable_text(self, uid):
         context = api.content.get(UID=uid)
