@@ -12,6 +12,7 @@
     <div class="row">
       <div class="col-sm-3">
         <div class="blogentry-aside">
+          <h1 tal:content="context/Title" />
           <div class="h1 text-primary">
             <span class="fa-stack fa-lg">
               <i class="fa fa-circle fa-stack-2x"></i>
@@ -23,7 +24,7 @@
       </div>
       <div class="col-sm-9">
         <div class="blogentry-aside">
-          <div class="blogentry-abstract"
+          <div class="blogentry-abstract blogentry-abstract-standalone"
             tal:condition="context/Description"
             tal:content="context/Description" />
         </div>

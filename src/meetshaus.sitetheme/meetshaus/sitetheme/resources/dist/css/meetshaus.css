@@ -18061,6 +18061,10 @@ fieldset[disabled] .btn-xing.active
 
     color: #555;
 }
+.blogentry-abstract.blogentry-abstract-standalone
+{
+    margin-top: 22px;
+}
 @media (min-width: 768px)
 {
     .blogentry-abstract
