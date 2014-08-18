@@ -10,6 +10,7 @@
 }
 
 .blogentry-header {
+  padding-top: @line-height-computed;
   padding-bottom: ((@line-height-computed / 2) - 1);
   margin: (@line-height-computed * 2) 0 @line-height-computed;
   border-top: 1px solid @page-header-border-color;
@@ -20,12 +21,17 @@
   color: @app-brown;
 }
 
+.blogentry-avatar {
+  margin: @line-height-computed;
+
+}
+
 .blogentry-abstract {
   margin-bottom: @line-height-computed;
   font-family: 'AurulentSansRegular';
   font-size: floor((@font-size-base * 1.5));
   font-weight: 300;
-  line-height: 1.4;
+  line-height: @line-height-small;
   color: @gray;
   &.blogentry-abstract-standalone {
     margin-top: @line-height-computed;
@@ -36,6 +42,7 @@
 }
 
 .blogentry-body {
+  margin-top: ceil((@line-height-computed));
   @media (min-width: @screen-sm-min) {
     font-size: (@font-size-base + 2);
     h2,
@@ -50,6 +57,10 @@
   margin-top: floor((@line-height-computed * 2));
   margin-bottom: @navbar-height;
   border-top: 1px solid @page-header-border-color;
+  &.blogentry-aside-default {
+    margin-top: 0;
+    border: none;
+  }
   @media (min-width: @screen-sm-min) {
     padding-top: @line-height-computed;
   }
@@ -67,8 +78,9 @@
 }
 
 .blogentry-aside-text {
-  font-size: floor((@font-size-base * 1.25));
+  font-size: floor((@font-size-base * 1.5));
   font-weight: 300;
+  line-height: @line-height-small;
   color: @app-gray;
 }
 

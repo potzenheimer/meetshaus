@@ -25,14 +25,17 @@
                         <a tal:attributes="href item/getURL" tal:content="item/Title" />
                       </h2>
                   </div>
-                  <div class="blogentry-aside-section" tal:define="author item/Creator">
-                      <div class="h6 blogentry-aside-title">Author</div>
-                      <p class="blogentry-aside-text" tal:content="author">effective date</p>
+                  <div class="blogentry-aside-section"
+                    tal:define="item_uid item/UID;
+                                ts python:view.timestamp(item_uid)">
+                    <span class="fa-stack fa-3x text-secondary">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x timestamp-text" tal:content="ts/day">27</strong>
+                    </span>
+                    <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month">August 2014</span>
+                    <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/year">August 2014</span>
                   </div>
-                  <div class="blogentry-aside-section" tal:define="date python:toLocalizedTime(item.EffectiveDate());">
-                      <div class="h6 blogentry-aside-title">Verfasst am</div>
-                      <p class="blogentry-aside-text" tal:content="date">effective date</p>
-                  </div>
+                  <hr>
                   <div class="blogentry-aside-section" tal:define="categories item/Subject|nothing"
                         tal:condition="categories">
                       <div class="h6 blogentry-aside-title">Abgelegt unter</div>

@@ -11,6 +11,7 @@ from plone.app.contentlisting.interfaces import IContentListing
 from plone.app.discussion.interfaces import IConversation
 from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from plone.directives import form
+from plone.event.utils import pydt
 from zope import schema
 
 from meetshaus.blog.blogentry import IBlogEntry
@@ -81,6 +82,17 @@ class BlogView(grok.View):
                                       range='minmax')
         results = catalog.searchResults(**query)
         return IContentListing(results)
+
+    def timestamp(self, uid):
+        item = api.content.get(UID=uid)
+        date = item.effective()
+        date = pydt(date)
+        timestamp = {}
+        timestamp['day'] = date.strftime("%d")
+        timestamp['month'] = date.strftime("%B")
+        timestamp['year'] = date.strftime("%Y")
+        timestamp['date'] = date
+        return timestamp
 
     def _readable_text(self, uid):
         context = api.content.get(UID=uid)

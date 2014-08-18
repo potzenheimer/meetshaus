@@ -17395,6 +17395,10 @@ a:hover
 {
     color: #d3802a;
 }
+.app-avatar
+{
+    border-color: #d3802a;
+}
 /* @group custom font AurulenSans */
 @font-face
 {
@@ -17516,6 +17520,10 @@ a:hover
 {
     margin-bottom: 38px;
 }
+.app-brandbar.app-brandbar-lp
+{
+    margin-bottom: 22px;
+}
 .app-navbar-nav
 {
     margin-top: 22px;
@@ -17553,11 +17561,45 @@ a:hover
 {
     display: block;
 }
+.app-brand-image
+{
+    margin-top: 22px;
+}
+@media (min-width: 768px)
+{
+    .app-brand-image
+    {
+        display: block;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
 .app-brandname
 {
     font-family: 'AurulentSansBold';
 
     color: #d3802a;
+}
+.app-brandbar-navigation
+{
+    font-family: 'AurulentSansBold';
+    font-size: 24px;
+
+    padding: 22px;
+}
+@media (min-width: 768px)
+{
+    .app-brandbar-navigation
+    {
+        padding-top: 75px;
+        padding-left: 44px;
+    }
+}
+.app-brandbar-navigation .nav > li > a
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .app-sign
 {
@@ -18049,6 +18091,7 @@ fieldset[disabled] .btn-xing.active
 .blogentry-header
 {
     margin: 44px 0 22px;
+    padding-top: 22px;
     padding-bottom: 10px;
 
     border-top: 1px solid #eee;
@@ -18059,12 +18102,16 @@ fieldset[disabled] .btn-xing.active
 
     color: #d3802a;
 }
+.blogentry-avatar
+{
+    margin: 22px;
+}
 .blogentry-abstract
 {
     font-family: 'AurulentSansRegular';
     font-size: 24px;
     font-weight: 300;
-    line-height: 1.4;
+    line-height: 1.5;
 
     margin-bottom: 22px;
 
@@ -18080,6 +18127,10 @@ fieldset[disabled] .btn-xing.active
     {
         font-size: 28px;
     }
+}
+.blogentry-body
+{
+    margin-top: 22px;
 }
 @media (min-width: 768px)
 {
@@ -18100,6 +18151,12 @@ fieldset[disabled] .btn-xing.active
     margin-bottom: 75px;
 
     border-top: 1px solid #eee;
+}
+.blogentry-aside.blogentry-aside-default
+{
+    margin-top: 0;
+
+    border: none;
 }
 @media (min-width: 768px)
 {
@@ -18123,8 +18180,9 @@ fieldset[disabled] .btn-xing.active
 }
 .blogentry-aside-text
 {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 300;
+    line-height: 1.5;
 
     color: #5a5f64;
 }

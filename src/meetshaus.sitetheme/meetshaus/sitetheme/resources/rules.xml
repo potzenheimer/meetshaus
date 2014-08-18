@@ -84,12 +84,15 @@
         <copy attributes="href" css:content='#portal-logo' css:theme=".app-brand" />
 
         <replace css:content="#portal-globalnav li"
+            css:theme-children="#app-brandbar-nav"
+            css:if-content="body.section-front-page" />
+
+        <replace css:content="#portal-globalnav li"
             css:theme-children="#app-navbar-nav" />
-        <!--<drop css:theme="#tree-decorator" css:if-content="#user-name" />-->
 
         <replace css:content="#infobar"
-                css:theme="#contact-me"
-                css:if-content="body.section-referenzen" />
+                css:theme="#frontpage-about-section"
+                css:if-content="body.section-front-page" />
 
         <!-- Login form rules -->
         <replace css:content-children="#content-core"

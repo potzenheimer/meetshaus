@@ -11,9 +11,9 @@
   <metal:content-core define-macro="main">
     <div class="row">
       <div class="col-sm-3">
-        <div class="blogentry-aside">
-          <h1 tal:content="context/Title" />
-          <div class="h1 text-primary">
+        <div class="blogentry-aside text-center">
+          <div class="h2 text-muted" tal:content="context/Title" />
+          <div class="h1 text-secondary">
             <span class="fa-stack fa-lg">
               <i class="fa fa-circle fa-stack-2x"></i>
               <i class="fa fa-list fa-stack-1x fa-inverse"></i>
@@ -30,8 +30,6 @@
         </div>
       </div>
     </div>
-    <hr>
-
     <div class="row blogentry-list" tal:define="items view/keywords">
       <div class="col-xs-6 col-sm-6 blogentry-list-item" tal:repeat="item items">
         <div class="blogentry-aside">

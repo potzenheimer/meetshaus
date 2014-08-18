@@ -7,6 +7,7 @@ from plone.app.layout.viewlets.interfaces import IBelowContentBody
 from AccessControl import Unauthorized
 from Acquisition import aq_inner, aq_parent
 from plone.directives import form
+from plone.event.utils import pydt
 
 from plone.app.textfield import RichText
 
@@ -46,6 +47,17 @@ class BlogEntryView(grok.View):
         except Unauthorized:
             return None
 
+    def timestamp(self):
+        context = aq_inner(self.context)
+        date = context.effective()
+        date = pydt(date)
+        timestamp = {}
+        timestamp['day'] = date.strftime("%d")
+        timestamp['month'] = date.strftime("%B")
+        timestamp['year'] = date.strftime("%Y")
+        timestamp['date'] = date
+        return timestamp
+
     def _readable_text(self):
         context = aq_inner(self.context)
         meta = context.title + ' ' + context.description
@@ -71,6 +83,17 @@ class BlogEntryViewlet(grok.Viewlet):
     grok.viewletmanager(IBelowContentBody)
     grok.require('zope2.View')
     grok.name('meetshaus.blog.BlogEntryViewlet')
+
+    def timestamp(self):
+        context = aq_inner(self.context)
+        date = context.effective()
+        date = pydt(date)
+        timestamp = {}
+        timestamp['day'] = date.strftime("%d")
+        timestamp['month'] = date.strftime("%B")
+        timestamp['year'] = date.strftime("%Y")
+        timestamp['date'] = date
+        return timestamp
 
     def _readable_text(self):
         context = aq_inner(self.context)

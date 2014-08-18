@@ -70,15 +70,11 @@
                 <div class="blogentry-list" tal:define="item view/latest_blogentry">
                   <div class="blogentry-list-item">
                     <div class="row">
-                      <div class="col-xs-12 col-sm-3">
-                        <div class="blogentry-header visible-xs-block">
-                            <h2 class="blogentry-title">
-                              <a tal:attributes="href item/getURL" tal:content="item/Title" />
-                            </h2>
-                        </div>
-                        <div class="blogentry-aside" id="blogentry-aside">
-                          <div class="blogentry-aside-section"
-                            tal:define="ts view/timestamp">
+                      <div class="col-sm-3">
+                        <div class="blogentry-aside" id="blogentry-aside"
+                          tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                      ts view/timestamp">
+                          <div class="blogentry-aside-section hidden-xs">
                             <span class="fa-stack fa-3x text-secondary">
                               <i class="fa fa-circle fa-stack-2x"></i>
                               <strong class="fa-stack-1x timestamp-text" tal:content="ts/day">27</strong>
@@ -86,7 +82,26 @@
                             <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month">August 2014</span>
                             <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/year">August 2014</span>
                           </div>
-                          <hr>
+                        </div>
+                      </div>
+                      <div class="col-sm-9">
+                        <div class="blogentry"
+                              tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                          ts view/timestamp">
+                          <div class="blogentry-header">
+                            <div class="visible-xs" tal:content="python:toLocalizedTime(ts['date'])" />
+                            <h2 class="blogentry-title" tal:content="item/Title" />
+                          </div>
+
+                          <p class="blogentry-abstract" tal:condition="item/Description">
+                            <span tal:content="item/Description">Desc</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-3">
                           <div class="blogentry-aside-section" tal:define="categories item/Subject|nothing"
                                 tal:condition="categories">
                               <div class="h6 blogentry-aside-title">Abgelegt unter</div>
@@ -107,29 +122,18 @@
                             <div class="h6 blogentry-aside-title">Lesezeit:</div>
                             <p class="blogentry-aside-text"><span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span></p>
                           </div>
-                        </div>
                       </div>
                       <div class="col-sm-9">
                         <div class="blogentry">
-                          <div class="blogentry-header hidden-xs">
-                            <h2 class="blogentry-title">
-                              <a tal:attributes="href item/getURL" tal:content="item/Title" />
-                            </h2>
-                          </div>
-
-                          <p class="blogentry-abstract" tal:condition="item/Description">
-                            <span tal:content="item/Description">Desc</span>
-                          </p>
-
                            <div class="blogentry-body">
                                <span tal:replace="structure item/text/output" />
                            </div>
                         </div>
                       </div>
-                    </div>
+                    </div><!-- /row -->
                   </div>
                 </div>
-
+            </div>
             <hr>
 
             <div class="app-frontpage-actionbar text-center">
@@ -139,7 +143,6 @@
                 <a class="btn btn-primary" tal:attributes="href string:${view/portal_url}/blog">
                     Ältere Beitrage zeigen
                 </a>
-            </div>
             </div>
         </section>
 
