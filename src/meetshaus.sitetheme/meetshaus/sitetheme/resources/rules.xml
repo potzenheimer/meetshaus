@@ -28,6 +28,7 @@
     <!--<theme href="newtheme.html" css:if-content="body.section-blog" /> -->
     <theme href="dist/fullscreen.html" css:if-content="body.section-referenzen" />
 
+    <theme href="dist/blog.html" css:if-content="body.section-themen" />
     <theme href="dist/blog.html" css:if-content="body.section-blog" />
     <theme href="dist/blog.html" css:if-content="body.portaltype-meetshaus-blog-blogentry" />
 

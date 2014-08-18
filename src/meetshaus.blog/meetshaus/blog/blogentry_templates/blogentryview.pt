@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="rgd.blog">
+      i18n:domain="meetshaus.blog">
 <body>
 
 <metal:main fill-slot="main">
@@ -13,27 +13,27 @@
   <div class="row">
     <div class="col-sm-3">
       <div tal:replace="structure provider:plone.belowcontentbody" />
-      <div class="app-socialsharing" id="app-socialsharing">
+      <div class="app-socialsharing hidden-xs hidden-sm" id="app-socialsharing">
           <div class="app-socialsharing-list btn-group"
               tal:define="url context/absolute_url;
                           title context/Title;
                           summary context/Description | nothing">
 
-              <a class="btn btn-socialshare btn-facebook"
+              <a class="btn btn-socialshare btn-facebook btn-sm"
                   target="_blank"
                   href="https://www.facebook.com/sharer/sharer.php?u=YOUR-URL"
                   tal:attributes="href string:https://www.facebook.com/sharer/sharer.php?u=${url}">
                   <i class="fa fa-facebook"></i>
                   Share</a>
 
-              <a class="btn btn-socialshare btn-twitter"
+              <a class="btn btn-socialshare btn-twitter btn-sm"
                   target="_blank"
                   href="https://twitter.com/intent/tweet?text=YOUR-TITLE&url=YOUR-URL&via=TWITTER-HANDLE"
                   tal:attributes="href string:https://twitter.com/intent/tweet?text=${title}&url=${url}&via=meetshaus.de">
                   <i class="fa fa-twitter"></i>
                   Tweet</a>
 
-              <a class="btn btn-socialshare btn-google"
+              <a class="btn btn-socialshare btn-google btn-sm"
                   target="_blank"
                   href="https://plus.google.com/share?url=YOUR-URL"
                   tal:attributes="href string:https://plus.google.com/share?url=${url}">

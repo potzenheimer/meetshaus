@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="blogentry-aside">
+          <div class="h1 text-primary">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-list fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="hidden">Themen</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="blogentry-aside">
+          <div class="blogentry-abstract"
+            tal:condition="context/Description"
+            tal:content="context/Description" />
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row blogentry-list" tal:define="items view/keywords">
+      <div class="col-xs-6 col-sm-6 blogentry-list-item" tal:repeat="item items">
+        <div class="blogentry-aside">
+          <a class="h2"
+            tal:attributes="href python:view.archive_url(item)">
+              <span tal:content="item" />
+          </a>
+          <p class="text-muted">
+            <span tal:content="python:view.count_entries(item)" />
+            Beiträge
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </metal:content-core>
+</metal:main>
+</body>
+</html>

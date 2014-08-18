@@ -17849,8 +17849,8 @@ body.section-front-page .app-brandbar-deco
 .btn-facebook
 {
     color: #fff;
-    border-color: #263960;
-    background-color: #263960;
+    border-color: #6484b5;
+    background-color: #6484b5;
 }
 .btn-facebook:hover,
 .btn-facebook:focus,
@@ -17859,8 +17859,8 @@ body.section-front-page .app-brandbar-deco
 .open > .dropdown-toggle.btn-facebook
 {
     color: #fff;
-    border-color: #151f34;
-    background-color: #18233b;
+    border-color: #476695;
+    background-color: #4a6a9c;
 }
 .btn-facebook:active,
 .btn-facebook.active,
@@ -17884,19 +17884,19 @@ fieldset[disabled] .btn-facebook:active,
 .btn-facebook[disabled].active,
 fieldset[disabled] .btn-facebook.active
 {
-    border-color: #263960;
-    background-color: #263960;
+    border-color: #6484b5;
+    background-color: #6484b5;
 }
 .btn-facebook .badge
 {
-    color: #263960;
+    color: #6484b5;
     background-color: #fff;
 }
 .btn-twitter
 {
     color: #fff;
-    border-color: #238caa;
-    background-color: #238caa;
+    border-color: #00aced;
+    background-color: #00aced;
 }
 .btn-twitter:hover,
 .btn-twitter:focus,
@@ -17905,8 +17905,8 @@ fieldset[disabled] .btn-facebook.active
 .open > .dropdown-toggle.btn-twitter
 {
     color: #fff;
-    border-color: #196277;
-    background-color: #1a6980;
+    border-color: #0080b0;
+    background-color: #0087ba;
 }
 .btn-twitter:active,
 .btn-twitter.active,
@@ -17930,19 +17930,19 @@ fieldset[disabled] .btn-twitter:active,
 .btn-twitter[disabled].active,
 fieldset[disabled] .btn-twitter.active
 {
-    border-color: #238caa;
-    background-color: #238caa;
+    border-color: #00aced;
+    background-color: #00aced;
 }
 .btn-twitter .badge
 {
-    color: #238caa;
+    color: #00aced;
     background-color: #fff;
 }
 .btn-google
 {
     color: #fff;
-    border-color: #d64937;
-    background-color: #d64937;
+    border-color: #dd4b39;
+    background-color: #dd4b39;
 }
 .btn-google:hover,
 .btn-google:focus,
@@ -17951,8 +17951,8 @@ fieldset[disabled] .btn-twitter.active
 .open > .dropdown-toggle.btn-google
 {
     color: #fff;
-    border-color: #ac3323;
-    background-color: #b53525;
+    border-color: #b93120;
+    background-color: #c23321;
 }
 .btn-google:active,
 .btn-google.active,
@@ -17976,12 +17976,12 @@ fieldset[disabled] .btn-google:active,
 .btn-google[disabled].active,
 fieldset[disabled] .btn-google.active
 {
-    border-color: #d64937;
-    background-color: #d64937;
+    border-color: #dd4b39;
+    background-color: #dd4b39;
 }
 .btn-google .badge
 {
-    color: #d64937;
+    color: #dd4b39;
     background-color: #fff;
 }
 .btn-xing
