@@ -31,6 +31,16 @@
     color: #fff;
 }
 
+.app-masthead {
+    .center-block();
+    @media (min-width: @screen-sm-min) {
+        width: @screen-sm-min;
+        padding-right: @line-height-computed;
+        padding-left: @line-height-computed;
+        font-size: 1.5rem;
+        line-height: 1.25;
+    }
+}
 
 #about-the-author {
     padding: @line-height-computed * 2 @line-height-computed 0 0;

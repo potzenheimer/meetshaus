@@ -90,8 +90,8 @@
         <replace css:content="#portal-globalnav li"
             css:theme-children="#app-navbar-nav" />
 
-        <replace css:content="#infobar"
-                css:theme="#frontpage-about-section"
+        <replace css:content-children="#infobar"
+                css:theme-children="#frontpage-about-section"
                 css:if-content="body.section-front-page" />
 
         <!-- Login form rules -->

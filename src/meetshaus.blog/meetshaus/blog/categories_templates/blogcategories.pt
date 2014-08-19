@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="row blogentry-list" tal:define="items view/keywords">
-      <div class="col-xs-6 col-sm-6 blogentry-list-item" tal:repeat="item items">
+      <div class="col-xs-12 col-sm-6 blogentry-list-item" tal:repeat="item items">
         <div class="blogentry-aside">
           <a class="h2"
             tal:attributes="href python:view.archive_url(item)">

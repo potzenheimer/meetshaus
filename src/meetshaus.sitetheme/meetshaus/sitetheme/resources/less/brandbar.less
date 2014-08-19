@@ -5,7 +5,7 @@
 .app-brandbar {
     margin-bottom: ceil((@navbar-height / 2));
     &.app-brandbar-lp {
-        margin-bottom: @line-height-computed;
+        margin-bottom: @navbar-height;
     }
 }
 
@@ -16,7 +16,8 @@
     > li > a {
       padding-bottom: floor(( @navbar-padding-vertical / 2));
       font-family: @app-font-strong;
-      font-size: floor((@font-size-base * 1.5));
+      //font-size: floor((@font-size-base * 1.5));
+      font-size: 1.25rem;
 
       &:hover,
       &:focus {
