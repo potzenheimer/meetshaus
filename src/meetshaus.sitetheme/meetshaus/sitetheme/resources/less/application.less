@@ -31,12 +31,14 @@
     color: #fff;
 }
 
+.app-infobar {
+    padding: 0 @line-height-computed @line-height-computed;
+}
+
 .app-masthead {
-    .center-block();
+    padding: @line-height-computed;
     @media (min-width: @screen-sm-min) {
-        width: @screen-sm-min;
-        padding-right: @line-height-computed;
-        padding-left: @line-height-computed;
+        padding: (@line-height-computed * 2);
         font-size: 1.5rem;
         line-height: 1.25;
     }

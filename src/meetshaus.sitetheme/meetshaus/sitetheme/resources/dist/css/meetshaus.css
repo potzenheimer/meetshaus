@@ -18185,7 +18185,7 @@ fieldset[disabled] .btn-xing.active
 .blogentry-abstract
 {
     font-family: 'AurulentSansRegular';
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 300;
     line-height: 1.33;
 
@@ -18323,12 +18323,13 @@ fieldset[disabled] .btn-xing.active
 {
     color: #fff;
 }
+.app-infobar
+{
+    padding: 0 22.85714286px 22.85714286px;
+}
 .app-masthead
 {
-    display: block;
-
-    margin-right: auto;
-    margin-left: auto;
+    padding: 22.85714286px;
 }
 @media (min-width: 768px)
 {
@@ -18336,10 +18337,6 @@ fieldset[disabled] .btn-xing.active
     {
         font-size: 1.5rem;
         line-height: 1.25;
-
-        width: 768px;
-        padding-right: 22.85714286px;
-        padding-left: 22.85714286px;
     }
 }
 #about-the-author

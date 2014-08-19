@@ -46,7 +46,8 @@ class BlogView(grok.View):
     def batch(self):
         b_size = 10
         b_start = self.request.form.get('b_start', 0)
-        return Batch(self.blogitems(), b_size, b_start, orphan=1)
+        items = self.blogitems()[1:]
+        return Batch(items, b_size, b_start, orphan=1)
 
     def commentsEnabled(self, ob):
         conversation = IConversation(ob)
