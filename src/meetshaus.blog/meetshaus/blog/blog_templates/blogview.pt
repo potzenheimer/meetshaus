@@ -18,26 +18,8 @@
         <div class="blogentry-list" tal:define="batch view/batch">
           <div class="blogentry-list-item" tal:repeat="item batch">
             <div class="row">
-              <div class="col-xs-12 col-sm-9 col-sm-push-3">
-                <div class="blogentry">
-                  <div class="blogentry-header hidden-xs">
-                    <h2 class="blogentry-title">
-                      <a tal:attributes="href item/getURL" tal:content="item/Title" />
-                    </h2>
-                  </div>
-
-                  <p class="blogentry-abstract" tal:condition="item/Description">
-                    <span tal:content="item/Description">Desc</span>
-                  </p>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-3 col-sm-pull-9">
+              <div class="col-xs-12 col-sm-3 xcol-sm-pull-9">
                 <div class="blogentry-aside" id="blogentry-aside">
-                  <div class="blogentry-header visible-xs-block">
-                      <h2 class="blogentry-title">
-                        <a tal:attributes="href item/getURL" tal:content="item/Title" />
-                      </h2>
-                  </div>
                   <div class="blogentry-aside-section"
                     tal:define="item_uid item/UID;
                                 ts python:view.timestamp(item_uid)">
@@ -48,6 +30,19 @@
                     <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month">August 2014</span>
                     <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/year">August 2014</span>
                   </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-9 xcol-sm-push-3">
+                <div class="blogentry">
+                  <div class="blogentry-header xhidden-xs">
+                    <h2 class="blogentry-title">
+                      <a tal:attributes="href item/getURL" tal:content="item/Title" />
+                    </h2>
+                  </div>
+
+                  <p class="blogentry-abstract" tal:condition="item/Description">
+                    <span tal:content="item/Description">Desc</span>
+                  </p>
                 </div>
               </div>
             </div>

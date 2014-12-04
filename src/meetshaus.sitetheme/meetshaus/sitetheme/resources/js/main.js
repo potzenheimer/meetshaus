@@ -1,19 +1,21 @@
-/*jslint white:false, onevar:true, undef:true, nomen:true, eqeqeq:true, plusplus:true, bitwise:true, regexp:true, newcap:true, immed:true, strict:false, browser:true */
-/*global jQuery:false, document:false, window:false, location:false */
-
+'use strict';
 (function ($) {
-$(document).ready(function () {
-    if (jQuery.browser.msie && parseInt(jQuery.browser.version, 10) < 7) {
-        // it's not realistic to think we can deal with all the bugs
-        // of IE 6 and lower. Fortunately, all this is just progressive
-        // enhancement.
-        return;
+    $(document).ready(function () {
+        if ($('body').hasClass('lt-ie7')) {return; }
+        // Application specific javascript code goes here
+        // $('#app-toolbar').headroom();
+        // cache container
+        var $container = $('#link-container');
+        // initialize isotope
+        $container.isotope({
+          // options...
+        });
+        // filter items when filter link is clicked
+        $('#filters a').click(function () {
+            var selector = $(this).attr('data-filter');
+            $container.isotope({ filter: selector });
+            return false;
+        });
     }
-    $("#header").headroom();
-    $('#link-container').masonry({
-    // options
-        itemSelector : '.tilebox',
-        columnWidth : 220
-    });
-});
+    );
 }(jQuery));

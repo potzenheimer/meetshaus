@@ -16,21 +16,21 @@
     </xsl:template>
 
     <!-- Setup custom login form -->
-    <theme href="dist/signin.html" css:if-content="body.template-login_form" />
-    <theme href="dist/signin.html" css:if-content="body.template-logged_out" />
-    <theme href="dist/signin.html" css:if-content="body.template-login_failed" />
-    <theme href="dist/signin.html" css:if-content="body.template-mail_password_form" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-login_form" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-logged_out" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-login_failed" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-mail_password_form" />
     <!-- The default theme, used for standard Plone web pages -->
-    <theme href="dist/frontpage.html" css:if-content="body.section-front-page" />
+    <theme href="dist/frontpage/index.html" css:if-content="body.section-front-page" />
     <!--<theme href="contact.html" css:if-content="body.section-kontakt" />
     <theme href="impressum.html" css:if-content="body.section-impressum" />-->
 
     <!--<theme href="newtheme.html" css:if-content="body.section-blog" /> -->
-    <theme href="dist/fullscreen.html" css:if-content="body.section-referenzen" />
+    <!--<theme href="dist/fullscreen/index.html" css:if-content="body.section-referenzen" />-->
 
-    <theme href="dist/blog.html" css:if-content="body.section-themen" />
-    <theme href="dist/blog.html" css:if-content="body.section-blog" />
-    <theme href="dist/blog.html" css:if-content="body.portaltype-meetshaus-blog-blogentry" />
+    <theme href="dist/blog/index.html" css:if-content="body.section-themen" />
+    <theme href="dist/blog/index.html" css:if-content="body.section-blog" />
+    <theme href="dist/blog/index.html" css:if-content="body.portaltype-meetshaus-blog-blogentry" />
 
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
@@ -42,9 +42,10 @@
         <notheme if="$host = 'cms.meetshaus.de'" />
 
         <replace css:theme="title" css:content="title" />
-        <!-- <after theme="/html/head/title" css:content="base" /> -->
+        <after theme="/html/head/title" css:content="base" />
         <!-- Add meta tags -->
         <!-- <drop theme="/html/head/meta" />-->
+        <drop css:content="meta[name='viewport']" />
         <before content="/html/head/meta" theme="/html/head/title" />
 
         <rules css:if-content="body.userrole-authenticated">
@@ -55,12 +56,11 @@
                 />
 
             <drop theme="/html/head/style" />
-            <drop theme="/html/head/script" />
             <drop theme="/html/head/link" />
 
             <!-- Drop scripts from theme footer if present -->
             <drop theme="/html/body/script" />
-        </rules>
+         </rules>
 
         <!-- Custom favicon implementation -->
         <drop css:content="head link[rel='apple-touch-icon']" />
@@ -153,6 +153,15 @@
             css:if-not-content="body.section-front-page" />
 
         <before css:content=".portalMessage" css:theme="#content" />
+
+        <!-- Fix table styles -->
+        <replace css:content="table.listing">
+          <table>
+            <xsl:copy-of select="@*"/>
+            <xsl:attribute name="class">table table-hover</xsl:attribute>
+            <xsl:apply-templates />
+          </table>
+        </replace>
 
         <replace css:content=".configlets">
           <ul class="nav nav-list checkbox">

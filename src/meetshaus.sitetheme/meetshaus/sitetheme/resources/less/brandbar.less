@@ -3,10 +3,19 @@
 // -----------------------------------------
 
 .app-brandbar {
-    margin-bottom: ceil((@navbar-height / 2));
+    margin-bottom: ceil((@line-height-computed / 2));
+    @media (min-width: @screen-sm-min) {
+        margin-bottom: ceil((@navbar-height / 2));
+    }
     &.app-brandbar-lp {
         margin-bottom: @navbar-height;
     }
+}
+
+.app-navbar-brand {
+    font-family: @app-font-strong;
+    font-size: 1.25rem;
+    padding: @navbar-padding-vertical @padding-xs-horizontal;
 }
 
 
@@ -64,7 +73,7 @@
 .app-brandbar-navigation {
     padding: @line-height-computed;
     font-family: @app-font-strong;
-    font-size: floor((@font-size-base * 1.5));
+    font-size: 1rem;
     @media (min-width: @screen-sm-min) {
         padding-top: @navbar-height;
         padding-left: ceil((@line-height-computed * 2));
@@ -118,7 +127,7 @@ body.section-front-page {
         color: #74c4ea;
         font-family:Verdana, sans-serif;
         font-weight: normal;
-        font-size:(@font-size-base * 2.25);
+        font-size: 1.5rem;
     }
 }
 

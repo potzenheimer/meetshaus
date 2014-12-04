@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Module providing utility functions for the blogging tool"""
+
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from Acquisition import aq_base

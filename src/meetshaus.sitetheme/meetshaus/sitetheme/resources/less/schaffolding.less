@@ -6,7 +6,10 @@
 // Set root font size
 
 html {
-    font-size: @font-size-base;
+    font-size: @font-size-root;
+    @media (min-width: @screen-sm-min) {
+        font-size: ceil((@font-size-root + 2));
+    }
 }
 
 
@@ -56,31 +59,33 @@ pre {
     }
 }
 
+
 body {
-    font-size: 100%;
-    background:#d9e4e4;
+    background-color: #D9E4E4;
+    // Reset grid negative margins for theming control panel
     &.template-theming-controlpanel .row {
-        // Fix theming control panel
         margin: 0 @line-height-computed;
     }
-    // Set font weights if webfont is active
-  &.ws-active {
+    // Increase line height on larger screens
+    @media (min-width: @screen-sm-min) {
+        line-height: 1.75;
+    }
+}
+
+// Set font weights if webfont is active
+.wf-active {
     // Default twbs weight for headings 500 not provided by Open Sans
     @headings-font-weight: 600;
     b,
     strong {
         font-weight: 600;
     }
-  }
-  &.mceContentBody {
-    padding: @line-height-computed;
-  }
 }
 // prevent fake bolds
 b,
 strong {
     font-weight: 600;
-    .ws-active & {
+    .wf-active & {
         font-weight: 600;
     }
 }

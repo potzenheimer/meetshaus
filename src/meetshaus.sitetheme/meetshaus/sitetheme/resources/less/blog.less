@@ -29,7 +29,7 @@
 .blogentry-abstract {
   margin-bottom: @line-height-computed;
   font-family: 'AurulentSansRegular';
-  font-size: (@font-size-base * 1.5);
+  font-size: 1.5rem;
   font-weight: 300;
   line-height: @line-height-large;
   color: @gray;
@@ -37,15 +37,12 @@
     margin-top: @line-height-computed;
   }
   @media (min-width: @screen-sm-min) {
-    font-size: (@font-size-base * 1.75);
+    font-size: 1.75rem;
   }
 }
 
 .blogentry-body {
-  font-size: @font-size-large;
-  line-height: @line-height-small;
   @media (min-width: @screen-sm-min) {
-    // font-size: (@font-size-base + 2);
     h2,
     h3 {
       margin-top: ceil((@line-height-computed * 2));
@@ -68,8 +65,10 @@
 }
 
 .blogentry-aside-section {
+  font-size: 0.75rem;
   @media (min-width: @screen-sm-min) {
     text-align: center;
+    font-size: 0.9rem;
   }
 }
 
