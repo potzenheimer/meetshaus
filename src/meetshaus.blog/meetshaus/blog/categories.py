@@ -4,14 +4,18 @@ import json
 import time
 import urllib2
 
+from Acquisition import aq_inner
+from Products.CMFPlone.utils import safe_unicode
 from Products.CMFCore.interfaces import IContentish
 from five import grok
 from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from zope.component import getUtility
+from zope.component import getMultiAdapter
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 from meetshaus.blog.blogentry import IBlogEntry
+from meetshaus.blog import MessageFactory as _
 
 
 class BlogCategories(grok.View):
@@ -39,6 +43,67 @@ class BlogCategories(grok.View):
         sub = urllib2.quote(subject.encode('utf-8'))
         url = '{0}/blog?category={1}'.format(portal_url, sub)
         return url
+
+
+class UpdateBlogCategories(grok.View):
+    grok.context(IContentish)
+    grok.require('zope2.View')
+    grok.name('update-blog-categories')
+
+    def update(self):
+        context = aq_inner(self.context)
+        self.errors = {}
+        unwanted = ('_authenticator', 'form.button.Submit')
+        required = ('field-name')
+        if 'form.button.Submit' in self.request:
+            authenticator = getMultiAdapter((context, self.request),
+                                            name=u"authenticator")
+            if not authenticator.verify():
+                raise Unauthorized
+            form = self.request.form
+            form_data = {}
+            form_errors = {}
+            errorIdx = 0
+            for value in form:
+                if value not in unwanted:
+                    form_data[value] = safe_unicode(form[value])
+                    if not form[value] and value in required:
+                        error = {}
+                        error['active'] = True
+                        error['msg'] = _(u"This field is required")
+                        form_errors[value] = error
+                        errorIdx += 1
+                    else:
+                        error = {}
+                        error['active'] = False
+                        error['msg'] = form[value]
+                        form_errors[value] = error
+            if errorIdx > 0:
+                self.errors = form_errors
+            else:
+                self._store_data(form)
+
+    @property
+    def traverse_subpath(self):
+        return self.subpath
+
+    def publishTraverse(self, request, name):
+        if not hasattr(self, 'subpath'):
+            self.subpath = []
+        self.subpath.append(name)
+        return self
+
+    def _update_stored_categories(self, data):
+        context = aq_inner(self.context)
+        fieldname = self.getFieldname()
+        new_value = data['content-editable-form-body']
+        # store in registry here
+        next_url = '{0}/@@manage-blog-categories'.format(
+            context.absolute_url())
+        api.portal.show_message(_(u"The item has successfully been updated"),
+                                self.request,
+                                type='info')
+        return self.request.response.redirect(next_url)
 
 
 class SetupBlogCategoryStorage(grok.View):
