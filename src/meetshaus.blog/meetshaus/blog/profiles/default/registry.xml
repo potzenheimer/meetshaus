@@ -1,0 +1,3 @@
+<registry>
+    <records interface="meetshaus.blog.interfaces.IBlogToolSettings" />
+</registry>
