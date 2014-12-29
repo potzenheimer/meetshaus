@@ -42,7 +42,9 @@
 }
 
 .blogentry-body {
+  padding-top: @line-height-computed;
   @media (min-width: @screen-sm-min) {
+    padding-top: 0;
     h2,
     h3 {
       margin-top: ceil((@line-height-computed * 2));

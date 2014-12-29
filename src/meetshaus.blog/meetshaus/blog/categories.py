@@ -93,6 +93,14 @@ class UpdateBlogCategories(grok.View):
         self.subpath.append(name)
         return self
 
+    def getFieldname(self):
+        return self.traverse_subpath[1]
+
+    def getFieldData(self):
+        context = self.content_item()
+        fieldname = self.traverse_subpath[1]
+        return getattr(context, fieldname, '')
+
     def _update_stored_categories(self, data):
         context = aq_inner(self.context)
         fieldname = self.getFieldname()
