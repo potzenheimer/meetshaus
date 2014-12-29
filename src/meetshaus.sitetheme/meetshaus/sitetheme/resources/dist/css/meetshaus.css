@@ -18586,7 +18586,7 @@ body.template-theming-controlpanel .row
 {
     body
     {
-        line-height: 1.75;
+        line-height: 1.65;
     }
 }
 .wf-active b,
@@ -19735,6 +19735,11 @@ h1.documentFirstHeading
 @media (min-width: 992px)
 {
     .app-content-body p
+    {
+        margin-bottom: 35px;
+    }
+    .app-content-body ul,
+    .app-content-body ol
     {
         margin-bottom: 22.85714286px;
     }
