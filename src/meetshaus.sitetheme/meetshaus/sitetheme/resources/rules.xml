@@ -49,15 +49,14 @@
         <before content="/html/head/meta" theme="/html/head/title" />
 
         <rules css:if-content="body.userrole-authenticated">
-            <!-- Copy style, script and link tags in the order they appear in the content -->
-            <after
-                content="/html/head/style | /html/head/script | /html/head/link"
+            <after content="/html/head/link"
                 theme-children="/html/head"
                 />
-
+            <after
+                content="/html/head/script"
+                theme-children="/html/head"
+                />
             <drop theme="/html/head/style" />
-            <drop theme="/html/head/link" />
-
             <!-- Drop scripts from theme footer if present -->
             <drop theme="/html/body/script" />
          </rules>
@@ -82,6 +81,86 @@
 
         <!-- Logo (link target) -->
         <copy attributes="href" css:content='#portal-logo' css:theme=".app-brand" />
+
+        <!-- Portal Messages -->
+        <before css:content=".portalMessage" css:theme="#content" />
+        <strip css:content=".portalMessage dd"/>
+        <replace css:content=".portalMessage" >
+          <xsl:choose>
+              <xsl:when css:test=".portalMessage[style]"/>
+              <xsl:when css:test=".portalMessage">
+                  <div class="app-callout app-callout-default alert-dismissable" role="alert">
+                      <xsl:choose>
+                          <xsl:when css:test=".info">
+                              <xsl:attribute name="class">app-callout app-callout-success alert-dismissable</xsl:attribute>
+                          </xsl:when>
+                          <xsl:when css:test=".error">
+                              <xsl:attribute name="class">app-callout app-callout-danger alert-dismissable</xsl:attribute>
+                          </xsl:when>
+                          <xsl:when css:test=".warning">
+                              <xsl:attribute name="class">app-callout app-callout-warning alert-dismissable</xsl:attribute>
+                          </xsl:when>
+                      </xsl:choose>
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                      <h4><xsl:apply-templates select="./dt/*"/></h4>
+                      <xsl:apply-templates />
+                  </div>
+              </xsl:when>
+          </xsl:choose>
+        </replace>
+        <!-- Document First Heading -->
+        <replace css:content=".documentFirstHeading">
+            <div class="app-page-header">
+                <h1 class="app-page-title">
+                    <xsl:apply-templates />
+                </h1>
+            </div>
+        </replace>
+        <!-- Document lead description -->
+        <replace css:content=".documentDescription">
+            <p class="app-page-abstract">
+                <xsl:apply-templates />
+            </p>
+        </replace>
+        <!-- Fix table styles -->
+        <replace css:content="table.listing">
+          <table>
+            <xsl:copy-of select="@*"/>
+            <xsl:attribute name="class">table table-hover</xsl:attribute>
+            <xsl:apply-templates />
+          </table>
+        </replace>
+        <!-- Form field transforms -->
+        <!-- Forms -->
+        <replace css:content=".formHelp">
+          <xsl:copy>
+            <xsl:copy-of select="@*" />
+            <xsl:attribute name="class"><xsl:value-of select="./@class" /> help-block</xsl:attribute>
+            <xsl:apply-templates />
+          </xsl:copy>
+        </replace>
+
+        <replace css:content="span.required">
+          <xsl:copy>
+            <xsl:copy-of select="@*" />
+            <xsl:attribute name="class"><xsl:value-of select="./@class" /> text-warning</xsl:attribute>
+            <xsl:apply-templates />
+          </xsl:copy>
+        </replace>
+
+        <replace content="//*[contains(@class, 'fieldRequired')]/@class">
+          <xsl:attribute name="class"><xsl:value-of select="." /> text-warning</xsl:attribute>
+        </replace>
+
+        <replace content="//div[@class='formQuestion label']/@class">
+          <xsl:attribute name="class">formQuestion</xsl:attribute>
+        </replace>
+
+        <drop content="//label/span[@class='label']/@class" />
+
+        <replace content="//div[@class='field']//div[@class='label']/@class">
+          <xsl:attribute name="class"><xsl:value-of select="." /> label-warning</xsl:attribute>
+        </replace>
 
         <replace css:content="#portal-globalnav li"
             css:theme-children="#app-brandbar-nav"
