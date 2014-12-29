@@ -122,6 +122,12 @@
                 <xsl:apply-templates />
             </p>
         </replace>
+        <!-- Document byline (author and meta information) -->
+        <replace css:content=".documentByLine">
+            <div class="app-page-byline">
+                <xsl:apply-templates />
+            </div>
+        </replace>
         <!-- Fix table styles -->
         <replace css:content="table.listing">
           <table>

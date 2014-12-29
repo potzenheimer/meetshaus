@@ -19390,6 +19390,89 @@ fieldset[disabled] .btn-xing.active
     color: #175e60;
     background-color: #fff;
 }
+/*
+ * Callouts
+ *
+ * Not quite alerts, but custom and helpful notes for folks reading the docs.
+ * Requires a base and modifier class.
+ */
+/* Common styles for all types */
+.app-callout
+{
+    margin: 22.85714286px 0;
+    padding: 22.85714286px;
+
+    border-left: 6px solid #eee;
+}
+.app-callout h4
+{
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+.app-callout p:last-child
+{
+    margin-bottom: 0;
+}
+.app-callout code
+{
+    background-color: #fff;
+}
+.app-callout-default
+{
+    color: #333;
+    border-color: #777;
+    background-color: #eee;
+}
+.app-callout-default hr
+{
+    border-top-color: #6a6a6a;
+}
+.app-callout-default .alert-link
+{
+    color: #1a1a1a;
+}
+.app-callout-success
+{
+    color: #3c763d;
+    border-color: #d6e9c6;
+    background-color: #dff0d8;
+}
+.app-callout-success hr
+{
+    border-top-color: #c9e2b3;
+}
+.app-callout-success .alert-link
+{
+    color: #2b542c;
+}
+.app-callout-danger
+{
+    color: #a94442;
+    border-color: #ebccd1;
+    background-color: #f2dede;
+}
+.app-callout-danger hr
+{
+    border-top-color: #e4b9c0;
+}
+.app-callout-danger .alert-link
+{
+    color: #843534;
+}
+.app-callout-warning
+{
+    color: #8a6d3b;
+    border-color: #faebcc;
+    background-color: #fcf8e3;
+}
+.app-callout-warning hr
+{
+    border-top-color: #f7e1b5;
+}
+.app-callout-warning .alert-link
+{
+    color: #66512c;
+}
 @media (min-width: 992px)
 {
     .blogentry
@@ -19654,6 +19737,31 @@ h1.documentFirstHeading
     .app-content-body p
     {
         margin-bottom: 22.85714286px;
+    }
+}
+.app-page-byline
+{
+    font-size: .9rem;
+
+    margin-bottom: 22.85714286px;
+
+    color: #777;
+}
+.app-page-abstract,
+.app-page-lead
+{
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.25;
+
+    margin-bottom: 22.85714286px;
+}
+@media (min-width: 768px)
+{
+    .app-page-abstract,
+    .app-page-lead
+    {
+        font-size: 1.5rem;
     }
 }
 #sidebar
