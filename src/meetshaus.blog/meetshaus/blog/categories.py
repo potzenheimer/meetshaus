@@ -1,9 +1,12 @@
 # -*- coding: UTF-8 -*-
 """ Module listing available and asigned blog categories """
+
+import datetime
 import json
 import time
 import urllib2
 
+from AccessControl import Unauthorized
 from Acquisition import aq_inner
 from Products.CMFPlone.utils import safe_unicode
 from Products.CMFCore.interfaces import IContentish
@@ -93,13 +96,24 @@ class UpdateBlogCategories(grok.View):
         self.subpath.append(name)
         return self
 
+    def stored_data(self):
+        records = api.portal.set_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
+        return json.loads(records)
+
     def getFieldname(self):
         return self.traverse_subpath[1]
 
     def getFieldData(self):
         context = self.content_item()
-        fieldname = self.traverse_subpath[1]
-        return getattr(context, fieldname, '')
+        fieldname = self.getFieldname()
+        data = self.stored_data()
+        records = data['items']
+        item = {}
+        for record in records:
+            if record['id'] == fieldname:
+                item = record
+        return item
 
     def _update_stored_categories(self, data):
         context = aq_inner(self.context)
@@ -146,6 +160,8 @@ class SetupBlogCategoryStorage(grok.View):
         data = {
             'url': api_url,
             'timestamp': str(int(time.time())),
+            'created': str(datetime.datetime.now()),
+            'created': str(datetime.datetime.now()),
         }
         items = list()
         for kw in self.keywords():
