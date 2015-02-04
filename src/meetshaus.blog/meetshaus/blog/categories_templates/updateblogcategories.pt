@@ -29,7 +29,8 @@
             </p>
 
             <div class="app-field-editable">
-                <div class="editable" data-appui="content-editable"
+                <div class="editable" id="editable-text"
+                    data-appui="content-editable"
                     tal:content="view/getFieldData">
                     Editable Content Section
                 </div>
@@ -37,9 +38,11 @@
             <div class="app-item-editable-actions">
                 <form class="app-form js-form js-form-hidden"
                     method="post" role="form"
+                    id="js-form"
                     data-appui="content-editable-form"
                     tal:attributes="action request/URL">
-                    <textarea class="form-control hidden" id="content-editable-form-body"
+                    <textarea class="form-control app-field-editable content-editable-form-body hidden"
+                        id="content-editable-form-body"
                         name="content-editable-form-body">
                         {{ text area }}
                     </textarea>

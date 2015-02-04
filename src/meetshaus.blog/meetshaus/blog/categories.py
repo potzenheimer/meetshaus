@@ -32,6 +32,15 @@ class BlogCategories(grok.View):
     def catalog(self):
         return api.portal.get_tool(name='portal_catalog')
 
+    def stored_data(self):
+        records = api.portal.get_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
+        return json.loads(records)
+
+    def records(self):
+        data = self.stored_data()
+        return data['items']
+
     def keywords(self):
         catalog = self.catalog()
         keywords = catalog.uniqueValuesFor('Subject')
@@ -102,7 +111,7 @@ class UpdateBlogCategories(grok.View):
             if errorIdx > 0:
                 self.errors = form_errors
             else:
-                self._store_data(form)
+                self._update_stored_categories(form)
 
     @property
     def traverse_subpath(self):
