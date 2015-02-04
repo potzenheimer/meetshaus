@@ -20,9 +20,13 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-    <div class="row">
+    <div class="row" tal:define="info view/category">
         <div class="app-item-editable">
-            <h1 i18n:translate="">Edit field content</h1>
+            <h1 i18n:translate="">Theme editor</h1>
+
+            <p class="lead">
+                Edit blog category description
+            </p>
 
             <div class="app-field-editable">
                 <div class="editable" data-appui="content-editable"
@@ -35,12 +39,12 @@
                     method="post" role="form"
                     data-appui="content-editable-form"
                     tal:attributes="action request/URL">
-                    <textarea class="form-control" id="content-editable-form-body"
+                    <textarea class="form-control hidden" id="content-editable-form-body"
                         name="content-editable-form-body">
                         {{ text area }}
                     </textarea>
                     <input class="form-control" id="field-name"
-                        type="text" name="field-name"
+                        type="hidden" name="field-name"
                         tal:attributes="value view/getFieldname">
                     <span tal:replace="structure context/@@authenticator/authenticator"/>
                     <button class="btn btn-primary"
@@ -56,7 +60,7 @@
                 // Medium editor
                 var $editor = new MediumEditor('.editable', {
                     anchorInputPlaceholder: 'Type a link',
-                    buttons: ['bold', 'italic', 'anchor', 'header1', 'header2', 'quote', 'unorderedlist']
+                    buttons: ['bold', 'italic', 'anchor', 'quote', 'unorderedlist']
                 });
                 $('#js-form').submit(function (e) {
                     // e.preventDefault();

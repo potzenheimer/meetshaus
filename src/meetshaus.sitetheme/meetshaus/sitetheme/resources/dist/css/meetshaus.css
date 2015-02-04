@@ -8274,7 +8274,11 @@ button.close
 ul.formTabs:before,
 ul.formTabs:after,
 .listingBar:before,
-.listingBar:after
+.listingBar:after,
+.ws-section-row:before,
+.ws-section-row:after,
+.ws-section-block:before,
+.ws-section-block:after
 {
     display: table;
 
@@ -8296,7 +8300,9 @@ ul.formTabs:after,
 .panel-body:after,
 .modal-footer:after,
 ul.formTabs:after,
-.listingBar:after
+.listingBar:after,
+.ws-section-row:after,
+.ws-section-block:after
 {
     clear: both;
 }
@@ -19855,5 +19861,105 @@ h1.documentFirstHeading
     padding: 22.85714286px;
 
     text-align: center;
+}
+.ws-section-row
+{
+    margin-right: -15px;
+    margin-left: -15px;
+
+    border-bottom: 1px solid #eee;
+}
+.ws-section-content
+{
+    position: relative;
+
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+@media (min-width: 768px)
+{
+    .ws-section-content
+    {
+        float: left;
+
+        width: 83.33333333%;
+    }
+}
+.ws-section-block
+{
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.ws-section-block-main,
+.ws-section-block-aside
+{
+    position: relative;
+
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+@media (min-width: 768px)
+{
+    .ws-section-block-main,
+    .ws-section-block-aside
+    {
+        float: left;
+
+        width: 50%;
+    }
+}
+.ws-section-desc
+{
+    font-size: .8rem;
+    font-weight: 300;
+
+    margin-right: 3rem;
+
+    word-wrap: break-word;
+
+    color: #777;
+}
+.ws-section-chevron
+{
+    font-size: 1.5rem;
+
+    position: relative;
+
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    text-align: right;
+
+    color: #777;
+}
+@media (min-width: 768px)
+{
+    .ws-section-chevron
+    {
+        float: left;
+
+        width: 16.66666667%;
+    }
+}
+.ws-aside
+{
+    padding-top: 46px;
+}
+.app-field-editable
+{
+    margin-bottom: 22.85714286px;
+}
+.app-field-editable > .editable
+{
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 16px;
+
+    min-height: 200px;
+    padding: 22.85714286px;
+
+    border: 2px solid #faebcc;
 }
 /*# sourceMappingURL=meetshaus.css.map */

@@ -120,18 +120,20 @@ class UpdateBlogCategories(grok.View):
         return json.loads(records)
 
     def getFieldname(self):
-        return self.traverse_subpath[1]
+        return self.traverse_subpath[0]
 
     def getFieldData(self):
-        context = self.content_item()
         fieldname = self.getFieldname()
         data = self.stored_data()
         records = data['items']
-        item = {}
-        for record in records:
-            if record['id'] == fieldname:
-                item = record
-        return item
+        item = records[int(fieldname)]
+        return item['description']
+
+    def category(self):
+        fieldname = self.getFieldname()
+        data = self.stored_data()
+        records = data['items']
+        return records[int(fieldname)]
 
     def _update_stored_categories(self, data):
         context = aq_inner(self.context)
@@ -186,7 +188,7 @@ class SetupBlogCategoryStorage(grok.View):
             info = {
                 'id': self._normalize_keyword(kw),
                 'url': self._build_archive_url(kw),
-                'count': self._count_entries(kw),
+                'count': str(self._count_entries(kw)),
                 'title': kw,
                 'description': ''
             }
@@ -198,11 +200,9 @@ class SetupBlogCategoryStorage(grok.View):
         start = time.time()
         data = self._process_request()
         end = time.time()
-        data.update(dict(_runtime=end-start))
-        json_data = json.dumps(data)
-        import pdb; pdb.set_trace()
+        data.update(dict(_runtime=str(end-start)))
         api.portal.set_registry_record(
             'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories',
-            json_data)
+            safe_unicode(json.dumps(data)))
         next_url = api.portal.get().absolute_url()
         return self.request.response.redirect(next_url)
