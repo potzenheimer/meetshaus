@@ -9,9 +9,9 @@
 <head>
     <metal:block metal:fill-slot="head_slot">
         <link rel="stylesheet"
-            tal:attributes="href string:${context/@@plone_portal_state/portal_url}/++resource++hph.lectures/medium-editor.css" />
+            tal:attributes="href string:${context/@@plone_portal_state/portal_url}/++resource++meetshaus.blog/medium-editor.css" />
         <script type="text/javascript" src="test.js"
-            tal:attributes="src string:${context/@@plone_portal_state/portal_url}/++resource++hph.lectures/medium-editor.js"></script>
+            tal:attributes="src string:${context/@@plone_portal_state/portal_url}/++resource++meetshaus.blog/medium-editor.min.js"></script>
     </metal:block>
 </head>
 
@@ -47,11 +47,9 @@
                             name="form.button.Submit"
                             id="form.button.Submit"
                             i18n:translate="">Save changes</button>
-                    <a class="btn btn-primary" href="#save"
-                        data-appui="content-editable-save"
-                        <a tal:attributes="href string:${context/absolute_url}/lecture-editor-save;
-                                        data-appui-target-url string:${context/absolute_url}/lecture-editor-save">
-                        Save changes</a>
+                    <a class="btn btn-default"
+                        href="${context/absolute_url}/@@manage-blog-categories"
+                        i18n:translate="">Cancel</a>
                 </form>
             </div>
             <script>
@@ -60,11 +58,11 @@
                     anchorInputPlaceholder: 'Type a link',
                     buttons: ['bold', 'italic', 'anchor', 'header1', 'header2', 'quote', 'unorderedlist']
                 });
-                $('form[data-appui="content-editable-form"]').on('submit', function (e) {
-                    e.preventDefault();
-                    var $contentObj = $editor.serialize();
-                    $("#content-editable-form-body").val($contentObj['element-0'].value);
-                    this.submit();
+                $('#js-form').submit(function (e) {
+                    // e.preventDefault();
+                    var contentObj = $('#editable-text').html();
+                    $("#content-editable-form-body").val(contentObj);
+                    // this.submit();
                 });
             </script>
         </div>

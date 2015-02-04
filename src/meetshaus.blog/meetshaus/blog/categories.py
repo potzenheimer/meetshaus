@@ -48,6 +48,12 @@ class BlogCategories(grok.View):
         return url
 
 
+class ManageBlogCategories(grok.View):
+    grok.context(IContentish)
+    grok.require('zope2.View')
+    grok.name('manage-blog-categories')
+
+
 class UpdateBlogCategories(grok.View):
     grok.context(IContentish)
     grok.require('zope2.View')

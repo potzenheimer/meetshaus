@@ -28,6 +28,10 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <browser:resourceDirectory
+    name="meetshaus.blog"
+    directory="static" />
+
   <plone:behavior
     title="Sisosha Simple Social Sharing"
     description="Make all items of this type display simple sharing buttons"
