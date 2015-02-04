@@ -53,6 +53,11 @@ class ManageBlogCategories(grok.View):
     grok.require('zope2.View')
     grok.name('manage-blog-categories')
 
+    def stored_data(self):
+        records = api.portal.set_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
+        return json.loads(records)
+
 
 class UpdateBlogCategories(grok.View):
     grok.context(IContentish)
@@ -167,7 +172,7 @@ class SetupBlogCategoryStorage(grok.View):
             'url': api_url,
             'timestamp': str(int(time.time())),
             'created': str(datetime.datetime.now()),
-            'created': str(datetime.datetime.now()),
+            'updated': str(datetime.datetime.now()),
         }
         items = list()
         for kw in self.keywords():
