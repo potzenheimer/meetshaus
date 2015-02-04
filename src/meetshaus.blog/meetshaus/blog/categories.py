@@ -137,9 +137,25 @@ class UpdateBlogCategories(grok.View):
 
     def _update_stored_categories(self, data):
         context = aq_inner(self.context)
+        start = time.time()
         fieldname = self.getFieldname()
         new_value = data['content-editable-form-body']
+        stored = self.stored_data()
+        records = stored['items']
+        record = records[int(fieldname)]
+        record['description'] = new_value
+        records[int(fieldname)] = record
+        data['items'] = records
         # store in registry here
+        end = time.time()
+        data.update(dict(
+            _runtime=str(end-start),
+            timestamp=str(int(time.time())),
+            updated=str(datetime.datetime.now())
+        ))
+        api.portal.set_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories',
+            safe_unicode(json.dumps(data)))
         next_url = '{0}/@@manage-blog-categories'.format(
             context.absolute_url())
         api.portal.show_message(_(u"The item has successfully been updated"),

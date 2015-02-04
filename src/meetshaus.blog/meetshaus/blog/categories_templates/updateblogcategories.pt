@@ -22,7 +22,7 @@
 
     <div class="row" tal:define="info view/category">
         <div class="app-item-editable">
-            <h1 i18n:translate="">Theme editor</h1>
+            <h1 tal:content="info/title">Theme editor</h1>
 
             <p class="lead">
                 Edit blog category description
