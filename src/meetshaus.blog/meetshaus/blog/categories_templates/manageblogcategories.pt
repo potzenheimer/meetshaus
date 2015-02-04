@@ -36,7 +36,7 @@
           tal:define="kw_idx repeat/record/index">
           <div class="ws-section-content">
             <h3><a href="${context/absolute_url}/@@update-blog-category/${kw_idx}"
-                  tal:attributes="href string:${context/absolute_url}/@@update-blog-category/${kw_idx}"
+                  tal:attributes="href string:${context/absolute_url}/@@update-blog-categories/${kw_idx}"
                   tal:content="record/title">
                 ${record/title}</a>
             </h3>
@@ -46,7 +46,7 @@
           </div>
           <div class="ws-section-chevron">
             <a href="${context/absolute_url}/@@address-editor/${userinfo/rvs}"
-              tal:attributes="href string:${context/absolute_url}/@@update-blog-category/${kw_idx}">
+              tal:attributes="href string:${context/absolute_url}/@@update-blog-categories/${kw_idx}">
               <i class="fa fa fa-angle-right fa-4x" aria-hidden="true"></i>
             </a>
           </div>
