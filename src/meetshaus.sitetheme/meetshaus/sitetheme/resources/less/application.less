@@ -190,4 +190,45 @@ h1.documentFirstHeading {
     .text-center();
 }
 
+//== Workspace section
+//
+//## List and listitem component
+.ws-section-row {
+  .row();
+  border-bottom: 1px solid @gray-lighter;
+}
+
+.ws-section-content {
+  .make-sm-column(10);
+}
+
+.ws-section-block {
+  .row();
+}
+
+.ws-section-block-main,
+.ws-section-block-aside {
+  .make-sm-column(6);
+}
+
+.ws-section-desc {
+  color: @gray-light;
+  font-size: 0.8rem;
+  font-weight: 300;
+  word-wrap: break-word;
+  margin-right: 3rem;
+}
+
+.ws-section-chevron {
+  .make-sm-column(2);
+  text-align: right;
+  font-size: 1.5rem;
+  color: @gray-light;
+}
+
+.ws-aside {
+  //background: @app-gray-lighter;
+  padding-top: ceil((@line-height-computed * 2));
+}
+
 

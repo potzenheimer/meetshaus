@@ -9,6 +9,13 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
+
+    <div class="app-editor-link text-right" tal:condition="view/authenticated">
+      <a class="btn btn-default" href=""
+        tal:attributes="href string:${context/absolute_url}/@@manage-blog-categories">
+        Manage categories
+      </a>
+    </div>
     <div class="row">
       <div class="col-sm-3">
         <div class="blogentry-aside text-center">

@@ -26,6 +26,9 @@ class BlogCategories(grok.View):
     grok.require('zope2.View')
     grok.name('blog-categories')
 
+    def authenticated(self):
+        return not api.user.is_anonymous()
+
     def catalog(self):
         return api.portal.get_tool(name='portal_catalog')
 
@@ -54,9 +57,13 @@ class ManageBlogCategories(grok.View):
     grok.name('manage-blog-categories')
 
     def stored_data(self):
-        records = api.portal.set_registry_record(
+        records = api.portal.get_registry_record(
             'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
         return json.loads(records)
+
+    def records(self):
+        data = self.stored_data()
+        return data['items']
 
 
 class UpdateBlogCategories(grok.View):
@@ -108,7 +115,7 @@ class UpdateBlogCategories(grok.View):
         return self
 
     def stored_data(self):
-        records = api.portal.set_registry_record(
+        records = api.portal.get_registry_record(
             'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
         return json.loads(records)
 
@@ -145,7 +152,7 @@ class SetupBlogCategoryStorage(grok.View):
     grok.name('setup-blog-category-storage')
 
     def keywords(self):
-        catalog = self.catalog()
+        catalog = api.portal.get_tool(name='portal_catalog')
         keywords = catalog.uniqueValuesFor('Subject')
         keywords = [unicode(k, 'utf-8') for k in keywords]
         return keywords
@@ -155,7 +162,7 @@ class SetupBlogCategoryStorage(grok.View):
         return normalizer.normalize(keyword)
 
     def _count_entries(self, keyword):
-        catalog = self.catalog()
+        catalog = api.portal.get_tool(name='portal_catalog')
         brains = catalog(object_provides=IBlogEntry.__identifier__,
                          Subject=keyword.encode('utf-8'))
         return len(brains)
@@ -172,7 +179,7 @@ class SetupBlogCategoryStorage(grok.View):
             'url': api_url,
             'timestamp': str(int(time.time())),
             'created': str(datetime.datetime.now()),
-            'updated': str(datetime.datetime.now()),
+            'updated': str(datetime.datetime.now())
         }
         items = list()
         for kw in self.keywords():
@@ -193,6 +200,7 @@ class SetupBlogCategoryStorage(grok.View):
         end = time.time()
         data.update(dict(_runtime=end-start))
         json_data = json.dumps(data)
+        import pdb; pdb.set_trace()
         api.portal.set_registry_record(
             'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories',
             json_data)

@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="blogentry-aside text-center">
+          <div class="h2 text-muted" tal:content="context/Title" />
+          <div class="h1 text-secondary">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-list fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="hidden">Themen</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="blogentry-aside">
+          <div class="blogentry-abstract blogentry-abstract-standalone">
+            Bearbeiten und Verwalten der Blog Kategorien
+          </div>
+        </div>
+      </div>
+    </div>
+    <tal:records tal:condition="view/stored_data">
+      <div class="ws-section" tal:repeat="record view/records">
+        <div class="ws-section-row">
+          <div class="ws-section-content">
+            <h3><a href="${context/absolute_url}/@@update-blog-category/${userinfo/rvs}">
+                ${record/title}</a>
+            </h3>
+            <p class="ws-section-desc">
+              Keyword bearbeiten
+            </p>
+          </div>
+          <div class="ws-section-chevron">
+            <a href="${context/absolute_url}/@@address-editor/${userinfo/rvs}">
+              <i class="fa fa fa-angle-right fa-4x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div><!-- /ws-section -->
+    </tal:records>
+    <tal:block tal:content="nothing" tal:omit-tag="">
+      <div class="row blogentry-list" tal:define="items view/keywords">
+        <div class="col-xs-12 col-sm-6 blogentry-list-item" tal:repeat="item items">
+          <div class="blogentry-aside">
+            <a class="h2"
+              tal:attributes="href python:view.archive_url(item)">
+                <span tal:content="item" />
+            </a>
+            <p class="text-muted">
+              <span tal:content="python:view.count_entries(item)" />
+              Beiträge
+            </p>
+          </div>
+        </div>
+      </div>
+    </tal:block>
+
+  </metal:content-core>
+</metal:main>
+</body>
+</html>
