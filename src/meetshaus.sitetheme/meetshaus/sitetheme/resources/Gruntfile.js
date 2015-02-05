@@ -66,7 +66,7 @@ module.exports = function (grunt) {
                     strictMath: false,
                     sourceMap: true,
                     outputSourceFiles: true,
-                    sourceMapURL: '<%= pkg.name %>.css.map',
+                    sourceMapURL: '<%= config.dist %>/css/<%= pkg.name %>.css.map',
                     sourceMapFilename: '<%= config.dist %>/css/<%= pkg.name %>.css.map'
                 },
                 files: { '<%= config.dist %>/css/<%= pkg.name %>.css': 'less/styles.less' }
@@ -111,7 +111,7 @@ module.exports = function (grunt) {
         criticalcss: {
             frontpage: {
                 options: {
-                    url: 'http://rms.kreativkombinat.de',
+                    url: 'http://<%= pkg.name %>.kreativkombinat.de',
                     width: 1200,
                     height: 900,
                     outputfile: '<%= config.dist %>/css/critical.css',
@@ -126,6 +126,13 @@ module.exports = function (grunt) {
                 cwd: 'bower_components/',
                 src: ['font-awesome/fonts/*'],
                 dest: '<%= config.dist %>/assets/fonts/'
+            },
+            showPassword: {
+                expand: true,
+                flatten: true,
+                cwd: 'bower_components/',
+                src: ['hideShowPassword/images/*'],
+                dest: '<%= config.dist %>/assets/img/'
             },
             ico: {
                 expand: true,
@@ -239,7 +246,10 @@ module.exports = function (grunt) {
                     removeEmptyAttributes: true,
                     removeOptionalTags: true,
                     removeRedundantAttributes: true,
-                    useShortDoctype: true
+                    useShortDoctype: true,
+                    keepClosingSlash: true,
+                    minifyCSS: true,
+                    minifyJS: true
                 },
                 files: [{
                         expand: true,
@@ -257,12 +267,12 @@ module.exports = function (grunt) {
                 options: {
                     patterns: [
                         {
-                            match: '../assets/',
-                            replacement: 'assets/'
-                        },
-                        {
                             match: '../../assets/',
                             replacement: '../assets/'
+                        },
+                        {
+                            match: '../assets/',
+                            replacement: 'assets/'
                         },
                         {
                             match: '../../<%= config.dist %>/css/<%= pkg.name %>.min.css',
@@ -298,28 +308,32 @@ module.exports = function (grunt) {
                 options: {
                     patterns: [
                         {
+                            match: '../../assets/',
+                            replacement: 'assets/'
+                        },
+                        {
+                            match: '../assets/',
+                            replacement: 'assets/'
+                        },
+                        {
                             match: 'assets/',
                             replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/assets/'
                         },
                         {
-                            match: '../assets/',
-                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/assets/'
+                            match: '../css/',
+                            replacement: 'css/'
                         },
                         {
                             match: 'css/',
                             replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/css/'
                         },
                         {
-                            match: '../css/',
-                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/css/'
+                            match: '../js/<%= pkg.name %>',
+                            replacement: 'js/<%= pkg.name %>'
                         },
                         {
-                            match: 'js/',
-                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/js/'
-                        },
-                        {
-                            match: '../js/',
-                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/js/'
+                            match: 'js/<%= pkg.name %>',
+                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/js/<%= pkg.name %>'
                         }
                     ],
                     usePrefix: false,
@@ -463,8 +477,8 @@ module.exports = function (grunt) {
             },
             dist: {
                 options: {
-                    url: 'http://rms.kreativkombinat.de',
-                    paths: ['/itemview', '/signin'],
+                    url: 'http://www.hfph.de',
+                    paths: ['/', '/hochschule'],
                     locale: 'de_DE',
                     strategy: 'desktop',
                     threshold: 80
@@ -483,7 +497,6 @@ module.exports = function (grunt) {
             ]);
         }
         grunt.task.run([
-            'html',
             'js',
             'css',
             'connect:livereload',
@@ -527,7 +540,7 @@ module.exports = function (grunt) {
     ]);
     grunt.registerTask('html-dist', [
         'templates',
-        'replace:dist',
+        'replace:diazo',
         'htmlmin'
     ]);
     grunt.registerTask('dist-cc', [
