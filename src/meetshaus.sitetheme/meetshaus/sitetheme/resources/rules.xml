@@ -20,6 +20,9 @@
     <theme href="dist/signin/index.html" css:if-content="body.template-logged_out" />
     <theme href="dist/signin/index.html" css:if-content="body.template-login_failed" />
     <theme href="dist/signin/index.html" css:if-content="body.template-mail_password_form" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-mail_password_response" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-pwreset_form" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-pwreset_finish" />
     <!-- The default theme, used for standard Plone web pages -->
     <theme href="dist/frontpage/index.html" css:if-content="body.section-front-page" />
     <!--<theme href="contact.html" css:if-content="body.section-kontakt" />
@@ -181,10 +184,10 @@
 
         <!-- Login form rules -->
         <replace css:content-children="#content-core"
-                css:theme-children="#app-signin-content"
+                css:theme-children="#app-signin-body"
                 css:if-content="body.template-login_form" />
         <replace css:content-children="#content-core"
-                css:theme-children="#app-signin-content"
+                css:theme-children="#app-signin-body"
                 css:if-content="body.template-login_failed" />
         <replace css:content-children="#content-core"
                 css:theme-children="#app-signin-content"
@@ -192,6 +195,15 @@
         <replace css:content-children="#content"
                 css:theme-children="#app-signin-content"
                 css:if-content="body.template-mail_password_form" />
+        <replace css:content-children="#content"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-mail_password_response" />
+        <replace css:content-children="#content"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-pwreset_form" />
+        <replace css:content-children="#content"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-pwreset_finish" />
 
         <rules css:if-content="body.portaltype-meetshaus-blog-blogentry">
             <replace css:content-children="#content"
