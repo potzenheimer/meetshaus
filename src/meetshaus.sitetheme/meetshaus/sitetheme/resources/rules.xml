@@ -40,7 +40,7 @@
 
         <notheme if="$ajax_load" />
 
-        <theme href="dist/index.html" />
+        <theme href="dist/blog/index.html" />
 
         <notheme if="$host = 'cms.meetshaus.de'" />
 
