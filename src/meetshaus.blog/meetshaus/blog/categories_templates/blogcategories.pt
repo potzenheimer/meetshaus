@@ -38,19 +38,22 @@
       </div>
     </div>
     <div class="row blogentry-list" tal:define="items view/records">
-      <div class="col-xs-12 col-sm-6 blogentry-list-item" tal:repeat="item items">
-        <div class="blogentry-aside">
-          <a class="h2"
-            tal:attributes="href item/url">
-              <span tal:content="item/title" />
-          </a>
-          <p class="text-muted">
-            <span tal:content="item/count" />
-            Beiträge
-          </p>
-          <div tal:content="item/description" />
+      <tal:block tal:repeat="item items">
+        <div class="col-xs-12 col-sm-6 blogentry-list-item">
+          <div class="blogentry-aside">
+            <a class="h2"
+              tal:attributes="href item/url">
+                <span tal:content="item/title" />
+            </a>
+            <p class="text-muted">
+              <span tal:content="item/count" />
+              Beiträge
+            </p>
+            <div tal:content="structure item/description" />
+          </div>
         </div>
-      </div>
+        <div class="clearfix" tal:condition="repeat/item/odd"></div>
+      </tal:block>
     </div>
 
   </metal:content-core>

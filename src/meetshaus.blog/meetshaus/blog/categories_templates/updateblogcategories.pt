@@ -31,7 +31,7 @@
             <div class="app-field-editable">
                 <div class="editable" id="editable-text"
                     data-appui="content-editable"
-                    tal:content="view/getFieldData">
+                    tal:content="structure view/getFieldData">
                     Editable Content Section
                 </div>
             </div>
