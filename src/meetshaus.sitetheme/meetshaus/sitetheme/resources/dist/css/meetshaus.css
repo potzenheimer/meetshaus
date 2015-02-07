@@ -19488,11 +19488,22 @@ fieldset[disabled] .btn-xing.active
 }
 .blogentry-header
 {
-    margin: 45px 0 22.85714286px;
+    margin: 22.85714286px 0 22.85714286px;
     padding-top: 22.85714286px;
     padding-bottom: 10.42857143px;
 
     border-top: 1px solid #eee;
+}
+.blogentry-header:first-child
+{
+    border-top: 0;
+}
+@media (min-width: 992px)
+{
+    .blogentry-header
+    {
+        margin-top: 45px;
+    }
 }
 .blogentry-title
 {
@@ -19547,10 +19558,8 @@ fieldset[disabled] .btn-xing.active
 }
 .blogentry-aside
 {
-    margin-top: 45px;
-    margin-bottom: 75px;
-
-    border-top: 1px solid #eee;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .blogentry-aside.blogentry-aside-default
 {
@@ -19562,7 +19571,11 @@ fieldset[disabled] .btn-xing.active
 {
     .blogentry-aside
     {
+        margin-top: 45px;
+        margin-bottom: 75px;
         padding-top: 22.85714286px;
+
+        border-top: 1px solid #eee;
     }
 }
 .blogentry-aside-section

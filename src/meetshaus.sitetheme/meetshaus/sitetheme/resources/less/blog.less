@@ -12,8 +12,14 @@
 .blogentry-header {
   padding-top: @line-height-computed;
   padding-bottom: ((@line-height-computed / 2) - 1);
-  margin: floor((@line-height-computed * 2)) 0 @line-height-computed;
+  margin: @line-height-computed 0 @line-height-computed;
   border-top: 1px solid @page-header-border-color;
+  &:first-child {
+    border-top: 0;
+  }
+  @media (min-width: @screen-md-min) {
+    margin-top: floor((@line-height-computed * 2));
+  }
 }
 
 .blogentry-title {
@@ -54,15 +60,17 @@
 }
 
 .blogentry-aside {
-  margin-top: floor((@line-height-computed * 2));
-  margin-bottom: @navbar-height;
-  border-top: 1px solid @page-header-border-color;
+  margin-top: floor((@line-height-computed / 4));
+  margin-bottom: floor((@line-height-computed / 4));
   &.blogentry-aside-default {
     margin-top: 0;
     border: none;
   }
   @media (min-width: @screen-sm-min) {
+    margin-top: floor((@line-height-computed * 2));
+    margin-bottom: @navbar-height;
     padding-top: @line-height-computed;
+    border-top: 1px solid @page-header-border-color;
   }
 }
 
