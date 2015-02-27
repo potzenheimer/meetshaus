@@ -95,5 +95,8 @@
 }
 
 .blogentry-aside-body {
-  padding-left: @line-height-computed;
+  padding-right: @line-height-computed;
+  @media (min-width: @screen-sm-min) {
+    padding-right: ceil((@line-height-computed * 2));
+  }
 }

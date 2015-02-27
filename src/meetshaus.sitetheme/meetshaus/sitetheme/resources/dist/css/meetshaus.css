@@ -19607,7 +19607,14 @@ fieldset[disabled] .btn-xing.active
 }
 .blogentry-aside-body
 {
-    padding-left: 22.85714286px;
+    padding-right: 22.85714286px;
+}
+@media (min-width: 768px)
+{
+    .blogentry-aside-body
+    {
+        padding-right: 46px;
+    }
 }
 .app-footer .app-footer-body
 {
