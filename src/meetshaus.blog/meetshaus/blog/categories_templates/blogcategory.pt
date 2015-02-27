@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="blogentry-aside text-center">
+          <div class="h2 text-muted" tal:content="context/Title" />
+          <div class="h1 text-secondary">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-list fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="hidden">Themen</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="blogentry-aside" tal:condition="view/record">
+          <tal:block tal:define="category view/record">
+            <div class="h2"
+              tal:content="category/title">
+              The actual category name will go here
+            </div>
+            <div class="blogentry-abstract blogentry-abstract-standalone"
+              tal:content="structure category/description">
+              The category desciption should be inserted here
+            </div>
+          </tal:block>
+        </div>
+      </div>
+    </div>
+    <div class="row blogentry-list" tal:condition="view/blog_entries">
+      <div class="blogentry-list-item" tal:repeat="item view/blog_entries">
+        <div class="row">
+          <div class="col-xs-12 col-sm-3 xcol-sm-pull-9">
+            <div class="blogentry-aside" id="blogentry-aside">
+              <div class="blogentry-aside-section"
+                tal:define="item_uid item/UID;
+                            ts python:view.timestamp(item_uid)">
+                <span class="fa-stack fa-3x text-secondary">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <strong class="fa-stack-1x timestamp-text" tal:content="ts/day">27</strong>
+                </span>
+                <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month">August 2014</span>
+                <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/year">August 2014</span>
+              </div>
+            </div>
+            <div class="blogentry-aside-section"
+                    tal:define="item_uid item/UID">
+                    <div class="h6 blogentry-aside-title">Lesezeit:</div>
+                    <p class="blogentry-aside-text"><span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span></p>
+                  </div>
+          </div>
+          <div class="col-xs-12 col-sm-9 xcol-sm-push-3">
+            <div class="blogentry">
+              <div class="blogentry-header xhidden-xs">
+                <h2 class="blogentry-title">
+                  <a tal:attributes="href item/getURL" tal:content="item/Title" />
+                </h2>
+              </div>
+
+              <p class="blogentry-abstract" tal:condition="item/Description">
+                <span tal:content="item/Description">Desc</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </metal:content-core>
+</metal:main>
+</body>
+</html>

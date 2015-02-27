@@ -19605,6 +19605,10 @@ fieldset[disabled] .btn-xing.active
 
     color: #5a5f64;
 }
+.blogentry-aside-body
+{
+    padding-left: 22.85714286px;
+}
 .app-footer .app-footer-body
 {
     margin: 75px 0 112.5px;

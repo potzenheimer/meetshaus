@@ -8,14 +8,16 @@ import urllib2
 
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
-from Products.CMFPlone.utils import safe_unicode
 from Products.CMFCore.interfaces import IContentish
+from Products.CMFPlone.utils import safe_unicode
 from five import grok
 from plone import api
+from plone.app.contentlisting.interfaces import IContentListing
 from plone.app.layout.navigation.interfaces import INavigationRoot
-from zope.component import getUtility
-from zope.component import getMultiAdapter
+from plone.event.utils import pydt
 from plone.i18n.normalizer.interfaces import IIDNormalizer
+from zope.component import getMultiAdapter
+from zope.component import getUtility
 
 from meetshaus.blog.blogentry import IBlogEntry
 from meetshaus.blog import MessageFactory as _
@@ -58,6 +60,78 @@ class BlogCategories(grok.View):
         sub = urllib2.quote(subject.encode('utf-8'))
         url = '{0}/blog?category={1}'.format(portal_url, sub)
         return url
+
+
+class BlogCategory(grok.View):
+    grok.context(IContentish)
+    grok.require('zope2.View')
+    grok.name('category')
+
+    @property
+    def traverse_subpath(self):
+        return self.subpath
+
+    def publishTraverse(self, request, name):
+        if not hasattr(self, 'subpath'):
+            self.subpath = []
+        self.subpath.append(name)
+        return self
+
+    def stored_data(self):
+        records = api.portal.get_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
+        return json.loads(records)
+
+    def selected_category(self):
+        return self.traverse_subpath[0]
+
+    def records(self):
+        data = self.stored_data()
+        return data['items']
+
+    def record(self):
+        category = self.selected_category()
+        for x in self.records():
+            if x['title'] == category:
+                return x
+        return None
+
+    def blog_entries(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        subject = self.selected_category()
+        brains = catalog(object_provides=IBlogEntry.__identifier__,
+                         Subject=subject.encode('utf-8'))
+        return IContentListing(brains)
+
+    def timestamp(self, uid):
+        item = api.content.get(UID=uid)
+        date = item.effective()
+        date = pydt(date)
+        timestamp = {}
+        timestamp['day'] = date.strftime("%d")
+        timestamp['month'] = date.strftime("%B")
+        timestamp['year'] = date.strftime("%Y")
+        timestamp['date'] = date
+        return timestamp
+
+    def _readable_text(self, uid):
+        context = api.content.get(UID=uid)
+        meta = context.title + ' ' + context.description
+        if context.text:
+            html = context.text.raw
+            transforms = api.portal.get_tool(name='portal_transforms')
+            stream = transforms.convertTo('text/plain',
+                                          html,
+                                          mimetype='text/html')
+            text = stream.getData().strip()
+            body = meta + ' ' + text
+        return body
+
+    def reading_time(self, uid):
+        text = self._readable_text(uid)
+        text_count = len(text.split(' '))
+        rt = text_count / 200
+        return rt
 
 
 class ManageBlogCategories(grok.View):

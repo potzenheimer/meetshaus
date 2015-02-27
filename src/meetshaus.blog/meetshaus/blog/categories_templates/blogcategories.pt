@@ -45,11 +45,13 @@
               tal:attributes="href item/url">
                 <span tal:content="item/title" />
             </a>
+            <a tal:attributes="href string:${context/absolute_url}/@@category/${item/title}">
+              Filter</a>
             <p class="text-muted">
               <span tal:content="item/count" />
               Beiträge
             </p>
-            <div tal:content="structure item/description" />
+            <div class="blogentry-aside-body" tal:content="structure item/description" />
           </div>
         </div>
         <div class="clearfix" tal:condition="repeat/item/odd"></div>
