@@ -19982,4 +19982,8 @@ h1.documentFirstHeading
 {
     position: relative;
 }
+#plonebrowser input[id='searchtext']
+{
+    height: 35px;
+}
 /*# sourceMappingURL=meetshaus.css.map */
