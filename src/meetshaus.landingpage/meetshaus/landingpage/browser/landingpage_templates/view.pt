@@ -79,7 +79,7 @@
                               <i class="fa fa-circle fa-stack-2x"></i>
                               <strong class="fa-stack-1x timestamp-text" tal:content="ts/day">27</strong>
                             </span>
-                            <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month">August 2014</span>
+                            <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month" i18n:domain="plone" i18n:translate="">August 2014</span>
                             <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/year">August 2014</span>
                           </div>
                         </div>
