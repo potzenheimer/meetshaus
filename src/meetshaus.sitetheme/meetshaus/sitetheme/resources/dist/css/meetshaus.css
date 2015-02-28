@@ -1471,7 +1471,9 @@ img.image-right > img,
 .captioned img > img,
 img.image-left a > img,
 img.image-right a > img,
-.captioned img a > img
+.captioned img a > img,
+.image-inline > img,
+.image-inline a > img
 {
     display: block;
 
@@ -18632,6 +18634,41 @@ a:hover
 {
     display: none !important;
     visibility: hidden !important;
+}
+.image-inline
+{
+    line-height: 1.42857143;
+
+    display: block;
+
+    margin-bottom: 22.85714286px;
+    padding: 4px;
+
+    -webkit-transition: border .2s ease-in-out;
+         -o-transition: border .2s ease-in-out;
+            transition: border .2s ease-in-out;
+
+    border: 1px solid #ddd;
+    border-radius: .25rem;
+    background-color: #fff;
+}
+.image-inline > img,
+.image-inline a > img
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+a.image-inline:hover,
+a.image-inline:focus,
+a.image-inline.active
+{
+    border-color: #74c4ea;
+}
+.image-inline .caption
+{
+    padding: 9px;
+
+    color: #333;
 }
 .headroom,
 .app-toolbar
