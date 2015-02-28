@@ -13,7 +13,7 @@
            class="blogentry-aside-category"
            rel="tag"
            tal:content="category"
-           tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@search?Subject%3Alist=${category}">
+           tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/@@category/${category}">
           Category
         </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
       </span>
