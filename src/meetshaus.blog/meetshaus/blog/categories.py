@@ -100,7 +100,9 @@ class BlogCategory(grok.View):
         catalog = api.portal.get_tool(name='portal_catalog')
         subject = self.selected_category()
         brains = catalog(object_provides=IBlogEntry.__identifier__,
-                         Subject=subject.encode('utf-8'))
+                         Subject=subject.encode('utf-8'),
+                         sort_on='effective',
+                         sort_order='reverse')
         return IContentListing(brains)
 
     def timestamp(self, uid):
