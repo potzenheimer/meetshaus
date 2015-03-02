@@ -17498,14 +17498,14 @@ fieldset[disabled] .btn-xing.active
 .blogentry-aside-section
 {
     font-size: .75rem;
+
+    text-align: center;
 }
 @media (min-width: 768px)
 {
     .blogentry-aside-section
     {
         font-size: .9rem;
-
-        text-align: center;
     }
 }
 .blogentry-aside-title
