@@ -3,20 +3,22 @@
 from five import grok
 from plone import api
 from Products.statusmessages.interfaces import IStatusMessage
+from Products.CMFCore.interfaces import IContentish
 from meetshaus.blog import utils
 from meetshaus.blog.blogentry import IBlogEntry
 
 
 class BaseClassCleanup(grok.View):
-    grok.context(IBlogEntry)
+    grok.context(IContentish)
     grok.require('cmf.ManagePortal')
     grok.name('cleanup-base-classes')
 
     def render(self):
-        catalog = api.portal.gat_tool(name="portal_catalog")
+        catalog = api.portal.get_tool(name="portal_catalog")
         migrated = []
         not_migrated = []
-        for brain in catalog():
+        results = catalog(object_provides=IBlogEntry.__identifier__)
+        for brain in results:
             obj = brain.getObject()
             if utils.migrate_base_class_to_new_class(
                     obj, migrate_to_folderish=True):
