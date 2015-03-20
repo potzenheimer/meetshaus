@@ -1,0 +1,158 @@
+//
+// Forms styles to combat Plone specific issues
+// -------------------------------------------------
+
+
+// Buttons
+input[type="submit"],
+input[type="button"] {
+    .btn();
+    .btn-default();
+}
+input.context,
+input.standalone,
+input.addreference,
+input.submit-widget {
+    .btn();
+    .btn-default();
+    margin-right: @line-height-computed / 2;
+}
+
+input.context {
+    .btn-primary();
+}
+
+input.destructive {
+    .btn-danger();
+    margin-right: @line-height-computed / 2;
+}
+
+// Inputs
+
+// Add basic styling to all input types
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    .form-control();
+}
+
+// Reset tetarea height
+textarea {
+    height: auto;
+}
+
+// Form control sizing
+// Redefined here since our custom input field reset is applied later
+// during rendering and therefore overrides these
+.input-sm {
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+
+.input-lg {
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+}
+
+
+input[type="checkbox"] + label,
+.ArchetypesBooleanWidget label {
+    display: inline-block;
+    margin-left: @line-height-computed / 4;
+}
+
+input.datetime-widget,
+select.datetime-widget,
+.ArchetypesCalendarWidget select {
+    display: inline-block;
+    width: auto;
+}
+
+/* Emulates the styling from the h1 tag */
+#content .field input[type="text"][name$=".title"],
+#form-widgets-IBasic-title,
+#form-widgets-title,
+#archetypes-fieldname-title input {
+    .input-lg();
+    border-radius: 0;
+}
+
+/* Emulates styling from the description's view */
+#content .field textarea[name$=".description"],
+#form-widgets-IBasic-description,
+#archetypes-fieldname-description textarea#description {
+    font-weight: 400;
+}
+
+div.fieldTextFormat {
+    //padding: @line-height-computed;
+    text-align: right;
+    label {
+        font-weight: 300;
+        .text-muted();
+    }
+    select {
+        width: 120px;
+    }
+}
+
+div.field {
+    .form-group();
+    xlabel {
+        font-weight: 600;
+    }
+    label span.formHelp {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 300;
+        .text-muted();
+    }
+    div.label,
+    span.label,
+    label {
+        background: transparent;
+        color: @text-color;
+        font-weight: 400;
+        font-size: 1.25rem;
+        line-height: @line-height-computed;
+        padding: 0px;
+        .text-left();
+        span.formHelp {
+            .help-block();
+            .text-muted();
+            font-weight: 300;
+        }
+    }
+}
+
+.app-form-help,
+div.formHelp {
+    .help-block();
+    font-size: 0.75rem;
+}
+
+.formControls {
+    padding-top: @line-height-computed / 2;
+}
+
+// Required field marker
+.form-control-required {
+    font-size: 0.75rem;
+    color: @gray-dark;
+}
+.fieldRequired,
+span.required {
+    display: inline-block;
+}

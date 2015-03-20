@@ -1474,6 +1474,12 @@ img
 .thumbnail a > img,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img,
+img.image-left > img,
+img.image-right > img,
+.captioned img > img,
+img.image-left a > img,
+img.image-right a > img,
+.captioned img a > img,
 .image-inline > img,
 .image-inline a > img
 {
@@ -4446,12 +4452,10 @@ input[type='button'].btn-block
 .collapse
 {
     display: none;
-    visibility: hidden;
 }
 .collapse.in
 {
     display: block;
-    visibility: visible;
 }
 tr.collapse.in
 {
@@ -4936,6 +4940,23 @@ select[multiple].input-group-lg > .input-group-btn > .btn
 {
     height: auto;
 }
+select.input-group-lg > .form-control,
+select.input-group-lg > .input-group-addon,
+select.input-group-lg > .input-group-btn > .btn
+{
+    line-height: 2.91666662rem;
+
+    height: 2.91666662rem;
+}
+textarea.input-group-lg > .form-control,
+textarea.input-group-lg > .input-group-addon,
+textarea.input-group-lg > .input-group-btn > .btn,
+select[multiple].input-group-lg > .form-control,
+select[multiple].input-group-lg > .input-group-addon,
+select[multiple].input-group-lg > .input-group-btn > .btn
+{
+    height: auto;
+}
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn
@@ -4947,6 +4968,23 @@ select[multiple].input-group-lg > .input-group-btn > .btn
     padding: .3125rem .625rem;
 
     border-radius: .1875rem;
+}
+select.input-group-sm > .form-control,
+select.input-group-sm > .input-group-addon,
+select.input-group-sm > .input-group-btn > .btn
+{
+    line-height: 1.9rem;
+
+    height: 1.9rem;
+}
+textarea.input-group-sm > .form-control,
+textarea.input-group-sm > .input-group-addon,
+textarea.input-group-sm > .input-group-btn > .btn,
+select[multiple].input-group-sm > .form-control,
+select[multiple].input-group-sm > .input-group-addon,
+select[multiple].input-group-sm > .input-group-btn > .btn
+{
+    height: auto;
 }
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
@@ -5331,12 +5369,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 .tab-content > .tab-pane
 {
     display: none;
-    visibility: hidden;
 }
 .tab-content > .active
 {
     display: block;
-    visibility: visible;
 }
 .nav-tabs .dropdown-menu
 {
@@ -5398,7 +5434,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn
     .navbar-collapse.collapse
     {
         display: block !important;
-        visibility: visible !important;
         overflow: visible !important;
 
         height: auto !important;
@@ -7481,7 +7516,7 @@ button.close
 .modal
 {
     position: fixed;
-    z-index: 1040;
+    z-index: 1050;
     top: 0;
     right: 0;
     bottom: 0;
@@ -7539,9 +7574,11 @@ button.close
 }
 .modal-backdrop
 {
-    position: absolute;
+    position: fixed;
+    z-index: 1040;
     top: 0;
     right: 0;
+    bottom: 0;
     left: 0;
 
     background-color: #000;
@@ -7647,7 +7684,6 @@ button.close
     z-index: 1070;
 
     display: block;
-    visibility: visible;
 
     opacity: 0;
 
@@ -8275,6 +8311,10 @@ button.close
 .panel-body:after,
 .modal-footer:before,
 .modal-footer:after,
+ul.formTabs:before,
+ul.formTabs:after,
+.listingBar:before,
+.listingBar:after,
 .ws-section-row:before,
 .ws-section-row:after,
 .ws-section-block:before,
@@ -8299,6 +8339,8 @@ button.close
 .pager:after,
 .panel-body:after,
 .modal-footer:after,
+ul.formTabs:after,
+.listingBar:after,
 .ws-section-row:after,
 .ws-section-block:after
 {
@@ -8343,7 +8385,6 @@ button.close
 .hidden
 {
     display: none !important;
-    visibility: hidden !important;
 }
 .affix
 {
@@ -10862,10 +10903,2219 @@ button.close
     content: '\f20c';
 }
 /*!
+ * Plone Combat Styles v1.0.0
+ *
+ * Copyright 2013 Ade25
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world by ade25
+ */
+#plone-contentmenu-workflow .state-private,
+#plone-contentmenu-workflow .state-visible,
+#plone-contentmenu-workflow .state-published,
+#plone-contentmenu-workflow .state-pending,
+#plone-contentmenu-workflow .state-expired
+{
+    font-size: .85rem;
+    font-weight: bold;
+    line-height: 1;
+
+    display: inline-block;
+
+    min-width: 10px;
+    padding: 3px 7px;
+
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    background-color: #777;
+    text-shadow: none;
+}
+#plone-contentmenu-workflow .state-private:empty,
+#plone-contentmenu-workflow .state-visible:empty,
+#plone-contentmenu-workflow .state-published:empty,
+#plone-contentmenu-workflow .state-pending:empty,
+#plone-contentmenu-workflow .state-expired:empty
+{
+    display: none;
+}
+.btn #plone-contentmenu-workflow .state-private,
+.btn #plone-contentmenu-workflow .state-visible,
+.btn #plone-contentmenu-workflow .state-published,
+.btn #plone-contentmenu-workflow .state-pending,
+.btn #plone-contentmenu-workflow .state-expired
+{
+    position: relative;
+    top: -1px;
+}
+.btn-xs #plone-contentmenu-workflow .state-private,
+.btn-xs #plone-contentmenu-workflow .state-visible,
+.btn-xs #plone-contentmenu-workflow .state-published,
+.btn-xs #plone-contentmenu-workflow .state-pending,
+.btn-xs #plone-contentmenu-workflow .state-expired,
+.btn-group-xs > .btn #plone-contentmenu-workflow .state-private,
+.btn-group-xs > .btn #plone-contentmenu-workflow .state-visible,
+.btn-group-xs > .btn #plone-contentmenu-workflow .state-published,
+.btn-group-xs > .btn #plone-contentmenu-workflow .state-pending,
+.btn-group-xs > .btn #plone-contentmenu-workflow .state-expired
+{
+    top: 0;
+
+    padding: 1px 5px;
+}
+a#plone-contentmenu-workflow .state-private:hover,
+a#plone-contentmenu-workflow .state-visible:hover,
+a#plone-contentmenu-workflow .state-published:hover,
+a#plone-contentmenu-workflow .state-pending:hover,
+a#plone-contentmenu-workflow .state-expired:hover,
+a#plone-contentmenu-workflow .state-private:focus,
+a#plone-contentmenu-workflow .state-visible:focus,
+a#plone-contentmenu-workflow .state-published:focus,
+a#plone-contentmenu-workflow .state-pending:focus,
+a#plone-contentmenu-workflow .state-expired:focus
+{
+    cursor: pointer;
+    text-decoration: none;
+
+    color: #fff;
+}
+.list-group-item.active > #plone-contentmenu-workflow .state-private,
+.list-group-item.active > #plone-contentmenu-workflow .state-visible,
+.list-group-item.active > #plone-contentmenu-workflow .state-published,
+.list-group-item.active > #plone-contentmenu-workflow .state-pending,
+.list-group-item.active > #plone-contentmenu-workflow .state-expired,
+.nav-pills > .active > a > #plone-contentmenu-workflow .state-private,
+.nav-pills > .active > a > #plone-contentmenu-workflow .state-visible,
+.nav-pills > .active > a > #plone-contentmenu-workflow .state-published,
+.nav-pills > .active > a > #plone-contentmenu-workflow .state-pending,
+.nav-pills > .active > a > #plone-contentmenu-workflow .state-expired
+{
+    color: #74c4ea;
+    background-color: #fff;
+}
+.list-group-item > #plone-contentmenu-workflow .state-private,
+.list-group-item > #plone-contentmenu-workflow .state-visible,
+.list-group-item > #plone-contentmenu-workflow .state-published,
+.list-group-item > #plone-contentmenu-workflow .state-pending,
+.list-group-item > #plone-contentmenu-workflow .state-expired
+{
+    float: right;
+}
+.list-group-item > #plone-contentmenu-workflow .state-private + #plone-contentmenu-workflow .state-private,
+.list-group-item > #plone-contentmenu-workflow .state-private + #plone-contentmenu-workflow .state-visible,
+.list-group-item > #plone-contentmenu-workflow .state-private + #plone-contentmenu-workflow .state-published,
+.list-group-item > #plone-contentmenu-workflow .state-private + #plone-contentmenu-workflow .state-pending,
+.list-group-item > #plone-contentmenu-workflow .state-private + #plone-contentmenu-workflow .state-expired,
+.list-group-item > #plone-contentmenu-workflow .state-visible + #plone-contentmenu-workflow .state-private,
+.list-group-item > #plone-contentmenu-workflow .state-visible + #plone-contentmenu-workflow .state-visible,
+.list-group-item > #plone-contentmenu-workflow .state-visible + #plone-contentmenu-workflow .state-published,
+.list-group-item > #plone-contentmenu-workflow .state-visible + #plone-contentmenu-workflow .state-pending,
+.list-group-item > #plone-contentmenu-workflow .state-visible + #plone-contentmenu-workflow .state-expired,
+.list-group-item > #plone-contentmenu-workflow .state-published + #plone-contentmenu-workflow .state-private,
+.list-group-item > #plone-contentmenu-workflow .state-published + #plone-contentmenu-workflow .state-visible,
+.list-group-item > #plone-contentmenu-workflow .state-published + #plone-contentmenu-workflow .state-published,
+.list-group-item > #plone-contentmenu-workflow .state-published + #plone-contentmenu-workflow .state-pending,
+.list-group-item > #plone-contentmenu-workflow .state-published + #plone-contentmenu-workflow .state-expired,
+.list-group-item > #plone-contentmenu-workflow .state-pending + #plone-contentmenu-workflow .state-private,
+.list-group-item > #plone-contentmenu-workflow .state-pending + #plone-contentmenu-workflow .state-visible,
+.list-group-item > #plone-contentmenu-workflow .state-pending + #plone-contentmenu-workflow .state-published,
+.list-group-item > #plone-contentmenu-workflow .state-pending + #plone-contentmenu-workflow .state-pending,
+.list-group-item > #plone-contentmenu-workflow .state-pending + #plone-contentmenu-workflow .state-expired,
+.list-group-item > #plone-contentmenu-workflow .state-expired + #plone-contentmenu-workflow .state-private,
+.list-group-item > #plone-contentmenu-workflow .state-expired + #plone-contentmenu-workflow .state-visible,
+.list-group-item > #plone-contentmenu-workflow .state-expired + #plone-contentmenu-workflow .state-published,
+.list-group-item > #plone-contentmenu-workflow .state-expired + #plone-contentmenu-workflow .state-pending,
+.list-group-item > #plone-contentmenu-workflow .state-expired + #plone-contentmenu-workflow .state-expired
+{
+    margin-right: 5px;
+}
+.nav-pills > li > a > #plone-contentmenu-workflow .state-private,
+.nav-pills > li > a > #plone-contentmenu-workflow .state-visible,
+.nav-pills > li > a > #plone-contentmenu-workflow .state-published,
+.nav-pills > li > a > #plone-contentmenu-workflow .state-pending,
+.nav-pills > li > a > #plone-contentmenu-workflow .state-expired
+{
+    margin-left: 3px;
+}
+#plone-contentmenu-workflow .state-private
+{
+    background-color: #a94442;
+}
+#plone-contentmenu-workflow .state-published
+{
+    background-color: #3c763d;
+}
+#plone-contentmenu-workflow .state-pending
+{
+    background-color: #31708f;
+}
+#plone-contentmenu-workflow .state-expired
+{
+    background-color: #8a6d3b;
+}
+#plone-contentmenu-workflow .state-visible
+{
+    background-color: #333;
+}
+/* @group Tabs */
+#content-views
+{
+    float: left;
+
+    margin-top: 5px;
+
+    background-color: transparent;
+}
+#content-views li
+{
+    display: inline;
+
+    list-style: none;
+}
+/* fix shift on content views list under ie6 */
+/* .ie6 is set on <html> by Modernizr library */
+.ie6 ul#content-views
+{
+    margin: -2px -3px 0 -3px;
+}
+#content-views a
+{
+    color: White;
+}
+/* Shared CSS between the two tab types */
+#content-views a
+{
+    /* this isn't supported by all browsers, so we keep it in a separate rule */
+    display: inline-block;
+}
+#content-views a
+{
+    line-height: 2em;
+
+    margin: 0 ;
+    padding: 0 .75em;
+
+    text-decoration: none;
+
+    border: none;
+}
+#content-views li.selected a
+{
+    font-weight: bold;
+}
+#content-views li.selected a,
+#content-views li a:hover
+{
+    color: Black;
+    border-radius: 4px;
+    background: White;
+}
+#content li.formTab a.notify,
+#content-core li.formTab a.notify
+{
+    color: White;
+    background-color: red;
+}
+div.field span.required:after
+{
+    padding-left: .2em;
+
+    content: '■';
+
+    color: Red;
+}
+#content fieldset.formPanel,
+#content-core fieldset.formPanel
+{
+    border: none;
+}
+#content fieldset.formPanel.hidden,
+#content-core fieldset.formPanel.hidden
+{
+    display: none;
+}
+#content div.formControls input.hidden,
+#content-core div.formControls input.hidden
+{
+    display: none;
+}
+/* @end */
+/* @group Pulldown menus */
+/* @group Personal tools pulldown */
+#portal-personaltools dt
+{
+    font-weight: normal;
+}
+#portal-personaltools dt.actionMenuHeader a:after
+{
+    content: ' ▼';
+}
+#portal-personaltools dd
+{
+    right: 0;
+
+    padding-top: .5em;
+}
+#portal-personaltools dd
+{
+    padding-bottom: .5em;
+
+    background: #e3e3e3;
+}
+#portal-personaltools dd a
+{
+    line-height: 2em;
+
+    padding: 0 .75em;
+}
+#portal-personaltools dd a:hover
+{
+    color: White;
+    background: #205c90;
+}
+/* @end */
+/* @group Content pulldowns */
+#contentActionMenus li
+{
+    display: inline;
+}
+#contentActionMenus dl.actionMenu a
+{
+    z-index: 5;
+
+    color: White;
+    background-color: transparent;
+}
+#contentActionMenus dl.actionMenu.activated dd
+{
+    z-index: 5;
+
+    color: White;
+    background-color: #777;
+}
+#contentActionMenus dl.actionMenu.activated dd
+{
+    right: -3px;
+
+    border-bottom: .5em solid #777;
+}
+#contentActionMenus dl.actionMenu.activated dd a:hover,
+#contentActionMenus dl.actionMenu.activated dd .actionMenuSelected
+{
+    color: #666;
+    background-color: White !important;
+}
+#contentActionMenus dl.actionMenu
+{
+    line-height: 22.85714286px;
+}
+#folderHeader,
+#contextHeader
+{
+    border-bottom: 2px solid white;
+}
+#contextHeader
+{
+    margin-top: 5px;
+}
+/* @end */
+#contentActionMenus
+{
+    position: relative;
+    top: 10px;
+    right: -.24em;
+
+    float: right;
+
+    margin: 0;
+    padding: 4px 4px -4px 0;
+
+    background: transparent;
+}
+.actionMenuContent
+{
+    padding: 0 .25em;
+}
+dl.actionMenu
+{
+    position: relative;
+
+    float: right;
+
+    margin-bottom: 0;
+    margin-left: .5em;
+
+    white-space: nowrap;
+}
+dl.actionMenu a,
+dl.actionMenu div
+{
+    display: block !important;
+
+    white-space: nowrap;
+}
+dl.actionMenu dt
+{
+    font-weight: normal;
+}
+span.arrowDownAlternative
+{
+    font-size: 80%;
+}
+dl.actionMenu.deactivated dt
+{
+    margin: 0 .25em;
+}
+dl.actionMenu.deactivated dd
+{
+    display: none;
+}
+dl.actionMenu.activated dd
+{
+    position: absolute;
+
+    width: auto;
+    min-width: 100%;
+
+    -webkit-border-bottom-right-radius: .5em;
+    -moz-border-radius-bottomright: .5em;
+            border-bottom-right-radius: .5em;
+    -webkit-border-bottom-left-radius: .5em;
+    -moz-border-radius-bottomleft: .5em;
+            border-bottom-left-radius: .5em;
+}
+dl.actionMenu.activated dt a,
+dl.actionMenu.activated dd a,
+dl.actionMenu.activated dd div
+{
+    margin: 0 .25em;
+}
+/* @end */
+/* @group Content History */
+div.historyRecord
+{
+    margin-bottom: 1em;
+}
+div.historyTools ul
+{
+    float: right;
+
+    margin: .5em 1em;
+}
+div.historyTools ul li
+{
+    display: inline;
+
+    padding: 0 .015em;
+}
+div.historyTools ul li a
+{
+    border-bottom: none;
+}
+div.historyTools form
+{
+    display: inline;
+}
+.historyByLine
+{
+    padding: .5em;
+
+    -webkit-border-top-left-radius: .5em;
+    -moz-border-radius-topleft: .5em;
+            border-top-left-radius: .5em;
+    -webkit-border-top-right-radius: .5em;
+    -moz-border-radius-topright: .5em;
+            border-top-right-radius: .5em;
+    background: #ddd;
+}
+div.historyLinks
+{
+    float: right;
+    clear: right;
+
+    margin: .5em 1em 0 0;
+}
+div.historyComment
+{
+    padding: .5em 1em;
+
+    border: 1px solid #ddd;
+}
+div.historyComment p
+{
+    margin: 0;
+    padding-top: 1px;
+}
+a.historyComparePrevious
+{
+    display: block;
+
+    margin-top: 3em;
+
+    text-align: center;
+
+    border-top: 1px dotted #ccc;
+}
+a.historyComparePrevious span
+{
+    position: relative;
+    top: -.75em;
+
+    padding: 0 .5em;
+
+    background-color: white;
+}
+/* @end */
+ul.formTabs
+{
+    margin: 0 0 11.42857143px;
+    margin-bottom: 0;
+    padding-left: 0;
+
+    list-style: none;
+    list-style-type: none;
+
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+}
+ul.formTabs > li
+{
+    position: relative;
+
+    display: block;
+}
+ul.formTabs > li > a
+{
+    position: relative;
+
+    display: block;
+
+    padding: 10px 15px;
+}
+ul.formTabs > li > a:hover,
+ul.formTabs > li > a:focus
+{
+    text-decoration: none;
+
+    background-color: #eee;
+}
+ul.formTabs > li.disabled > a
+{
+    color: #777;
+}
+ul.formTabs > li.disabled > a:hover,
+ul.formTabs > li.disabled > a:focus
+{
+    cursor: not-allowed;
+    text-decoration: none;
+
+    color: #777;
+    background-color: transparent;
+}
+ul.formTabs .open > a,
+ul.formTabs .open > a:hover,
+ul.formTabs .open > a:focus
+{
+    border-color: #74c4ea;
+    background-color: #eee;
+}
+ul.formTabs .nav-divider
+{
+    overflow: hidden;
+
+    height: 1px;
+    margin: 10.42857143px 0;
+
+    background-color: #e5e5e5;
+}
+ul.formTabs > li > a > img
+{
+    max-width: none;
+}
+ul.formTabs > li
+{
+    float: left;
+
+    margin-bottom: -1px;
+}
+ul.formTabs > li > a
+{
+    line-height: 1.42857143;
+
+    margin-right: 2px;
+
+    border: 1px solid transparent;
+    border-radius: .25rem .25rem 0 0;
+}
+ul.formTabs > li > a:hover
+{
+    border-color: #eee #eee #ddd;
+}
+ul.formTabs > li.active > a,
+ul.formTabs > li.active > a:hover,
+ul.formTabs > li.active > a:focus
+{
+    cursor: default;
+
+    color: #555;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    background-color: #fff;
+}
+ul.formTabs.nav-justified
+{
+    width: 100%;
+
+    border-bottom: 0;
+}
+ul.formTabs.nav-justified > li
+{
+    float: none;
+}
+ul.formTabs.nav-justified > li > a
+{
+    margin-bottom: 5px;
+
+    text-align: center;
+}
+ul.formTabs.nav-justified > .dropdown .dropdown-menu
+{
+    top: auto;
+    left: auto;
+}
+@media (min-width: 768px)
+{
+    ul.formTabs.nav-justified > li
+    {
+        display: table-cell;
+
+        width: 1%;
+    }
+    ul.formTabs.nav-justified > li > a
+    {
+        margin-bottom: 0;
+    }
+}
+ul.formTabs.nav-justified > li > a
+{
+    margin-right: 0;
+
+    border-radius: .25rem;
+}
+ul.formTabs.nav-justified > .active > a,
+ul.formTabs.nav-justified > .active > a:hover,
+ul.formTabs.nav-justified > .active > a:focus
+{
+    border: 1px solid #ddd;
+}
+@media (min-width: 768px)
+{
+    ul.formTabs.nav-justified > li > a
+    {
+        border-bottom: 1px solid #ddd;
+        border-radius: .25rem .25rem 0 0;
+    }
+    ul.formTabs.nav-justified > .active > a,
+    ul.formTabs.nav-justified > .active > a:hover,
+    ul.formTabs.nav-justified > .active > a:focus
+    {
+        border-bottom-color: #fff;
+    }
+}
+ul.formTabs li
+{
+    float: left;
+
+    margin-bottom: -1px;
+}
+ul.formTabs li a
+{
+    line-height: 16.85714286px;
+
+    display: block;
+
+    padding: 8px 12px;
+
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+ul.formTabs li a:hover
+{
+    border-color: #eee #eee #ddd;
+}
+ul.formTabs li a.selected
+{
+    cursor: default;
+
+    color: #555;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    background-color: #fff;
+}
+input[type='submit'],
+input[type='button']
+{
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.42857143;
+
+    display: inline-block;
+
+    margin-bottom: 0;
+    padding: .375rem .75rem;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    color: #333;
+    border: 1px solid transparent;
+    border-color: #ccc;
+    border-radius: .25rem;
+    background-color: #fff;
+    background-image: none;
+
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+}
+input[type='submit']:focus,
+input[type='button']:focus,
+input[type='submit']:active:focus,
+input[type='button']:active:focus,
+input[type='submit'].active:focus,
+input[type='button'].active:focus,
+input[type='submit'].focus,
+input[type='button'].focus,
+input[type='submit']:active.focus,
+input[type='button']:active.focus,
+input[type='submit'].active.focus,
+input[type='button'].active.focus
+{
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+input[type='submit']:hover,
+input[type='button']:hover,
+input[type='submit']:focus,
+input[type='button']:focus,
+input[type='submit'].focus,
+input[type='button'].focus
+{
+    text-decoration: none;
+
+    color: #333;
+}
+input[type='submit']:active,
+input[type='button']:active,
+input[type='submit'].active,
+input[type='button'].active
+{
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+input[type='submit'].disabled,
+input[type='button'].disabled,
+input[type='submit'][disabled],
+input[type='button'][disabled],
+fieldset[disabled] input[type='submit'],
+fieldset[disabled] input[type='button']
+{
+    cursor: not-allowed;
+    pointer-events: none;
+
+    opacity: .65;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+
+    filter: alpha(opacity=65);
+}
+input[type='submit']:hover,
+input[type='button']:hover,
+input[type='submit']:focus,
+input[type='button']:focus,
+input[type='submit'].focus,
+input[type='button'].focus,
+input[type='submit']:active,
+input[type='button']:active,
+input[type='submit'].active,
+input[type='button'].active,
+.open > .dropdown-toggleinput[type='submit'],
+.open > .dropdown-toggleinput[type='button']
+{
+    color: #333;
+    border-color: #adadad;
+    background-color: #e6e6e6;
+}
+input[type='submit']:active,
+input[type='button']:active,
+input[type='submit'].active,
+input[type='button'].active,
+.open > .dropdown-toggleinput[type='submit'],
+.open > .dropdown-toggleinput[type='button']
+{
+    background-image: none;
+}
+input[type='submit'].disabled,
+input[type='button'].disabled,
+input[type='submit'][disabled],
+input[type='button'][disabled],
+fieldset[disabled] input[type='submit'],
+fieldset[disabled] input[type='button'],
+input[type='submit'].disabled:hover,
+input[type='button'].disabled:hover,
+input[type='submit'][disabled]:hover,
+input[type='button'][disabled]:hover,
+fieldset[disabled] input[type='submit']:hover,
+fieldset[disabled] input[type='button']:hover,
+input[type='submit'].disabled:focus,
+input[type='button'].disabled:focus,
+input[type='submit'][disabled]:focus,
+input[type='button'][disabled]:focus,
+fieldset[disabled] input[type='submit']:focus,
+fieldset[disabled] input[type='button']:focus,
+input[type='submit'].disabled.focus,
+input[type='button'].disabled.focus,
+input[type='submit'][disabled].focus,
+input[type='button'][disabled].focus,
+fieldset[disabled] input[type='submit'].focus,
+fieldset[disabled] input[type='button'].focus,
+input[type='submit'].disabled:active,
+input[type='button'].disabled:active,
+input[type='submit'][disabled]:active,
+input[type='button'][disabled]:active,
+fieldset[disabled] input[type='submit']:active,
+fieldset[disabled] input[type='button']:active,
+input[type='submit'].disabled.active,
+input[type='button'].disabled.active,
+input[type='submit'][disabled].active,
+input[type='button'][disabled].active,
+fieldset[disabled] input[type='submit'].active,
+fieldset[disabled] input[type='button'].active
+{
+    border-color: #ccc;
+    background-color: #fff;
+}
+input[type='submit'] .badge,
+input[type='button'] .badge
+{
+    color: #fff;
+    background-color: #333;
+}
+input.context,
+input.standalone,
+input.addreference,
+input.submit-widget
+{
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.42857143;
+
+    display: inline-block;
+
+    margin-right: 11.42857143px;
+    margin-bottom: 0;
+    padding: .375rem .75rem;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    color: #333;
+    border: 1px solid transparent;
+    border-color: #ccc;
+    border-radius: .25rem;
+    background-color: #fff;
+    background-image: none;
+
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+}
+input.context:focus,
+input.standalone:focus,
+input.addreference:focus,
+input.submit-widget:focus,
+input.context:active:focus,
+input.standalone:active:focus,
+input.addreference:active:focus,
+input.submit-widget:active:focus,
+input.context.active:focus,
+input.standalone.active:focus,
+input.addreference.active:focus,
+input.submit-widget.active:focus,
+input.context.focus,
+input.standalone.focus,
+input.addreference.focus,
+input.submit-widget.focus,
+input.context:active.focus,
+input.standalone:active.focus,
+input.addreference:active.focus,
+input.submit-widget:active.focus,
+input.context.active.focus,
+input.standalone.active.focus,
+input.addreference.active.focus,
+input.submit-widget.active.focus
+{
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+input.context:hover,
+input.standalone:hover,
+input.addreference:hover,
+input.submit-widget:hover,
+input.context:focus,
+input.standalone:focus,
+input.addreference:focus,
+input.submit-widget:focus,
+input.context.focus,
+input.standalone.focus,
+input.addreference.focus,
+input.submit-widget.focus
+{
+    text-decoration: none;
+
+    color: #333;
+}
+input.context:active,
+input.standalone:active,
+input.addreference:active,
+input.submit-widget:active,
+input.context.active,
+input.standalone.active,
+input.addreference.active,
+input.submit-widget.active
+{
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+input.context.disabled,
+input.standalone.disabled,
+input.addreference.disabled,
+input.submit-widget.disabled,
+input.context[disabled],
+input.standalone[disabled],
+input.addreference[disabled],
+input.submit-widget[disabled],
+fieldset[disabled] input.context,
+fieldset[disabled] input.standalone,
+fieldset[disabled] input.addreference,
+fieldset[disabled] input.submit-widget
+{
+    cursor: not-allowed;
+    pointer-events: none;
+
+    opacity: .65;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+
+    filter: alpha(opacity=65);
+}
+input.context:hover,
+input.standalone:hover,
+input.addreference:hover,
+input.submit-widget:hover,
+input.context:focus,
+input.standalone:focus,
+input.addreference:focus,
+input.submit-widget:focus,
+input.context.focus,
+input.standalone.focus,
+input.addreference.focus,
+input.submit-widget.focus,
+input.context:active,
+input.standalone:active,
+input.addreference:active,
+input.submit-widget:active,
+input.context.active,
+input.standalone.active,
+input.addreference.active,
+input.submit-widget.active,
+.open > .dropdown-toggleinput.context,
+.open > .dropdown-toggleinput.standalone,
+.open > .dropdown-toggleinput.addreference,
+.open > .dropdown-toggleinput.submit-widget
+{
+    color: #333;
+    border-color: #adadad;
+    background-color: #e6e6e6;
+}
+input.context:active,
+input.standalone:active,
+input.addreference:active,
+input.submit-widget:active,
+input.context.active,
+input.standalone.active,
+input.addreference.active,
+input.submit-widget.active,
+.open > .dropdown-toggleinput.context,
+.open > .dropdown-toggleinput.standalone,
+.open > .dropdown-toggleinput.addreference,
+.open > .dropdown-toggleinput.submit-widget
+{
+    background-image: none;
+}
+input.context.disabled,
+input.standalone.disabled,
+input.addreference.disabled,
+input.submit-widget.disabled,
+input.context[disabled],
+input.standalone[disabled],
+input.addreference[disabled],
+input.submit-widget[disabled],
+fieldset[disabled] input.context,
+fieldset[disabled] input.standalone,
+fieldset[disabled] input.addreference,
+fieldset[disabled] input.submit-widget,
+input.context.disabled:hover,
+input.standalone.disabled:hover,
+input.addreference.disabled:hover,
+input.submit-widget.disabled:hover,
+input.context[disabled]:hover,
+input.standalone[disabled]:hover,
+input.addreference[disabled]:hover,
+input.submit-widget[disabled]:hover,
+fieldset[disabled] input.context:hover,
+fieldset[disabled] input.standalone:hover,
+fieldset[disabled] input.addreference:hover,
+fieldset[disabled] input.submit-widget:hover,
+input.context.disabled:focus,
+input.standalone.disabled:focus,
+input.addreference.disabled:focus,
+input.submit-widget.disabled:focus,
+input.context[disabled]:focus,
+input.standalone[disabled]:focus,
+input.addreference[disabled]:focus,
+input.submit-widget[disabled]:focus,
+fieldset[disabled] input.context:focus,
+fieldset[disabled] input.standalone:focus,
+fieldset[disabled] input.addreference:focus,
+fieldset[disabled] input.submit-widget:focus,
+input.context.disabled.focus,
+input.standalone.disabled.focus,
+input.addreference.disabled.focus,
+input.submit-widget.disabled.focus,
+input.context[disabled].focus,
+input.standalone[disabled].focus,
+input.addreference[disabled].focus,
+input.submit-widget[disabled].focus,
+fieldset[disabled] input.context.focus,
+fieldset[disabled] input.standalone.focus,
+fieldset[disabled] input.addreference.focus,
+fieldset[disabled] input.submit-widget.focus,
+input.context.disabled:active,
+input.standalone.disabled:active,
+input.addreference.disabled:active,
+input.submit-widget.disabled:active,
+input.context[disabled]:active,
+input.standalone[disabled]:active,
+input.addreference[disabled]:active,
+input.submit-widget[disabled]:active,
+fieldset[disabled] input.context:active,
+fieldset[disabled] input.standalone:active,
+fieldset[disabled] input.addreference:active,
+fieldset[disabled] input.submit-widget:active,
+input.context.disabled.active,
+input.standalone.disabled.active,
+input.addreference.disabled.active,
+input.submit-widget.disabled.active,
+input.context[disabled].active,
+input.standalone[disabled].active,
+input.addreference[disabled].active,
+input.submit-widget[disabled].active,
+fieldset[disabled] input.context.active,
+fieldset[disabled] input.standalone.active,
+fieldset[disabled] input.addreference.active,
+fieldset[disabled] input.submit-widget.active
+{
+    border-color: #ccc;
+    background-color: #fff;
+}
+input.context .badge,
+input.standalone .badge,
+input.addreference .badge,
+input.submit-widget .badge
+{
+    color: #fff;
+    background-color: #333;
+}
+input.context
+{
+    color: #fff;
+    border-color: #5ebbe7;
+    background-color: #74c4ea;
+}
+input.context:hover,
+input.context:focus,
+input.context.focus,
+input.context:active,
+input.context.active,
+.open > .dropdown-toggleinput.context
+{
+    color: #fff;
+    border-color: #29a4df;
+    background-color: #48b1e3;
+}
+input.context:active,
+input.context.active,
+.open > .dropdown-toggleinput.context
+{
+    background-image: none;
+}
+input.context.disabled,
+input.context[disabled],
+fieldset[disabled] input.context,
+input.context.disabled:hover,
+input.context[disabled]:hover,
+fieldset[disabled] input.context:hover,
+input.context.disabled:focus,
+input.context[disabled]:focus,
+fieldset[disabled] input.context:focus,
+input.context.disabled.focus,
+input.context[disabled].focus,
+fieldset[disabled] input.context.focus,
+input.context.disabled:active,
+input.context[disabled]:active,
+fieldset[disabled] input.context:active,
+input.context.disabled.active,
+input.context[disabled].active,
+fieldset[disabled] input.context.active
+{
+    border-color: #5ebbe7;
+    background-color: #74c4ea;
+}
+input.context .badge
+{
+    color: #74c4ea;
+    background-color: #fff;
+}
+input.destructive
+{
+    margin-right: 11.42857143px;
+
+    color: #fff;
+    border-color: #d43f3a;
+    background-color: #d9534f;
+}
+input.destructive:hover,
+input.destructive:focus,
+input.destructive.focus,
+input.destructive:active,
+input.destructive.active,
+.open > .dropdown-toggleinput.destructive
+{
+    color: #fff;
+    border-color: #ac2925;
+    background-color: #c9302c;
+}
+input.destructive:active,
+input.destructive.active,
+.open > .dropdown-toggleinput.destructive
+{
+    background-image: none;
+}
+input.destructive.disabled,
+input.destructive[disabled],
+fieldset[disabled] input.destructive,
+input.destructive.disabled:hover,
+input.destructive[disabled]:hover,
+fieldset[disabled] input.destructive:hover,
+input.destructive.disabled:focus,
+input.destructive[disabled]:focus,
+fieldset[disabled] input.destructive:focus,
+input.destructive.disabled.focus,
+input.destructive[disabled].focus,
+fieldset[disabled] input.destructive.focus,
+input.destructive.disabled:active,
+input.destructive[disabled]:active,
+fieldset[disabled] input.destructive:active,
+input.destructive.disabled.active,
+input.destructive[disabled].active,
+fieldset[disabled] input.destructive.active
+{
+    border-color: #d43f3a;
+    background-color: #d9534f;
+}
+input.destructive .badge
+{
+    color: #d9534f;
+    background-color: #fff;
+}
+select,
+textarea,
+input[type='text'],
+input[type='password'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='date'],
+input[type='month'],
+input[type='time'],
+input[type='week'],
+input[type='number'],
+input[type='email'],
+input[type='url'],
+input[type='search'],
+input[type='tel'],
+input[type='color']
+{
+    font-size: 1rem;
+    line-height: 1.42857143;
+
+    display: block;
+
+    width: 100%;
+    height: 23.60714286px;
+    height: 36px;
+    padding: .375rem .75rem;
+
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+         -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    background-color: #fff;
+    background-image: none;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+select:focus,
+textarea:focus,
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='datetime']:focus,
+input[type='datetime-local']:focus,
+input[type='date']:focus,
+input[type='month']:focus,
+input[type='time']:focus,
+input[type='week']:focus,
+input[type='number']:focus,
+input[type='email']:focus,
+input[type='url']:focus,
+input[type='search']:focus,
+input[type='tel']:focus,
+input[type='color']:focus
+{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+select::-moz-placeholder,
+textarea::-moz-placeholder,
+input[type='text']::-moz-placeholder,
+input[type='password']::-moz-placeholder,
+input[type='datetime']::-moz-placeholder,
+input[type='datetime-local']::-moz-placeholder,
+input[type='date']::-moz-placeholder,
+input[type='month']::-moz-placeholder,
+input[type='time']::-moz-placeholder,
+input[type='week']::-moz-placeholder,
+input[type='number']::-moz-placeholder,
+input[type='email']::-moz-placeholder,
+input[type='url']::-moz-placeholder,
+input[type='search']::-moz-placeholder,
+input[type='tel']::-moz-placeholder,
+input[type='color']::-moz-placeholder
+{
+    opacity: 1;
+    color: #999;
+}
+select:-ms-input-placeholder,
+textarea:-ms-input-placeholder,
+input[type='text']:-ms-input-placeholder,
+input[type='password']:-ms-input-placeholder,
+input[type='datetime']:-ms-input-placeholder,
+input[type='datetime-local']:-ms-input-placeholder,
+input[type='date']:-ms-input-placeholder,
+input[type='month']:-ms-input-placeholder,
+input[type='time']:-ms-input-placeholder,
+input[type='week']:-ms-input-placeholder,
+input[type='number']:-ms-input-placeholder,
+input[type='email']:-ms-input-placeholder,
+input[type='url']:-ms-input-placeholder,
+input[type='search']:-ms-input-placeholder,
+input[type='tel']:-ms-input-placeholder,
+input[type='color']:-ms-input-placeholder
+{
+    color: #999;
+}
+select::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+input[type='text']::-webkit-input-placeholder,
+input[type='password']::-webkit-input-placeholder,
+input[type='datetime']::-webkit-input-placeholder,
+input[type='datetime-local']::-webkit-input-placeholder,
+input[type='date']::-webkit-input-placeholder,
+input[type='month']::-webkit-input-placeholder,
+input[type='time']::-webkit-input-placeholder,
+input[type='week']::-webkit-input-placeholder,
+input[type='number']::-webkit-input-placeholder,
+input[type='email']::-webkit-input-placeholder,
+input[type='url']::-webkit-input-placeholder,
+input[type='search']::-webkit-input-placeholder,
+input[type='tel']::-webkit-input-placeholder,
+input[type='color']::-webkit-input-placeholder
+{
+    color: #999;
+}
+select[disabled],
+textarea[disabled],
+input[type='text'][disabled],
+input[type='password'][disabled],
+input[type='datetime'][disabled],
+input[type='datetime-local'][disabled],
+input[type='date'][disabled],
+input[type='month'][disabled],
+input[type='time'][disabled],
+input[type='week'][disabled],
+input[type='number'][disabled],
+input[type='email'][disabled],
+input[type='url'][disabled],
+input[type='search'][disabled],
+input[type='tel'][disabled],
+input[type='color'][disabled],
+select[readonly],
+textarea[readonly],
+input[type='text'][readonly],
+input[type='password'][readonly],
+input[type='datetime'][readonly],
+input[type='datetime-local'][readonly],
+input[type='date'][readonly],
+input[type='month'][readonly],
+input[type='time'][readonly],
+input[type='week'][readonly],
+input[type='number'][readonly],
+input[type='email'][readonly],
+input[type='url'][readonly],
+input[type='search'][readonly],
+input[type='tel'][readonly],
+input[type='color'][readonly],
+fieldset[disabled] select,
+fieldset[disabled] textarea,
+fieldset[disabled] input[type='text'],
+fieldset[disabled] input[type='password'],
+fieldset[disabled] input[type='datetime'],
+fieldset[disabled] input[type='datetime-local'],
+fieldset[disabled] input[type='date'],
+fieldset[disabled] input[type='month'],
+fieldset[disabled] input[type='time'],
+fieldset[disabled] input[type='week'],
+fieldset[disabled] input[type='number'],
+fieldset[disabled] input[type='email'],
+fieldset[disabled] input[type='url'],
+fieldset[disabled] input[type='search'],
+fieldset[disabled] input[type='tel'],
+fieldset[disabled] input[type='color']
+{
+    opacity: 1;
+    background-color: #eee;
+}
+select[disabled],
+textarea[disabled],
+input[type='text'][disabled],
+input[type='password'][disabled],
+input[type='datetime'][disabled],
+input[type='datetime-local'][disabled],
+input[type='date'][disabled],
+input[type='month'][disabled],
+input[type='time'][disabled],
+input[type='week'][disabled],
+input[type='number'][disabled],
+input[type='email'][disabled],
+input[type='url'][disabled],
+input[type='search'][disabled],
+input[type='tel'][disabled],
+input[type='color'][disabled],
+fieldset[disabled] select,
+fieldset[disabled] textarea,
+fieldset[disabled] input[type='text'],
+fieldset[disabled] input[type='password'],
+fieldset[disabled] input[type='datetime'],
+fieldset[disabled] input[type='datetime-local'],
+fieldset[disabled] input[type='date'],
+fieldset[disabled] input[type='month'],
+fieldset[disabled] input[type='time'],
+fieldset[disabled] input[type='week'],
+fieldset[disabled] input[type='number'],
+fieldset[disabled] input[type='email'],
+fieldset[disabled] input[type='url'],
+fieldset[disabled] input[type='search'],
+fieldset[disabled] input[type='tel'],
+fieldset[disabled] input[type='color']
+{
+    cursor: not-allowed;
+}
+textareaselect,
+textareatextarea,
+textareainput[type='text'],
+textareainput[type='password'],
+textareainput[type='datetime'],
+textareainput[type='datetime-local'],
+textareainput[type='date'],
+textareainput[type='month'],
+textareainput[type='time'],
+textareainput[type='week'],
+textareainput[type='number'],
+textareainput[type='email'],
+textareainput[type='url'],
+textareainput[type='search'],
+textareainput[type='tel'],
+textareainput[type='color']
+{
+    height: auto;
+}
+textarea
+{
+    height: auto;
+}
+.input-sm
+{
+    font-size: .85rem;
+    line-height: 1.5;
+
+    height: 1.9rem;
+    padding: .3125rem .625rem;
+
+    border-radius: .1875rem;
+}
+select.input-sm
+{
+    line-height: 1.9rem;
+
+    height: 1.9rem;
+}
+textarea.input-sm,
+select[multiple].input-sm
+{
+    height: auto;
+}
+.input-lg
+{
+    font-size: 1.25rem;
+    line-height: 1.3333333;
+
+    height: 2.91666662rem;
+    padding: .625rem 1rem;
+
+    border-radius: .375rem;
+}
+select.input-lg
+{
+    line-height: 2.91666662rem;
+
+    height: 2.91666662rem;
+}
+textarea.input-lg,
+select[multiple].input-lg
+{
+    height: auto;
+}
+input[type='checkbox'] + label,
+.ArchetypesBooleanWidget label
+{
+    display: inline-block;
+
+    margin-left: 5.71428572px;
+}
+input.datetime-widget,
+select.datetime-widget,
+.ArchetypesCalendarWidget select
+{
+    display: inline-block;
+
+    width: auto;
+}
+/* Emulates the styling from the h1 tag */
+#content .field input[type='text'][name$='.title'],
+#form-widgets-IBasic-title,
+#form-widgets-title,
+#archetypes-fieldname-title input
+{
+    font-size: 1.25rem;
+    line-height: 1.3333333;
+
+    height: 2.91666662rem;
+    padding: .625rem 1rem;
+
+    border-radius: .375rem;
+    border-radius: 0;
+}
+select#content .field input[type='text'][name$='.title'],
+select#form-widgets-IBasic-title,
+select#form-widgets-title,
+select#archetypes-fieldname-title input
+{
+    line-height: 2.91666662rem;
+
+    height: 2.91666662rem;
+}
+textarea#content .field input[type='text'][name$='.title'],
+textarea#form-widgets-IBasic-title,
+textarea#form-widgets-title,
+textarea#archetypes-fieldname-title input,
+select[multiple]#content .field input[type='text'][name$='.title'],
+select[multiple]#form-widgets-IBasic-title,
+select[multiple]#form-widgets-title,
+select[multiple]#archetypes-fieldname-title input
+{
+    height: auto;
+}
+select#content .field input[type='text'][name$='.title'],
+select#form-widgets-IBasic-title,
+select#form-widgets-title,
+select#archetypes-fieldname-title input
+{
+    line-height: 2.91666662rem;
+
+    height: 2.91666662rem;
+}
+textarea#content .field input[type='text'][name$='.title'],
+textarea#form-widgets-IBasic-title,
+textarea#form-widgets-title,
+textarea#archetypes-fieldname-title input,
+select[multiple]#content .field input[type='text'][name$='.title'],
+select[multiple]#form-widgets-IBasic-title,
+select[multiple]#form-widgets-title,
+select[multiple]#archetypes-fieldname-title input
+{
+    height: auto;
+}
+/* Emulates styling from the description's view */
+#content .field textarea[name$='.description'],
+#form-widgets-IBasic-description,
+#archetypes-fieldname-description textarea#description
+{
+    font-weight: 400;
+}
+div.fieldTextFormat
+{
+    text-align: right;
+}
+div.fieldTextFormat label
+{
+    font-weight: 300;
+
+    color: #777;
+}
+div.fieldTextFormat select
+{
+    width: 120px;
+}
+div.field
+{
+    margin-bottom: 15px;
+}
+div.field xlabel
+{
+    font-weight: 600;
+}
+div.field label span.formHelp
+{
+    font-weight: normal;
+
+    display: block;
+
+    color: #777;
+}
+div.field div.label,
+div.field span.label,
+div.field label
+{
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 22.85714286px;
+
+    padding: 0;
+
+    text-align: left;
+
+    color: #333;
+    background: transparent;
+}
+div.field div.label span.formHelp,
+div.field span.label span.formHelp,
+div.field label span.formHelp
+{
+    font-weight: normal;
+
+    display: block;
+
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+    color: #737373;
+    color: #777;
+}
+div.formHelp
+{
+    display: block;
+
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+    color: #737373;
+}
+.formControls
+{
+    padding-top: 11.42857143px;
+}
+.fieldRequired,
+span.required
+{
+    display: inline-block;
+}
+div.overlay
+{
+    /* initially overlay is hidden */
+    display: none;
+
+    width: auto;
+    height: auto;
+    /* some padding to layout nested elements nicely  */
+    margin: 1em;
+}
+div.overlay-iframe,
+div.overlay-ajax
+{
+    z-index: 99;
+    left: 20%;
+
+    width: auto;
+    min-height: 100px;
+    /* overlays should be above everything */
+}
+div.overlay-iframe
+{
+    height: 60%;
+}
+/* default close button positioned on upper-left corner */
+div.overlaybg div.close,
+div.overlay div.close
+{
+    position: absolute;
+    top: 11.42857143px;
+    right: 11.42857143px;
+
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+
+    background-image: url(../images/pb_close.png);
+}
+div.overlaybg div.close:after,
+div.overlay div.close:after
+{
+    content: '\d7';
+}
+.pb-ajax
+{
+    overflow-y: auto;
+}
+.pb-ajax,
+.pb-image,
+.overlay iframe
+{
+    white-space: normal;
+
+    border: 1px solid #999;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 3em #666;
+       -moz-box-shadow: 0 0 3em .5em #666;
+            box-shadow: 0 0 3em .5em #666;
+}
+.pb-ajax > div
+{
+    width: 92%;
+    padding: 1em;
+}
+.pb-ajax .documentActions
+{
+    display: none;
+}
+div.overlay
+{
+    /* Hide form elements that don't make sense within an overlay. */
+    /* lets play nice with paragraphs, links, tabbed pages in overlay e.g. when plone.openid is installed */
+}
+div.overlay div.close span,
+div.overlay div.close a
+{
+    display: block;
+    overflow: hidden;
+
+    width: 1px;
+    height: 1px;
+    margin: -1px 0 0 -1px;
+    padding: 0;
+}
+div.overlay textarea
+{
+    width: 100%;
+}
+div.overlay .link-parent
+{
+    display: none;
+}
+div.overlay #createGroup legend,
+div.overlay #createGroup fieldset
+{
+    display: none;
+}
+div.overlay p
+{
+    margin-bottom: 22.85714286px;
+}
+div.overlay label
+{
+    margin-bottom: .25em;
+}
+div.overlay .formTab
+{
+    font-weight: bold;
+
+    margin-right: 1em;
+}
+div.overlay .formTab.lastFormTab
+{
+    margin-right: 0;
+}
+div.overlay .formControls a
+{
+    display: block;
+
+    margin: .75em;
+}
+/* @end */
+table.listing,
+table.plain
+{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 22.85714286px;
+}
+table.listing > thead > tr > th,
+table.plain > thead > tr > th,
+table.listing > tbody > tr > th,
+table.plain > tbody > tr > th,
+table.listing > tfoot > tr > th,
+table.plain > tfoot > tr > th,
+table.listing > thead > tr > td,
+table.plain > thead > tr > td,
+table.listing > tbody > tr > td,
+table.plain > tbody > tr > td,
+table.listing > tfoot > tr > td,
+table.plain > tfoot > tr > td
+{
+    line-height: 1.42857143;
+
+    padding: 8px;
+
+    vertical-align: top;
+
+    border-top: 1px solid #ddd;
+}
+table.listing > thead > tr > th,
+table.plain > thead > tr > th
+{
+    vertical-align: bottom;
+
+    border-bottom: 2px solid #ddd;
+}
+table.listing > caption + thead > tr:first-child > th,
+table.plain > caption + thead > tr:first-child > th,
+table.listing > colgroup + thead > tr:first-child > th,
+table.plain > colgroup + thead > tr:first-child > th,
+table.listing > thead:first-child > tr:first-child > th,
+table.plain > thead:first-child > tr:first-child > th,
+table.listing > caption + thead > tr:first-child > td,
+table.plain > caption + thead > tr:first-child > td,
+table.listing > colgroup + thead > tr:first-child > td,
+table.plain > colgroup + thead > tr:first-child > td,
+table.listing > thead:first-child > tr:first-child > td,
+table.plain > thead:first-child > tr:first-child > td
+{
+    border-top: 0;
+}
+table.listing > tbody + tbody,
+table.plain > tbody + tbody
+{
+    border-top: 2px solid #ddd;
+}
+table.listing .table,
+table.plain .table
+{
+    background-color: #fff;
+}
+table.invisible td,
+table.invisible th,
+table.plain td,
+table.plain th,
+table.listing td,
+table.listing th
+{
+    padding: .5em 1em;
+
+    vertical-align: top;
+}
+table.listing td.listingCheckbox,
+table.listing th.listingCheckbox
+{
+    text-align: center;
+}
+table.listing
+{
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+table.listing .top
+{
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+table.listing th
+{
+    font-weight: 400;
+
+    text-align: left;
+
+    color: #777;
+    border: .1em solid #e7e7e7;
+    border-style: solid solid none;
+    background: #eee;
+}
+table.listing tr.odd th
+{
+    border: .1em solid #fff;
+    border-style: solid solid none none;
+}
+table.listing tbody th
+{
+    font-weight: 400;
+}
+table.listing tbody tr
+{
+    text-align: left;
+}
+table.listing tbody tr.odd
+{
+    background: #eee;
+}
+table.listing tbody tr td
+{
+    background: transparent;
+}
+table.listing tbody tr.odd td
+{
+    background: #eee;
+}
+table.listing td
+{
+    border-right: 1px solid #ddd;
+}
+.icons-on table.listing td
+{
+    line-height: 2em;
+}
+table.listing a
+{
+    display: inline-block;
+
+    border: none;
+    border-bottom: none !important;
+}
+table.listing td.draggable
+{
+    padding: .4em .4em 0 .5em;
+
+    border-bottom: 1px solid white;
+    background: #ddd !important;
+    text-shadow: White 1px 1px 1px;
+}
+/* Vertical table data listings */
+table.vertical th
+{
+    text-align: right;
+}
+table.vertical td
+{
+    padding: .5em;
+
+    border-top: .1em solid #e7e7e7;
+}
+/* Grid table listings */
+table.grid td,
+table.grid th
+{
+    padding: .5em;
+
+    border: 1px solid #e7e7e7;
+}
+.dragindicator
+{
+    outline: 2px solid #ffd700;
+}
+#foldercontents-order-column
+{
+    padding: 0;
+}
+#category
+{
+    font-size: 11px;
+
+    margin: 22.85714286px 0;
+}
+#category a.link-category,
+#category span.selectedTag
+{
+    padding: .25em .5em;
+
+    color: #fff;
+    border-radius: .5em;
+    border-radius: 4px;
+    background: #74c4ea;
+}
+#category a.link-category:hover
+{
+    background: #32a8e0;
+}
+#category .separator
+{
+    display: none;
+}
+dl.portalMessage
+{
+    margin-top: 0;
+    margin-bottom: 22.85714286px;
+    margin-bottom: 0;
+    padding: 15px;
+
+    color: #8a6d3b;
+    border: 1px solid transparent;
+    border-color: #faebcc;
+    border-radius: .25rem;
+    border-radius: 0;
+    background-color: #fcf8e3;
+}
+dl.portalMessage h4
+{
+    margin-top: 0;
+
+    color: inherit;
+}
+dl.portalMessage .alert-link
+{
+    font-weight: bold;
+}
+dl.portalMessage > p,
+dl.portalMessage > ul
+{
+    margin-bottom: 0;
+}
+dl.portalMessage > p + p
+{
+    margin-top: 5px;
+}
+dl.portalMessage hr
+{
+    border-top-color: #f7e1b5;
+}
+dl.portalMessage .alert-link
+{
+    color: #66512c;
+}
+dl.portalMessage dt
+{
+    margin: 0;
+}
+dl.portalMessage dd
+{
+    margin-left: 0;
+}
+dl.portalMessage.note,
+dl.portalMessage.tip
+{
+    color: #31708f;
+    border-color: #bce8f1;
+    background-color: #d9edf7;
+}
+dl.portalMessage.note hr,
+dl.portalMessage.tip hr
+{
+    border-top-color: #a6e1ec;
+}
+dl.portalMessage.note .alert-link,
+dl.portalMessage.tip .alert-link
+{
+    color: #245269;
+}
+dl.portalMessage.danger,
+dl.portalMessage.error
+{
+    color: #a94442;
+    border-color: #ebccd1;
+    background-color: #f2dede;
+}
+dl.portalMessage.danger hr,
+dl.portalMessage.error hr
+{
+    border-top-color: #e4b9c0;
+}
+dl.portalMessage.danger .alert-link,
+dl.portalMessage.error .alert-link
+{
+    color: #843534;
+}
+body > .portalMessage
+{
+    padding-top: 86.42857143px;
+}
+.listingBar
+{
+    margin: 22.85714286px 0;
+    padding-left: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.listingBar li
+{
+    display: inline;
+}
+.listingBar li > a,
+.listingBar li > span
+{
+    display: inline-block;
+
+    padding: 5px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    background-color: #fff;
+}
+.listingBar li > a:hover,
+.listingBar li > a:focus
+{
+    text-decoration: none;
+
+    background-color: #eee;
+}
+.listingBar .next > a,
+.listingBar .next > span
+{
+    float: right;
+}
+.listingBar .previous > a,
+.listingBar .previous > span
+{
+    float: left;
+}
+.listingBar .disabled > a,
+.listingBar .disabled > a:hover,
+.listingBar .disabled > a:focus,
+.listingBar .disabled > span
+{
+    cursor: not-allowed;
+
+    color: #777;
+    background-color: #fff;
+}
+.listingBar a
+{
+    font-size: 11px;
+
+    display: inline-block;
+
+    padding: 5px 14px;
+
+    border: 1px solid #777;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.listingBar a.next
+{
+    float: right;
+}
+.listingBar a.previous
+{
+    float: left;
+}
+.listingBar a:hover
+{
+    text-decoration: none;
+
+    background-color: #f5f5f5;
+}
+.avatar
+{
+    line-height: 22.85714286px;
+
+    margin-right: 2px;
+
+    -webkit-transition: all .2s ease-in-out;
+         -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .055);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .055);
+}
+.avatar.avatar-small
+{
+    width: 1rem;
+    height: 1rem;
+}
+/* @group Image alignment classes */
+.image-left
+{
+    float: left;
+
+    margin: 11.42857143px 22.85714286px 22.85714286px 0;
+}
+.image-right
+{
+    float: right;
+
+    margin: 11.42857143px 0 22.85714286px 22.85714286px;
+}
+.image-inline
+{
+    float: none;
+}
+/*note: the tricky thing here is that image-inline|image-left|image-right
+can both be on an image and a wrapper element e.g. a dl tag*/
+img.image-left,
+img.image-right,
+.captioned img
+{
+    line-height: 1.42857143;
+
+    display: block;
+
+    margin-bottom: 22.85714286px;
+    padding: 4px;
+
+    -webkit-transition: border .2s ease-in-out;
+         -o-transition: border .2s ease-in-out;
+            transition: border .2s ease-in-out;
+
+    border: 1px solid #ddd;
+    border-radius: .25rem;
+    background-color: #fff;
+}
+img.image-left > img,
+img.image-right > img,
+.captioned img > img,
+img.image-left a > img,
+img.image-right a > img,
+.captioned img a > img
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+aimg.image-left:hover,
+aimg.image-right:hover,
+a.captioned img:hover,
+aimg.image-left:focus,
+aimg.image-right:focus,
+a.captioned img:focus,
+aimg.image-left.active,
+aimg.image-right.active,
+a.captioned img.active
+{
+    border-color: #74c4ea;
+}
+img.image-left .caption,
+img.image-right .caption,
+.captioned img .caption
+{
+    padding: 9px;
+
+    color: #333;
+}
+dd.image-caption
+{
+    font-size: 85%;
+    /*image padding+border with*/
+
+    margin: 0;
+    padding: 0 0 0 3px;
+
+    text-align: left;
+
+    color: #666;
+}
+.text-discreet,
+.discreet
+{
+    font-size: .85rem;
+    font-weight: 1;
+
+    color: #777;
+}
+.text-highlight,
+.visualHighlight
+{
+    background-color: #fcf8e3;
+}
+.text-pullquote,
+.pullquote
+{
+    line-height: 22.85714286px;
+    line-height: 19.85714286px;
+
+    float: right;
+    clear: right;
+
+    width: 35%;
+    margin: 22.85714286px 0 22.85714286px 22.85714286px;
+    padding: 11.42857143px 22.85714286px;
+
+    color: #777;
+    border-left: 5px solid #777;
+    background: #eee;
+}
+.text-callout,
+.callout
+{
+    clear: both;
+
+    margin: 0 0 22.85714286px;
+    padding: 22.85714286px;
+
+    border-left: 5px solid #777;
+    background: #eee;
+}
+/*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
 
-Copyright (c) 2014 Daniel Eden
+Copyright (c) 2015 Daniel Eden
 */
 .animated
 {
@@ -10888,6 +13138,20 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-duration: 2s;
          -o-animation-duration: 2s;
             animation-duration: 2s;
+}
+.animated.bounceIn,
+.animated.bounceOut
+{
+    -webkit-animation-duration: .75s;
+         -o-animation-duration: .75s;
+            animation-duration: .75s;
+}
+.animated.flipOutX,
+.animated.flipOutY
+{
+    -webkit-animation-duration: .75s;
+         -o-animation-duration: .75s;
+            animation-duration: .75s;
 }
 @-webkit-keyframes bounce
 {
@@ -11801,9 +14065,6 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-name: bounceIn;
          -o-animation-name: bounceIn;
             animation-name: bounceIn;
-    -webkit-animation-duration: .75s;
-         -o-animation-duration: .75s;
-            animation-duration: .75s;
 }
 @-webkit-keyframes bounceInDown
 {
@@ -12409,9 +14670,6 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-name: bounceOut;
          -o-animation-name: bounceOut;
             animation-name: bounceOut;
-    -webkit-animation-duration: .75s;
-         -o-animation-duration: .75s;
-            animation-duration: .75s;
 }
 @-webkit-keyframes bounceOutDown
 {
@@ -14057,9 +16315,6 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-name: flipOutX;
          -o-animation-name: flipOutX;
             animation-name: flipOutX;
-    -webkit-animation-duration: .75s;
-         -o-animation-duration: .75s;
-            animation-duration: .75s;
 
     -webkit-backface-visibility: visible !important;
             backface-visibility: visible !important;
@@ -14135,9 +16390,6 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-name: flipOutY;
          -o-animation-name: flipOutY;
             animation-name: flipOutY;
-    -webkit-animation-duration: .75s;
-         -o-animation-duration: .75s;
-            animation-duration: .75s;
 
     -webkit-backface-visibility: visible !important;
             backface-visibility: visible !important;
@@ -16513,7 +18765,6 @@ a:hover
 .hiddenStructure
 {
     display: none !important;
-    visibility: hidden !important;
 }
 .image-inline
 {
