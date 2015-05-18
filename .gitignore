@@ -24,9 +24,8 @@ var
 .codeintel
 etc/**/*
 src/ade25.*
-src/plone.app.blocks
-src/plone.app.tiles
-src/plone.tiles
+src/plone.app.*
+src/plone.*
 src/vwc.tiles
 src/vwc.toolbar
 src/vwc.opengraph
