@@ -1,36 +1,11 @@
 //
-// Forms styles to combat Plone specific issues
-// -------------------------------------------------
+// Forms
+//------------------------------------
 
 
-// Buttons
-input[type="submit"],
-input[type="button"] {
-    .btn();
-    .btn-default();
-}
-input.context,
-input.standalone,
-input.addreference,
-input.submit-widget {
-    .btn();
-    .btn-default();
-    margin-right: @line-height-computed / 2;
-}
-
-input.context {
-    .btn-primary();
-}
-
-input.destructive {
-    .btn-danger();
-    margin-right: @line-height-computed / 2;
-}
-
-// Inputs
-
-// Add basic styling to all input types
-
+//== Inputs
+//
+//## Add basic styling to all input types
 select,
 textarea,
 input[type="text"],
@@ -48,111 +23,59 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
     .form-control();
+    @media (min-width: @screen-sm-min) {
+      input {
+        height: 35px !important;
+      }
+    }
 }
 
-// Reset tetarea height
+
+.app-form-group-wrapper {
+  background: @app-gray-light;
+  padding: @line-height-computed;
+}
+
+//** Reset textarea height
 textarea {
     height: auto;
 }
 
-// Form control sizing
-// Redefined here since our custom input field reset is applied later
-// during rendering and therefore overrides these
-.input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
-}
 
-.input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
-}
-
-
+//** Checkbox label needs to be placed inline
 input[type="checkbox"] + label,
 .ArchetypesBooleanWidget label {
     display: inline-block;
-    margin-left: @line-height-computed / 4;
+    margin-left: ceil((@line-height-computed / 4));
 }
 
-input.datetime-widget,
-select.datetime-widget,
-.ArchetypesCalendarWidget select {
-    display: inline-block;
-    width: auto;
+
+//== Password toggle
+//
+//## Hide/show password in [type="password"] fields
+::-ms-reveal,
+::-ms-clear {
+  display: none !important;
 }
 
-/* Emulates the styling from the h1 tag */
-#content .field input[type="text"][name$=".title"],
-#form-widgets-IBasic-title,
-#form-widgets-title,
-#archetypes-fieldname-title input {
-    .input-lg();
-    border-radius: 0;
+.hideShowPassword-toggle {
+  background: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.75em;
+  font-weight: bold;
+  margin-right: 0.5em;
+  padding: 0.5em;
+  text-transform: uppercase;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
-/* Emulates styling from the description's view */
-#content .field textarea[name$=".description"],
-#form-widgets-IBasic-description,
-#archetypes-fieldname-description textarea#description {
-    font-weight: 400;
-}
-
-div.fieldTextFormat {
-    //padding: @line-height-computed;
-    text-align: right;
-    label {
-        font-weight: 300;
-        .text-muted();
-    }
-    select {
-        width: 120px;
-    }
-}
-
-div.field {
-    .form-group();
-    xlabel {
-        font-weight: 600;
-    }
-    label span.formHelp {
-        display: block;
-        font-size: 0.8rem;
-        font-weight: 300;
-        .text-muted();
-    }
-    div.label,
-    span.label,
-    label {
-        background: transparent;
-        color: @text-color;
-        font-weight: 400;
-        font-size: 1.25rem;
-        line-height: @line-height-computed;
-        padding: 0px;
-        .text-left();
-        span.formHelp {
-            .help-block();
-            .text-muted();
-            font-weight: 300;
-        }
-    }
-}
-
-.app-form-help,
-div.formHelp {
-    .help-block();
-    font-size: 0.75rem;
-}
-
-.formControls {
-    padding-top: @line-height-computed / 2;
-}
-
-// Required field marker
-.form-control-required {
-    font-size: 0.75rem;
-    color: @gray-dark;
-}
-.fieldRequired,
-span.required {
-    display: inline-block;
+.hideShowPassword-toggle:hover,
+.hideShowPassword-toggle:focus {
+  background-color: #eee;
+  color: #555;
+  outline: transparent;
 }

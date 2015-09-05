@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<registry>
+  <records prefix="plone.resources/meetshaus.sitetheme"
+           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+    <value key="js">++theme++meetshaus.sitetheme/dist/scripts/main.js</value>
+    <value key="deps">jquery</value>
+  </records>
+  <records prefix="plone.bundles/meetshaus.sitetheme"
+         interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+  <value key="resources">
+    <element>meetshaus.sitetheme</element>
+  </value>
+  <value key="enabled">True</value>
+  <value key="jscompilation">++theme++meetshaus.sitetheme/dist/scripts/main-compiled.min.js</value>
+  <value key="last_compilation">2015-02-06 00:00:00</value>
+</records>
+</registry>
