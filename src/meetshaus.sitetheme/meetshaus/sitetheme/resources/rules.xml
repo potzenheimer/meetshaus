@@ -77,10 +77,10 @@
         <copy attributes="*" css:content="body" css:theme="body" />
 
         <!-- CMSUI Editbar replacements -->
-        <!--<drop css:theme="#app-toolbar"
+        <drop css:theme="#app-toolbar"
             css:if-content=".userrole-anonymous" />
 
-        <replace css:theme="#app-toolbar" css:content="#app-toolbar" />-->
+        <!--<replace css:theme="#app-toolbar" css:content="#app-toolbar" />-->
 
         <!-- toolbar -->
         <replace css:theme="#app-toolbar"
