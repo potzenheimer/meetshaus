@@ -40,6 +40,6 @@
     for="plone.dexterity.interfaces.IDexterityContent"
     />
 
-  <adapter factory=".subjects.SubjectsFieldWidget" />
+  <!--<adapter factory=".subjects.SubjectsFieldWidget" />-->
 
 </configure>
