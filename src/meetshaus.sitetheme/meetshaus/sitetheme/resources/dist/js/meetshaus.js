@@ -10606,7 +10606,7 @@ window.Modernizr = (function( window, document, undefined ) {
 })(this, this.document);
 
 /* ========================================================================
- * Bootstrap: transition.js v3.3.2
+ * Bootstrap: transition.js v3.3.4
  * http://getbootstrap.com/javascript/#transitions
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -10666,7 +10666,7 @@ window.Modernizr = (function( window, document, undefined ) {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: collapse.js v3.3.2
+ * Bootstrap: collapse.js v3.3.4
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -10696,7 +10696,7 @@ window.Modernizr = (function( window, document, undefined ) {
     if (this.options.toggle) this.toggle()
   }
 
-  Collapse.VERSION  = '3.3.2'
+  Collapse.VERSION  = '3.3.4'
 
   Collapse.TRANSITION_DURATION = 350
 
@@ -10839,7 +10839,7 @@ window.Modernizr = (function( window, document, undefined ) {
       var data    = $this.data('bs.collapse')
       var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
-      if (!data && options.toggle && option == 'show') options.toggle = false
+      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
       if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -10878,7 +10878,7 @@ window.Modernizr = (function( window, document, undefined ) {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: dropdown.js v3.3.2
+ * Bootstrap: dropdown.js v3.3.4
  * http://getbootstrap.com/javascript/#dropdowns
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -10898,7 +10898,7 @@ window.Modernizr = (function( window, document, undefined ) {
     $(element).on('click.bs.dropdown', this.toggle)
   }
 
-  Dropdown.VERSION = '3.3.2'
+  Dropdown.VERSION = '3.3.4'
 
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this)
@@ -10913,7 +10913,10 @@ window.Modernizr = (function( window, document, undefined ) {
     if (!isActive) {
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
         // if mobile we use a backdrop because click events don't delegate
-        $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
+        $(document.createElement('div'))
+          .addClass('dropdown-backdrop')
+          .insertAfter($(this))
+          .on('click', clearMenus)
       }
 
       var relatedTarget = { relatedTarget: this }

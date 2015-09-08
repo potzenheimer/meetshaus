@@ -27,18 +27,6 @@ setup(name='meetshaus.blog',
       install_requires=[
           'setuptools',
           'plone.api',
-          'plone.app.contentlisting',
-          'plone.app.dexterity [grok,relations]',
-          'plone.app.discussion',
-          'plone.namedfile [blobs]',
-          'plone.formwidget.namedfile',
-          'plone.formwidget.recaptcha',
-          'plone.app.relationfield',
-          'plone.formwidget.autocomplete',
-          'plone.formwidget.contenttree',
-          'sc.social.like',
-          'qi.portlet.TagClouds',
-          'fourdigits.portlet.twitter',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

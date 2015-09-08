@@ -8,11 +8,12 @@ from plone.registry.interfaces import IRegistry
 from plone.registry.record import Record
 from plone.registry import field
 
+
 class RegistryCleanup(grok.View):
     grok.context(IContentish)
     grok.require('cmf.ManagePortal')
     grok.name('cleanup-registry-records')
-    
+
     def render(self):
         """ Heper method to set registry values - should only be run once! """
         context = aq_inner(self.context)
@@ -30,4 +31,3 @@ class RegistryCleanup(grok.View):
         registry.records['plone.app.discussion.interfaces.IDiscussionSettings.moderator_email'] = Record(field.TextLine(title=u"Moderator Email"), u"")
         transaction.savepoint()
         return 'Successfully fixed the registry settings.'
-
