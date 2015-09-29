@@ -2,10 +2,11 @@
 """Module providing base class migration for blog entry content"""
 import lxml
 from Acquisition import aq_inner
-from Products.CMFCore.interfaces import IContentish
-from Products.statusmessages.interfaces import IStatusMessage
 from five import grok
 from plone import api
+from Products.CMFCore.interfaces import IContentish
+from Products.statusmessages.interfaces import IStatusMessage
+
 from meetshaus.blog.blogentry import IBlogEntry
 
 
@@ -40,11 +41,11 @@ class MigrateBlogEntries(grok.View):
             setattr(new_item, 'text', obj.text.raw)
             for img_uid in img_list:
                 img_obj = api.content.get(UID=img_uid)
-                api.content.copy(source=img_obj, target=new_item)
+                api.content.move(source=img_obj, target=new_item)
 
         messages = IStatusMessage(self.request)
         info_message_template = 'There are {0} objects migrated.'
-        warn_message_template = 'There are not {0} objects migrated.'
+        warn_message_template = 'There are {0} objects not migrated.'
         if migrated:
             msg = info_message_template.format(len(migrated))
             messages.addStatusMessage(msg, type='info')
