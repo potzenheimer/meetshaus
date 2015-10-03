@@ -27,6 +27,7 @@ setup(name='meetshaus.blog',
       install_requires=[
           'setuptools',
           'plone.api',
+          'plone.app.dexterity[relations]',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
