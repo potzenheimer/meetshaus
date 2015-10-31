@@ -39,7 +39,7 @@ module.exports = function (grunt) {
                     'bower_components/isotope/dist/isotope.pkgd.js',
                     'js/main.js'
                 ],
-                dest: '<%= config.dist %>/js/<%= pkg.name %>.js'
+                dest: '<%= config.dist %>/scripts/<%= pkg.name %>.js'
             },
             theme: {
                 src: [
@@ -48,16 +48,16 @@ module.exports = function (grunt) {
                     'bower_components/bootstrap/js/dropdown.js',
                     'bower_components/imagesloaded/imagesloaded.pkgd.js',
                     'bower_components/isotope/dist/isotope.pkgd.js',
-                    'js/main.js'
+                    'scripts/main.js'
                 ],
-                dest: '<%= config.dist %>/js/main.js'
+                dest: '<%= config.dist %>/scripts/main.js'
             }
         },
         uglify: {
             options: { banner: '<%= banner %>' },
             dist: {
                 src: ['<%= concat.dist.dest %>'],
-                dest: '<%= config.dist %>/js/<%= pkg.name %>.min.js'
+                dest: '<%= config.dist %>/scripts/<%= pkg.name %>.min.js'
             }
         },
         less: {
@@ -66,10 +66,10 @@ module.exports = function (grunt) {
                     strictMath: false,
                     sourceMap: true,
                     outputSourceFiles: true,
-                    sourceMapURL: '<%= config.dist %>/css/<%= pkg.name %>.css.map',
-                    sourceMapFilename: '<%= config.dist %>/css/<%= pkg.name %>.css.map'
+                    sourceMapURL: '<%= config.dist %>/styles/<%= pkg.name %>.css.map',
+                    sourceMapFilename: '<%= config.dist %>/styles/<%= pkg.name %>.css.map'
                 },
-                files: { '<%= config.dist %>/css/<%= pkg.name %>.css': 'less/styles.less' }
+                files: { '<%= config.dist %>/styles/<%= pkg.name %>.css': 'less/styles.less' }
             }
         },
         autoprefixer: {
@@ -87,12 +87,12 @@ module.exports = function (grunt) {
             },
             core: {
                 options: { map: true },
-                src: '<%= config.dist %>/css/<%= pkg.name %>.css'
+                src: '<%= config.dist %>/styles/<%= pkg.name %>.css'
             }
         },
         csslint: {
             options: { csslintrc: 'less/.csslintrc' },
-            src: '<%= config.dist %>/css/<%= pkg.name %>.css'
+            src: '<%= config.dist %>/styles/<%= pkg.name %>.css'
         },
         cssmin: {
             options: {
@@ -100,12 +100,12 @@ module.exports = function (grunt) {
                 keepSpecialComments: '*',
                 noAdvanced: true
             },
-            core: { files: { '<%= config.dist %>/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css' } }
+            core: { files: { '<%= config.dist %>/styles/<%= pkg.name %>.min.css': 'dist/styles/<%= pkg.name %>.css' } }
         },
         csscomb: {
             sort: {
                 options: { config: 'less/.csscomb.json' },
-                files: { '<%= config.dist %>/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css'] }
+                files: { '<%= config.dist %>/styles/<%= pkg.name %>.css': ['dist/styles/<%= pkg.name %>.css'] }
             }
         },
         criticalcss: {
@@ -114,7 +114,7 @@ module.exports = function (grunt) {
                     url: 'http://<%= pkg.name %>.kreativkombinat.de',
                     width: 1200,
                     height: 900,
-                    outputfile: '<%= config.dist %>/css/critical.css',
+                    outputfile: '<%= config.dist %>/styles/critical.css',
                     filename: '<%= pkg.name %>.min.css'
                 }
             }
@@ -188,8 +188,8 @@ module.exports = function (grunt) {
             },
             assets: {
                 src: [
-                    '<%= config.dist %>/js/<%= pkg.name %>.min.js',
-                    '<%= config.dist %>/css/<%= pkg.name %>.min.css'
+                    '<%= config.dist %>/scripts/<%= pkg.name %>.min.js',
+                    '<%= config.dist %>/styles/<%= pkg.name %>.min.css'
                 ]
             },
             files: {
@@ -202,7 +202,7 @@ module.exports = function (grunt) {
         usemin: {
             html: ['<%= config.dist %>/{,*/}*.html'],
             htmlcustom: ['<%= config.dist %>/*.html'],
-            css: ['<%= config.dist %>/css/*.css'],
+            css: ['<%= config.dist %>/styles/*.css'],
             options: {
                 assetsDirs: [
                     '<%= config.dist %>',
@@ -275,20 +275,20 @@ module.exports = function (grunt) {
                             replacement: 'assets/'
                         },
                         {
-                            match: '../../<%= config.dist %>/css/<%= pkg.name %>.min.css',
-                            replacement: '../css/<%= pkg.name %>.min.css'
+                            match: '../../<%= config.dist %>/styles/<%= pkg.name %>.min.css',
+                            replacement: '../styles/<%= pkg.name %>.min.css'
                         },
                         {
-                            match: '../<%= config.dist %>/css/<%= pkg.name %>.min.css',
-                            replacement: 'css/<%= pkg.name %>.min.css'
+                            match: '../<%= config.dist %>/styles/<%= pkg.name %>.min.css',
+                            replacement: 'styles/<%= pkg.name %>.min.css'
                         },
                         {
-                            match: '../../<%= config.dist %>/js/<%= pkg.name %>.min.js',
-                            replacement: '../js/<%= pkg.name %>.min.js'
+                            match: '../../<%= config.dist %>/scripts/<%= pkg.name %>.min.js',
+                            replacement: '../scripts/<%= pkg.name %>.min.js'
                         },
                         {
-                            match: '../<%= config.dist %>/js/<%= pkg.name %>.min.js',
-                            replacement: 'js/<%= pkg.name %>.min.js'
+                            match: '../<%= config.dist %>/scripts/<%= pkg.name %>.min.js',
+                            replacement: 'scripts/<%= pkg.name %>.min.js'
                         }
                     ],
                     usePrefix: false,
@@ -320,20 +320,20 @@ module.exports = function (grunt) {
                             replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/assets/'
                         },
                         {
-                            match: '../css/',
-                            replacement: 'css/'
+                            match: '../styles/',
+                            replacement: 'styles/'
                         },
                         {
-                            match: 'css/',
-                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/css/'
+                            match: 'styles/',
+                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/styles/'
                         },
                         {
-                            match: '../js/<%= pkg.name %>',
-                            replacement: 'js/<%= pkg.name %>'
+                            match: '../scripts/<%= pkg.name %>',
+                            replacement: 'scripts/<%= pkg.name %>'
                         },
                         {
-                            match: 'js/<%= pkg.name %>',
-                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/js/<%= pkg.name %>'
+                            match: 'scripts/<%= pkg.name %>',
+                            replacement: '<%= config.diazoPrefix %>/<%= config.dist %>/scripts/<%= pkg.name %>'
                         }
                     ],
                     usePrefix: false,
@@ -361,8 +361,8 @@ module.exports = function (grunt) {
                 files: [{
                         dot: true,
                         src: [
-                            '<%= config.dist %>/js/*.min.*.js',
-                            '<%= config.dist %>/css/*.min.*.css'
+                            '<%= config.dist %>/scripts/*.min.*.js',
+                            '<%= config.dist %>/styles/*.min.*.css'
                         ]
                     }]
             },
@@ -402,7 +402,7 @@ module.exports = function (grunt) {
                 options: { livereload: true }
             },
             styles: {
-                files: ['<%= config.dev %>/css/{,*/}*.css'],
+                files: ['<%= config.dev %>/styles/{,*/}*.css'],
                 tasks: [
                     'newer:copy:styles',
                     'autoprefixer'
@@ -477,8 +477,8 @@ module.exports = function (grunt) {
             },
             dist: {
                 options: {
-                    url: 'http://www.hfph.de',
-                    paths: ['/', '/hochschule'],
+                    url: 'http://meetshaus.de',
+                    paths: ['/', '/archiv'],
                     locale: 'de_DE',
                     strategy: 'desktop',
                     threshold: 80
