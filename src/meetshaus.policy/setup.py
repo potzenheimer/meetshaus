@@ -36,6 +36,4 @@ setup(name='meetshaus.policy',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
-      paster_plugins=["ZopeSkel"],
       )
