@@ -35,7 +35,4 @@ setup(name='meetshaus.blog',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
-      paster_plugins=["ZopeSkel"],
-
       )
