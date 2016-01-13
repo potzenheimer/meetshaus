@@ -1,0 +1,25 @@
+
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="meetshaus.blog">
+
+  <!-- Blog migration view -->
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migrate-blog"
+      class=".migration.BlogMigrationView"
+      template="blogmigration.pt"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migrate-blog-posts"
+      class=".migration.BlogMigrationRunnerView"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
+
+</configure>
