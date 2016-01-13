@@ -15,7 +15,7 @@
   <property name="allow_discussion">True</property>
 
   <!-- schema and class used for content items -->
-  <property name="schema">meetshaus.blog.blogentry.IBlogPost</property>
+  <property name="schema">meetshaus.blog.blogpost.IBlogPost</property>
   <property name="klass">plone.dexterity.content.Container</property>
 
   <property name="behaviors">

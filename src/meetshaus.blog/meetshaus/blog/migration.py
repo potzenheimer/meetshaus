@@ -19,6 +19,7 @@ class MigrateBlogEntries(grok.View):
         context = aq_inner(self.context)
         migrated = []
         not_migrated = []
+        import pdb; pdb.set_trace()
         results = api.content.find(object_provides=IBlogEntry)
         for brain in results:
             obj = brain.getObject()
@@ -42,7 +43,6 @@ class MigrateBlogEntries(grok.View):
             for img_uid in img_list:
                 img_obj = api.content.get(UID=img_uid)
                 api.content.move(source=img_obj, target=new_item)
-
         messages = IStatusMessage(self.request)
         info_message_template = 'There are {0} objects migrated.'
         warn_message_template = 'There are {0} objects not migrated.'

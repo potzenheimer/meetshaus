@@ -30,8 +30,8 @@ class BlogPostView(grok.View):
     grok.require('zope2.View')
     grok.name('view')
 
-    def render(self):
-        return ''
+    #def render(self):
+    #    return ''
 
     def parent_info(self):
         context = aq_inner(self.context)
@@ -83,8 +83,8 @@ class BlogPostViewlet(grok.Viewlet):
     grok.require('zope2.View')
     grok.name('meetshaus.blog.BlogEntryViewlet')
 
-    def render(self):
-        return ''
+    #def render(self):
+    #    return ''
 
     def timestamp(self):
         context = aq_inner(self.context)
