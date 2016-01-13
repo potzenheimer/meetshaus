@@ -33,6 +33,15 @@ class BlogMigrationView(BrowserView):
         )
         return items
 
+    def used_image_assets(self, uuid):
+        item = api.content.get(UID=uuid)
+        html_body = item.text.raw
+        xhtml = lxml.html.document_fromstring(html_body)
+        images = xhtml.xpath('//img')
+        if images:
+            image_idx = len(images)
+        return image_idx
+
 
 class BlogMigrationRunnerView(BrowserView):
     """ Blog migration runner """

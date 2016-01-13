@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+    <div class="app-blog-content blog-posting">
+      <div class="blog-posting-header">
+        <h1 class="blog-posting-title">Blog Migration</h1>
+        <p class="lead blog-posting-lead">
+          Migrate blog entries to new folderish blog postings that contain
+          their associated assets as content items
+        </p>
+      </div>
+      <div class="blog-posting-main">
+        <table class="table table-condensed" tal:condition="view/has_blogentries">
+          <tbody>
+            <tal:block tal:repeat="item view/blogentries">
+              <tr tal:define="item_idx repeat/item/number">
+                <td>${item_idx}</td>
+                <td>${item/Title}</td>
+              </tr>
+            </tal:block>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </metal:content-core>
+</metal:main>
+</body>
+</html>
