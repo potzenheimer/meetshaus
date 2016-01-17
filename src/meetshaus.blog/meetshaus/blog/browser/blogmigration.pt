@@ -11,6 +11,7 @@
   <metal:content-core define-macro="main">
     <div class="app-blog-content blog-posting">
       <div class="blog-posting-header">
+        <a class="btn btn-primary pull-right" href="${context/absolute_url}/@@migrate-blog-posts">Migrate</a>
         <h1 class="blog-posting-title">Blog Migration</h1>
         <p class="lead blog-posting-lead">
           Migrate blog entries to new folderish blog postings that contain
@@ -24,6 +25,10 @@
               <tr tal:define="item_idx repeat/item/number">
                 <td>${item_idx}</td>
                 <td>${item/Title}</td>
+                <td tal:define="item_uid item/UID;
+                                img_assets python:view.used_image_assets(item_uid)">
+                  Assets: ${img_assets}
+                </td>
               </tr>
             </tal:block>
           </tbody>

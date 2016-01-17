@@ -33,13 +33,15 @@ class BlogMigrationView(BrowserView):
         )
         return items
 
+    def blogentries_count(self):
+        return len(self.blogentries())
+
     def used_image_assets(self, uuid):
         item = api.content.get(UID=uuid)
         html_body = item.text.raw
         xhtml = lxml.html.document_fromstring(html_body)
         images = xhtml.xpath('//img')
-        if images:
-            image_idx = len(images)
+        image_idx = len(images)
         return image_idx
 
 
@@ -56,7 +58,7 @@ class BlogMigrationRunnerView(BrowserView):
                                         name=u"authenticator")
         next_url = '{0}/@@migration-finished?_authenticator={1}'.format(
             base_url, authenticator.token())
-        self._migrate_blog_posts(context)
+        self._migrate_blog_posts()
         modified(context)
         context.reindexObject(idxs='modified')
         return self.request.response.redirect(next_url)
@@ -65,18 +67,17 @@ class BlogMigrationRunnerView(BrowserView):
         context = aq_inner(self.context)
         migrated = []
         not_migrated = []
-        import pdb; pdb.set_trace()
         results = api.content.find(
             context=api.portal.get(),
             object_provides=IBlogEntry
         )
-        for brain in results:
+        for brain in results[:3]:
             obj = brain.getObject()
             html_body = obj.text.raw
             xhtml = lxml.html.document_fromstring(html_body)
             images = xhtml.xpath('//img')
+            img_list = list()
             if images:
-                img_list = list()
                 for i in images:
                     img_src = i.attrib['src']
                     if img_src.startswith('resolve'):
@@ -88,10 +89,13 @@ class BlogMigrationRunnerView(BrowserView):
                 container=context
             )
             setattr(new_item, 'Subject', obj.Subject())
-            setattr(new_item, 'text', obj.text.raw)
+            setattr(new_item, 'text', obj.text)
             for img_uid in img_list:
                 img_obj = api.content.get(UID=img_uid)
                 api.content.move(source=img_obj, target=new_item)
+            api.content.transition(obj=new_item, transition='publish')
+            modified(new_item)
+            new_item.reindexObject(idxs='modified')
             migrated.append(obj.UID())
         info_message_template = 'There are {0} objects migrated.'
         warn_message_template = 'There are {0} objects not migrated.'
@@ -104,3 +108,13 @@ class BlogMigrationRunnerView(BrowserView):
             request=self.request
         )
         return len(migrated)
+
+
+class BlogMigrationFinishedView(BrowserView):
+    """ Migration done """
+
+    def __call__(self):
+        return self.render()
+
+    def render(self):
+        return self.index()

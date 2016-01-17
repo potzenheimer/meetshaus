@@ -21,5 +21,13 @@
       permission="cmf.ManagePortal"
       layer="..interfaces.IBlogTool"
       />
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migration-finished"
+      class=".migration.BlogMigrationFinishedView"
+      template="blogmigrationfinished.pt"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
 
 </configure>
