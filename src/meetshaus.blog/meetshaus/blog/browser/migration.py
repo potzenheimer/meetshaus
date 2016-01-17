@@ -71,7 +71,7 @@ class BlogMigrationRunnerView(BrowserView):
             context=api.portal.get(),
             object_provides=IBlogEntry
         )
-        for brain in results[:3]:
+        for brain in results[:10]:
             obj = brain.getObject()
             html_body = obj.text.raw
             xhtml = lxml.html.document_fromstring(html_body)
@@ -86,16 +86,19 @@ class BlogMigrationRunnerView(BrowserView):
             new_item = api.content.create(
                 type='meetshaus.blog.blogpost',
                 title=obj.Title(),
+                description=obj.Description(),
                 container=context
             )
             setattr(new_item, 'Subject', obj.Subject())
             setattr(new_item, 'text', obj.text)
+            api.content.transition(obj=new_item, transition='publish')
+            effective = obj.EffectiveDate()
+            new_item.setEffectiveDate(effective)
+            modified(new_item)
+            new_item.reindexObject(idxs='modified')
             for img_uid in img_list:
                 img_obj = api.content.get(UID=img_uid)
                 api.content.move(source=img_obj, target=new_item)
-            api.content.transition(obj=new_item, transition='publish')
-            modified(new_item)
-            new_item.reindexObject(idxs='modified')
             migrated.append(obj.UID())
         info_message_template = 'There are {0} objects migrated.'
         warn_message_template = 'There are {0} objects not migrated.'
