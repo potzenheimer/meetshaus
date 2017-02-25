@@ -14,4 +14,4 @@ port:             9001
 
 # Custom vars
 current_version:  1.0.0
-repo:             https://github.com/potzenheimer/meetshaus
+repo:             https://github.com/ade25/

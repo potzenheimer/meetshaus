@@ -4,11 +4,9 @@
 
 .app-navbar {
   @extend .navbar;
-  background-color: $app-primary;
-  border-radius: 0;
-  @media (min-width: $grid-float-breakpoint-max) {
+  @include media-breakpoint-up(md) {
     background: transparent;
-    border-bottom: 10px solid $app-primary;
+    border-bottom: 10px solid $gray;
   }
 }
 
@@ -24,25 +22,14 @@
   background: $app-primary;
 }
 
-//** Navbar toggle text
+//## Navbar toggle text
 .app-navbar-header-title {
   flex: 0 0 75%;
 }
 
-.app-navbar-brand {
-  height: $navbar-height;
-  padding: $navbar-padding-vertical $navbar-padding-horizontal;
-  font-weight: 500;
-  line-height: $line-height-computed;
-  color: #fff;
-}
-
-//** Icon bar navigation toggle
+//## Icon bar navigation toggle
 .app-navbar-header-toggle {
   flex: 0 0 25%;
-  background: $app-secondary;
-  min-height: $navbar-height;
-  padding: $navbar-padding-vertical $navbar-padding-horizontal;
   text-align: center;
 }
 
@@ -58,7 +45,7 @@
     border-color: transparent;
   }
   .icon-bar {
-    background-color: $navbar-inverse-toggle-icon-bar-bg;
+    background-color: $gray-lighter;
   }
   // Bars
   .icon-bar {
@@ -72,9 +59,42 @@
   }
 }
 
-.app-navbar-collapse {
-  margin-left: -30px !important;
-  margin-right: -30px !important;
+// Navbar toggle button visible on small displays
+// Custom override for
+.navbar-toggleable {
+    &-xs {
+        @include media-breakpoint-up(sm) {
+            display: block !important;
+        }
+    }
+    &-sm {
+        @include media-breakpoint-up(md) {
+            display: block !important;
+        }
+    }
+    &-md {
+        @include media-breakpoint-up(lg) {
+            display: block !important;
+        }
+    }
+}
+
+// Navbar toggle
+//
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse
+// Bootstrap JavaScript plugin.
+
+.navbar-toggler {
+    padding: .5rem .75rem;
+    font-size: $font-size-lg;
+    line-height: 1;
+    background: none;
+    border: $border-width solid transparent;
+    @include border-radius($btn-border-radius);
+
+    @include hover-focus {
+        text-decoration: none;
+    }
 }
 
 // Unordered list main navigation
@@ -87,7 +107,7 @@
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
-  @extend clearfix;
+  @include clearfix;
 }
 
 //== Navitems
@@ -95,8 +115,7 @@
 //## Color coded based on addon classes
 .app-navitem {
   width: 100%;
-  @media (min-width: $grid-float-breakpoint-max) {
-    width: 16.66666667%;
+  @include media-breakpoint-up(md) {
     padding-right: 2px;
     &:last-child {
       padding-right: 0;
@@ -105,8 +124,6 @@
 }
 
 .app-navitem-tab {
-    display: flex;
-    align-items: center;
     color: #fff;
     background-color: $app-primary;
     font-weight: 400;
@@ -122,58 +139,14 @@
     > span {
       display: block;
       margin: 0 auto;
-      // padding: ((#{$navbar-height} - ($line-height-computed)) / 2) 0;
-      @include navbar-vertical-align($line-height-computed);
     }
-    @media (min-width: $grid-float-breakpoint-max) {
-      height: 70px;
-      min-height: 70px;
+    @include media-breakpoint-up(md) {
+        display: flex;
+        align-items: center;
     }
-}
-
-//== NOTE: this classes are subject to changes
-//
-//## we should move these to general purpose brand classes
-//## providing both color and background color mixins and
-//## standalone modifier classes
-.app-navitem-tab-home {
-  background-color: $app-primary;
-  &:hover {
-    background-color: darken($app-primary, 6.5%);
-  }
-}
-
-.app-navitem-tab-aktuelles {
-  background-color: $app-current;
-  &:hover {
-    background-color: darken($app-current, 6.5%);
-  }
-}
-
-.app-navitem-tab-verwaltung-und-politik {
-  background-color: $app-administration;
-  &:hover {
-    background-color: darken($app-administration, 6.5%);
-  }
-}
-
-.app-navitem-tab-tourismus-und-wirtschaft {
-  background-color: $app-economy;
-  &:hover {
-    background-color: darken($app-economy, 6.5%);
-  }
-}
-
-.app-navitem-tab-leben-im-landkreis {
-  background-color: $app-county;
-  &:hover {
-    background-color: darken($app-county, 6.5%);
-  }
-}
-
-.app-navitem-tab-buergerportal-und-service {
-  background-color: $app-service;
-  &:hover {
-    background-color: darken($app-service, 6.5%);
-  }
+    @include when-inside('.active') {
+        color: $app-primary;
+        background-color: transparent;
+        text-decoration: none;
+    }
 }

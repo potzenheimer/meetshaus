@@ -3,14 +3,11 @@
 // -----------------------------------
 
 .app-footer {
-    padding-top: $line-height-computed;
-    padding-bottom: $line-height-computed;
+    padding-top: $spacer;
+    padding-bottom: $spacer;
 }
 
 .app-footer-content {
-  @extend .container;
-  font-weight: 400;
-  a {
-    text-transform: uppercase;
-  }
+  @include make-container();
+  @include make-container-max-widths();
 }

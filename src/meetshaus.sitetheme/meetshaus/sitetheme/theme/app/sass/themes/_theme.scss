@@ -19,7 +19,7 @@
   @extend .container;
   &-centerstage {
     @extend .container-fluid;
-    @extend .center-block;
+    margin: 0 auto;
     max-width: 480px;
   }
 }
@@ -29,11 +29,11 @@
 //
 //## Define content specific styles
 .app-page {
-  padding: $line-height-computed 0;
+  padding: $spacer 0;
 }
 
 .app-page-title {
-  @extend .page-header;
+  margin-bottom: 1rem;
 }
 
 
@@ -41,11 +41,11 @@
 // that has proper line-height on all media types
 .app-page-lead,
 .app-page-abstract {
-  margin-bottom: $line-height-computed;
+  margin-bottom: $spacer;
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5;
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(sm) {
     font-size: 1.5rem;
   }
 }
