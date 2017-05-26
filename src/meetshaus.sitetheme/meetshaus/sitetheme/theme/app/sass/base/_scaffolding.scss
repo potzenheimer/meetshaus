@@ -3,10 +3,29 @@
 // ----------------------------------
 
 
-//** Adjust font weight for initialized webfonts
+
+// Set root font size
+
+html {
+    font-size: $font-size-base;
+    @include media-breakpoint-up(sm) {
+        font-size: 1.25rem;
+    }
+}
+
+// Adjust font weight for initialized webfonts
 body {
-    @include when-inside('.app-fonts--loaded') {
-        font-weight: 400;
+    background-color: $color-geyser;
+    .wf-active & {
+        font-weight: 300;
+    }
+}
+
+// Set font weights if webfont is active
+.wf-active {
+    b,
+    strong {
+        font-family: $app-font-family-strong;
     }
 }
 
@@ -14,6 +33,9 @@ body {
 b,
 strong {
     font-weight: 700;
+    .wf-active & {
+        font-weight: 500;
+    }
 }
 
 // Transistion link color on :hover state
@@ -23,30 +45,11 @@ a:hover {
 
 // Optional plone settings and adjustments
 // ---------------------------------------
+// Combat plone.app.widget styling (also using bootstrap) and correct
+// display errors caused by grid system inconsistencies
 
 // Combat plone hidden element class via mixin
 .hidden,
 .hiddenStructure {
     visibility: hidden;
-}
-
-// Only display content to screen readers
-//
-// See: http://a11yproject.com/posts/how-to-hide-content/
-
-.hiddenStructure {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
-    color: #fff;
-    background-color: #000;
-}
-.hiddenStructure a {
-    color: #fff;
-    background-color: #000;
 }

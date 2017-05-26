@@ -49,13 +49,16 @@ module.exports = function (grunt) {
                 dest: '<%= config.dist %>/scripts/<%= pkg.name %>.js'
             },
             theme: {
+                options: {
+                    banner: "require(['jquery'], function($) {'use strict';",
+                    footer: "});",
+                    stripBanners: true
+                },
                 src: [
                     '<%= config.modules %>/tether/dist/js/tether.min.js',
                     '<%= config.modules %>/bootstrap/dist/js/bootstrap.js',
-                    '<%= config.modules %>/lazysizes/plugins/ls.parent-fit.js',
-                    '<%= config.modules %>/lazysizes/plugins/ls.bgset.js',
-                    '<%= config.modules %>/lazysizes/plugins/ls.unveilhooks.js',
                     '<%= config.modules %>/lazysizes/lazysizes.js',
+                    '<%= config.modules %>/lazysizes/plugins/ls.parent-fit.js',
                     '<%= config.modules %>/respimage/respimage.js',
                     '<%= config.modules %>/flickity/dist/flickity.pkgd.js',
                     '<%= config.app %>/scripts/main.js'
@@ -79,7 +82,7 @@ module.exports = function (grunt) {
                 files: {
                     src: [
                         '<%= config.dist %>/scripts/{,*/}*.js',
-                        '<%= config.dist %>/styles/{,*/}*.css',
+                        '<%= config.dist %>/stypes/{,*/}*.css',
                         '!<%= config.dist %>/scripts/vendor/*'
                     ]
                 },

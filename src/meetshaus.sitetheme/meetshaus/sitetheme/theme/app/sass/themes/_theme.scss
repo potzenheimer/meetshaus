@@ -3,23 +3,23 @@
 // --------------------------------------
 
 
+
 //== Main content area
 //
-//## Provides optional fullscreen layouts
+//== Provides optional fullscreen layouts
 .app-main {
-  @extend .container-fluid;
-  &-fullscreen {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  background-color: #fff;
+  @include make-container();
+  @include make-container-max-widths();
+  margin-bottom: 0;
+  border: 1px solid #fff;
 }
 
 .app-content {
   @extend .container;
   &-centerstage {
     @extend .container-fluid;
-    @extend .center-block;
+    margin: 0 auto;
     max-width: 480px;
   }
 }
@@ -29,23 +29,23 @@
 //
 //## Define content specific styles
 .app-page {
-  padding: $line-height-computed 0;
+  padding: $spacer 0 0;
 }
 
-.app-page-title {
-  @extend .page-header;
+.app-page__title {
+  margin-bottom: 1rem;
 }
 
 
 // Use custom lead element for page desciptions
 // that has proper line-height on all media types
-.app-page-lead,
-.app-page-abstract {
-  margin-bottom: $line-height-computed;
+.app-page__lead,
+.app-page__abstract {
+  margin-bottom: $spacer;
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5;
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(sm) {
     font-size: 1.5rem;
   }
 }
@@ -54,6 +54,6 @@
 //== Page section
 //
 //## Container providing visual separation
-.app-page-section {
+.app-page__section {
   margin: 1rem 0 2rem;
 }

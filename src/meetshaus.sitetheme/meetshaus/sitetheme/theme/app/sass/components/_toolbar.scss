@@ -36,21 +36,21 @@ $plone-screen-lg-min:              1200px;
 //
 //== Mix plone styles with basic formatting
 .app-toolbar {
-    @extend .hidden-xs;
+    // @extend .hidden-xs;
     position: fixed;
     top:0;
     left:0;
     height: 100%;
     width: 120px;
-    background: $navbar-inverse-bg;
+    background: $plone-toolbar-bg;
 }
 
 //** Toolbar header with brand and/or cms title information
 .app-toolbar-header {
-    margin-bottom: $line-height-computed;
-    padding: $nav-link-padding;
+    margin-bottom: 1rem;
+    padding: .25rem;
     color: #f2f2f2;
-    border-bottom: 1px solid $navbar-inverse-color;
+    border-bottom: 1px solid $gray;
 }
 
 //== Toolbar nav
@@ -60,10 +60,10 @@ $plone-screen-lg-min:              1200px;
 //## more horizontal space due to extended word length
 .app-toolbar-nav {
     @extend .nav;
-    margin-bottom: $line-height-computed;
+    margin-bottom: 1rem;
     font-size: 0.75rem;
     li > a {
-        color: $navbar-inverse-color;
+        color: #fff;
     }
 }
 
@@ -80,8 +80,8 @@ $plone-screen-lg-min:              1200px;
     left:0;
     z-index: 3;
     font-weight: 300;
-    color: $navbar-inverse-color;
-    background: $navbar-inverse-bg;
+    color: $gray-lighter;
+    background: $gray;
 }
 
 //** Inline Plone SVG logo

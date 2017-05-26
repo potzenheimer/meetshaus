@@ -7,13 +7,12 @@
 @import 'utils/functions';
 @import 'utils/mixins.scss';
 
-@import 'vendors/ionicons';
+// @import 'vendors/font-awesome';
 @import 'vendors/bootstrap';
-@import 'vendors/flickity';
-@import 'vendors/medium-editor';
 
 @import 'base/syntax';
 @import 'base/animation';
+@import 'base/fonts';
 @import 'base/scaffolding';
 @import 'base/brand';
 
@@ -24,18 +23,18 @@
 
 @import 'components/toolbar';
 @import 'components/media';
-@import 'components/call-outs';
+@import 'components/callouts';
 @import 'components/pathbar';
 @import 'components/brand';
 @import 'components/actionbar';
 @import 'components/banner';
 @import 'components/cards';
-// @import 'components/gallery';
+@import 'components/burger';
 
 @import 'pages/signin';
-@import 'pages/content-page';
+@import 'pages/contentpage';
 
 @import 'themes/theme';
-@import 'themes/frontpage';
+@import 'themes/styleguide';
 
 @import 'shame.scss';

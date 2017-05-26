@@ -1,0 +1,32 @@
+// Burger navigation toggle
+
+.app-burger {
+  width: 4rem;
+  height: 4rem;
+  align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+  font-size: $navbar-toggler-font-size;
+  line-height: 1;
+  color: #fff;
+  background-color: $app-secondary;
+  border: $border-width solid transparent; // remove default button style
+  border-radius: 50%;
+  border-color: $navbar-inverse-toggler-border;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+
+.app-burger__icon {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  content: "";
+  color: #fff;
+  background: no-repeat center center;
+  background-size: 100% 100%;
+  background-image: $navbar-inverse-toggler-bg;
+}

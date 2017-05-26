@@ -3,8 +3,45 @@
 // -----------------------------------
 
 .app-footer {
+  margin: 0 0 2rem;
+  padding: 0;
 }
 
 .app-footer__content {
   @include make-container();
+  @include make-container-max-widths();
+  padding-top: 1rem;
+  padding-bottom: 0;
+  background:url(../../assets/img/landscape.png) no-repeat 0% 100% #fff;
+  border: 1px solid #fff;
+  border-bottom-right-radius: $app-border-radius;
+  border-bottom-left-radius: $app-border-radius;
+}
+
+
+.app-footer__main {
+    margin: 2rem 0 6rem;
+    padding-left: 3rem;
+    color: #fff;
+    background:url(../../assets/img/envelope.png) no-repeat 0 0 transparent;
+}
+
+.app-footer__aside {
+  padding-bottom: .25rem;
+  font-size: .7rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.app-footer__title {
+  font-family: 'AurulentSansBold';
+  font-size: 1.25rem;
+  color: $app-secondary;
+}
+
+.app-footer__link {
+  color: #fff;
+  &--inverse {
+    color: $app-secondary;
+  }
 }

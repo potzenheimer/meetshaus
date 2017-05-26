@@ -13,22 +13,3 @@
 //
 // See: http://csswizardry.com/2013/04/shame-css/
 // -----------------------------------------------------
-
-// Rename widget
-//
-// pattern.structure.less overwrite
-#popover-rename input {
-    height: 50px;
-}
-
-// Bootstrap collapse class backport
-//
-// Plone uses an outdated version of the bootstrap collapsible
-// javascript version and therefore the actual set classes do not
-// match the now required bs4 conventions
-.collapse {
-    display: none;
-    &.in {
-        display: block;
-    }
-}
