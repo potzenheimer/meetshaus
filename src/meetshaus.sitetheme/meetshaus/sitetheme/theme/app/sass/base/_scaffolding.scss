@@ -15,6 +15,7 @@ html {
 
 // Adjust font weight for initialized webfonts
 body {
+    background-color: $color-geyser;
     .wf-active & {
         font-weight: 300;
     }

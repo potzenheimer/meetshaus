@@ -1,13 +1,14 @@
 <header class="app-header" id="app-header" role="banner">
-  <div class="app-header-content app-header-panels">
-    <div class="app-header-panel app-header-brandbar">
-      {% include components/brandpanel.html %}
+  <div class="app-header__content">
+    <div class="app-header__panels">
+      <div class="app-header__panel app-header__brandbar">
+        {% include components/brandpanel.html %}
+      </div>
+      <div class="app-header__panel app-header__burger">
+        <button class="app-burger" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="app-burger__icon"></span>
+        </button>
+      </div>
     </div>
-    <div class="app-header-panel app-header-actionbar">
-      {% include components/actionbar.html %}
-    </div>
-  </div>
-  <div class="app-header-content">
-    {% include components/navbar.html %}
   </div>
 </header>
