@@ -4,37 +4,67 @@
 
 
 .app-header {
-  padding-top: 3rem;
-  @media (min-width: $grid-float-breakpoint-max) {
-    padding-left: $line-height-computed;
-    padding-bottom: 1rem;
-  }
+    background: $app-primary;
+    @include when-inside('.template-frontpage-view') {
+        background: transparent;
+    }
+    @include media-breakpoint-up(md) {
+        margin-bottom: 1rem;
+    }
 }
 
 .app-header-content {
-  @media (min-width: $grid-float-breakpoint) {
-    @extend .container;
-    display: flex;
-  }
+    @include make-container();
+    @include make-container-max-widths();
+    @include when-inside('.template-frontpage-view') {
+        position: relative;
+        z-index: 1000000000;
+    }
+
 }
 
-.app-header-content + .app-header-content {
-  margin-top: 1.5rem;
+
+// Header panels
+.app-header-panels {
+    // Fallback for browsers lacking flexbox support
+    @include when-inside('.no-flexbox') {
+        display: table;
+    }
+    @include make-row();
+    flex-wrap: wrap;
 }
 
+//** Base card styles
 .app-header-panel {
-  flex: 1;
+    @include when-inside('.no-flexbox') {
+        display: table-cell;
+    }
+    @include when-inside('.app-header-panels') {
+        @include make-col(12);
+        @include media-breakpoint-up(md) {
+            @include make-col(6);
+        }
+        @include media-breakpoint-up(md) {
+            @include make-col(6);
+        }
+    }
+    &.app-header-brandbar {
+        @include media-breakpoint-up(md) {
+            @include make-col(3);
+        }
+        min-height: 50px;
+    }
+
+    &.app-header-navbar {
+        @include media-breakpoint-up(md) {
+            @include make-col(9);
+        }
+    }
 }
 
-//== Adjust grid cell sizes
-//
-//## Starting from the grid breakpoint the header
-//## should display in the standard 2:1 ratio
-@media (min-width: $grid-float-breakpoint-max) {
-  .app-header-brandbar {
-    flex: 0 0 66.6666%;
-  }
-  .app-header-actionbar {
-    flex: 0 0 33.3333%;
-  }
+.app-header-navbar {
+    @include media-breakpoint-up(md) {
+        //margin-top: 5.5rem;
+    }
 }
+

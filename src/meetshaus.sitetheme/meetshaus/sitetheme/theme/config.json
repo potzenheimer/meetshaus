@@ -1,3 +1,69 @@
 {
-  "name": "meetshaus"
+    "name": "meetshaus",
+    "paths": {
+        "app": "app/",
+        "dev": "_site/",
+        "dist": "dist/",
+        "diazoPrefix": "/++theme++meetshaus.sitetheme/",
+        "src": "node_modules/"
+    },
+    "favicon": {
+        "dataFile": "faviconData.json",
+        "masterPicture": "favicon.png",
+        "iconPath": "assets/ico/",
+        "ios": "#ffffff",
+        "windows": "#2d89ef",
+        "androidBackground": "#ffffff",
+        "androidColor": "#ffffff",
+        "safariColor": "#5bbad5",
+        "revisionKey": "iet7OjeChoz1",
+        "html": "_includes/base/head.html",
+        "htmlDist": "_includes/base/"
+    },
+    "scripts": {
+        "src": [
+            "fontfaceobserver/fontfaceobserver.js",
+            "bootstrap-without-jquery/bootstrap3/bootstrap-without-jquery.js",
+            "lazysizes/lazysizes.js",
+            "flickity/dist/flickity.pkgd.js"
+        ],
+        "base": [
+            "jquery/dist/jquery.js",
+            "modernizr/modernizr.js",
+            "tether/dist/js/tether.min.js",
+            "bootstrap/dist/js/bootstrap.js",
+            "fontfaceobserver/fontfaceobserver.js",
+            "mailcheck/src/mailcheck.js",
+            "JVFloat/jvfloat.js",
+            "hideShowPassword/hideShowPassword.js",
+            "lazysizes/plugins/ls.parent-fit.js",
+            "lazysizes/lazysizes.js",
+            "respimage/respimage.js",
+            "flickity/dist/flickity.pkgd.js"
+        ]
+    },
+    "replacementPatterns": {
+        "server": [
+            {
+                "match": "../../assets/",
+                "replacement": "../assets/"
+            },
+            {
+                "match": "../../dist/styles/",
+                "replacement": "/styles/"
+            },
+            {
+                "match": "../dist/styles/",
+                "replacement": "/styles/"
+            },
+            {
+                "match": "../../dist/scripts/",
+                "replacement": "/scripts/"
+            },
+            {
+                "match": "../dist/scripts/",
+                "replacement": "/scripts/"
+            }
+        ]
+    }
 }

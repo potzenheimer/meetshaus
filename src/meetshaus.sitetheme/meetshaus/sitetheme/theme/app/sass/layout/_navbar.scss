@@ -3,177 +3,190 @@
 // -----------------------------------------
 
 .app-navbar {
-  @extend .navbar;
-  background-color: $app-primary;
-  border-radius: 0;
-  @media (min-width: $grid-float-breakpoint-max) {
-    background: transparent;
-    border-bottom: 10px solid $app-primary;
-  }
+    @extend .navbar;
+    line-height: ($spacer / 2);
+    @include media-breakpoint-up(md) {
+        position: relative;
+        background: transparent;
+        padding-top: 1rem;
+        padding-right: 0;
+    }
+    @include media-breakpoint-up(xl) {
+        padding-top: 3rem;
+    }
 }
-
 //== Navbar header
 //
 //## Default display of global site navigation
 //## Hidden on larger displays
 .app-navbar-header {
-  @include clearfix;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  background: $app-primary;
+    @include clearfix;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    @include media-breakpoint-up(md) {
+        display: none;
+    }
 }
 
 //** Navbar toggle text
 .app-navbar-header-title {
-  flex: 0 0 75%;
-}
-
-.app-navbar-brand {
-  height: $navbar-height;
-  padding: $navbar-padding-vertical $navbar-padding-horizontal;
-  font-weight: 500;
-  line-height: $line-height-computed;
-  color: #fff;
+    flex: 0 0 75%;
+    padding-top: .75rem;
+    padding-left: 1rem;
+    height: 50px;
+    line-height: 1.5rem;
 }
 
 //** Icon bar navigation toggle
 .app-navbar-header-toggle {
-  flex: 0 0 25%;
-  background: $app-secondary;
-  min-height: $navbar-height;
-  padding: $navbar-padding-vertical $navbar-padding-horizontal;
-  text-align: center;
+    flex: 0 0 25%;
+    text-align: center;
 }
 
 // Navbar toggle button visible on small displays
 .app-navbar-toggle {
-  width: 100%;
-  border-color: transparent;
-  background: transparent;
-  text-align: right;
-  &:hover,
-  &:focus {
-    background: transparent;
+    width: 100%;
     border-color: transparent;
-  }
-  .icon-bar {
-    background-color: $navbar-inverse-toggle-icon-bar-bg;
-  }
-  // Bars
-  .icon-bar {
-    display: block;
-    width: 44px;
-    height: 2px;
-    border-radius: 1px;
-  }
-  .icon-bar + .icon-bar {
-    margin-top: 12px;
-  }
+    background: transparent;
+    color: $app-primary;
+    text-align: right;
+    &:hover,
+    &:focus {
+        background: transparent;
+        border-color: transparent;
+    }
+    .icon-bar {
+        background-color: $gray-lighter;
+    }
+    // Bars
+    .icon-bar {
+        display: block;
+        width: 44px;
+        height: 2px;
+        border-radius: 1px;
+    }
+    .icon-bar + .icon-bar {
+        margin-top: 12px;
+    }
 }
 
+// Navbar toggle button visible on small displays
+// Custom override for
+.navbar-toggleable {
+    &-xs {
+        @include media-breakpoint-up(sm) {
+            display: block !important;
+        }
+    }
+    &-sm {
+        @include media-breakpoint-up(md) {
+            display: block !important;
+        }
+    }
+    &-md {
+        @include media-breakpoint-up(lg) {
+            display: block !important;
+        }
+    }
+}
+
+// Navbar toggle
+//
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse
+// Bootstrap JavaScript plugin.
+
+.navbar-toggler {
+    padding: .5rem .75rem;
+    font-size: $font-size-lg;
+    line-height: 1;
+    background: none;
+    border: $border-width solid transparent;
+    @include border-radius($btn-border-radius);
+
+    @include hover-focus {
+        text-decoration: none;
+    }
+}
+
+
 .app-navbar-collapse {
-  margin-left: -30px !important;
-  margin-right: -30px !important;
+    //background-color: #ccc;
+    //@include media-breakpoint-up(md) {
+    //    background: transparent;
+    //
+    //}
 }
 
 // Unordered list main navigation
 .app-navbar-nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0;
-  padding-left: 0; // Override default ul/ol
-  list-style: none;
-  @extend clearfix;
+    @extend .nav;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: right;
+    // justify-content: center;
+    margin-bottom: 0;
+    padding-left: 0; // Override default ul/ol
+    list-style: none;
+    @include clearfix();
+    @include media-breakpoint-up(lg) {
+        padding: 0;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        background: transparent;
+    }
 }
 
 //== Navitems
 //
 //## Color coded based on addon classes
 .app-navitem {
-  width: 100%;
-  @media (min-width: $grid-float-breakpoint-max) {
-    width: 16.66666667%;
-    padding-right: 2px;
-    &:last-child {
-      padding-right: 0;
+    width: 100%;
+    padding-left: 1rem;
+    margin-left: 0;
+    text-transform: uppercase;
+    font-size: .7rem;
+    @include media-breakpoint-up(md) {
+        width: auto;
+        border-top: none;
+        flex: 0 1 auto;
     }
-  }
+    @include media-breakpoint-up(lg) {
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
 }
 
 .app-navitem-tab {
-    display: flex;
-    align-items: center;
+    padding: .25rem;
     color: #fff;
-    background-color: $app-primary;
-    font-weight: 400;
-    line-height: 1;
-    text-transform: uppercase;
-    text-align: center;
+    font-weight: 300;
+    line-height: 1rem;
     transition: background-color 0.5s ease;
     &:hover {
-      color: #fff;
-      background-color: darken($app-primary, 6.5%);
-      text-decoration: none;
+        color: $app-primary;
+        text-decoration: none;
     }
     > span {
-      display: block;
-      margin: 0 auto;
-      // padding: ((#{$navbar-height} - ($line-height-computed)) / 2) 0;
-      @include navbar-vertical-align($line-height-computed);
+        display: block;
+        margin: 0 auto;
     }
-    @media (min-width: $grid-float-breakpoint-max) {
-      height: 70px;
-      min-height: 70px;
+    i {
+        line-height: 2rem;
     }
-}
-
-//== NOTE: this classes are subject to changes
-//
-//## we should move these to general purpose brand classes
-//## providing both color and background color mixins and
-//## standalone modifier classes
-.app-navitem-tab-home {
-  background-color: $app-primary;
-  &:hover {
-    background-color: darken($app-primary, 6.5%);
-  }
-}
-
-.app-navitem-tab-aktuelles {
-  background-color: $app-current;
-  &:hover {
-    background-color: darken($app-current, 6.5%);
-  }
-}
-
-.app-navitem-tab-verwaltung-und-politik {
-  background-color: $app-administration;
-  &:hover {
-    background-color: darken($app-administration, 6.5%);
-  }
-}
-
-.app-navitem-tab-tourismus-und-wirtschaft {
-  background-color: $app-economy;
-  &:hover {
-    background-color: darken($app-economy, 6.5%);
-  }
-}
-
-.app-navitem-tab-leben-im-landkreis {
-  background-color: $app-county;
-  &:hover {
-    background-color: darken($app-county, 6.5%);
-  }
-}
-
-.app-navitem-tab-buergerportal-und-service {
-  background-color: $app-service;
-  &:hover {
-    background-color: darken($app-service, 6.5%);
-  }
+    @include media-breakpoint-up(md) {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        i {
+            line-height: 1rem;
+        }
+    }
+    @include when-inside('.active') {
+        color: #000;
+        background-color: transparent;
+        text-decoration: none;
+    }
 }
