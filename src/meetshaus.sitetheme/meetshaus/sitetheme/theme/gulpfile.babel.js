@@ -159,24 +159,15 @@ gulp.task('cb', () => {
 gulp.task('revreplace', () => {
     var manifest = gulp.src(cfg.paths.dist + '/styles/rev-manifest.json');
 return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-    .pipe(revReplace({manifest: manifest}))
+    .pipe($.revReplace({manifest: manifest}))
     .pipe(gulp.dest(cfg.paths.dev));
 })
 ;
 
 gulp.task('replace', () => {
     return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-        .pipe(replace({
-            patterns: [
-                {
-                    match: '../../assets/',
-                    replacement: '../assets/'
-                },
-                {
-                    match: '../dist/',
-                    replacement: '/'
-                }
-            ],
+        .pipe($.replaceTask({
+            patterns: cfg.replacementPatterns.server,
             usePrefix: false,
             preserveOrder: true
         }))

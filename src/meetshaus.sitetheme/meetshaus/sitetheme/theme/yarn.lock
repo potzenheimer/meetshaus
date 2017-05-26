@@ -964,10 +964,6 @@ binary@~0.3.0:
     buffers "~0.1.1"
     chainsaw "~0.1.0"
 
-binaryextensions@~1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/binaryextensions/-/binaryextensions-1.0.1.tgz#1e637488b35b58bda5f4774bf96a5212a8c90755"
-
 bl@^1.0.0, bl@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/bl/-/bl-1.1.2.tgz#fdca871a99713aa00d19e3bbba41c44787a65398"
@@ -2546,7 +2542,7 @@ escape-string-regexp@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.2.tgz#4dbc2fe674e71949caf3fb2695ce7f2dc1d9a8d1"
 
-escape-string-regexp@^1.0.0, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.3, escape-string-regexp@^1.0.5:
+escape-string-regexp@^1.0.0, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
@@ -3969,13 +3965,13 @@ gulp-rename@^1.2.0, gulp-rename@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-1.2.2.tgz#3ad4428763f05e2764dec1c67d868db275687817"
 
-gulp-replace@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/gulp-replace/-/gulp-replace-0.5.4.tgz#69a67914bbd13c562bff14f504a403796aa0daa9"
+gulp-replace-task@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/gulp-replace-task/-/gulp-replace-task-0.11.0.tgz#3bf5c4f3b0f27457adedeb10747cbb66b2463fdd"
   dependencies:
-    istextorbinary "1.0.2"
-    readable-stream "^2.0.1"
-    replacestream "^4.0.0"
+    applause "1.1.0"
+    gulp-util "^3.0.0"
+    through2 "^2.0.0"
 
 gulp-rev-replace@^0.4.2:
   version "0.4.3"
@@ -4889,13 +4885,6 @@ isstream@0.1.x, isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-istextorbinary@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/istextorbinary/-/istextorbinary-1.0.2.tgz#ace19354d1a9a0173efeb1084ce0f87b0ad7decf"
-  dependencies:
-    binaryextensions "~1.0.0"
-    textextensions "~1.0.0"
-
 jade@0.26.3:
   version "0.26.3"
   resolved "https://registry.yarnpkg.com/jade/-/jade-0.26.3.tgz#8f10d7977d8d79f2f6ff862a81b0513ccb25686c"
@@ -5644,6 +5633,10 @@ maxmin@^2.0.0:
     figures "^1.0.1"
     gzip-size "^3.0.0"
     pretty-bytes "^3.0.0"
+
+medium-editor@^5.13.0:
+  version "5.23.0"
+  resolved "https://registry.yarnpkg.com/medium-editor/-/medium-editor-5.23.0.tgz#7d16c15cdf152b95ced2a583bf07203e8539a3c6"
 
 memoizee@^0.3.9:
   version "0.3.10"
@@ -7325,14 +7318,6 @@ replace@~0.2.4:
     minimatch "~0.2.9"
     nomnom "1.6.x"
 
-replacestream@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/replacestream/-/replacestream-4.0.2.tgz#0c4140707e4f0323f50de044851708cf58bc37bd"
-  dependencies:
-    escape-string-regexp "^1.0.3"
-    object-assign "^4.0.1"
-    readable-stream "^2.0.2"
-
 request-progress@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/request-progress/-/request-progress-2.0.1.tgz#5d36bb57961c673aa5b788dbc8141fdf23b44e08"
@@ -8392,10 +8377,6 @@ text-hex@0.0.x:
 text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
-
-textextensions@~1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/textextensions/-/textextensions-1.0.2.tgz#65486393ee1f2bb039a60cbba05b0b68bd9501d2"
 
 tfunk@^3.0.1:
   version "3.1.0"

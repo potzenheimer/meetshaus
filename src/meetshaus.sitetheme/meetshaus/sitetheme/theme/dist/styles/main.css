@@ -2283,9 +2283,7 @@ input[type="email"], .has-success
 input[type="url"], .has-success
 input[type="search"], .has-success
 input[type="tel"], .has-success
-input[type="color"], .has-success .app-searchbox-field,
-.has-success .custom-select,
-.has-success .custom-file-control {
+input[type="color"], .has-success .app-searchbox-field {
   border-color: #5cb85c;
 }
 
@@ -2322,9 +2320,7 @@ input[type="email"], .has-warning
 input[type="url"], .has-warning
 input[type="search"], .has-warning
 input[type="tel"], .has-warning
-input[type="color"], .has-warning .app-searchbox-field,
-.has-warning .custom-select,
-.has-warning .custom-file-control {
+input[type="color"], .has-warning .app-searchbox-field {
   border-color: #f0ad4e;
 }
 
@@ -2361,9 +2357,7 @@ input[type="email"], .has-danger
 input[type="url"], .has-danger
 input[type="search"], .has-danger
 input[type="tel"], .has-danger
-input[type="color"], .has-danger .app-searchbox-field,
-.has-danger .custom-select,
-.has-danger .custom-file-control {
+input[type="color"], .has-danger .app-searchbox-field {
   border-color: #d9534f;
 }
 
@@ -3468,9 +3462,8 @@ input[type="color"] + .input-group-addon:not(:first-child), .app-searchbox-field
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
   background-size: 8px 10px;
   border: 1px solid rgba(0, 0, 0, 0.15);
+  -moz-appearance: none;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
 }
 
 .custom-select:focus {
