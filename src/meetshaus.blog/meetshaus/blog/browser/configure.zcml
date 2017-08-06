@@ -5,6 +5,15 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="meetshaus.blog">
 
+    <!-- Blog entry views -->
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="blog-entry-view"
+        class=".blogentry.BlogEntryView"
+        template="blogentry.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
   <!-- Blog migration view -->
   <browser:page
       for="Products.CMFCore.interfaces.IContentish"

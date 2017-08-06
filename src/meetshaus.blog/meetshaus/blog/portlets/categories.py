@@ -6,7 +6,6 @@ from plone.app.portlets.portlets import base
 from Products.CMFCore.utils import getToolByName
 
 from zope import schema
-from zope.formlib import form
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -105,7 +104,7 @@ class AddForm(base.AddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
-    form_fields = form.Fields(IBlogCategoriesPortlet)
+    schema = IBlogCategoriesPortlet
 
     def create(self, data):
         return Assignment(**data)
@@ -117,4 +116,4 @@ class EditForm(base.EditForm):
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
     """
-    form_fields = form.Fields(IBlogCategoriesPortlet)
+    schema = IBlogCategoriesPortlet

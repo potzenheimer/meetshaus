@@ -18,13 +18,13 @@ class BlogMigrationView(BrowserView):
     """
 
     def __call__(self):
-        self.has_blogentries = len(self.blogentries()) > 0
+        self.has_blog_entries = len(self.blog_entries()) > 0
         return self.render()
 
     def render(self):
         return self.index()
 
-    def blogentries(self):
+    def blog_entries(self):
         items = api.content.find(
             context=api.portal.get(),
             object_provides=IBlogEntry,
@@ -33,8 +33,8 @@ class BlogMigrationView(BrowserView):
         )
         return items
 
-    def blogentries_count(self):
-        return len(self.blogentries())
+    def blog_entries_count(self):
+        return len(self.blog_entries())
 
     def used_image_assets(self, uuid):
         item = api.content.get(UID=uuid)

@@ -1,0 +1,142 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+     metal:use-macro="context/main_template/macros/master"
+     i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+    <metal:content-core define-macro="main">
+
+        <section class="app-page" id="content">
+            <header class="app-page__header">
+                <div class="app-page__title">
+                    <div class="app-page__timestamp" tal:content="python:toLocalizedTime(ts['date'])" />
+                    <h1 class="app-page__headline">${conteyt/Title}</h1>
+                </div>
+                <p class="app-page__abstract" tal:condition="context/Description">
+                    ${context/Description}
+                </p>
+            </header>
+            <section class="app-page__body" id="content-core">
+                <p>Use this template as a starting point for further development</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </section>
+        </section>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="blogentry-aside" id="blogentry-aside"
+                     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    ts view/timestamp">
+                    <div class="blogentry-aside-section hidden-xs">
+          <span class="fa-stack fa-3x text-secondary">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <strong class="fa-stack-1x timestamp-text" tal:content="ts/day">27</strong>
+          </span>
+                        <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month" i18n:translate="">August 2014</span>
+                        <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/year">August 2014</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="blogentry" id="content-core"
+                     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    ts view/timestamp">
+                    <div class="blogentry-header">
+                        <div class="visible-xs" tal:content="python:toLocalizedTime(ts['date'])" />
+                        <h2 class="blogentry-title" tal:content="context/Title" />
+                    </div>
+
+                    <p class="blogentry-abstract" tal:condition="context/Description">
+                        <span tal:content="context/Description">Desc</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="blogentry-aside blogentry-aside-default">
+                    <div class="blogentry-aside-section" tal:define="categories context/Subject|nothing"
+                         tal:condition="categories">
+                        <div class="h6 blogentry-aside-title">Abgelegt unter</div>
+                        <p>
+            <span tal:repeat="category categories">
+              <a href=""
+                 class="blogentry-aside-category"
+                 rel="nofollow"
+                   tal:content="category"
+                   tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/themen/@@category/${category}">
+                Category
+              </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
+            </span>
+                        </p>
+                    </div>
+                    <div class="blogentry-aside-section">
+                        <div class="h6 blogentry-aside-title">Lesezeit:</div>
+                        <p class="blogentry-aside-text"><span tal:replace="view/reading_time" /> <span i18n:translate="">min</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="app-socialsharing hidden-xs hidden-sm" id="app-socialsharing">
+                    <div class="app-socialsharing-list btn-group"
+                         tal:define="url context/absolute_url;
+                            title context/Title;
+                                summary context/Description | nothing">
+
+                        <a class="btn btn-socialshare btn-facebook btn-sm"
+                           target="_blank"
+                           href="https://www.facebook.com/sharer/sharer.php?u=YOUR-URL"
+                             tal:attributes="href string:https://www.facebook.com/sharer/sharer.php?u=${url}">
+                            <i class="fa fa-facebook"></i>
+                            Share</a>
+
+                        <a class="btn btn-socialshare btn-twitter btn-sm"
+                           target="_blank"
+                           href="https://twitter.com/intent/tweet?text=YOUR-TITLE&url=YOUR-URL&via=TWITTER-HANDLE"
+                             tal:attributes="href string:https://twitter.com/intent/tweet?text=${title}&url=${url}&via=meetshaus.de">
+                            <i class="fa fa-twitter"></i>
+                            Tweet</a>
+
+                        <a class="btn btn-socialshare btn-google btn-sm"
+                           target="_blank"
+                           href="https://plus.google.com/share?url=YOUR-URL"
+                             tal:attributes="href string:https://plus.google.com/share?url=${url}">
+                            <i class="fa fa-google-plus"></i>
+                            Plus</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="blogentry" id="content-core"
+                     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+
+                    <div class="blogentry-body">
+                        <div tal:replace="structure context/text/output" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="blogentry-actionbar text-center" tal:condition="view/parent_info">
+            <tal:block tal:define="parent view/parent_info">
+                <a href="" class="btn btn-primary"
+                     tal:attributes="href parent/absolute_url">
+                    Weitere Blogbeitr&auml;ge</a>
+            </tal:block>
+        </div>
+    </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
