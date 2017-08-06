@@ -14,6 +14,15 @@
         permission="zope2.View"
         layer="..interfaces.IBlogTool"
     />
+
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="gather-assets"
+        class=".migration.GatherAssetsView"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
   <!-- Blog migration view -->
   <browser:page
       for="Products.CMFCore.interfaces.IContentish"
@@ -38,5 +47,6 @@
       permission="cmf.ManagePortal"
       layer="..interfaces.IBlogTool"
       />
+
 
 </configure>

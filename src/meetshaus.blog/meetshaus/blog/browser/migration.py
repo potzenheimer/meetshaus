@@ -96,9 +96,9 @@ class BlogMigrationRunnerView(BrowserView):
             new_item.setEffectiveDate(effective)
             modified(new_item)
             new_item.reindexObject(idxs='modified')
-            for img_uid in img_list:
-                img_obj = api.content.get(UID=img_uid)
-                api.content.move(source=img_obj, target=new_item)
+            # for img_uid in img_list:
+            #     img_obj = api.content.get(UID=img_uid)
+            #     api.content.move(source=img_obj, target=new_item)
             migrated.append(obj.UID())
         info_message_template = 'There are {0} objects migrated.'
         warn_message_template = 'There are {0} objects not migrated.'
@@ -121,3 +121,52 @@ class BlogMigrationFinishedView(BrowserView):
 
     def render(self):
         return self.index()
+
+
+class GatherAssetsView(BrowserView):
+    """ Gather image assets and move to current context"""
+    def __call__(self):
+        return self.render()
+
+    def render(self):
+        context = aq_inner(self.context)
+        base_url = context.absolute_url()
+        authenticator = getMultiAdapter((context, self.request),
+                                        name=u"authenticator")
+        next_url = '{0}?_authenticator={1}'.format(
+            base_url, authenticator.token())
+        self._gather_assets()
+        modified(context)
+        context.reindexObject(idxs='modified')
+        return self.request.response.redirect(next_url)
+
+    def _collect_assets(self):
+        context = aq_inner(self.context)
+        html_body = context.text.raw
+        xhtml = lxml.html.document_fromstring(html_body)
+        images = xhtml.xpath('//img')
+        img_list = list()
+        if images:
+            for i in images:
+                img_src = i.attrib['src']
+                if img_src.startswith('resolve'):
+                    uuid = img_src.split('/')[1]
+                    img_list.append(uuid)
+        return img_list
+
+    def _gather_assets(self):
+        context = aq_inner(self.context)
+        migrated = 0
+        contained_images = self._collect_assets()
+        for uuid in contained_images:
+            image = api.content.get(UID=uuid)
+            try:
+                api.content.copy(source=image, target=context)
+                migrated += 1
+            except:
+                # catch potential errors beforehand and debug
+                import pdb; pdb.set_trace()
+                pass
+        modified(context)
+        context.reindexObject(idxs='modified')
+        return migrated

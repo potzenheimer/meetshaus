@@ -1,24 +1,35 @@
-
+.app-page__header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid $app-gray;
+    &:first-child {
+        border-top: 0;
+    }
+}
 
 //== Page styles
 //
 //## Define content specific styles
-.app-page-title {
-  margin-bottom: 1rem;
+.app-page__title {
+    margin-bottom: 1rem;
+    font-family: 'AurulentSansBold';
+    color: $color-brandy-punch;
 }
 
 
 // Use custom lead element for page desciptions
 // that has proper line-height on all media types
-.app-page-lead,
-.app-page-abstract {
-  margin-bottom: $spacer;
-  font-size: 1.25rem;
-  font-weight: 300;
-  line-height: 1.5;
-  @include media-breakpoint-up(sm) {
+.app-page__lead,
+.app-page__abstract {
+    margin-bottom: $spacer;
+    font-family: 'AurulentSansRegular';
     font-size: 1.5rem;
-  }
+    font-weight: 300;
+    line-height: 1.25;
+    @include media-breakpoint-up(sm) {
+        font-size: 1.75rem;
+    }
 }
 
 

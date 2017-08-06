@@ -10,11 +10,12 @@
 <metal:main fill-slot="main">
     <metal:content-core define-macro="main">
 
-        <section class="app-page" id="content">
+        <article class="app-page app-page__blog-entry blog-entry"
+            tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime; ts view/timestamp">
             <header class="app-page__header">
                 <div class="app-page__title">
                     <div class="app-page__timestamp" tal:content="python:toLocalizedTime(ts['date'])" />
-                    <h1 class="app-page__headline">${conteyt/Title}</h1>
+                    <h1 class="app-page__headline">${context/Title}</h1>
                 </div>
                 <p class="app-page__abstract" tal:condition="context/Description">
                     ${context/Description}
@@ -30,7 +31,7 @@
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
             </section>
-        </section>
+        </article>
 
         <div class="row">
             <div class="col-sm-3">
