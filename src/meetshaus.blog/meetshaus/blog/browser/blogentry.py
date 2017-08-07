@@ -62,4 +62,3 @@ class BlogEntryView(BrowserView):
         text_count = len(text.split(' '))
         rt = text_count / 200
         return rt
-

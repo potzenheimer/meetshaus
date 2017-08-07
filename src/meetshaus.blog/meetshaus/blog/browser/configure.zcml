@@ -5,6 +5,14 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="meetshaus.blog">
 
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="blog-listing"
+        class=".blog.BlogView"
+        template="blog.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
     <!-- Blog entry views -->
     <browser:page
         for="meetshaus.blog.blogpost.IBlogPost"
@@ -19,6 +27,14 @@
         for="meetshaus.blog.blogpost.IBlogPost"
         name="gather-assets"
         class=".migration.GatherAssetsView"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="collect-assets"
+        class=".migration.CollectAssets"
         permission="cmf.ManagePortal"
         layer="..interfaces.IBlogTool"
     />
@@ -47,6 +63,13 @@
       permission="cmf.ManagePortal"
       layer="..interfaces.IBlogTool"
       />
+    <browser:page
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        name="remove-portlet-assignments"
+        class=".migration.RemovePortletAssignments"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
 
 
 </configure>

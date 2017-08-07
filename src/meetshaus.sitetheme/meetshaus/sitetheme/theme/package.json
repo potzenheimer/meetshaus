@@ -104,7 +104,7 @@
         "mailcheck": "^1.1.1",
         "medium-editor": "^5.13.0",
         "modernizr": "^3.2.0",
-        "node-sass": "^4.5.2",
+        "node-sass": "^4.5.3",
         "puredrawer": "github:mac81/pure-drawer",
         "requirejs": "^2.3.1",
         "respimage": "^1.4.2",

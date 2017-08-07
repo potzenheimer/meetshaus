@@ -2,9 +2,13 @@
 """Module providing base class migration for blog entry content"""
 import lxml
 from Acquisition import aq_inner
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
+from meetshaus.blog.blogpost import IBlogPost
 from plone import api
-from zope.component import getMultiAdapter
+from plone.portlets.interfaces import ILocalPortletAssignable, IPortletManager, \
+    IPortletAssignmentMapping
+from zope.component import getMultiAdapter, getUtility
 from zope.lifecycleevent import modified
 
 from meetshaus.blog.blogentry import IBlogEntry
@@ -71,7 +75,7 @@ class BlogMigrationRunnerView(BrowserView):
             context=api.portal.get(),
             object_provides=IBlogEntry
         )
-        for brain in results[:10]:
+        for brain in results:
             obj = brain.getObject()
             html_body = obj.text.raw
             xhtml = lxml.html.document_fromstring(html_body)
@@ -161,7 +165,7 @@ class GatherAssetsView(BrowserView):
         for uuid in contained_images:
             image = api.content.get(UID=uuid)
             try:
-                api.content.copy(source=image, target=context)
+                api.content.move(source=image, target=context)
                 migrated += 1
             except:
                 # catch potential errors beforehand and debug
@@ -170,3 +174,62 @@ class GatherAssetsView(BrowserView):
         modified(context)
         context.reindexObject(idxs='modified')
         return migrated
+
+
+class CollectAssets(BrowserView):
+    """ Collect all assigned images and assets and move to current context"""
+    def __call__(self):
+        return self.render()
+
+    def render(self):
+        context = aq_inner(self.context)
+        base_url = context.absolute_url()
+        authenticator = getMultiAdapter((context, self.request),
+                                        name=u"authenticator")
+        next_url = '{0}?_authenticator={1}'.format(
+            base_url, authenticator.token())
+        self._collect_assets()
+        return self.request.response.redirect(next_url)
+
+    @staticmethod
+    def _collect_assets():
+        results = api.content.find(
+            context=api.portal.get(),
+            object_provides=IBlogPost
+        )
+        for brain in results:
+            context = brain.getObject()
+            context.restrictedTraverse('@@gather-assets')()
+        return
+
+
+class RemovePortletAssignments(BrowserView):
+    """ Gather image assets and move to current context"""
+    def __call__(self):
+        return self.render()
+
+    def render(self):
+        context = aq_inner(self.context)
+        base_url = context.absolute_url()
+        authenticator = getMultiAdapter((context, self.request),
+                                        name=u"authenticator")
+        next_url = '{0}?_authenticator={1}'.format(
+            base_url, authenticator.token())
+        self._cleanup_assignments()
+        return self.request.response.redirect(next_url)
+
+    @staticmethod
+    def _cleanup_assignments():
+        catalog = api.portal.get_tool('portal_catalog')
+        all_brains = catalog.searchResults()
+
+        for i in all_brains:
+            obj = i.getObject()
+            if not ILocalPortletAssignable.providedBy(obj):
+                continue
+            for manager_name in ('plone.leftcolumn','plone.rightcolumn'):
+                manager = getUtility(IPortletManager, name=manager_name)
+                assignment_mapping = getMultiAdapter((obj, manager),
+                                                     IPortletAssignmentMapping)
+                for item in assignment_mapping.keys():
+                    del assignment_mapping[item]

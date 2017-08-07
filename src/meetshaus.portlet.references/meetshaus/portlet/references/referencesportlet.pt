@@ -8,13 +8,8 @@
             tal:attributes="href python:portal_url + '/referenzen'">
             Referenzen</a>
     </div>
-    <div class="panel-body app-panel-body"
-        tal:define="item view/selected_item">
-        <h3><a href="" rel="no-follow"
-                tal:attributes="href item/getRemoteUrl"
-                tal:content="item/Title" />
-        </h3>
-        <p tal:content="item/Description" />
+    <div class="panel-body app-panel-body">
+        <p>Deprecated Portlet</p>
     </div>
     <div class="panel-footer app-panel-footer">
         <a tal:attributes="href python:portal_url + '/referenzen'">

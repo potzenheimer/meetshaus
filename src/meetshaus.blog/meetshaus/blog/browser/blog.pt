@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+     metal:use-macro="context/main_template/macros/master"
+     i18n:domain="meethaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+    <metal:content-core define-macro="main">
+
+        <div class="blogentry-list" id="content-core"
+             tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+            Batch python:modules['Products.CMFPlone'].Batch;
+            b_size python:10;b_start python:0;b_start request/b_start | b_start;">
+
+            <div class="blogentry-list" tal:define="batch view/batch">
+                <div class="blogentry-list-item" tal:repeat="item batch">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3 xcol-sm-pull-9">
+                            <div class="blogentry-aside" id="blogentry-aside">
+                                <div class="blogentry-aside-section"
+                                     tal:define="item_uid item/UID;
+                                    ts python:view.timestamp(item_uid)">
+                    <span class="fa-stack fa-3x text-secondary">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x timestamp-text" tal:content="ts/day">27</strong>
+                    </span>
+                                    <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month">August 2014</span>
+                                    <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/year">August 2014</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-9 xcol-sm-push-3">
+                            <div class="blogentry">
+                                <div class="blogentry-header xhidden-xs">
+                                    <h2 class="blogentry-title">
+                                        <a tal:attributes="href item/getURL" tal:content="item/Title" />
+                                    </h2>
+                                </div>
+
+                                <p class="blogentry-abstract" tal:condition="item/Description">
+                                    <span tal:content="item/Description">Desc</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3">
+                            <div class="blogentry-aside-section" tal:define="categories item/Subject|nothing"
+                                 tal:condition="categories">
+                                <div class="h6 blogentry-aside-title">Abgelegt unter</div>
+                                <p>
+                      <span tal:repeat="category categories">
+                        <a href=""
+                           class="blogentry-aside-category"
+                           rel="nofollow"
+                             tal:content="category"
+                             tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/themen/@@category/${category}">
+                          Category
+                        </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
+                      </span>
+                                </p>
+                            </div>
+                            <div class="blogentry-aside-section"
+                                 tal:define="item_uid item/UID">
+                                <div class="h6 blogentry-aside-title">Lesezeit:</div>
+                                <p class="blogentry-aside-text"><span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="blogentry">
+                                <tal:block tal:define="count repeat/item/number;
+                                    bodytext item/text/output;
+                                        item_obj item/getObject;
+                                            rawtext item_obj/@@text-transform/text/text/plain">
+                                    <div class="blogentry-body"
+                                         tal:define="richtext python:context.restrictedTraverse('@@plone').cropText(rawtext, 320, '[...]')">
+                                        <p><span tal:replace="richtext" />
+                                            <a href="" tal:attributes="href item/getURL">weiterlesen</a>
+                                        </p>
+                                    </div>
+                                </tal:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <tal:batchnavigation
+                    define="batchnavigation nocall:context/@@batchnavigation"
+                    replace="structure python:batchnavigation(batch)" />
+
+            </div>
+        </div>
+
+    </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
