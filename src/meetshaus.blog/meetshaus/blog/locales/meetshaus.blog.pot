@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-24 16:10+0000\n"
+"POT-Creation-Date: 2017-08-07 21:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,20 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: meetshaus.blog\n"
 
-#: ./../blogentry.py:19
+#: ./../blogentry.py:27
 msgid ""
+msgstr ""
+
+#: ./../configure.zcml:29
+msgid "A blogging tool for meetshaus.de"
 msgstr ""
 
 #: ./../blog.py:29
 msgid "A short bio about the author of the blog."
+msgstr ""
+
+#: ./../profiles/default/types/meetshaus.blog.blogpost.xml
+msgid "A single blog post"
 msgstr ""
 
 #: ./../profiles/default/types/meetshaus.blog.blogentry.xml
@@ -33,9 +41,17 @@ msgstr ""
 msgid "About the Author"
 msgstr ""
 
-#: ./../portlets/archive.py:38
-#: ./../portlets/categories.py:27
+#: ./../utils.py:30
+msgid "April"
+msgstr ""
+
+#: ./../portlets/archive.py:39
+#: ./../portlets/categories.py:25
 msgid "Archive view"
+msgstr ""
+
+#: ./../utils.py:34
+msgid "August"
 msgstr ""
 
 #: ./../profiles/default/types/meetshaus.blog.blog.xml
@@ -46,11 +62,15 @@ msgstr ""
 msgid "Blog Archive"
 msgstr ""
 
-#: ./../blogentry.py:18
+#: ./../interfaces.py:17
+msgid "Blog Category JSON File"
+msgstr ""
+
+#: ./../blogentry.py:26
 msgid "Blog Entry"
 msgstr ""
 
-#: ./../portlets/archive.py:64
+#: ./../portlets/archive.py:65
 msgid "Blog Monthly archive"
 msgstr ""
 
@@ -58,29 +78,108 @@ msgstr ""
 msgid "BlogEntry"
 msgstr ""
 
+#: ./../profiles/default/types/meetshaus.blog.blogpost.xml
+msgid "BlogPost"
+msgstr ""
+
 #: ./../profiles/default/types/meetshaus.blog.blog.xml
 msgid "Blogging folder to enable a complete sitewide blog."
 msgstr ""
 
-#: ./../portlets/categories.py:51
+#: ./../categories_templates/updateblogcategories.pt:57
+msgid "Cancel"
+msgstr ""
+
+#: ./../portlets/categories.pt:6
+#: ./../portlets/categories.py:49
 msgid "Categories"
 msgstr ""
 
-#: ./../portlets/blogrecent.py:24
+#: ./../utils.py:38
+msgid "December"
+msgstr ""
+
+#: ./../portlets/blogrecent.py:23
 msgid "Entries"
 msgstr ""
 
-#: ./../portlets/blogrecent.py:48
+#: ./../configure.zcml:29
+msgid "Extension profile for A blogging tool for meetshaus.de"
+msgstr ""
+
+#: ./../utils.py:28
+msgid "February"
+msgstr ""
+
+#: ./../utils.py:27
+msgid "January"
+msgstr ""
+
+#: ./../utils.py:33
+msgid "July"
+msgstr ""
+
+#: ./../utils.py:32
+msgid "June"
+msgstr ""
+
+#: ./../portlets/blogrecent.py:47
 msgid "Last entries"
 msgstr ""
 
-#: ./../portlets/archive.py:39
-#: ./../portlets/categories.py:28
+#: ./../configure.zcml:41
+msgid "Make all items of this type display simple sharing buttons"
+msgstr ""
+
+#: ./../utils.py:29
+msgid "March"
+msgstr ""
+
+#: ./../utils.py:31
+msgid "May"
+msgstr ""
+
+#: ./../utils.py:37
+msgid "November"
+msgstr ""
+
+#: ./../utils.py:36
+msgid "October"
+msgstr ""
+
+#: ./../categories_templates/updateblogcategories.pt:53
+msgid "Save changes"
+msgstr ""
+
+#: ./../utils.py:35
+msgid "September"
+msgstr ""
+
+#: ./../configure.zcml:41
+msgid "Sisosha Simple Social Sharing"
+msgstr ""
+
+#: ./../categories.py:246
+msgid "The item has successfully been updated"
+msgstr ""
+
+#: ./../portlets/archive.py:40
+#: ./../portlets/categories.py:26
 msgid "The name of the archive view"
 msgstr ""
 
-#: ./../portlets/blogrecent.py:25
+#: ./../portlets/blogrecent.py:24
 msgid "The number of entries to show"
+msgstr ""
+
+#: ./../categories.py:179
+msgid "This field is required"
+msgstr ""
+
+#: ./../blogentry_templates/blogentryview.pt:63
+#: ./../blogpost_templates/blogpostview.pt:63
+#: ./../browser/blogentry.pt:86
+msgid "min"
 msgstr ""
 
 #: ./../portlets/archive.py:16
@@ -131,3 +230,6 @@ msgstr ""
 msgid "month_9"
 msgstr ""
 
+#: ./../helper.py:22
+msgid "{0} new postings created"
+msgstr ""

@@ -18,6 +18,28 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+from meetshaus.blog import MessageFactory as _
+
+
+def get_localized_month_name(month):
+    """ Return localized month names from dictionary"""
+    mapping = {
+        'January': _(u"January"),
+        'February': _(u"February"),
+        'March': _(u"March"),
+        'April': _(u"April"),
+        'May': _(u"May"),
+        'June': _(u"June"),
+        'July': _(u"July"),
+        'August': _(u"August"),
+        'September': _(u"September"),
+        'October': _(u"October"),
+        'November': _(u"November"),
+        'December': _(u"December"),
+    }
+    localized = mapping[month]
+    return localized
+
 
 def find_portlet_assignment_context(assignment, context):
     # Finds the creation context of the assignment

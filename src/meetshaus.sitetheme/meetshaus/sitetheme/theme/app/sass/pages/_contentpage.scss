@@ -1,0 +1,61 @@
+.app-page__header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid $app-gray;
+    &:first-child {
+        border-top: 0;
+    }
+}
+
+//== Page styles
+//
+//## Define content specific styles
+.app-page__title {
+    margin-bottom: 1rem;
+    font-family: 'AurulentSansBold';
+    color: $color-brandy-punch;
+}
+
+
+// Use custom lead element for page desciptions
+// that has proper line-height on all media types
+.app-page__lead,
+.app-page__abstract {
+    margin-bottom: $spacer;
+    font-family: 'AurulentSansRegular';
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.25;
+    @include media-breakpoint-up(sm) {
+        font-size: 1.75rem;
+    }
+}
+
+
+//== Page section
+//
+//## Container providing visual separation
+.app-page-section {
+  margin: 1rem 0 2rem;
+}
+
+
+//
+// Content specific image and media styles
+//
+// Should be removed or refacored to use proper base classes
+// e.g. app-img
+// Note: classes can easily be changed using the diazo transform chain
+// or the tinymce configuration
+.app-img {
+	@extend .img-fluid;
+  width: 100%;
+}
+
+// DEPRECATED
+// Should be replaced with the more generic
+// .app-page-embed class
+.embed-responsive {
+  margin-bottom: 1rem;
+}

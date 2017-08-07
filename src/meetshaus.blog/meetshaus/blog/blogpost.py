@@ -12,6 +12,8 @@ from plone.event.utils import pydt
 from plone.namedfile.interfaces import IImageScaleTraversable
 from zope.interface import implementer
 
+from meetshaus.blog.utils import get_localized_month_name
+
 
 # Interface class; used to define content-type schema.
 class IBlogPost(form.Schema, IImageScaleTraversable):
@@ -29,9 +31,6 @@ class BlogPostView(grok.View):
     grok.context(IBlogPost)
     grok.require('zope2.View')
     grok.name('view')
-
-    def render(self):
-        return ''
 
     def parent_info(self):
         context = aq_inner(self.context)
@@ -52,7 +51,7 @@ class BlogPostView(grok.View):
         date = pydt(date)
         timestamp = {}
         timestamp['day'] = date.strftime("%d")
-        timestamp['month'] = date.strftime("%B")
+        timestamp['month'] = get_localized_month_name(date.strftime("%B"))
         timestamp['year'] = date.strftime("%Y")
         timestamp['date'] = date
         return timestamp
@@ -82,9 +81,6 @@ class BlogPostViewlet(grok.Viewlet):
     grok.viewletmanager(IBelowContentBody)
     grok.require('zope2.View')
     grok.name('meetshaus.blog.BlogEntryViewlet')
-
-    def render(self):
-        return ''
 
     def timestamp(self):
         context = aq_inner(self.context)

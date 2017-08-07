@@ -11,6 +11,7 @@
   <!-- Include configuration for dependencies listed in setup.py -->
   <includeDependencies package="." />
   <!-- Include the sub-packages that use their own configure.zcml files. -->
+  <include package=".browser" />
   <include package=".portlets" />
   <!-- Grok the package to initialise schema interfaces and content classes -->
   <grok:grok package="." />
@@ -37,7 +38,6 @@
     title="Sisosha Simple Social Sharing"
     description="Make all items of this type display simple sharing buttons"
     provides="meetshaus.blog.socialsharing.ISocialSharing"
-    for="plone.dexterity.interfaces.IDexterityContent"
     />
 
   <!--<adapter factory=".subjects.SubjectsFieldWidget" />-->

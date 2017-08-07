@@ -1,0 +1,75 @@
+
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="meetshaus.blog">
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="blog-listing"
+        class=".blog.BlogView"
+        template="blog.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+    <!-- Blog entry views -->
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="blog-entry-view"
+        class=".blogentry.BlogEntryView"
+        template="blogentry.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="gather-assets"
+        class=".migration.GatherAssetsView"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="collect-assets"
+        class=".migration.CollectAssets"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+  <!-- Blog migration view -->
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migrate-blog"
+      class=".migration.BlogMigrationView"
+      template="blogmigration.pt"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migrate-blog-posts"
+      class=".migration.BlogMigrationRunnerView"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migration-finished"
+      class=".migration.BlogMigrationFinishedView"
+      template="blogmigrationfinished.pt"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
+    <browser:page
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        name="remove-portlet-assignments"
+        class=".migration.RemovePortletAssignments"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+
+</configure>

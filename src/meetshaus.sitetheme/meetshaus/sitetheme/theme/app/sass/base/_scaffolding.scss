@@ -1,0 +1,55 @@
+//
+// Basic scaffolding and resets
+// ----------------------------------
+
+
+
+// Set root font size
+
+html {
+    font-size: $font-size-base;
+    @include media-breakpoint-up(sm) {
+        font-size: 1.25rem;
+    }
+}
+
+// Adjust font weight for initialized webfonts
+body {
+    background-color: $color-geyser;
+    .wf-active & {
+        font-weight: 300;
+    }
+}
+
+// Set font weights if webfont is active
+.wf-active {
+    b,
+    strong {
+        font-family: $app-font-family-strong;
+    }
+}
+
+// prevent fake bolds
+b,
+strong {
+    font-weight: 700;
+    .wf-active & {
+        font-weight: 500;
+    }
+}
+
+// Transistion link color on :hover state
+a:hover {
+    transition: color 0.5s linear;
+}
+
+// Optional plone settings and adjustments
+// ---------------------------------------
+// Combat plone.app.widget styling (also using bootstrap) and correct
+// display errors caused by grid system inconsistencies
+
+// Combat plone hidden element class via mixin
+.hidden,
+.hiddenStructure {
+    visibility: hidden;
+}

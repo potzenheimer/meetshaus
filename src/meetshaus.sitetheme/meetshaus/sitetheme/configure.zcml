@@ -16,10 +16,10 @@
       description="Installs the meetshaus.sitetheme package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  
+
   <plone:static
         directory="resources"
         type="theme"
         />
-  
+
 </configure>

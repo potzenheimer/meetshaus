@@ -1,0 +1,64 @@
+//
+// Application settings and variables
+// -------------------------------------------------
+
+
+//== Colors
+//
+//## Brand colors used across the project
+$color-cadetblue:               rgba(95,158,160,1) !default; // #5F9EA0
+
+$color-powderblue:              rgba(176,224,230,1) !default; // #B0E0E6
+
+$color-firebrick:               rgba(139, 0, 0, 1) !default; // #8b0000
+
+// Light blue gray body background
+$color-geyser:                  rgba(217, 228, 228, 1); // #d9e4e4
+
+// App blue
+$color-seagull:                 rgba(116, 196, 234, 1); // #74c4ea
+// App brown
+$color-brandy-punch:            rgba(211, 128, 42, 1); // #d3802a
+
+
+// Gray
+$color-shuttle-gray:            rgba(90, 95, 100, 1); // #5a5f64;
+$color-iron:                    rgba(227, 228, 229, 1); // #e3e4e5;
+
+
+// Gray baseline
+$app-gray:                      $color-shuttle-gray;
+
+$app-red:                       $color-firebrick !default;
+
+//== Brand and Section specific variables
+//
+//## Used in mixin and modifier classes
+
+//==  Primary brand color
+$app-primary-base:              $color-seagull !default;
+$app-primary-darker:            darken($app-primary-base, 15%)  !default;
+$app-primary-dark:              darken($app-primary-base, 7.5%) !default;
+$app-primary:                   $app-primary-base               !default; // #274d38
+$app-primary-light:             lighten($app-primary-base, 7.5%) !default;
+$app-primary-lighter:           lighten($app-primary-base, 15%) !default;
+
+//== Secondary brand color
+$app-secondary-base:              $color-brandy-punch !default;
+$app-secondary-darker:            darken($app-secondary-base, 15%)  !default;
+$app-secondary-dark:              darken($app-secondary-base, 7.5%) !default;
+$app-secondary:                   $app-secondary-base               !default; // #588c73
+$app-secondary-light:             lighten($app-secondary-base, 7.5%) !default;
+$app-secondary-lighter:           lighten($app-secondary-base, 15%) !default;
+
+
+//== Brand primary color schema used as default
+$app-default:                 $app-primary-base;
+
+// Brand danger
+$app-danger:                    $app-red;
+
+//== Font awesome font path
+$fa-font-path:                  "../assets/fonts";
+
+$app-border-radius:         .5rem;
