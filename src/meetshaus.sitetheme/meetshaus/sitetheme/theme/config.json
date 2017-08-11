@@ -64,6 +64,36 @@
                 "match": "../dist/scripts/",
                 "replacement": "/scripts/"
             }
+        ],
+        "pat": [
+            {
+                "match": "../assets/",
+                "replacement": "assets/"
+            },
+            {
+                "match": "assets/",
+                "replacement": "/++theme++meetshaus.sitetheme/dist/assets/"
+            },
+            {
+                "match": "../styles/",
+                "replacement": "/++theme++meetshaus.sitetheme/dist/styles/"
+            },
+            {
+                "match": "styles/",
+                "replacement": "/++theme++meetshaus.sitetheme/dist/styles/"
+            },
+            {
+                "match": "/styles/",
+                "replacement": "/++theme++meetshaus.sitetheme/dist/styles/"
+            },
+            {
+                "match": "../scripts/",
+                "replacement": "/++theme++meetshaus.sitetheme/scripts/"
+            },
+            {
+                "match": "scripts/",
+                "replacement": "/++theme++meetshaus.sitetheme/scripts/"
+            }
         ]
     }
 }

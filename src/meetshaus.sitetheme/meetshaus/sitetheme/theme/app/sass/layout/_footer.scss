@@ -12,7 +12,7 @@
   @include make-container-max-widths();
   padding-top: 1rem;
   padding-bottom: 0;
-  background:url(../../assets/img/landscape.png) no-repeat 0% 100% #fff;
+  background:url(../assets/img/landscape.png) no-repeat 0% 100% #fff;
   border: 1px solid #fff;
   border-bottom-right-radius: $app-border-radius;
   border-bottom-left-radius: $app-border-radius;
@@ -23,7 +23,7 @@
     margin: 2rem 0 6rem;
     padding-left: 3rem;
     color: #fff;
-    background:url(../../assets/img/envelope.png) no-repeat 0 0 transparent;
+    background:url(../assets/img/envelope.png) no-repeat 0 0 transparent;
 }
 
 .app-footer__aside {
