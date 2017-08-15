@@ -223,7 +223,7 @@ gulp.task('default', ['browser-sync'], function () {
 gulp.task('build-dev', function(done) {
     runSequence(
         'clean',
-        'images',
+        ['fonts', 'images'],
         ['jekyll-build', 'styles', 'scripts'],
         'replace-pat',
         'html',
