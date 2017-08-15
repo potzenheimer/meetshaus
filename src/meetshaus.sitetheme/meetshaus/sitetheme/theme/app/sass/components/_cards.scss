@@ -30,7 +30,7 @@
             @include make-col(4);
         }
     }
-    color: $gray-light;
+    color: $gray-500;
 }
 
 //== Card layout
@@ -111,7 +111,7 @@
   margin: 0 auto;
   padding-top: 0.5rem;
   border-radius: 50%;
-  border: 1px solid $gray-lighter;
-  color: $gray-lighter;
+  border: 1px solid $gray-300;
+  color: $gray-300;
   font-size: 2rem;
 }
