@@ -15,11 +15,17 @@
             <header class="app-page__header">
                 <div class="app-page__title">
                     <div class="app-page__timestamp" tal:content="python:toLocalizedTime(ts['date'])" />
-                    <h1 class="app-page__headline">${context/Title}</h1>
+                    <h1 class="app-page__headline" tal:condition="view/has_headline">${context/headline}</h1>
+                    <h1 class="app-page__headline" tal:condition="not:view/has_headline">${context/Title}</h1>
                 </div>
-                <p class="app-page__abstract" tal:condition="context/Description">
-                    ${context/Description}
+                <p class="app-page__abstract" tal:condition="view/has_abstract">
+                    ${context/abstract}
                 </p>
+                <tal:abstract tal:condition="not:view/has_abstract">
+                    <p class="app-page__abstract" tal:condition="context/Description">
+                        ${context/Description}
+                    </p>
+                </tal:abstract>
             </header>
             <section class="app-page__body" id="content-core">
                 <p>Use this template as a starting point for further development</p>
@@ -133,7 +139,7 @@
         <hr>
         <div class="blogentry-actionbar text-center" tal:condition="view/parent_info">
             <tal:block tal:define="parent view/parent_info">
-                <a href="" class="btn btn-primary"
+                <a href="" class="button button--primary"
                      tal:attributes="href parent/absolute_url">
                     Weitere Blogbeitr&auml;ge</a>
             </tal:block>

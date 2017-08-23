@@ -46,7 +46,6 @@ class IBlogPost(form.Schema, IImageScaleTraversable):
         missing_value=u'',
     )
 
-    form.order_before(not_last='summary')
     directives.order_after(headline='title')
     directives.order_after(abstract='description')
 

@@ -7271,6 +7271,108 @@ label {
   font-weight: 400;
 }
 
+.button {
+  display: inline-block;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.button:focus, .button:hover {
+  text-decoration: none;
+}
+
+.button:focus, .button.focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.button.disabled, .button:disabled {
+  opacity: .65;
+}
+
+.button:active, .button.active {
+  background-image: none;
+}
+
+.button--primary {
+  color: #111;
+  background-color: #74c4ea;
+  border-color: #74c4ea;
+  color: #fff;
+}
+
+.button--primary:hover {
+  color: #111;
+  background-color: #53b6e5;
+  border-color: #48b1e3;
+}
+
+.button--primary:focus, .button--primary.focus {
+  box-shadow: 0 0 0 3px rgba(116, 196, 234, 0.5);
+}
+
+.button--primary.disabled, .button--primary:disabled {
+  background-color: #74c4ea;
+  border-color: #74c4ea;
+}
+
+.button--primary:active, .button--primary.active,
+.show > .button--primary.dropdown-toggle {
+  background-color: #53b6e5;
+  background-image: none;
+  border-color: #48b1e3;
+}
+
+.button--secondary {
+  color: #fff;
+  background-color: #d3802a;
+  border-color: #74c4ea;
+}
+
+.button--secondary:hover {
+  color: #fff;
+  background-color: #b36d24;
+  border-color: #48b1e3;
+}
+
+.button--secondary:focus, .button--secondary.focus {
+  box-shadow: 0 0 0 3px rgba(116, 196, 234, 0.5);
+}
+
+.button--secondary.disabled, .button--secondary:disabled {
+  background-color: #d3802a;
+  border-color: #74c4ea;
+}
+
+.button--secondary:active, .button--secondary.active,
+.show > .button--secondary.dropdown-toggle {
+  background-color: #b36d24;
+  background-image: none;
+  border-color: #48b1e3;
+}
+
+.button--lg {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.button--sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
 .app-field-required {
   position: relative;
 }

@@ -21,6 +21,26 @@ class BlogEntryView(BrowserView):
     def render(self):
         return self.index()
 
+    def has_headline(self):
+        context = aq_inner(self.context)
+        try:
+            headline = context.headline
+        except AttributeError:
+            headline = None
+        if headline is not None:
+            return True
+        return False
+
+    def has_abstract(self):
+        context = aq_inner(self.context)
+        try:
+            abstract = context.abstract
+        except AttributeError:
+            abstract = None
+        if abstract is not None:
+            return True
+        return False
+
     def parent_info(self):
         context = aq_inner(self.context)
         parent = aq_parent(context)
