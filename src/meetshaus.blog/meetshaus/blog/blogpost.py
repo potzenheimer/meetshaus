@@ -6,13 +6,17 @@ from Acquisition import aq_inner, aq_parent
 from five import grok
 from plone import api
 from plone.app.layout.viewlets.interfaces import IBelowContentBody
+from plone.autoform import directives
 from plone.dexterity.content import Container
 from plone.directives import form
 from plone.event.utils import pydt
 from plone.namedfile.interfaces import IImageScaleTraversable
+from zope import schema
 from zope.interface import implementer
 
 from meetshaus.blog.utils import get_localized_month_name
+
+from meetshaus.blog import MessageFactory as _
 
 
 # Interface class; used to define content-type schema.
@@ -20,6 +24,31 @@ class IBlogPost(form.Schema, IImageScaleTraversable):
     """
     A single folderish blog post
     """
+    # default meta data overrides
+    headline = schema.TextLine(
+        title=_(u'label_headline', default=u'Headline'),
+        description=_(
+            u'help_headline',
+            default=u'Used in listings and views as main headline instead of '
+                    u'the default meta data title.'
+        ),
+        required=True
+    )
+
+    abstract = schema.Text(
+        title=_(u'label_abstract', default=u'Abstract'),
+        description=_(
+            u'help_abstract',
+            default=u'Used in listings and views instead of the default meta '
+                    u'data description.'
+        ),
+        required=False,
+        missing_value=u'',
+    )
+
+    form.order_before(not_last='summary')
+    directives.order_after(headline='title')
+    directives.order_after(abstract='description')
 
 
 @implementer(IBlogPost)
