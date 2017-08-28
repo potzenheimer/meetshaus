@@ -6,6 +6,10 @@
   @extend .navbar;
   @include media-breakpoint-up(md) {
     background: transparent;
+<<<<<<< HEAD
+=======
+    border-bottom: 10px solid $gray-500;
+>>>>>>> 468374bb51e9f6c69cae46edd5a41bfc376346f9
   }
 }
 
@@ -45,7 +49,7 @@
     border-color: transparent;
   }
   .icon-bar {
-    background-color: $gray-lighter;
+    background-color: $gray-300;
   }
   // Bars
   .icon-bar {
