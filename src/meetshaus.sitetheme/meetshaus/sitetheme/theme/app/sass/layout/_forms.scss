@@ -37,6 +37,65 @@ label {
   }
 }
 
+// Button
+.button {
+    display: inline-block;
+    font-weight: $btn-font-weight;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: $input-btn-border-width solid transparent;
+    @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
+    @include transition($btn-transition);
+
+    // Share hover and focus styles
+    @include hover-focus {
+        text-decoration: none;
+    }
+    &:focus,
+    &.focus {
+        outline: 0;
+        box-shadow: $btn-focus-box-shadow;
+    }
+
+    // Disabled comes first so active can properly restyle
+    &.disabled,
+    &:disabled {
+        opacity: .65;
+        @include box-shadow(none);
+    }
+
+    &:active,
+    &.active {
+        background-image: none;
+        @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+}
+
+.button--primary {
+    @include button-variant($app-primary, $app-primary);
+    color: #fff;
+}
+
+.button--secondary {
+    @include button-variant($app-secondary, $app-primary);
+}
+
+//
+// Button Sizes
+//
+
+.button--lg {
+    @include button-size($input-btn-padding-y-lg, $input-btn-padding-x-lg, $font-size-lg, $input-btn-line-height-lg, $btn-border-radius-lg);
+}
+
+.button--sm {
+    @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $input-btn-line-height-sm, $btn-border-radius-sm);
+}
+
+
+
 //== Required field
 //
 //## Mark fields as required
