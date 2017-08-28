@@ -6,7 +6,6 @@
   @extend .navbar;
   @include media-breakpoint-up(md) {
     background: transparent;
-    border-bottom: 10px solid $gray;
   }
 }
 
@@ -16,7 +15,7 @@
 //## Hidden on larger displays
 .app-navbar-header {
   @include clearfix;
-  display: flex;
+  display: none;
   align-items: center;
   padding: 0;
   background: $app-primary;
@@ -29,6 +28,7 @@
 
 //## Icon bar navigation toggle
 .app-navbar-header-toggle {
+  display: none;
   flex: 0 0 25%;
   text-align: center;
 }
@@ -98,7 +98,8 @@
 }
 
 // Unordered list main navigation
-.app-navbar-nav {
+.app-navbar-nav,
+.app-nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -108,12 +109,16 @@
   padding-left: 0; // Override default ul/ol
   list-style: none;
   @include clearfix;
+  @include media-breakpoint-up(lg) {
+    flex-wrap: no-wrap;
+  }
 }
 
 //== Navitems
 //
 //## Color coded based on addon classes
-.app-navitem {
+.app-navitem,
+.app-nav__item {
   width: 100%;
   @include media-breakpoint-up(md) {
     padding-right: 2px;
@@ -123,7 +128,8 @@
   }
 }
 
-.app-navitem-tab {
+.app-navitem-tab,
+.app-nav__link {
     color: #fff;
     background-color: $app-primary;
     font-weight: 400;

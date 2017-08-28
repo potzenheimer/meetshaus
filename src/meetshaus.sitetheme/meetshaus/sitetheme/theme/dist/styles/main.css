@@ -7357,32 +7357,32 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 /* @group custom font AurulenSans */
 @font-face {
   font-family: 'AurulentSansRegular';
-  src: url("../../assets/fonts/AurulentSans-Regular-webfont.eot");
-  src: url("../../assets/fonts/AurulentSans-Regular-webfont.eot?iefix") format("eot"), url("../../assets/fonts/AurulentSans-Regular-webfont.woff") format("woff"), url("../../assets/fonts/AurulentSans-Regular-webfont.ttf") format("truetype"), url("../../assets/fonts/AurulentSans-Regular-webfont.svg#webfont18nXzLYS") format("svg");
+  src: url("../assets/fonts/AurulentSans-Regular-webfont.eot");
+  src: url("../assets/fonts/AurulentSans-Regular-webfont.eot?iefix") format("eot"), url("../assets/fonts/AurulentSans-Regular-webfont.woff") format("woff"), url("../assets/fonts/AurulentSans-Regular-webfont.ttf") format("truetype"), url("../assets/fonts/AurulentSans-Regular-webfont.svg#webfont18nXzLYS") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'AurulentSansItalic';
-  src: url("../../assets/fonts/AurulentSans-Italic-webfont.eot");
-  src: url("../../assets/fonts/AurulentSans-Italic-webfont.eot?iefix") format("eot"), url("../../assets/fonts/AurulentSans-Italic-webfont.woff") format("woff"), url("../../assets/fonts/AurulentSans-Italic-webfont.ttf") format("truetype"), url("../../assets/fonts/AurulentSans-Italic-webfont.svg#webfontjDtVmWpR") format("svg");
+  src: url("../assets/fonts/AurulentSans-Italic-webfont.eot");
+  src: url("../assets/fonts/AurulentSans-Italic-webfont.eot?iefix") format("eot"), url("../assets/fonts/AurulentSans-Italic-webfont.woff") format("woff"), url("../assets/fonts/AurulentSans-Italic-webfont.ttf") format("truetype"), url("../assets/fonts/AurulentSans-Italic-webfont.svg#webfontjDtVmWpR") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'AurulentSansBold';
-  src: url("../../assets/fonts/AurulentSans-Bold-webfont.eot");
-  src: url("../../assets/fonts/AurulentSans-Bold-webfont.eot?iefix") format("eot"), url("../../assets/fonts/AurulentSans-Bold-webfont.woff") format("woff"), url("../../assets/fonts/AurulentSans-Bold-webfont.ttf") format("truetype"), url("../../assets/fonts/AurulentSans-Bold-webfont.svg#webfontik3ET1p7") format("svg");
+  src: url("../assets/fonts/AurulentSans-Bold-webfont.eot");
+  src: url("../assets/fonts/AurulentSans-Bold-webfont.eot?iefix") format("eot"), url("../assets/fonts/AurulentSans-Bold-webfont.woff") format("woff"), url("../assets/fonts/AurulentSans-Bold-webfont.ttf") format("truetype"), url("../assets/fonts/AurulentSans-Bold-webfont.svg#webfontik3ET1p7") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'AurulentSansBoldItalic';
-  src: url("../../assets/fonts/AurulentSans-BoldItalic-webfont.eot");
-  src: url("../../assets/fonts/AurulentSans-BoldItalic-webfont.eot?iefix") format("eot"), url("../../assets/fonts/AurulentSans-BoldItalic-webfont.woff") format("woff"), url("../../assets/fonts/AurulentSans-BoldItalic-webfont.ttf") format("truetype"), url("../../assets/fonts/AurulentSans-BoldItalic-webfont.svg#webfontb8ZKI1ph") format("svg");
+  src: url("../assets/fonts/AurulentSans-BoldItalic-webfont.eot");
+  src: url("../assets/fonts/AurulentSans-BoldItalic-webfont.eot?iefix") format("eot"), url("../assets/fonts/AurulentSans-BoldItalic-webfont.woff") format("woff"), url("../assets/fonts/AurulentSans-BoldItalic-webfont.ttf") format("truetype"), url("../assets/fonts/AurulentSans-BoldItalic-webfont.svg#webfontb8ZKI1ph") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -7427,6 +7427,32 @@ a:hover {
 .hidden,
 .hiddenStructure {
   visibility: hidden;
+}
+
+.hiddenStructure {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  color: #fff;
+  background-color: #000;
+}
+
+.hiddenStructure a {
+  color: #fff;
+  background-color: #000;
+}
+
+.pat-structure .navbar, .pat-structure .app-navbar {
+  display: block;
+}
+
+.pat-structure .navbar > .btn-group, .pat-structure .app-navbar > .btn-group {
+  margin-top: 1rem;
 }
 
 .app-default {
@@ -7590,15 +7616,18 @@ a:hover {
   padding: 1rem;
 }
 
+.app-header__burger {
+  text-align: right;
+}
+
 @media (min-width: 768px) {
   .app-navbar {
     background: transparent;
-    border-bottom: 10px solid #464a4c;
   }
 }
 
 .app-navbar-header {
-  display: flex;
+  display: none;
   align-items: center;
   padding: 0;
   background: #74c4ea;
@@ -7615,6 +7644,7 @@ a:hover {
 }
 
 .app-navbar-header-toggle {
+  display: none;
   flex: 0 0 25%;
   text-align: center;
 }
@@ -7676,7 +7706,8 @@ a:hover {
   text-decoration: none;
 }
 
-.app-navbar-nav {
+.app-navbar-nav,
+.app-nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -7687,26 +7718,38 @@ a:hover {
   list-style: none;
 }
 
-.app-navbar-nav::after {
+.app-navbar-nav::after,
+.app-nav::after {
   display: block;
   content: "";
   clear: both;
 }
 
-.app-navitem {
+@media (min-width: 992px) {
+  .app-navbar-nav,
+  .app-nav {
+    flex-wrap: no-wrap;
+  }
+}
+
+.app-navitem,
+.app-nav__item {
   width: 100%;
 }
 
 @media (min-width: 768px) {
-  .app-navitem {
+  .app-navitem,
+  .app-nav__item {
     padding-right: 2px;
   }
-  .app-navitem:last-child {
+  .app-navitem:last-child,
+  .app-nav__item:last-child {
     padding-right: 0;
   }
 }
 
-.app-navitem-tab {
+.app-navitem-tab,
+.app-nav__link {
   color: #fff;
   background-color: #74c4ea;
   font-weight: 400;
@@ -7716,25 +7759,29 @@ a:hover {
   transition: background-color 0.5s ease;
 }
 
-.app-navitem-tab:hover {
+.app-navitem-tab:hover,
+.app-nav__link:hover {
   color: #fff;
   background-color: #57b8e6;
   text-decoration: none;
 }
 
-.app-navitem-tab > span {
+.app-navitem-tab > span,
+.app-nav__link > span {
   display: block;
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
-  .app-navitem-tab {
+  .app-navitem-tab,
+  .app-nav__link {
     display: flex;
     align-items: center;
   }
 }
 
-.active .app-navitem-tab {
+.active .app-navitem-tab, .active
+.app-nav__link {
   color: #74c4ea;
   background-color: transparent;
   text-decoration: none;
