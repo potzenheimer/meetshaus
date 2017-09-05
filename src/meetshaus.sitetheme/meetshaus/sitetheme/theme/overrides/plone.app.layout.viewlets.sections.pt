@@ -30,7 +30,7 @@
                      tal:attributes="href tab/url;
                                      title tab/description|nothing;
                                      target tab/link_target|nothing;
-                                     class string:app-nav__tab app-nav__tab--${tid}">
+                                     class string:app-nav__link app-nav__link--${tid}">
                     <span tal:content="tab/name">Tab Name</span>
                   </a>
               </li>

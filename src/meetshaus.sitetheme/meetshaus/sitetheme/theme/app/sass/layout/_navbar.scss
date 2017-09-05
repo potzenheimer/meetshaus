@@ -6,10 +6,6 @@
   @extend .navbar;
   @include media-breakpoint-up(md) {
     background: transparent;
-<<<<<<< HEAD
-=======
-    border-bottom: 10px solid $gray-500;
->>>>>>> 468374bb51e9f6c69cae46edd5a41bfc376346f9
   }
 }
 
@@ -23,6 +19,9 @@
   align-items: center;
   padding: 0;
   background: $app-primary;
+  &__toggle {
+    display: none;
+  }
 }
 
 //## Navbar toggle text
@@ -106,9 +105,9 @@
 .app-nav {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
@@ -124,8 +123,8 @@
 .app-navitem,
 .app-nav__item {
   width: 100%;
+  padding-right: .25rem;
   @include media-breakpoint-up(md) {
-    padding-right: 2px;
     &:last-child {
       padding-right: 0;
     }
@@ -134,16 +133,21 @@
 
 .app-navitem-tab,
 .app-nav__link {
-    color: #fff;
-    background-color: $app-primary;
+    display: block;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    color: $app-primary;
+    background-color: transparent;
+    font-family: "AurulentSansBold";
     font-weight: 400;
+    font-size: 1.25rem;
     line-height: 1;
-    text-transform: uppercase;
     text-align: center;
     transition: background-color 0.5s ease;
     &:hover {
-      color: #fff;
-      background-color: darken($app-primary, 6.5%);
+      color: $app-secondary;
+      margin-bottom: -1px;
+      border-bottom: 1px solid $app-primary;
       text-decoration: none;
     }
     > span {
@@ -155,7 +159,9 @@
         align-items: center;
     }
     @include when-inside('.active') {
-        color: $app-primary;
+        color: $app-secondary;
+        border-bottom: 1px solid $app-secondary;
+        margin-bottom: -1px;
         background-color: transparent;
         text-decoration: none;
     }

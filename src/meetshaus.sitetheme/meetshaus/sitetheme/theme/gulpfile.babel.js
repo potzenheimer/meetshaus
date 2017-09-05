@@ -219,6 +219,9 @@ gulp.task('default', ['browser-sync'], function () {
     gulp.watch(cfg.paths.app + "*.html", ['bs-reload']);
 });
 
+gulp.task('watch', function () {
+    gulp.watch(cfg.paths.app + "sass/**/*.scss", ['styles']);
+});
 
 gulp.task('build-dev', function(done) {
     runSequence(
