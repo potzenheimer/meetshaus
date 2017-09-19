@@ -65,6 +65,35 @@
                             <span tal:replace="view/reading_time" /> <span i18n:translate="">min</span>
                         </p>
                     </div>
+                    <div class="app-socialsharing hidden-xs hidden-sm" id="app-socialsharing">
+                    <div class="app-socialsharing-list btn-group"
+                         tal:define="url context/absolute_url;
+                            title context/Title;
+                                summary context/Description | nothing">
+
+                        <a class="btn btn-socialshare btn-facebook btn-sm"
+                           target="_blank"
+                           href="https://www.facebook.com/sharer/sharer.php?u=YOUR-URL"
+                             tal:attributes="href string:https://www.facebook.com/sharer/sharer.php?u=${url}">
+                            <i class="fa fa-facebook"></i>
+                            Share</a>
+
+                        <a class="btn btn-socialshare btn-twitter btn-sm"
+                           target="_blank"
+                           href="https://twitter.com/intent/tweet?text=YOUR-TITLE&url=YOUR-URL&via=TWITTER-HANDLE"
+                             tal:attributes="href string:https://twitter.com/intent/tweet?text=${title}&url=${url}&via=meetshaus.de">
+                            <i class="fa fa-twitter"></i>
+                            Tweet</a>
+
+                        <a class="btn btn-socialshare btn-google btn-sm"
+                           target="_blank"
+                           href="https://plus.google.com/share?url=YOUR-URL"
+                             tal:attributes="href string:https://plus.google.com/share?url=${url}">
+                            <i class="fa fa-google-plus"></i>
+                            Plus</a>
+
+                    </div>
+                </div>
             </section>
 
             <section class="app-page__section app-page__body" id="content-core">

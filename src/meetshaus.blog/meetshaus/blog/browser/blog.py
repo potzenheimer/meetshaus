@@ -72,6 +72,28 @@ class BlogView(BrowserView):
         items = self.blog_posts()[1:]
         return Batch(items, b_size, self.b_start, orphan=1)
 
+
+    def has_headline(self, uuid):
+        context = api.content.get(UID=uuid)
+        try:
+            headline = context.headline
+        except AttributeError:
+            headline = None
+        if headline is not None:
+            return True
+        return False
+
+    def has_abstract(self, uuid):
+        context = api.content.get(UID=uuid)
+        try:
+            abstract = context.abstract
+        except AttributeError:
+            abstract = None
+        if abstract is not None:
+            return True
+        return False
+
+
     @staticmethod
     def timestamp(uuid):
         context = api.content.get(UID=uuid)

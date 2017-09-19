@@ -4234,6 +4234,60 @@ input[type="color"] + .input-group-addon:not(:first-child), .app-searchbox-field
   color: #868e96;
 }
 
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+}
+
+.page-item.active .page-link {
+  z-index: 2;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.page-item.disabled .page-link {
+  color: #868e96;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.page-link:focus, .page-link:hover {
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #ddd;
+}
+
+.pagination-lg .page-link {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.pagination-sm .page-link {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
 .align-baseline {
   vertical-align: baseline !important;
 }
@@ -9013,9 +9067,22 @@ img[data-sizes="auto"] {
   margin-bottom: 1rem;
 }
 
+.blog-list__item {
+  margin-bottom: 1.5rem;
+}
+
+.blog-entry__aside {
+  padding-top: 1rem;
+  border-top: 1px solid #d3802a;
+}
+
 .blog-entry__title {
   color: #d3802a;
   font-family: "AurulentSansBold";
+}
+
+.blog-entry__title--secondary {
+  color: #74c4ea;
 }
 
 .blog-entry__title--sm {
@@ -9028,7 +9095,7 @@ img[data-sizes="auto"] {
 .blog-entry__abstract {
   font-family: "AurulentSansRegular";
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #555;
   line-height: 1.3333;
 }
@@ -9056,6 +9123,12 @@ img[data-sizes="auto"] {
 
 .blob-entry__link--author {
   color: #d3802a;
+}
+
+.blog-entry__body h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 1.25rem;
+  font-family: "AurulentSansRegular";
 }
 
 .app-main {
@@ -9104,6 +9177,8 @@ img[data-sizes="auto"] {
 
 .app-page__title {
   margin-bottom: 1rem;
+  padding-right: 1rem;
+  background: url(../../assets/img/bird-blue-starting-left.png) 100% 50% no-repeat transparent;
 }
 
 .app-page__lead,
