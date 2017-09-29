@@ -16,11 +16,15 @@
         Manage categories
       </a>
     </div>
-    <div class="row">
-      <div class="col-sm-3">
+    <div class="app-grid">
+      <div class="app-grid__item--w33">
         <div class="blogentry-aside text-center">
           <div class="h2 text-muted" tal:content="context/Title" />
           <div class="h1 text-secondary">
+              <div class="app-timestamp__day app-date__day--dot">
+                  <div class="app-timestamp__day_title">i</div>
+                  <i class="icon ion ion-ios-bookmarks-outline"></i>
+              </div>
             <span class="fa-stack fa-lg">
               <i class="ion ion-ios-list-outline"></i>
               <i class="fa fa-list fa-stack-1x fa-inverse"></i>
@@ -29,9 +33,9 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-9">
+      <div class="app-grid__item--w66">
         <div class="blogentry-aside">
-          <div class="blogentry-abstract blogentry-abstract-standalone"
+          <div class="ap-page__abstract blog-entry__abstract blogentry-abstract-standalone"
             tal:condition="context/Description"
             tal:content="context/Description" />
         </div>

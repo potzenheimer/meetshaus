@@ -3,9 +3,28 @@
     margin-bottom: 1.5rem;
 }
 
+.blog-entry__meta {
+    @include media-breakpoint-up(md) {
+        display: flex;
+        justify-content: space-between;
+    }
+    @include media-breakpoint-up(lg) {
+        flex-wrap: wrap;
+    }
+}
+
 .blog-entry__aside {
     padding-top: 1rem;
     border-top: 1px solid $app-secondary;
+    @include media-breakpoint-up(md) {
+        flex: 0 1 100%;
+    }
+}
+
+.blog-entry__main {
+    @include media-breakpoint-up(md) {
+        flex: 0 1 100%;
+    }
 }
 
 
@@ -28,7 +47,7 @@
     font-family: "AurulentSansRegular";
     font-weight: 300;
     font-size: 1.25rem;
-    color: #555;
+    color: $app-gray;
     line-height: 1.3333;
 }
 
@@ -59,7 +78,9 @@
     }
 }
 
-h2 {
+h2,
+h3,
+h4 {
      @include when-inside('.blog-entry__body') {
         margin-top: 2.25rem;
         margin-bottom: 1.25rem;

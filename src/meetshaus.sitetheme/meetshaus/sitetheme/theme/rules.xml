@@ -56,10 +56,10 @@
                  css:content="#edit-bar"
                  css:if-not-content=".ajax_load"
                  css:if-content=".userrole-authenticated"/>
+
         <!-- Logo (link target) -->
-        <copy attributes="href" css:content="#portal-logo" css:theme="a.navbar-brand" />
+        <copy attributes="href" css:content="#portal-logo" css:theme="a.app-navbar-brand" />
         <copy attributes="href" css:content="#portal-logo" css:theme="a.app-brand" />
-        <copy attributes="href" css:content="#portal-logo" css:theme=".app-brandname" />
 
         <!-- Portal searchbox -->
         <!--<copy attributes="action" css:content="#portal-searchbox form"
@@ -110,15 +110,15 @@
 
         <!-- Document First Heading -->
         <replace css:content=".documentFirstHeading">
-            <div class="app-page-header">
-                <h1 class="app-page-title">
+            <div class="app-page__header">
+                <h1 class="app-page__title">
                     <xsl:apply-templates />
                 </h1>
             </div>
         </replace>
         <!-- Document lead description -->
         <replace css:content=".documentDescription">
-            <p class="app-page-abstract">
+            <p class="app-page__abstract">
                 <xsl:apply-templates />
             </p>
         </replace>
@@ -126,28 +126,28 @@
         <replace css:content=".image-inline">
           <xsl:copy>
             <xsl:copy-of select="@*" />
-            <xsl:attribute name="class">app-img app-page-image</xsl:attribute>
+            <xsl:attribute name="class">app-img app-page__image</xsl:attribute>
             <xsl:apply-templates />
           </xsl:copy>
         </replace>
         <replace css:content=".image-left">
           <xsl:copy>
             <xsl:copy-of select="@*" />
-            <xsl:attribute name="class">app-img app-page-image</xsl:attribute>
+            <xsl:attribute name="class">app-img app-page__image</xsl:attribute>
             <xsl:apply-templates />
           </xsl:copy>
         </replace>
         <replace css:content=".image-right">
           <xsl:copy>
             <xsl:copy-of select="@*" />
-            <xsl:attribute name="class">app-img app-page-image</xsl:attribute>
+            <xsl:attribute name="class">app-img app-page__image</xsl:attribute>
             <xsl:apply-templates />
           </xsl:copy>
         </replace>
 
         <!-- Add classes to content core -->
          <replace css:content="#content-core">
-             <div class="app-page-content" id="content-core">
+             <div class="app-page__content app-page__content--main" id="content-core">
                  <xsl:apply-templates />
              </div>
          </replace>

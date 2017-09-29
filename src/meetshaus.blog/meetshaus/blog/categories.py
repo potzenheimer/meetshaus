@@ -19,7 +19,7 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 
-from meetshaus.blog.blogentry import IBlogEntry
+from meetshaus.blog.blogpost import IBlogPost
 from meetshaus.blog import MessageFactory as _
 
 
@@ -99,11 +99,31 @@ class BlogCategory(grok.View):
     def blog_entries(self):
         catalog = api.portal.get_tool(name='portal_catalog')
         subject = self.selected_category()
-        brains = catalog(object_provides=IBlogEntry.__identifier__,
+        brains = catalog(object_provides=IBlogPost.__identifier__,
                          Subject=subject.encode('utf-8'),
                          sort_on='effective',
                          sort_order='reverse')
         return IContentListing(brains)
+
+    def has_headline(self, uuid):
+        context = api.content.get(UID=uuid)
+        try:
+            headline = context.headline
+        except AttributeError:
+            headline = None
+        if headline is not None:
+            return True
+        return False
+
+    def has_abstract(self, uuid):
+        context = api.content.get(UID=uuid)
+        try:
+            abstract = context.abstract
+        except AttributeError:
+            abstract = None
+        if abstract is not None:
+            return True
+        return False
 
     def timestamp(self, uid):
         item = api.content.get(UID=uid)

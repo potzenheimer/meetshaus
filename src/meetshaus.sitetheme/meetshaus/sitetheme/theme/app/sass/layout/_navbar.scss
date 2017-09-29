@@ -6,6 +6,7 @@
   @extend .navbar;
   @include media-breakpoint-up(md) {
     background: transparent;
+      padding-top: 1rem;
   }
 }
 
@@ -103,17 +104,17 @@
 // Unordered list main navigation
 .app-navbar-nav,
 .app-nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
   @include clearfix;
   @include media-breakpoint-up(lg) {
-    flex-wrap: no-wrap;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
   }
 }
 
@@ -133,7 +134,7 @@
 
 .app-navitem-tab,
 .app-nav__link {
-    display: block;
+    display: inline-block;
     padding-top: .5rem;
     padding-bottom: .5rem;
     color: $app-primary;
@@ -154,7 +155,7 @@
       display: block;
       margin: 0 auto;
     }
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         display: flex;
         align-items: center;
     }

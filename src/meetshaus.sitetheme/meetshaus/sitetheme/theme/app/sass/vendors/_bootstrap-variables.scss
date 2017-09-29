@@ -33,6 +33,20 @@ $link-color:                    $color-seagull;
 $blue:      $app-primary;
 
 
+$link-color:            $app-primary;
+$link-decoration:       none;
+$link-hover-color:      darken($app-primary, 15%);
+$link-hover-decoration: none;
+
+
+$h1-font-size: 2.25rem;
+$h2-font-size: 2.15rem;
+$h3-font-size: 2rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
+
+
 //** Navbar toggle
 $navbar-default-toggle-hover-bg:           #ddd;
 $navbar-default-toggle-icon-bar-bg:        #888;

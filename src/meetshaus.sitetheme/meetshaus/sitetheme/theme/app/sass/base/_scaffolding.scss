@@ -38,9 +38,13 @@ strong {
     }
 }
 
-// Transistion link color on :hover state
+// Transition link color on :hover state
 a:hover {
     transition: color 0.5s linear;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: $app-font-family-regular;
 }
 
 // Optional plone settings and adjustments

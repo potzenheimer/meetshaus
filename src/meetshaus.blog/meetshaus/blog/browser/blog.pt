@@ -17,30 +17,31 @@
 
             <div class="blog-list" tal:define="batch view/batch">
                 <div class="blog-list__item" tal:repeat="item batch">
-                    <div class="row" tal:define="item_uid item/UID;">
-                        <div class="col-xs-12 col-sm-3 xcol-sm-pull-9">
-                            <div class="blogentry-aside blog-entry__aside" id="blogentry-aside">
-                                <div class="blogentry-aside-section"
-                                     tal:define="ts python:view.timestamp(item_uid)">
-                                    <div class="app-page__timestamp app-page__timestamp--lg blogentry-aside" id="blogentry-aside">
-                                        <div class="blogentry-aside-section hidden-xs">
-                                            <div class="app-timestamp">
-                                                <div class="app-timestamp__day app-date__day--dot">
-                                                    <div class="app-timestamp__day_title">${ts/day}</div>
+                    <div class="app-grid" tal:define="item_uid item/UID;">
+                        <div class="app-grid__item--w25">
+                            <div class="blog-entry__meta">
+                                <div class="blogentry-aside blog-entry__aside" id="blogentry-aside">
+                                    <div class="blogentry-aside-section"
+                                         tal:define="ts python:view.timestamp(item_uid)">
+                                        <div class="app-page__timestamp app-page__timestamp--lg blogentry-aside" id="blogentry-aside">
+                                            <div class="blogentry-aside-section hidden-xs">
+                                                <div class="app-timestamp">
+                                                    <div class="app-timestamp__day app-date__day--dot">
+                                                        <div class="app-timestamp__day_title">${ts/day}</div>
+                                                    </div>
+                                                    <div class="app-timestamp__month">${ts/month}</div>
+                                                    <div class="app-timestamp__year">${ts/year}</div>
                                                 </div>
-                                                <div class="app-timestamp__month">${ts/month}</div>
-                                                <div class="app-timestamp__year">${ts/year}</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <section class="app-page__main blog-entry__main" tal:define="categories item/Subject|nothing"
-                                         tal:condition="categories">
-                                <div class="blog-entry__title--sm">Von</div>
-                                <div class="blog-entry__author">
-                                  <a class="blog-entry__link blog-entry__link--author" href="${context/portal_url}/about-me">Lisa Figas</a>
-                                </div>
+                                <section class="app-page__main blog-entry__main" tal:define="categories item/Subject|nothing"
+                                     tal:condition="categories">
+                                    <div class="blog-entry__title--sm">Von</div>
+                                    <div class="blog-entry__author">
+                                        <a class="blog-entry__link blog-entry__link--author" href="${context/portal_url}/about-me">Lisa Figas</a>
+                                    </div>
                                     <div class="blog-entry__title--sm">Abgelegt unter</div>
                                     <div class="blog-entry__tags">
                                             <span tal:repeat="category categories">
@@ -59,9 +60,10 @@
                                             <span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span>
                                         </p>
                                     </div>
-                            </section>
+                                </section>
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-sm-9 xcol-sm-push-3">
+                        <div class="app-grid__item--w75">
                             <div class="app-page__title">
                                   <h1 class="app-page__headline blog-entry__title blog-entry__title--secondary" tal:condition="python:view.has_headline(item_uid)">
                                     <a tal:attributes="href item/getURL">${item/headline}</a>
