@@ -5,10 +5,8 @@
 
 // Make a gridrow
 .app-brand {
-    // display: flex;
-    @include make-row();
-    align-items: center;
-    margin-right: $spacer;
+    display: flex;
+    width: 100%;
     &-panel-inverse {
         width: 100%;
     }
@@ -40,6 +38,8 @@
 //Inline svg logo
 .app-brand-img {
     display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 140px;
     &-xs {
         width: 64px;
@@ -53,31 +53,22 @@
     &-lg {
         width: 272.576px
     }
-    .app-brand-panel & {
-        @include make-col(4);
-        @include media-breakpoint-up(md) {
-            @include make-col(3);
-        }
-    }
-    .app-brand-panel-inverse & {
-        @include make-col(4);
-        @include media-breakpoint-up(md) {
-            @include make-col(3);
-        }
-    }
 }
 
 // Wrapper for logo SVG inline elements
 .app-brandname-logo {
-    position: relative;
-    height: 0;
-    width: 100%;
-    padding: 0;
-    padding-bottom: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    @include aspect-ratio(17, 7);
+    @include media-breakpoint-up(md) {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 // SVG inline element
-.app-logo-svg {
+.app-logo-svg,
+.app-logo__jpeg {
     position: absolute;
     left: 0;
     top: 0;

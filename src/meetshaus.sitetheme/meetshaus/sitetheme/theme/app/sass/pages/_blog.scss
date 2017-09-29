@@ -1,6 +1,20 @@
+
+.blog-list__item {
+    margin-bottom: 1.5rem;
+}
+
+.blog-entry__aside {
+    padding-top: 1rem;
+    border-top: 1px solid $app-secondary;
+}
+
+
 .blog-entry__title {
     color: $app-secondary;
     font-family: "AurulentSansBold";
+    &--secondary {
+        color: $app-primary;
+    }
 }
 
 .blog-entry__title--sm {
@@ -13,7 +27,7 @@
 .blog-entry__abstract {
     font-family: "AurulentSansRegular";
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #555;
     line-height: 1.3333;
 }
@@ -33,4 +47,22 @@
 
 .blog-entry__tag {
     font-size: .85rem;
+}
+
+.blog-entry__author {
+    text-align: center;
+}
+
+.blob-entry__link {
+    &--author {
+        color: $app-secondary;
+    }
+}
+
+h2 {
+     @include when-inside('.blog-entry__body') {
+        margin-top: 2.25rem;
+        margin-bottom: 1.25rem;
+        font-family: "AurulentSansRegular";
+     }
 }

@@ -22,11 +22,18 @@
 }
 
 .app-header__panel {
-  @include make-col-ready();
-  @include make-col(6);
+  @include media-breakpoint-up(md) {
+    @include make-col-ready();
+    @include make-col(6);
+  }
+
 }
 
 .app-header__panel {
   padding: 1rem;
+  width: 100%;
+}
 
+.app-header__burger {
+  text-align: right;
 }

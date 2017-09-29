@@ -22,7 +22,7 @@
           <div class="h2 text-muted" tal:content="context/Title" />
           <div class="h1 text-secondary">
             <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="ion ion-ios-list-outline"></i>
               <i class="fa fa-list fa-stack-1x fa-inverse"></i>
             </span>
             <span class="hidden">Themen</span>
