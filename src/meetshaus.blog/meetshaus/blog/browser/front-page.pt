@@ -12,8 +12,8 @@
 
         <div class="app-page__content--blog blogentry-list" id="content-core"
              tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-            Batch python:modules['Products.CMFPlone'].Batch;
-            b_size python:10;b_start python:0;b_start request/b_start | b_start;">
+                        Batch python:modules['Products.CMFPlone'].Batch;
+                        b_size python:10;b_start python:0;b_start request/b_start | b_start;">
 
             <div class="blog-list" tal:define="batch view/batch">
                 <div class="blog-list__item" tal:repeat="item batch">

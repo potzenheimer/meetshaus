@@ -9,64 +9,64 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="blogentry-aside text-center">
-          <div class="h2 text-muted" tal:content="context/Title" />
-          <div class="h1 text-secondary">
+      <div class="app-page__content--main" id="content-core">
+          <div class="row">
+              <div class="col-sm-3">
+                  <div class="blogentry-aside text-center">
+                      <div class="h2 text-muted" tal:content="context/Title" />
+                      <div class="h1 text-secondary">
             <span class="fa-stack fa-lg">
               <i class="fa fa-circle fa-stack-2x"></i>
               <i class="fa fa-list fa-stack-1x fa-inverse"></i>
             </span>
-            <span class="hidden">Themen</span>
+                          <span class="hidden">Themen</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-9">
+                  <div class="blogentry-aside" tal:condition="view/record">
+                      <tal:block tal:define="category view/record">
+                          <div class="h2"
+                               tal:content="category/title">
+                              The actual category name will go here
+                          </div>
+                          <div class="blogentry-abstract blogentry-abstract-standalone"
+                               tal:content="structure category/description">
+                              The category desciption should be inserted here
+                          </div>
+                      </tal:block>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
-      <div class="col-sm-9">
-        <div class="blogentry-aside" tal:condition="view/record">
-          <tal:block tal:define="category view/record">
-            <div class="h2"
-              tal:content="category/title">
-              The actual category name will go here
-            </div>
-            <div class="blogentry-abstract blogentry-abstract-standalone"
-              tal:content="structure category/description">
-              The category desciption should be inserted here
-            </div>
-          </tal:block>
-        </div>
-      </div>
-    </div>
-    <div class="row blogentry-list" tal:condition="view/blog_entries">
-        <div class="blog-list__item" tal:repeat="item view/blog_entries">
-            <div class="app-grid" tal:define="item_uid item/UID;">
-                <div class="app-grid__item--w25">
-                    <div class="blog-entry__meta">
-                        <div class="blogentry-aside blog-entry__aside" id="blogentry-aside">
-                            <div class="blogentry-aside-section"
-                                 tal:define="ts python:view.timestamp(item_uid)">
-                                <div class="app-page__timestamp app-page__timestamp--lg blogentry-aside" id="blogentry-aside">
-                                    <div class="blogentry-aside-section hidden-xs">
-                                        <div class="app-timestamp">
-                                            <div class="app-timestamp__day app-date__day--dot">
-                                                <div class="app-timestamp__day_title">${ts/day}</div>
-                                            </div>
-                                            <div class="app-timestamp__month">${ts/month}</div>
-                                            <div class="app-timestamp__year">${ts/year}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <section class="app-page__main blog-entry__main" tal:define="categories item/Subject|nothing"
-                             tal:condition="categories">
-                            <div class="blog-entry__title--sm">Von</div>
-                            <div class="blog-entry__author">
-                                <a class="blog-entry__link blog-entry__link--author" href="${context/portal_url}/about-me">Lisa Figas</a>
-                            </div>
-                            <div class="blog-entry__title--sm">Abgelegt unter</div>
-                            <div class="blog-entry__tags">
+          <div class="row blogentry-list" tal:condition="view/blog_entries">
+              <div class="blog-list__item" tal:repeat="item view/blog_entries">
+                  <div class="app-grid" tal:define="item_uid item/UID;">
+                      <div class="app-grid__item--w25">
+                          <div class="blog-entry__meta">
+                              <div class="blogentry-aside blog-entry__aside" id="blogentry-aside">
+                                  <div class="blogentry-aside-section"
+                                       tal:define="ts python:view.timestamp(item_uid)">
+                                      <div class="app-page__timestamp app-page__timestamp--lg blogentry-aside" id="blogentry-aside">
+                                          <div class="blogentry-aside-section hidden-xs">
+                                              <div class="app-timestamp">
+                                                  <div class="app-timestamp__day app-date__day--dot">
+                                                      <div class="app-timestamp__day_title">${ts/day}</div>
+                                                  </div>
+                                                  <div class="app-timestamp__month">${ts/month}</div>
+                                                  <div class="app-timestamp__year">${ts/year}</div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <section class="app-page__main blog-entry__main" tal:define="categories item/Subject|nothing"
+                                   tal:condition="categories">
+                                  <div class="blog-entry__title--sm">Von</div>
+                                  <div class="blog-entry__author">
+                                      <a class="blog-entry__link blog-entry__link--author" href="${context/portal_url}/about-me">Lisa Figas</a>
+                                  </div>
+                                  <div class="blog-entry__title--sm">Abgelegt unter</div>
+                                  <div class="blog-entry__tags">
                                             <span tal:repeat="category categories">
                                               <a href=""
                                                  class="blog-entry__tag blogentry-aside-category"
@@ -76,50 +76,51 @@
                                                 Category
                                               </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
                                             </span>
-                            </div>
-                            <div class="blogentry-aside-section">
-                                <div class="blog-entry__title--sm">Lesezeit:</div>
-                                <p class="blog-entry__reading-time">
-                                    <span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span>
-                                </p>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-                <div class="app-grid__item--w75">
-                    <div class="app-page__title">
-                        <h1 class="app-page__headline blog-entry__title blog-entry__title--secondary" tal:condition="python:view.has_headline(item_uid)">
-                            <a tal:attributes="href item/getURL">${item/headline}</a>
-                        </h1>
-                        <h1 class="app-page__headline blog-entry__title blog-entry__title--secondary" tal:condition="not:python:view.has_headline(item_uid)">
-                            <a tal:attributes="href item/getURL">${item/Title}</a>
-                        </h1>
-                    </div>
-                    <p class="app-page__abstract" tal:condition="python:view.has_abstract(item_uid)">
-                        ${item/abstract}
-                    </p>
-                    <tal:abstract tal:condition="not:python:view.has_abstract(item_uid)">
-                        <p class="app-page__abstract  blog-entry__abstract" tal:condition="item/Description">
-                            ${item/Description}
-                        </p>
-                    </tal:abstract>
-                    <section class="app-page__section app-page__body">
-                        <tal:block tal:define="count repeat/item/number;
-                            bodytext item/text/output;
-                                item_obj item/getObject;
-                                    rawtext item_obj/@@text-transform/text/text/plain">
-                            <div class="blogentry-body"
-                                 tal:define="richtext python:context.restrictedTraverse('@@plone').cropText(rawtext, 320, '[...]')">
-                                <p><span tal:replace="richtext" />
-                                    <a href="" tal:attributes="href item/getURL">weiterlesen</a>
-                                </p>
-                            </div>
-                        </tal:block>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
+                                  </div>
+                                  <div class="blogentry-aside-section">
+                                      <div class="blog-entry__title--sm">Lesezeit:</div>
+                                      <p class="blog-entry__reading-time">
+                                          <span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span>
+                                      </p>
+                                  </div>
+                              </section>
+                          </div>
+                      </div>
+                      <div class="app-grid__item--w75">
+                          <div class="app-page__title">
+                              <h1 class="app-page__headline blog-entry__title blog-entry__title--secondary" tal:condition="python:view.has_headline(item_uid)">
+                                  <a tal:attributes="href item/getURL">${item/headline}</a>
+                              </h1>
+                              <h1 class="app-page__headline blog-entry__title blog-entry__title--secondary" tal:condition="not:python:view.has_headline(item_uid)">
+                                  <a tal:attributes="href item/getURL">${item/Title}</a>
+                              </h1>
+                          </div>
+                          <p class="app-page__abstract" tal:condition="python:view.has_abstract(item_uid)">
+                              ${item/abstract}
+                          </p>
+                          <tal:abstract tal:condition="not:python:view.has_abstract(item_uid)">
+                              <p class="app-page__abstract  blog-entry__abstract" tal:condition="item/Description">
+                                  ${item/Description}
+                              </p>
+                          </tal:abstract>
+                          <section class="app-page__section app-page__body">
+                              <tal:block tal:define="count repeat/item/number;
+                                  bodytext item/text/output;
+                                      item_obj item/getObject;
+                                          rawtext item_obj/@@text-transform/text/text/plain">
+                                  <div class="blogentry-body"
+                                       tal:define="richtext python:context.restrictedTraverse('@@plone').cropText(rawtext, 320, '[...]')">
+                                      <p><span tal:replace="richtext" />
+                                          <a href="" tal:attributes="href item/getURL">weiterlesen</a>
+                                      </p>
+                                  </div>
+                              </tal:block>
+                          </section>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
 
   </metal:content-core>
 </metal:main>

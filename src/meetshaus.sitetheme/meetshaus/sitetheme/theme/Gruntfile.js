@@ -31,37 +31,37 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-                  '<%= config.modules %>/jquery/dist/jquery.js',
-                  '<%= config.modules %>/modernizr/modernizr.js',
-                  '<%= config.modules %>/tether/dist/js/tether.min.js',
-                  '<%= config.modules %>/bootstrap/dist/js/bootstrap.js',
-                  '<%= config.modules %>/mailcheck/src/mailcheck.js',
-                  '<%= config.modules %>/JVFloat/jvfloat.js',
-                  '<%= config.modules %>/hideShowPassword/hideShowPassword.js',
-                  '<%= config.modules %>/lazysizes/plugins/ls.parent-fit.js',
-                  '<%= config.modules %>/lazysizes/plugins/ls.bgset.js',
-                  '<%= config.modules %>/lazysizes/plugins/ls.unveilhooks.js',
-                  '<%= config.modules %>/lazysizes/lazysizes.js',
-                  '<%= config.modules %>/respimage/respimage.js',
-                  '<%= config.modules %>/flickity/dist/flickity.pkgd.js',
-                  '<%= config.app %>/scripts/main.js'
+                    '<%= config.modules %>/jquery/dist/jquery.js',
+                    '<%= config.modules %>/modernizr/modernizr.js',
+                    '<%= config.modules %>/mailcheck/src/mailcheck.js',
+                    '<%= config.modules %>/JVFloat/jvfloat.js',
+                    '<%= config.modules %>/hideShowPassword/hideShowPassword.js',
+                    '<%= config.modules %>/lazysizes/plugins/ls.parent-fit.js',
+                    '<%= config.modules %>/lazysizes/plugins/ls.bgset.js',
+                    '<%= config.modules %>/lazysizes/plugins/ls.unveilhooks.js',
+                    '<%= config.modules %>/lazysizes/lazysizes.js',
+                    '<%= config.modules %>/respimage/respimage.js',
+                    '<%= config.modules %>/flickity/dist/flickity.pkgd.js',
+                    '<%= config.app %>/scripts/main.js'
                 ],
                 dest: '<%= config.dist %>/scripts/<%= pkg.name %>.js'
             },
             theme: {
                 options: {
-                    banner: "require(['jquery'], function($) {'use strict';",
+                    banner: "requirejs(['require',\n" +
+                    "'<%= config.diazoPrefix %>/<%= config.dist %>/scripts/flickity.pkgd.js',\n" +
+                    "'<%= config.diazoPrefix %>/<%= config.dist %>/scripts/fontfaceobserver.js',\n" +
+                    "'<%= config.diazoPrefix %>/<%= config.dist %>/scripts/hideShowPassword.js',\n" +
+                    "'<%= config.diazoPrefix %>/<%= config.dist %>/scripts/jvfloat.js',\n" +
+                    "'<%= config.diazoPrefix %>/<%= config.dist %>/scripts/respimage.js',\n" +
+                    "'<%= config.diazoPrefix %>/<%= config.dist %>/scripts/ls.parent-fit.js',\n" +
+                    "'<%= config.diazoPrefix %>/<%= config.dist %>/scripts/lazysizes-umd.js',],\n" +
+                    " function(require, Flickity) {\n'use strict';\n",
                     footer: "});",
                     stripBanners: true
                 },
                 src: [
-                    '<%= config.modules %>/tether/dist/js/tether.min.js',
-                    '<%= config.modules %>/bootstrap/dist/js/bootstrap.js',
-                    '<%= config.modules %>/lazysizes/lazysizes.js',
-                    '<%= config.modules %>/lazysizes/plugins/ls.parent-fit.js',
-                    '<%= config.modules %>/respimage/respimage.js',
-                    '<%= config.modules %>/flickity/dist/flickity.pkgd.js',
-                    '<%= config.app %>/scripts/main.js'
+                    '<%= config.app %>/scripts/app.js'
                 ],
                 dest: '<%= config.dist %>/scripts/main.js'
             }
@@ -151,11 +151,11 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            fontawesome: {
+            iconfont: {
                 expand: true,
                 flatten: true,
                 cwd: '<%= config.modules %>/',
-                src: ['font-awesome/fonts/*'],
+                src: ['ionicons/dist/fonts/*'],
                 dest: '<%= config.dist %>/assets/fonts/'
             },
             showPassword: {
@@ -177,6 +177,21 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: ['<%= config.app %>/assets/ico/*'],
                 dest: '<%= config.dist %>/assets/ico/'
+            },
+            javascript: {
+                expand: true,
+                flatten: true,
+                src: [
+                    '<%= config.modules %>/mailcheck/src/mailcheck.js',
+                    '<%= config.modules %>/JVFloat/jvfloat.js',
+                    '<%= config.modules %>/hideShowPassword/hideShowPassword.js',
+                    '<%= config.modules %>/lazysizes/lazysizes-umd.js',
+                    '<%= config.modules %>/lazysizes/plugins/parent-fit/ls.parent-fit.js',
+                    '<%= config.modules %>/respimage/respimage.js',
+                    '<%= config.modules %>/flickity/dist/flickity.pkgd.js',
+                    '<%= config.modules %>/fontfaceobserver/fontfaceobserver.js',
+                ],
+                dest: '<%= config.dist %>/scripts/'
             }
         },
         imagemin: {
@@ -588,7 +603,7 @@ module.exports = function (grunt) {
             'html',
             'js',
             'css',
-            'replace:diazo',
+            'replace:server',
             'connect:livereload',
             'watch'
         ]);
@@ -650,6 +665,7 @@ module.exports = function (grunt) {
         'html',
         'css',
         'js',
+        'copy:javascript',
         'cb',
         'replace:dist'
     ]);

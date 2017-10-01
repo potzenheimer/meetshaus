@@ -112,7 +112,7 @@ $plone-screen-lg-min:              1200px;
         }
     }
 }
-&.expanded .plone-toolbar-logo {
+.expanded .plone-toolbar-logo {
     width: 120px;
     span {display: inline;}
 }

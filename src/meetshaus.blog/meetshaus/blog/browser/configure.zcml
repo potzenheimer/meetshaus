@@ -5,6 +5,17 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="meetshaus.blog">
 
+
+    <!-- Frontpage Views -->
+    <browser:page
+        for="plone.app.layout.navigation.interfaces.INavigationRoot"
+        name="front-page-view"
+        class=".front-page.FrontPageView"
+        template="front-page.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+
     <browser:page
         for="meetshaus.blog.blog.IBlog"
         name="blog-listing"

@@ -1,3 +1,6 @@
+.blog-list {
+    padding: 0 1.25rem;
+}
 
 .blog-list__item {
     margin-bottom: 1.5rem;
@@ -11,6 +14,11 @@
     @include media-breakpoint-up(lg) {
         flex-wrap: wrap;
     }
+}
+
+.blog-entry__content {
+    padding-top: .75rem;
+    padding-left: 1rem;
 }
 
 .blog-entry__aside {

@@ -32,6 +32,18 @@ $link-color:                    $color-seagull;
 
 $blue:      $app-primary;
 
+$theme-colors: ();
+$theme-colors: map-merge((
+    "primary": $app-primary,
+    "secondary": $app-secondary,
+    "success": $green,
+    "info": $cyan,
+    "warning": $yellow,
+    "danger": $red,
+    "light": $gray-100,
+    "dark": $gray-800
+), $theme-colors);
+
 
 $link-color:            $app-primary;
 $link-decoration:       none;
@@ -55,3 +67,21 @@ $navbar-default-toggle-border-color:       #ddd;
 //** Button primary uses default link color not brand primary
 $btn-primary-bg:                 $app-primary;
 $btn-primary-border: 			        $app-primary;
+
+//** Pagination
+$pagination-color:                     $app-primary;
+$pagination-bg:                        $white !default;
+$pagination-border-width:              $border-width !default;
+$pagination-border-color:              #ddd !default;
+
+$pagination-hover-color:               darken($app-primary, 15%);
+$pagination-hover-bg:                  $gray-200 !default;
+$pagination-hover-border-color:        #ddd !default;
+
+$pagination-active-color:              $white !default;
+$pagination-active-bg:                 $app-primary;
+$pagination-active-border-color:       $app-primary;
+
+$pagination-disabled-color:            $gray-600 !default;
+$pagination-disabled-bg:               $white !default;
+$pagination-disabled-border-color: #ddd !default;

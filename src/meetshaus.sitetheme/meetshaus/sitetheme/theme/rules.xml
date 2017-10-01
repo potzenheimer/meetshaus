@@ -147,9 +147,11 @@
 
         <!-- Add classes to content core -->
          <replace css:content="#content-core">
-             <div class="app-page__content app-page__content--main" id="content-core">
+             <xsl:copy>
+                 <xsl:copy-of select="@*" />
+                 <xsl:attribute name="class">app-page__content app-page__content--main <xsl:value-of select="./@class" /></xsl:attribute>
                  <xsl:apply-templates />
-             </div>
+             </xsl:copy>
          </replace>
 
         <!-- Document Content -->
