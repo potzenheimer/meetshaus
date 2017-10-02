@@ -19,6 +19,8 @@
         <notheme if="$ajax_load" />
         <theme href="dist/index.html" />
 
+        <!-- Head -->
+        <copy attributes="*" css:theme="html" css:content="html" />
         <replace css:theme="title" css:content="title" />
         <after theme="/html/head/title" css:content="base" />
         <!-- Add meta tags -->
