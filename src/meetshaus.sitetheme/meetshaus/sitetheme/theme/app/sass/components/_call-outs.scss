@@ -27,7 +27,7 @@
 
 // Callout variants used as addon classes
 .app-call-out-default {
-    @include alert-variant($gray-lighter, $gray-light, $alert-success-text);
+    @include alert-variant($gray-300, $gray-400, $alert-success-text);
 }
 
 .app-call-out-success {

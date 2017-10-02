@@ -11,64 +11,18 @@
     <tal:main-macro metal:define-macro="main"
         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
 
-        <div tal:replace="structure provider:plone.abovecontenttitle" />
-
-        <h1 class="documentFirstHeading" tal:content="context/title" />
-
-        <div tal:replace="structure provider:plone.belowcontenttitle" />
-
-        <p class="documentDescription" tal:content="context/description" />
-
-        <div tal:replace="structure provider:plone.abovecontentbody" />
-
-        <h2>Introduction:</h2>
-
-        <div id="introduction" tal:content="structure context/introduction" />
-
-        <div id="frontpage-introduction">
-            <div tal:attributes="data-tile string:${context/absolute_url}/@@vwc.tiles.richtext/frontpageintroduction" />
-        </div>
-
-        <section id="content-core">
-        <div class="row">
-            <div class="col-xs-12 col-md-4">
-                <div class="splashbox splash-words">
-                    <div class="splashbox-body">
-                        <div class="splashbox-content"
-                            tal:content="structure context/wordsbox">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-4">
-                <div class="splashbox splash-adwords">
-                    <div class="splashbox-body">
-                        <div class="splashbox-content"
-                            tal:content="structure context/adwordsbox">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-4">
-                <div class="splashbox splash-social">
-                    <div class="splashbox-body">
-                        <div class="splashbox-content"
-                            tal:content="structure context/socialbox">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="visualClear"><!-- --></div>
-        </div>
-        </section>
-        <div class="visualClear">&nbsp;</div>
 
         <section id="content-blog-listing">
             <div id="blog-preview-listing"
                 tal:condition="view/has_blogentries">
 
                 <div class="blogentry-list" tal:define="item view/latest_blogentry">
-                  <div class="blogentry-list-item">
+
+                  <div class="article__preview" tal:define="preview python:view.blog_entry_preview()">
+                    <span tal:replace="structure preview" />
+                  </div>
+
+                  <div class="blogentry-list-item" tal:content="nothing">
                     <div class="row">
                       <div class="col-sm-3">
                         <div class="blogentry-aside" id="blogentry-aside"
@@ -137,10 +91,10 @@
             <hr>
 
             <div class="app-frontpage-actionbar text-center">
-                <a class="btn btn-default" tal:attributes="href string:${view/portal_url}/themen">
+                <a class="button button--primary" tal:attributes="href string:${view/portal_url}/themen">
                  Weitere Themen durchstöbern
                 </a>
-                <a class="btn btn-primary" tal:attributes="href string:${view/portal_url}/blog">
+                <a class="button button--primary" tal:attributes="href string:${view/portal_url}/blog">
                     Ältere Beitrage zeigen
                 </a>
             </div>

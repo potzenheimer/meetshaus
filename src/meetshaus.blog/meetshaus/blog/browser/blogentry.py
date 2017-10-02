@@ -21,6 +21,26 @@ class BlogEntryView(BrowserView):
     def render(self):
         return self.index()
 
+    def has_headline(self):
+        context = aq_inner(self.context)
+        try:
+            headline = context.headline
+        except AttributeError:
+            headline = None
+        if headline is not None:
+            return True
+        return False
+
+    def has_abstract(self):
+        context = aq_inner(self.context)
+        try:
+            abstract = context.abstract
+        except AttributeError:
+            abstract = None
+        if abstract is not None:
+            return True
+        return False
+
     def parent_info(self):
         context = aq_inner(self.context)
         parent = aq_parent(context)
@@ -62,3 +82,80 @@ class BlogEntryView(BrowserView):
         text_count = len(text.split(' '))
         rt = text_count / 200
         return rt
+
+
+class BlogEntryContent(BrowserView):
+    """ Blog entry  default view """
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self):
+        return self.render()
+
+    def render(self):
+        return self.index()
+
+    def has_headline(self):
+        context = aq_inner(self.context)
+        try:
+            headline = context.headline
+        except AttributeError:
+            headline = None
+        if headline is not None:
+            return True
+        return False
+
+    def has_abstract(self):
+        context = aq_inner(self.context)
+        try:
+            abstract = context.abstract
+        except AttributeError:
+            abstract = None
+        if abstract is not None:
+            return True
+        return False
+
+    def parent_info(self):
+        context = aq_inner(self.context)
+        parent = aq_parent(context)
+        try:
+            if (getattr(parent, 'getId', None) is None
+                    or parent.getId() == 'talkback'):
+                parent = aq_parent(aq_inner(parent))
+            return parent
+        except Unauthorized:
+            return None
+
+    def timestamp(self):
+        context = aq_inner(self.context)
+        date = context.effective()
+        date = pydt(date)
+        timestamp = {
+            'day': date.strftime("%d"),
+            'month': get_localized_month_name(date.strftime("%B")),
+            'year': date.strftime("%Y"),
+            'date': date
+        }
+        return timestamp
+
+    def _readable_text(self):
+        context = aq_inner(self.context)
+        meta = context.title + ' ' + context.description
+        if context.text:
+            html = context.text.raw
+            transforms = api.portal.get_tool(name='portal_transforms')
+            stream = transforms.convertTo('text/plain',
+                                          html,
+                                          mimetype='text/html')
+            text = stream.getData().strip()
+            body = meta + ' ' + text
+        return body
+
+    def reading_time(self):
+        text = self._readable_text()
+        text_count = len(text.split(' '))
+        rt = text_count / 200
+        return rt
+

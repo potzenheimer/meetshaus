@@ -201,12 +201,12 @@ module.exports = function (grunt) {
         },
         usemin: {
             html: ['<%= config.dist %>/{,*/}*.html'],
-            htmlcustom: ['<%= config.dist %>/*.html'],
+            htmlcustom: ['<%= config.dist %>/{,*/}*.html'],
             css: ['<%= config.dist %>/styles/*.css'],
             options: {
                 assetsDirs: [
                     '<%= config.dist %>',
-                    '<%= config.dist %>/css',
+                    '<%= config.dist %>/styles',
                     '<%= config.dist %>/assets'
                 ],
                 patterns: {
@@ -214,6 +214,10 @@ module.exports = function (grunt) {
                         [
                             /(?:src=|url\(\s*)['"]?([^'"\)(\?|#)]+)['"]?\s*\)?/gm,
                             'Replacing src references in inline javascript'
+                        ],
+                        [
+                            /(?:loadCSS\(|url\(\s*)['"]?([^'"\)(\?|#)]+)['"]?\s*\)?/gm,
+                            'Update the load css source with the new img filenames'
                         ],
                         [
                             /(?:data-src=|url\(\s*)['"]?([^'"\)(\?|#)]+)['"]?\s*\)?/gm,
@@ -267,12 +271,12 @@ module.exports = function (grunt) {
                 options: {
                     patterns: [
                         {
-                            match: '../../assets/',
-                            replacement: '../assets/'
-                        },
-                        {
                             match: '../assets/',
                             replacement: 'assets/'
+                        },
+                        {
+                            match: '../../assets/',
+                            replacement: '../assets/'
                         },
                         {
                             match: '../../<%= config.dist %>/styles/<%= pkg.name %>.min.css',
@@ -295,22 +299,59 @@ module.exports = function (grunt) {
                     preserveOrder: true
                 },
                 files: [{
-                        expand: true,
-                        cwd: '<%= config.dev %>',
-                        src: [
-                            '*.html',
-                            '{,*/}*.html'
-                        ],
-                        dest: '<%= config.dev %>'
-                    }]
+                    expand: true,
+                    cwd: '<%= config.dev %>',
+                    src: [
+                        '*.html',
+                        '{,*/}*.html'
+                    ],
+                    dest: '<%= config.dev %>'
+                }]
             },
-            dist: {
+            diazo: {
                 options: {
                     patterns: [
                         {
-                            match: '../../assets/',
+                            match: '../assets/',
                             replacement: 'assets/'
                         },
+                        {
+                            match: 'assets/',
+                            replacement: 'http://<%= connect.options.hostname %>:<%= connect.options.port %>/assets/'
+                        },
+                        {
+                            match: '../styles/',
+                            replacement: 'styles/'
+                        },
+                        {
+                            match: 'styles/',
+                            replacement: 'http://<%= connect.options.hostname %>:<%= connect.options.port %>/styles/'
+                        },
+                        {
+                            match: '../scripts/<%= pkg.name %>',
+                            replacement: 'scripts/<%= pkg.name %>'
+                        },
+                        {
+                            match: 'scripts/<%= pkg.name %>',
+                            replacement: 'http://<%= connect.options.hostname %>:<%= connect.options.port %>/scripts/<%= pkg.name %>'
+                        }
+                    ],
+                    usePrefix: false,
+                    preserveOrder: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.dist %>',
+                    src: [
+                        '*.html',
+                        '{,*/}*.html'
+                    ],
+                    dest: '<%= config.dist %>'
+                }]
+            },
+            pat: {
+                options: {
+                    patterns: [
                         {
                             match: '../assets/',
                             replacement: 'assets/'
@@ -340,14 +381,55 @@ module.exports = function (grunt) {
                     preserveOrder: true
                 },
                 files: [{
-                        expand: true,
-                        cwd: '<%= config.dist %>',
-                        src: [
-                            '*.html',
-                            '{,*/}*.html'
-                        ],
-                        dest: '<%= config.dist %>'
-                    }]
+                    expand: true,
+                    cwd: '<%= config.dist %>',
+                    src: [
+                        '*.html',
+                        '{,*/}*.html'
+                    ],
+                    dest: '<%= config.dist %>'
+                }]
+            },
+            dist: {
+                options: {
+                    patterns: [
+                        {
+                            match: '../assets/',
+                            replacement: 'assets/'
+                        },
+                        {
+                            match: 'assets/',
+                            replacement: '/assets/'
+                        },
+                        {
+                            match: '../styles/<%= pkg.name %>',
+                            replacement: 'styles/<%= pkg.name %>'
+                        },
+                        {
+                            match: 'styles/<%= pkg.name %>',
+                            replacement: '/styles/<%= pkg.name %>'
+                        },
+                        {
+                            match: '../scripts/<%= pkg.name %>',
+                            replacement: 'scripts/<%= pkg.name %>'
+                        },
+                        {
+                            match: 'scripts/<%= pkg.name %>',
+                            replacement: '/scripts/<%= pkg.name %>'
+                        }
+                    ],
+                    usePrefix: false,
+                    preserveOrder: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.dist %>',
+                    src: [
+                        '*.html',
+                        '{,*/}*.html'
+                    ],
+                    dest: '<%= config.dist %>'
+                }]
             }
         },
         clean: {

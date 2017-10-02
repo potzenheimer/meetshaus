@@ -10,6 +10,8 @@ import {stream as wiredep} from 'wiredep';
 const $ = gulpLoadPlugins();
 const browserSync = bsCreate();
 
+var runSequence = require('run-sequence');
+
 var cp = require('child_process');
 var pkg = require('./package.json');
 var cfg = require('./config.json');
@@ -130,15 +132,13 @@ gulp.task('images', () => {
 ;
 
 gulp.task('fonts', () => {
-    return gulp.src(require('main-bower-files')({
-        filter: '**/*.{eot,svg,ttf,woff,woff2}'
-    }).concat(cfg.paths.app + 'assets/fonts/**/*'))
+    return gulp.src(cfg.paths.app + 'assets/fonts/**/*')
         .pipe(gulp.dest('.tmp/fonts'))
         .pipe(gulp.dest(cfg.paths.dist + 'assets/fonts'));
 })
 ;
 
-gulp.task('html', () => {
+gulp.task('html', ['replace'], () => {
     return gulp.src(cfg.paths.dev + '{,*/}*.html')
         .pipe($.minifyHtml())
         .pipe(gulp.dest(cfg.paths.dist));
@@ -174,9 +174,21 @@ gulp.task('replace', () => {
         .pipe(gulp.dest(cfg.paths.dev))
 });
 
+
+gulp.task('replace-pat', () => {
+    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
+        .pipe($.replaceTask({
+            patterns: cfg.replacementPatterns.pat,
+            usePrefix: false,
+            preserveOrder: true
+        }))
+        .pipe(gulp.dest(cfg.paths.dev))
+});
+
+
 gulp.task('clean', del.bind(null, ['.tmp', cfg.paths.dist]));
 
-gulp.task('serve', ['styles', 'scripts', 'jekyll-build', 'html', 'replace'], () => {
+gulp.task('serve', ['styles', 'scripts', 'jekyll-build', 'replace', 'html'], () => {
     browserSync.init({
     notify: false,
     port: 9499,
@@ -206,6 +218,21 @@ gulp.task('default', ['browser-sync'], function () {
     gulp.watch(cfg.paths.app + "scripts/**/*.js", ['scripts']);
     gulp.watch(cfg.paths.app + "*.html", ['bs-reload']);
 });
+
+gulp.task('watch', function () {
+    gulp.watch(cfg.paths.app + "sass/**/*.scss", ['styles']);
+});
+
+gulp.task('build-dev', function(done) {
+    runSequence(
+        'clean',
+        ['fonts', 'images'],
+        ['jekyll-build', 'styles', 'scripts'],
+        'replace-pat',
+        'html',
+        done);
+});
+
 
 // Generate the icons. This task takes a few seconds to complete.
 // You should run it at least once to create the icons. Then,

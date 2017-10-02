@@ -50,7 +50,7 @@ $plone-screen-lg-min:              1200px;
     margin-bottom: 1rem;
     padding: .25rem;
     color: #f2f2f2;
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid $gray-600;
 }
 
 //== Toolbar nav
@@ -80,8 +80,8 @@ $plone-screen-lg-min:              1200px;
     left:0;
     z-index: 3;
     font-weight: 300;
-    color: $gray-lighter;
-    background: $gray;
+    color: $gray-300;
+    background: $gray-600;
 }
 
 //** Inline Plone SVG logo
@@ -112,7 +112,7 @@ $plone-screen-lg-min:              1200px;
         }
     }
 }
-&.expanded .plone-toolbar-logo {
+.expanded .plone-toolbar-logo {
     width: 120px;
     span {display: inline;}
 }

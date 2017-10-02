@@ -4,10 +4,13 @@
       <div class="app-header__panel app-header__brandbar">
         {% include components/brandpanel.html %}
       </div>
-      <div class="app-header__panel app-header__burger">
+      <div class="app-header__panel app-header__burger" hidden>
         <button class="app-burger" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="app-burger__icon"></span>
         </button>
+      </div>
+      <div class="app-header__panel app-header__menu">
+        {% include components/navbar.html %}
       </div>
     </div>
   </div>

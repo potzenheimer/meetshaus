@@ -32,7 +32,7 @@
 .sg-sidebar {
   padding-top: 1rem;
   height: 100%;
-  border-right: 1px solid $gray-lighter;
+  border-right: 1px solid $gray-300;
 }
 
 //Styleguide color swatches
@@ -62,7 +62,7 @@
 
 //** Subtitle showing styleguide version information
 .sg-sidebar-subtitle {
-  color: $gray-light;
+  color: $gray-300;
 }
 
 
@@ -81,14 +81,14 @@
       position: relative;
       display: block;
       // padding-left: $nav-link-padding;
-      color: $gray;
+      color: $gray-500;
       &:hover,
       &:focus {
         text-decoration: none;
-        background-color: $nav-tabs-active-link-hover-bg;
+        background-color: $nav-tabs-link-active-bg;
       }
       &.active {
-        border-right: 1px solid $gray;
+        border-right: 1px solid $gray-500;
       }
     }
   }
@@ -104,10 +104,10 @@
 .sg-sidebar-navitem {
   font-size: 0.8rem;
   > a {
-     color: $gray;
+     color: $gray-500;
   }
   &.active {
-    border-right: 5px solid $gray;
+    border-right: 5px solid $gray-300;
   }
 }
 
