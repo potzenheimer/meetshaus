@@ -33,7 +33,7 @@ class FrontPageView(BrowserView):
 
     def _base_query(self):
         portal = api.portal.get()
-        blog = portal['blog-new']
+        blog = portal['blog']
         obj_provides = IBlogPost.__identifier__
         path = '/'.join(blog.getPhysicalPath())
         return dict(path={'query': path, 'depth': 1},
