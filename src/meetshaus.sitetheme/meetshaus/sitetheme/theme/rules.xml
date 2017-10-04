@@ -37,7 +37,7 @@
             <drop theme="/html/head/style" />
         </rules>
 
-        <drop theme="/html/body/script" />
+        <drop css:theme="html body script[data-ui='static']" />
 
         <!-- Custom favicon implementation -->
         <drop css:content="head link[rel='apple-touch-icon-precomposed']" />
