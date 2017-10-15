@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-08-07 21:57+0000\n"
+"POT-Creation-Date: 2017-10-15 21:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,10 @@ msgstr ""
 msgid "About the Author"
 msgstr ""
 
+#: ./../blogpost.py:56
+msgid "Abstract"
+msgstr ""
+
 #: ./../utils.py:30
 msgid "April"
 msgstr ""
@@ -74,6 +78,10 @@ msgstr ""
 msgid "Blog Monthly archive"
 msgstr ""
 
+#: ./../blogpost.py:48
+msgid "Blog entry description used in listings and as meta data description"
+msgstr ""
+
 #: ./../profiles/default/types/meetshaus.blog.blogentry.xml
 msgid "BlogEntry"
 msgstr ""
@@ -99,6 +107,10 @@ msgstr ""
 msgid "December"
 msgstr ""
 
+#: ./../blogpost.py:30
+msgid "Default content item title that will also be used as the meta data title tag"
+msgstr ""
+
 #: ./../portlets/blogrecent.py:23
 msgid "Entries"
 msgstr ""
@@ -109,6 +121,10 @@ msgstr ""
 
 #: ./../utils.py:28
 msgid "February"
+msgstr ""
+
+#: ./../blogpost.py:37
+msgid "Headline"
 msgstr ""
 
 #: ./../utils.py:27
@@ -147,6 +163,10 @@ msgstr ""
 msgid "October"
 msgstr ""
 
+#: ./../blogpost.py:38
+msgid "Override the meta data title with a display title used in listings and views as main headline instead.The headline also supports the use of soft hyphens (&shy;) for more control of small screen display"
+msgstr ""
+
 #: ./../categories_templates/updateblogcategories.pt:53
 msgid "Save changes"
 msgstr ""
@@ -159,7 +179,11 @@ msgstr ""
 msgid "Sisosha Simple Social Sharing"
 msgstr ""
 
-#: ./../categories.py:246
+#: ./../blogpost.py:47
+msgid "Summary"
+msgstr ""
+
+#: ./../categories.py:266
 msgid "The item has successfully been updated"
 msgstr ""
 
@@ -172,13 +196,21 @@ msgstr ""
 msgid "The number of entries to show"
 msgstr ""
 
-#: ./../categories.py:179
+#: ./../categories.py:199
 msgid "This field is required"
+msgstr ""
+
+#: ./../blogpost.py:29
+msgid "Title"
+msgstr ""
+
+#: ./../blogpost.py:57
+msgid "Use the abstract tp override the default meta data  description in listings and blog entry views."
 msgstr ""
 
 #: ./../blogentry_templates/blogentryview.pt:63
 #: ./../blogpost_templates/blogpostview.pt:63
-#: ./../browser/blogentry.pt:86
+#: ./../browser/blogentry.pt:57
 msgid "min"
 msgstr ""
 
