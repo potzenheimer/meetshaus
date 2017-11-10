@@ -24,6 +24,25 @@
         permission="zope2.View"
         layer="..interfaces.IBlogTool"
     />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="categories"
+        class=".categories.BlogCategoriesView"
+        template="categories.pt"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="categories-manager"
+        class=".categories.BlogCategoriesManager"
+        template="categories-manager.pt"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
     <!-- Blog entry views -->
     <browser:page
         for="meetshaus.blog.blogpost.IBlogPost"

@@ -32,7 +32,7 @@ class IBlogPost(form.Schema, IImageScaleTraversable):
             default=u'Used in listings and views as main headline instead of '
                     u'the default meta data title.'
         ),
-        required=True
+        required=False
     )
 
     abstract = schema.Text(
@@ -46,8 +46,8 @@ class IBlogPost(form.Schema, IImageScaleTraversable):
         missing_value=u'',
     )
 
-    directives.order_after(headline='title')
-    directives.order_after(abstract='description')
+    #directives.order_after(headline='IDublinCore.title')
+    #directives.order_after(abstract='IDublinCore.description')
 
 
 @implementer(IBlogPost)

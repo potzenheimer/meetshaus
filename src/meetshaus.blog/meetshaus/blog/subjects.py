@@ -10,8 +10,8 @@ from zope.component import adapter
 from zope.interface import implementer
 
 
-@adapter(getSpecification(ICategorization['subjects']), IPloneFormLayer)
-@implementer(IFieldWidget)
-def SubjectsFieldWidget(field, request):
-    widget = FieldWidget(field, TokenInputFieldWidget(field, request))
-    return widget
+#@adapter(getSpecification(ICategorization['subjects']), IPloneFormLayer)
+#@implementer(IFieldWidget)
+#def SubjectsFieldWidget(field, request):
+#    widget = FieldWidget(field, TokenInputFieldWidget(field, request))
+#    return widget
