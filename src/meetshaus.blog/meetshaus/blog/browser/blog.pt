@@ -67,7 +67,7 @@
                             <div class="blog-entry__content">
                                 <div class="app-page__title">
                                     <h1 class="app-page__headline blog-entry__title blog-entry__title--secondary" tal:condition="python:view.has_headline(item_uid)">
-                                        <a tal:attributes="href item/getURL">${item/headline}</a>
+                                        <a tal:attributes="href item/getURL" tal:content="structure item/headline">${item/headline}</a>
                                     </h1>
                                     <h1 class="app-page__headline blog-entry__title blog-entry__title--secondary" tal:condition="not:python:view.has_headline(item_uid)">
                                         <a tal:attributes="href item/getURL">${item/Title}</a>
