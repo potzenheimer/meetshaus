@@ -1,0 +1,20 @@
+
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="meetshaus.blog">
+
+    <!-- Tool providing utility functions for asset storage manipulation -->
+    <utility
+            factory=".tool.TaxonomyTool"
+            provides=".interfaces.ITaxonomyTool"/>
+    <utility
+            factory=".tool.CategoryManagementTool"
+            provides=".interfaces.ICategoryManagementTool"/>
+     <!--<utility
+                factory=".tool.CourseFilterUpdater"
+                provides=".interfaces.ICourseFilterUpdater"/>-->
+
+
+</configure>
