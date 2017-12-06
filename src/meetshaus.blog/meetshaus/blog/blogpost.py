@@ -11,6 +11,7 @@ from plone.autoform import directives
 from plone.dexterity.content import Container
 from plone.directives import form
 from plone.event.utils import pydt
+from plone.namedfile import field as named_file
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.supermodel.directives import fieldset
 from zope import schema
@@ -62,12 +63,21 @@ class IBlogPost(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
+    image = named_file.NamedBlobImage(
+        title=_(u"Cover image"),
+        description=_(u"Please provide a preview image shown in event lists."),
+        required=False
+    )
+    image_caption = schema.TextLine(
+        title=_(u"Cover Image Caption"),
+        required=False
+    )
+
     fieldset(
         'extra',
         label=_(u"Categorization"),
         fields=['subjects', ]
     )
-
 
     subjects = schema.Tuple(
         title=_(u'Categories'),

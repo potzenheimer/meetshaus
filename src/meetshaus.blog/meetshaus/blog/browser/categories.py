@@ -113,12 +113,18 @@ class UpdateBlogCategoryStorage(BrowserView):
 
     def _process_request(self):
         api_url = self.request.get('ACTUAL_URL')
-        data = {
-            'url': api_url,
-            'timestamp': str(int(time.time())),
-            'created': str(datetime.datetime.now()),
-            'updated': str(datetime.datetime.now())
-        }
+        stored_data = api.portal.get_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories'
+        )
+        try:
+            data = json.loads(stored_data)
+        except ValueError:
+            data = {
+                'url': api_url,
+                'timestamp': str(int(time.time())),
+                'created': str(datetime.datetime.now()),
+                'updated': str(datetime.datetime.now())
+            }
         items = list()
         for kw in self.keywords():
             info = {
@@ -129,5 +135,6 @@ class UpdateBlogCategoryStorage(BrowserView):
                 'description': ''
             }
             items.append(info)
+        # TODO: update existing entries instead of always adding new items
         data['items'] = items
         return data
