@@ -63,9 +63,17 @@ class IBlogPost(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
+    fieldset(
+        'media',
+        label=_(u"Media"),
+        fields=['image', 'image_caption']
+    )
+
     image = named_file.NamedBlobImage(
         title=_(u"Cover image"),
-        description=_(u"Please provide a preview image shown in event lists."),
+        description=_(u"Please provide a preview image shown in listings and"
+                      u"automatically provided to aggregation endpoints like"
+                      u"social media channels (FB Graph API."),
         required=False
     )
     image_caption = schema.TextLine(
