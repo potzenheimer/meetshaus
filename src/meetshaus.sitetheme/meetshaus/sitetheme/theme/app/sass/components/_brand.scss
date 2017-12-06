@@ -6,11 +6,15 @@
 // Make a gridrow
 .app-brand {
     display: flex;
+    justify-content: space-around;
     width: 100%;
     &-panel-inverse {
         width: 100%;
     }
-
+    @include media-breakpoint-up(lg) {
+        justify-content: flex-start;
+        padding-left: 1rem;
+    }
 }
 
 .app-brand__name {

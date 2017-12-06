@@ -10,7 +10,7 @@ $plone-gray-light:                          lighten(#000, 46.5%);
 $plone-link-color:                          #007bb3; //plone blue
 $plone-gray-lighter:                        lighten(#000, 80%);   // #ccc //disableds like
 
-//*// TOOLBAR
+// TOOLBAR
 $plone-toolbar-bg:                          rgba(0,0,0,.9);
 $plone-toolbar-submenu-bg:                  rgba(20,20,20,.95);
 $plone-toolbar-font-primary:                $font-family-base;
@@ -45,7 +45,7 @@ $plone-screen-lg-min:              1200px;
     background: $plone-toolbar-bg;
 }
 
-//** Toolbar header with brand and/or cms title information
+//## Toolbar header with brand and/or cms title information
 .app-toolbar-header {
     margin-bottom: 1rem;
     padding: .25rem;
@@ -84,7 +84,7 @@ $plone-screen-lg-min:              1200px;
     background: $gray-600;
 }
 
-//** Inline Plone SVG logo
+//== Inline Plone SVG logo
 .plone-toolbar-logo {
     background: darken(#007bb3, 10%);
     height: 50px;
@@ -221,7 +221,7 @@ $plone-screen-lg-min:              1200px;
     .plone-toolbar-submenu-header :after {font-size: 30px; right:13px;}
 }
 
-//** Toolbar separator caret
+//== Toolbar separator caret
 .plone-toolbar-separator {
     border-bottom: 1px solid $plone-toolbar-separator-color;
 }
@@ -244,7 +244,7 @@ $plone-screen-lg-min:              1200px;
 }
 
 
-//** Toolbar switcher below the logo component
+//== Toolbar switcher below the logo component
 .plone-toolbar-switcher {
     position: absolute;
     width: 10px; height: 10px;
@@ -256,8 +256,11 @@ $plone-screen-lg-min:              1200px;
 }
 
 // Space left by the body for the toolbar
-.plone-toolbar-left-default { padding-left: 60px; }
-.plone-toolbar-left-expanded { padding-left: 120px; }
-.plone-toolbar-top-default { margin-top: 60px; }
-.plone-toolbar-top-expanded { margin-top: 60px; }
-.plone-toolbar-compressed { margin-top: 0px; margin-left: 0px; }
+@include media-breakpoint-up(md) {
+    .plone-toolbar-left-default { padding-left: 60px; }
+    .plone-toolbar-left-expanded { padding-left: 120px; }
+    .plone-toolbar-top-default { margin-top: 60px; }
+    .plone-toolbar-top-expanded { margin-top: 60px; }
+    .plone-toolbar-compressed { margin-top: 0px; margin-left: 0px; }
+}
+

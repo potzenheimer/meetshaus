@@ -125,7 +125,9 @@
 .app-nav__item {
   width: 100%;
   padding-right: .25rem;
+  text-align: center;
   @include media-breakpoint-up(md) {
+    text-align: left;
     &:last-child {
       padding-right: 0;
     }

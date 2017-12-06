@@ -13,6 +13,7 @@ const browserSync = bsCreate();
 var runSequence = require('run-sequence');
 
 var cp = require('child_process');
+var es = require('event-stream');
 var pkg = require('./package.json');
 var cfg = require('./config.json');
 var fs = require('fs');
@@ -44,194 +45,6 @@ var sourcesJS = {
 };
 
 var isProduction = args.env === 'dist';
-
-/**
- * Build the Jekyll Site
- */
-gulp.task('jekyll-build', function (done) {
-    browserSync.notify(messages.jekyllBuild);
-    return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
-        .on('close', done);
-});
-
-gulp.task('browser-sync', function () {
-    browserSync.init({
-        notify: false,
-        port: 9499,
-        server: {
-            baseDir: ['.tmp', cfg.paths.dist],
-            routes: {
-                '/scripts': cfg.paths.dist + 'scripts',
-                '/styles': cfg.paths.dist + 'styles',
-                '/assets': cfg.paths.dist + 'assets',
-            }
-        }
-    });
-});
-
-gulp.task('bs-reload', function () {
-    browserSync.reload();
-});
-
-gulp.task('styles', () => {
-    return gulp.src(cfg.paths.app + 'sass/main.scss')
-        .pipe($.plumber())
-        .pipe($.sourcemaps.init())
-        .pipe($.sass.sync({
-            outputStyle: 'expanded',
-            precision: 10,
-            includePaths: [cfg.paths.src]
-        }).on('error', $.sass.logError))
-        .pipe($.autoprefixer({browsers: ['last 1 version']}))
-        //.pipe($.csscomb())
-        .pipe(gulp.dest(cfg.paths.dist + 'styles/'))
-        .pipe($.cssnano())
-        .pipe($.rename({
-            basename: pkg.name,
-            suffix: '.min'
-        }))
-        .pipe($.sourcemaps.write())
-        .pipe(gulp.dest(cfg.paths.dist + 'styles/'))
-        .pipe(browserSync.reload({stream: true}))
-});
-
-gulp.task('scripts', () => {
-    return gulp.src(isProduction ? sourcesJS.all : sourcesJS.base)
-        .pipe($.plumber({
-            errorHandler: function (error) {
-                console.log(error.message);
-                this.emit('end');
-            }
-        }))
-        // .pipe($.jshint())
-        // .pipe($.jshint.reporter('default'))
-        .pipe($.concat(pkg.name + '.js'))
-        .pipe(gulp.dest(cfg.paths.dist + 'scripts/'))
-        .pipe($.rename({suffix: '.min'}))
-        .pipe($.uglify())
-        .pipe(gulp.dest(cfg.paths.dist + 'scripts/'))
-        .pipe(browserSync.reload({stream: true}));
-})
-;
-
-gulp.task('images', () => {
-    return gulp.src(cfg.paths.app + 'assets/img/**/*')
-        .pipe($.if($.if.isFile, $.cache($.imagemin({
-            progressive: true,
-            interlaced: true,
-            // don't remove IDs from SVGs, they are often used
-            // as hooks for embedding and styling
-            svgoPlugins: [{cleanupIDs: false}]
-        }))
-            .on('error', function (err) {
-                console.log(err);
-                this.end();
-            })))
-        .pipe(gulp.dest(cfg.paths.dist + 'assets/img'));
-})
-;
-
-gulp.task('fonts', () => {
-    return gulp.src(cfg.paths.app + 'assets/fonts/**/*')
-        .pipe(gulp.dest('.tmp/fonts'))
-        .pipe(gulp.dest(cfg.paths.dist + 'assets/fonts'));
-})
-;
-
-gulp.task('html', ['replace'], () => {
-    return gulp.src(cfg.paths.dev + '{,*/}*.html')
-        .pipe($.minifyHtml())
-        .pipe(gulp.dest(cfg.paths.dist));
-})
-;
-
-gulp.task('cb', () => {
-    return gulp.src(cfg.paths.dist + 'styles/*.min.css')
-        .pipe($.rev())
-        .pipe(gulp.dest(cfg.paths.dist + 'styles'))
-        .pipe($.rev.manifest())
-        .pipe(revDel({dest: cfg.paths.dist + 'styles'}))
-        .pipe(gulp.dest(cfg.paths.dist + 'styles'))
-}
-)
-;
-
-gulp.task('revreplace', () => {
-    var manifest = gulp.src(cfg.paths.dist + '/styles/rev-manifest.json');
-return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-    .pipe($.revReplace({manifest: manifest}))
-    .pipe(gulp.dest(cfg.paths.dev));
-})
-;
-
-gulp.task('replace', () => {
-    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-        .pipe($.replaceTask({
-            patterns: cfg.replacementPatterns.server,
-            usePrefix: false,
-            preserveOrder: true
-        }))
-        .pipe(gulp.dest(cfg.paths.dev))
-});
-
-
-gulp.task('replace-pat', () => {
-    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-        .pipe($.replaceTask({
-            patterns: cfg.replacementPatterns.pat,
-            usePrefix: false,
-            preserveOrder: true
-        }))
-        .pipe(gulp.dest(cfg.paths.dev))
-});
-
-
-gulp.task('clean', del.bind(null, ['.tmp', cfg.paths.dist]));
-
-gulp.task('serve', ['styles', 'scripts', 'jekyll-build', 'replace', 'html'], () => {
-    browserSync.init({
-    notify: false,
-    port: 9499,
-    server: {
-        baseDir: ['.tmp', cfg.paths.dist],
-        routes: {
-            '/scripts': cfg.paths.dist + '/scripts',
-            '/styles': cfg.paths.dist + '/styles',
-            '/assets': cfg.paths.dist + '/assets',
-        }
-    }
-});
-
-gulp.watch([
-    cfg.paths.app + '/*.html',
-    cfg.paths.app + '/scripts/*.js',
-    cfg.paths.app + '/styles/*.css',
-]).on('change', browserSync.reload);
-
-gulp.watch(cfg.paths.app + "sass/**/*.scss", ['styles']);
-gulp.watch(cfg.paths.app + "scripts/**/*.js", ['scripts']);
-gulp.watch(cfg.paths.app + "{,*/}*.html", ['jekyll-build', 'html']);
-});
-
-gulp.task('default', ['browser-sync'], function () {
-    gulp.watch(cfg.paths.app + "sass/**/*.scss", ['styles']);
-    gulp.watch(cfg.paths.app + "scripts/**/*.js", ['scripts']);
-    gulp.watch(cfg.paths.app + "*.html", ['bs-reload']);
-});
-
-gulp.task('watch', function () {
-    gulp.watch(cfg.paths.app + "sass/**/*.scss", ['styles']);
-});
-
-gulp.task('build-dev', function(done) {
-    runSequence(
-        'clean',
-        ['fonts', 'images'],
-        ['jekyll-build', 'styles', 'scripts'],
-        'replace-pat',
-        'html',
-        done);
-});
 
 
 // Generate the icons. This task takes a few seconds to complete.
@@ -328,3 +141,278 @@ gulp.task('check-for-favicon-update', function(done) {
         }
     });
 });
+
+
+/**
+ * Build the Jekyll Site
+ */
+gulp.task('jekyll-build', function (done) {
+    browserSync.notify(messages.jekyllBuild);
+    return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
+        .on('close', done);
+});
+
+gulp.task('browser-sync', function () {
+    browserSync.init({
+        notify: false,
+        port: 9499,
+        server: {
+            baseDir: ['.tmp', cfg.paths.dist],
+            routes: {
+                '/scripts': cfg.paths.dist + 'scripts',
+                '/styles': cfg.paths.dist + 'styles',
+                '/assets': cfg.paths.dist + 'assets',
+            }
+        }
+    });
+});
+
+gulp.task('bs-reload', function () {
+    browserSync.reload();
+});
+
+gulp.task('styles', () => {
+    return gulp.src(cfg.paths.app + 'sass/main.scss')
+        .pipe($.plumber())
+        .pipe($.sourcemaps.init())
+        .pipe($.sass.sync({
+            outputStyle: 'expanded',
+            precision: 10,
+            includePaths: [cfg.paths.src]
+        }).on('error', $.sass.logError))
+        .pipe($.autoprefixer({browsers: ['last 1 version']}))
+        //.pipe($.csscomb())
+        .pipe(gulp.dest(cfg.paths.dist + 'styles/'))
+        .pipe($.cssnano())
+        .pipe($.rename({
+            basename: pkg.name,
+            suffix: '.min'
+        }))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest(cfg.paths.dist + 'styles/'))
+        .pipe(browserSync.reload({stream: true}))
+});
+
+gulp.task('scripts', () => {
+    return gulp.src(isProduction ? sourcesJS.all : sourcesJS.base)
+        .pipe($.plumber({
+            errorHandler: function (error) {
+                console.log(error.message);
+                this.emit('end');
+            }
+        }))
+        // .pipe($.jshint())
+        // .pipe($.jshint.reporter('default'))
+        .pipe($.concat(pkg.name + '.js'))
+        .pipe(gulp.dest(cfg.paths.dist + 'scripts/'))
+        .pipe($.rename({suffix: '.min'}))
+        .pipe($.uglify())
+        .pipe(gulp.dest(cfg.paths.dist + 'scripts/'))
+        .pipe(browserSync.reload({stream: true}));
+})
+;
+
+gulp.task('images', () => {
+    return gulp.src(cfg.paths.app + 'assets/img/**/*')
+        .pipe($.if($.if.isFile, $.cache($.imagemin({
+            progressive: true,
+            interlaced: true,
+            // don't remove IDs from SVGs, they are often used
+            // as hooks for embedding and styling
+            svgoPlugins: [{cleanupIDs: false}]
+        }))
+            .on('error', function (err) {
+                console.log(err);
+                this.end();
+            })))
+        .pipe(gulp.dest(cfg.paths.dist + 'assets/img'));
+})
+;
+
+gulp.task('collect-scripts', () => {
+    var scriptSources = cfg.scripts.base;
+    return es.merge(scriptSources.map(function(obj) {
+        return gulp.src(cfg.paths.src + obj)
+            .pipe($.plumber({
+                errorHandler: function (error) {
+                    console.log(error.message);
+                    this.emit('end');
+                }
+            }))
+            .pipe(gulp.dest(cfg.paths.dist + 'scripts/'))
+    }));
+})
+;
+
+gulp.task('script', () => {
+    return gulp.src(cfg.paths.app + 'scripts/main.js')
+        .pipe($.uglify())
+        .pipe(gulp.dest(cfg.paths.dist + 'scripts/'));
+})
+;
+
+gulp.task('fonts', () => {
+    return gulp.src(cfg.paths.app + 'assets/fonts/**/*')
+        .pipe(gulp.dest('.tmp/fonts'))
+        .pipe(gulp.dest(cfg.paths.dist + 'assets/fonts'));
+})
+;
+
+gulp.task('extras', () => {
+    return gulp.src([
+        'app/*',
+        '!app/*.html'
+    ], {
+        dot: true
+    }).pipe(gulp.dest('dist'));
+});
+
+gulp.task('html', ['replace'], () => {
+    return gulp.src(cfg.paths.dev + '{,*/}*.html')
+        .pipe($.minifyHtml())
+        .pipe(gulp.dest(cfg.paths.dist));
+})
+;
+
+gulp.task('cb', () => {
+    return gulp.src(cfg.paths.dist + 'styles/*.min.css')
+        .pipe($.rev())
+        .pipe(gulp.dest(cfg.paths.dist + 'styles'))
+        .pipe($.rev.manifest())
+        .pipe(revDel({dest: cfg.paths.dist + 'styles'}))
+        .pipe(gulp.dest(cfg.paths.dist + 'styles'))
+}
+)
+;
+
+gulp.task('revreplace', () => {
+    var manifest = gulp.src(cfg.paths.dist + '/styles/rev-manifest.json');
+return gulp.src(cfg.paths.dev + '/{,*/}*.html')
+    .pipe($.revReplace({manifest: manifest}))
+    .pipe(gulp.dest(cfg.paths.dev));
+})
+;
+
+gulp.task('replace', () => {
+    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
+        .pipe($.replaceTask({
+            patterns: cfg.replacementPatterns.server,
+            usePrefix: false,
+            preserveOrder: true
+        }))
+        .pipe(gulp.dest(cfg.paths.dev))
+});
+
+
+gulp.task('replace-pat', () => {
+    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
+        .pipe($.replaceTask({
+            patterns: cfg.replacementPatterns.pat,
+            usePrefix: false,
+            preserveOrder: true
+        }))
+        .pipe(gulp.dest(cfg.paths.dev))
+});
+
+gulp.task('replace-server', () => {
+    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
+        .pipe($.replaceTask({
+            patterns: cfg.replacementPatterns.server,
+            usePrefix: false,
+            preserveOrder: true
+        }))
+        .pipe(gulp.dest(cfg.paths.dev))
+});
+
+
+gulp.task('clean', del.bind(null, ['.tmp', cfg.paths.dist]));
+
+gulp.task('serve', ['styles', 'scripts', 'jekyll-build', 'replace', 'html'], () => {
+    browserSync.init({
+    notify: false,
+    port: 9499,
+    server: {
+        baseDir: ['.tmp', cfg.paths.dist],
+        routes: {
+            '/scripts': cfg.paths.dist + '/scripts',
+            '/styles': cfg.paths.dist + '/styles',
+            '/assets': cfg.paths.dist + '/assets',
+        }
+    }
+});
+
+gulp.watch([
+    cfg.paths.app + '/*.html',
+    cfg.paths.app + '/scripts/*.js',
+    cfg.paths.app + '/styles/*.css',
+]).on('change', browserSync.reload);
+
+gulp.watch(cfg.paths.app + "sass/**/*.scss", ['styles']);
+gulp.watch(cfg.paths.app + "scripts/**/*.js", ['scripts']);
+gulp.watch(cfg.paths.app + "{,*/}*.html", ['jekyll-build', 'html']);
+});
+
+gulp.task('default', ['browser-sync'], function () {
+    gulp.watch(cfg.paths.app + "sass/**/*.scss", ['styles']);
+    gulp.watch(cfg.paths.app + "scripts/**/*.js", ['scripts']);
+    gulp.watch(cfg.paths.app + "*.html", ['bs-reload']);
+});
+
+
+gulp.task('watch-styles', ['styles'], function() {
+    return global.browserSync.reload('*.css');
+});
+
+
+gulp.task('watch', function () {
+    gulp.watch(cfg.paths.app + "sass/**/*.scss", ['watch-styles']);
+});
+
+
+gulp.task('build-init', function(done) {
+    runSequence(
+        'clean',
+        ['fonts', 'images'],
+        done);
+});
+
+
+gulp.task('build-dev', function(done) {
+    runSequence(
+        'clean',
+        ['fonts', 'images'],
+        ['jekyll-build', 'styles', 'scripts'],
+        'replace-pat',
+        'html',
+        done);
+});
+
+gulp.task('build-production', function(done) {
+    runSequence(
+        'clean',
+        ['fonts', 'images'],
+        ['jekyll-build', 'styles', 'scripts'],
+        'replace-server',
+        'html',
+        done);
+});
+
+gulp.task('build-dist', function(done) {
+    runSequence(
+        ['styles', 'scripts'],
+        'replace-server',
+        'html',
+        done);
+});
+
+
+gulp.task('init', ['build-init']);
+
+gulp.task('develop', ['build-dist']);
+
+gulp.task('dist', ['build-dist']);
+
+gulp.task('build', ['build-production']);
+
+gulp.task('default', ['watch']);
+
