@@ -23,9 +23,9 @@ class TaxonomyTool(object):
         end = time.time()
         initial_data.update(dict(_runtime=str(end-start)))
         json_data = json.dumps(initial_data)
-        setattr(item, 'moduleInformation', json_data)
-        modified(item)
-        item.reindexObject(idxs='modified')
+        api.portal.set_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories',
+            self.safe_unicode(json_data))
         return json_data
 
     # @memoize
@@ -208,24 +208,24 @@ class CategoryManagementTool(object):
         """
             Add item to survey session
         """
-        survey = self.get()
-        item = self.update(key, data)
-        if not item:
-            survey[key] = data
-            return survey[key]
+        records = self.get()
+        record = self.update(key, data)
+        if not record:
+            records[key] = data
+            return records[key]
 
     def update(self, key, data):
-        survey = self.get()
-        item_id = key
-        if item_id in survey:
-            survey[item_id] = data
-            return survey[item_id]
+        records = self.get()
+        record_id = key
+        if record_id in records:
+            records[record_id] = data
+            return records[record_id]
         return None
 
     def remove(self, key):
-        survey = self.get()
-        if key in survey:
-            del survey[key]
+        records = self.get()
+        if key in records:
+            del records[key]
             return key
 
     @staticmethod
