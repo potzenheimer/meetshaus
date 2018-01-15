@@ -8,7 +8,7 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.interface import Interface
 
-from hph.lectures import MessageFactory as _
+from meetshaus.blog import MessageFactory as _
 
 
 class ITaxonomyTool(Interface):

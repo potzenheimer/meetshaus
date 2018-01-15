@@ -101,7 +101,8 @@ gulp.task('generate-favicon', function(done) {
                 }
             },
             safariPinnedTab: {
-                pictureAspect: 'silhouette',
+                pictureAspect: 'blackAndWhite',
+                threshold: 52.34375,
                 themeColor: cfg.favicon.safariColor
             }
         },

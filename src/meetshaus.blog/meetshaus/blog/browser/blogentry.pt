@@ -100,6 +100,17 @@
                 </tal:abstract>
             </section>
 
+            <section class="app-page__section app-page__section--figure"
+                 tal:condition="view/has_leadimage">
+                <div class="app-page-leadimage">
+                    <div class="app-page__asset"
+                         tal:define="responsive_image python:context.restrictedTraverse('@@figure')(image_field_name='image', caption_field_name='image_caption', scale='default', lqip=True, lazy_load=True)">
+                        <span tal:replace="structure responsive_image" />
+                    </div>
+                </div>
+            </section>
+
+
             <section class="app-page__section app-page__body" id="content-core">
                 <div class="blog-entry__body">
                     <div tal:replace="structure context/text/output" />
