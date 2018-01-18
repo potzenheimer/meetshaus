@@ -24,5 +24,12 @@
                 factory=".tool.CourseFilterUpdater"
                 provides=".interfaces.ICourseFilterUpdater"/>-->
 
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="update-taxonomy-terms"
+        class=".category.UpdateCategoryStorage"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
 
 </configure>

@@ -14,6 +14,7 @@ from zope.component import getUtility
 from meetshaus.blog.blogpost import IBlogPost
 
 
+
 class CategoryView(BrowserView):
     """ Category list """
 
@@ -104,3 +105,19 @@ class UpdateCategoryStorage(BrowserView):
             safe_unicode(json.dumps(data)))
         next_url = api.portal.get().absolute_url()
         return self.request.response.redirect(next_url)
+
+    def stored_data(self):
+        context = aq_inner(self.context)
+        context_uid = api.content.get_uuid(obj=context)
+        tool = getUtility(ITaxonomyTool)
+        data = tool.read(context_uid)
+        return data
+
+    def records(self):
+        data = self.stored_data()
+        return data['items']
+
+    def has_records(self):
+        if self.records():
+            return True
+        return False
