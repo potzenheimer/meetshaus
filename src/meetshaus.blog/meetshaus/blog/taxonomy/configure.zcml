@@ -25,4 +25,22 @@
         layer="..interfaces.IBlogTool"
     />
 
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="select-taxonomy-terms"
+        class=".category.TaxonomyTermSelection"
+        template="selector.pt"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="manage-taxonomy-terms"
+        class=".category.TaxonomyTermManager"
+        template="manager.pt"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
 </configure>

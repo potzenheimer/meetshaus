@@ -5,15 +5,18 @@ import json
 import time
 import urllib2
 
-from plone import api
+from AccessControl import Unauthorized
+from Acquisition import aq_inner
 from Products.CMFPlone.utils import safe_unicode
 from Products.Five import BrowserView
-from zope.component import getUtility
-
+from plone import api
 from plone.i18n.normalizer.interfaces import IIDNormalizer
+from plone.protect.interfaces import IDisableCSRFProtection
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+from zope.interface import alsoProvides
 
 from meetshaus.blog.blogpost import IBlogPost
-
 from meetshaus.blog.taxonomy.interfaces import ITaxonomyTool
 
 
@@ -30,6 +33,85 @@ class CategoryView(BrowserView):
 
     def render(self):
         return self.index()
+
+
+class TaxonomyTermSelection(BrowserView):
+    """ Select stored keywords to use in frontend and
+        taxonomy manager
+    """
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+        alsoProvides(self.request, IDisableCSRFProtection)
+
+    def __call__(self):
+        return self.render()
+
+    def update(self):
+        unwanted = ('_authenticator', 'form.button.Submit')
+        required = ('email', 'subject')
+        if 'form.button.Submit' in self.request:
+            authenticator = getMultiAdapter((self.context, self.request),
+                                            name=u"authenticator")
+            if not authenticator.verify():
+                raise Unauthorized
+            form = self.request.form
+            self.update_taxonomy(form)
+
+    def render(self):
+        self.update()
+        return self.index()
+
+    def stored_data(self):
+        records = api.portal.get_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
+        return json.loads(records)
+
+    def records(self):
+        data = self.stored_data()
+        return data['items']
+
+    def has_selectable_terms(self):
+        return len(self.records()) > 0
+
+    def update_taxonomy(self, form_data):
+        start = time.time()
+        context = aq_inner(self.context)
+        records = self.records()
+        for record in records:
+            record_id = record['id']
+            if record_id in form_data.keys():
+                record['enabled'] = True
+            else:
+                record['enabled'] = False
+        data = self.stored_data()
+        data['items'] = records
+        end = time.time()
+        data.update(
+            dict(_runtime=str(end-start),
+                 updated=str(datetime.datetime.now())
+            )
+        )
+        api.portal.set_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories',
+            safe_unicode(json.dumps(data)))
+        next_url = '{0}/@@manage-taxonomy-terms'.format(
+            context.absolute_url()
+        )
+        return self.request.response.redirect(next_url)
+
+
+class TaxonomyTermManager(BrowserView):
+    """ Category Management """
+
+    def stored_data(self):
+        records = api.portal.get_registry_record(
+            'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
+        return json.loads(records)
+
+    def records(self):
+        data = self.stored_data()
+        return data['items']
 
 
 class UpdateCategoryStorage(BrowserView):
@@ -66,6 +148,7 @@ class UpdateCategoryStorage(BrowserView):
 
     def _process_request(self):
         api_url = self.request.get('ACTUAL_URL')
+        updated_records = list()
         stored_records = api.portal.get_registry_record(
             'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories'
         )
@@ -75,7 +158,7 @@ class UpdateCategoryStorage(BrowserView):
                 timestamp=str(int(time.time())),
                 updated=str(datetime.datetime.now())
             ))
-            records = data
+            records = data['items']
         else:
             data = {
                 'url': api_url,
@@ -85,16 +168,27 @@ class UpdateCategoryStorage(BrowserView):
             }
             records = list()
 
+        record_ids = [record['id'] for record in records]
+
+
         for kw in self.keywords():
-            info = {
-                'id': self._normalize_keyword(kw),
-                'url': self._build_archive_url(kw),
-                'count': str(self._count_entries(kw)),
-                'title': kw,
-                'description': ''
-            }
-            import pdb; pdb.set_trace()
-            records.append(info)
+            term_id = self._normalize_keyword(kw)
+            if term_id in record_ids:
+                # Update existing record
+                existing_record = next((item for item in records
+                    if item["id"] == term_id))
+                if 'enabled' not in existing_record:
+                    existing_record['enabled'] = True
+            else:
+                info = {
+                    'id': term_id,
+                    'url': self._build_archive_url(kw),
+                    'count': str(self._count_entries(kw)),
+                    'title': kw,
+                    'description': '',
+                    'enabled': True
+                }
+                records.append(info)
         data['items'] = records
         return data
 
