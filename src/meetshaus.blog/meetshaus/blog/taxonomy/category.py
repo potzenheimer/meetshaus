@@ -10,8 +10,11 @@ from Products.CMFPlone.utils import safe_unicode
 from Products.Five import BrowserView
 from zope.component import getUtility
 
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 from meetshaus.blog.blogpost import IBlogPost
+
+from meetshaus.blog.taxonomy.interfaces import ITaxonomyTool
 
 
 
@@ -72,7 +75,7 @@ class UpdateCategoryStorage(BrowserView):
                 timestamp=str(int(time.time())),
                 updated=str(datetime.datetime.now())
             ))
-            records = stored_records
+            records = data
         else:
             data = {
                 'url': api_url,
@@ -90,9 +93,9 @@ class UpdateCategoryStorage(BrowserView):
                 'title': kw,
                 'description': ''
             }
+            import pdb; pdb.set_trace()
             records.append(info)
         data['items'] = records
-        import pdb; pdb.set_trace()
         return data
 
     def render(self):

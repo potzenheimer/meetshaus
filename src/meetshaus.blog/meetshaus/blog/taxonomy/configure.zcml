@@ -5,13 +5,6 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="meetshaus.blog">
 
-    <browser:page
-        for="meetshaus.blog.blog.IBlog"
-        name="collect-blog-categories"
-        class=".category.UpdateCategoryStorage"
-        permission="cmf.ManagePortal"
-        layer="..interfaces.IBlogTool"
-    />
 
     <!-- Tool providing utility functions for asset storage manipulation -->
     <utility
