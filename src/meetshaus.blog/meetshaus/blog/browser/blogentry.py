@@ -41,6 +41,16 @@ class BlogEntryView(BrowserView):
             return True
         return False
 
+    def has_lead_image(self):
+        context = aq_inner(self.context)
+        try:
+            lead_image = context.image
+        except AttributeError:
+            lead_image = None
+        if lead_image is not None:
+            return True
+        return False
+
     def parent_info(self):
         context = aq_inner(self.context)
         parent = aq_parent(context)
