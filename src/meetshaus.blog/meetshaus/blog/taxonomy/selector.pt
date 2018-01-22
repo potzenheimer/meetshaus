@@ -11,14 +11,16 @@
   <metal:content-core define-macro="main">
     <div class="app-blog-content blog-posting">
       <div class="blog-posting-header">
-        <a class="btn btn-primary pull-right" href="${context/absolute_url}/@@migrate-blog-posts">Migrate</a>
         <h1 class="blog-posting-title">Taxonomy Selection</h1>
         <p class="lead blog-posting-lead">
           Select taxonomy terms that should be displayed and used as blog entry
           categories by enabling the desired keywords.
         </p>
+          <p><a class="button button--default pull-right" href="${view/update_terms_action}">Update list from database</a></p>
+
       </div>
       <div class="blog-posting-main">
+          <h2 class="page__title">Available categories <small>${view/records_index}</small></h2>
         <form class="app-form app-form--taxonomy-selection"
                 method="post" role="form"
                 tal:attributes="action request/URL">
@@ -36,14 +38,14 @@
                   </td>
                   <td>${item/count} Blog Entries</td>
                   <td hidden><code>${item}</code></td>
-                  <td><a class="app-button app-button--link" href="${item/url}">Review</a>
+                    <td><a class="button button--link" href="${item/url}">Review</a></td
                 </tr>
               </tal:block>
             </tbody>
           </table>
           <div class="app-form__group app-form__actions">
                   <span tal:replace="structure context/@@authenticator/authenticator"/>
-                  <button class="app-button app-button--primary"
+                  <button class="button button--primary"
                       name="form.button.Submit"
                       id="form.button.Submit"
                       i18n:translate="">Submit</button>

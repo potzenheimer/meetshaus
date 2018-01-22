@@ -68,7 +68,6 @@ class IBlogPost(form.Schema, IImageScaleTraversable):
         fields=['subjects', ]
     )
 
-
     subjects = schema.Tuple(
         title=_(u'Categories'),
         description=_(u'Tags are commonly used for ad-hoc organization of ' +

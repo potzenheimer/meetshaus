@@ -9,10 +9,10 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="blogentry-aside text-center">
-          <div class="h2 text-muted" tal:content="context/Title" />
+    <div class="app-grid">
+      <div class="app-grid__item app-grid__item--w66">
+        <div class="blogentry-aside">
+            <h2 class="blog__title">Manage Taxonomy Terms</h2>
           <div class="h1 text-secondary">
             <span class="fa-stack fa-lg">
               <i class="fa fa-circle fa-stack-2x"></i>
@@ -22,32 +22,40 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-9">
+      <div class="app-grid__item--w33">
         <div class="blogentry-aside">
           <div class="blogentry-abstract blogentry-abstract-standalone">
             Bearbeiten und Verwalten der Blog Kategorien
           </div>
+            <a class="button button--default" href="${context/absolute_url}/@@select-taxonomy-terms">Update available terms</a>
         </div>
       </div>
     </div>
     <tal:records tal:condition="view/stored_data">
       <div class="ws-section" tal:repeat="record view/records">
         <div class="ws-section-row"
-          tal:define="kw_idx repeat/record/index">
+          tal:define="kw_idx repeat/record/index; active record/enabled">
           <div class="ws-section-content">
-            <h3><a href="${context/absolute_url}/@@update-blog-category/${kw_idx}"
+            <h3><a tal:condition="python:active" href="${context/absolute_url}/@@update-blog-category/${kw_idx}"
                   tal:attributes="href string:${context/absolute_url}/@@update-blog-categories/${kw_idx}"
                   tal:content="record/title">
                 ${record/title}</a>
+                <div class="ws-section--inactive" tal:condition="not:active">
+                    ${record/title}
+                        <small class="ws-section__marker">Disabled</small>
+                </div>
+
             </h3>
             <p class="ws-section-desc">
               <span tal:replace="record/count" /> Blogbeiträge
             </p>
           </div>
-          <div class="ws-section-chevron">
+          <div class="ws-section-chevron" tal:condition="python:active">
             <a href="${context/absolute_url}/@@address-editor/${userinfo/rvs}"
               tal:attributes="href string:${context/absolute_url}/@@update-blog-categories/${kw_idx}">
-              <i class="fa fa fa-angle-right fa-4x" aria-hidden="true"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                    <polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>
+                </svg>
             </a>
           </div>
         </div>

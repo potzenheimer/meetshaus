@@ -12,6 +12,7 @@ from Products.Five import BrowserView
 from plone import api
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.protect.interfaces import IDisableCSRFProtection
+from plone.protect.utils import addTokenToUrl
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.interface import alsoProvides
@@ -62,6 +63,15 @@ class TaxonomyTermSelection(BrowserView):
         self.update()
         return self.index()
 
+    def update_terms_action(self):
+        context = aq_inner(self.context)
+        context_url = context.absolute_url()
+        update_url = '{0}/@@update-taxonomy-terms'.format(
+            context_url
+        )
+        url = addTokenToUrl(update_url)
+        return url
+
     def stored_data(self):
         records = api.portal.get_registry_record(
             'meetshaus.blog.interfaces.IBlogToolSettings.blog_categories')
@@ -70,6 +80,9 @@ class TaxonomyTermSelection(BrowserView):
     def records(self):
         data = self.stored_data()
         return data['items']
+
+    def records_index(self):
+        return len(self.records())
 
     def has_selectable_terms(self):
         return len(self.records()) > 0
@@ -169,7 +182,6 @@ class UpdateCategoryStorage(BrowserView):
             records = list()
 
         record_ids = [record['id'] for record in records]
-
 
         for kw in self.keywords():
             term_id = self._normalize_keyword(kw)
