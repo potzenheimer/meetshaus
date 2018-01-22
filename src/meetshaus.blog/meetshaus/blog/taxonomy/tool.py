@@ -6,7 +6,6 @@ import time
 import uuid as uuid_tool
 from Products.CMFPlone.utils import safe_unicode
 from collective.beaker.interfaces import ISession
-from hph.lectures import vocabulary
 from plone import api
 from plone.memoize.view import memoize
 from zope.globalrequest import getRequest
@@ -149,23 +148,6 @@ class TaxonomyTool(object):
         """
         su = safe_unicode(value)
         return su.encode('utf-8')
-
-    @staticmethod
-    def get_degree_course_title(course):
-        course_names = vocabulary.degree_courses_tokens()
-        return course_names[course]
-
-    @staticmethod
-    def get_learning_modules(course, course_module):
-        if course == 'ba':
-            modules = vocabulary.learning_modules_bachelor()
-        else:
-            modules = vocabulary.learning_modules_master()
-        try:
-            module_title = modules[course_module]
-        except KeyError:
-            module_title = course_module
-        return module_title
 
 
 class CategoryManagementTool(object):
