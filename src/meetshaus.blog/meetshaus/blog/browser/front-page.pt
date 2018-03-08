@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <section class="app-page__main blog-entry__main" tal:define="categories item/subject|nothing"
+                                <section class="app-page__main blog-entry__main" tal:define="categories item/subjects|nothing"
                                      tal:condition="categories">
                                     <div class="blog-entry__title--sm">Von</div>
                                     <div class="blog-entry__author">

@@ -12,7 +12,7 @@
         <div class="app-page__content--main" id="content-core">
             <div class="app-editor-link text-right" tal:condition="view/authenticated">
                 <a class="button button--primary" href=""
-                     tal:attributes="href string:${context/absolute_url}/@@manage-blog-categories">
+                     tal:attributes="href string:${context/absolute_url}/@@categories-manager">
                     Manage categories
                 </a>
             </div>

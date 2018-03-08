@@ -34,7 +34,7 @@
     <tal:records tal:condition="view/stored_data">
       <div class="ws-section" tal:repeat="record view/records">
         <div class="ws-section-row"
-          tal:define="kw_idx repeat/record/index; active record/enabled">
+          tal:define="kw_idx repeat/record/index; active record/enabled | False">
           <div class="ws-section-content">
             <h3><a tal:condition="python:active" href="${context/absolute_url}/@@update-blog-category/${kw_idx}"
                   tal:attributes="href string:${context/absolute_url}/@@update-blog-categories/${kw_idx}"

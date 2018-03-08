@@ -5,7 +5,18 @@ import {create as bsCreate} from 'browser-sync';
 import del from 'del';
 import revDel from 'rev-del';
 import args from 'yargs';
-import {stream as wiredep} from 'wiredep';
+import hub from 'gulp-hub';
+
+hub([
+    './tasks/clean.js',
+    './tasks/favicon.js',
+    './tasks/jekyll.js',
+    './tasks/collect.js',
+    './tasks/replace.js',
+    './tasks/inject.js',
+    './tasks/styles.js',
+    './tasks/scripts.js'
+]);
 
 const $ = gulpLoadPlugins();
 const browserSync = bsCreate();
@@ -18,140 +29,6 @@ var pkg = require('./package.json');
 var cfg = require('./config.json');
 var fs = require('fs');
 
-// File where the favicon markups are stored
-var FAVICON_DATA_FILE = cfg.favicon.dataFile;
-
-var messages = {
-    jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
-};
-
-var sourcesJS = {
-    base: [
-        cfg.paths.src + 'bootstrap-without-jquery/bootstrap3/bootstrap-without-jquery.js',
-        cfg.paths.src + 'lazysizes/lazysizes.js',
-        cfg.paths.src + 'flickity/dist/flickity.pkgd.js'
-    ],
-    all: [
-        cfg.paths.src + 'jquery/dist/jquery.js',
-        cfg.paths.src + 'modernizr/modernizr.js',
-        cfg.paths.src + 'bootstrap-without-jquery/bootstrap3/bootstrap-without-jquery.js',
-        cfg.paths.src + 'mailcheck/src/mailcheck.js',
-        cfg.paths.src + 'JVFloat/jvfloat.js',
-        cfg.paths.src + 'hideShowPassword/hideShowPassword.js',
-        cfg.paths.src + 'lazysizes/lazysizes.js',
-        cfg.paths.src + 'flickity/dist/flickity.pkgd.js'
-
-    ]
-};
-
-var isProduction = args.env === 'dist';
-
-
-// Generate the icons. This task takes a few seconds to complete.
-// You should run it at least once to create the icons. Then,
-// you should run it whenever RealFaviconGenerator updates its
-// package (see the check-for-favicon-update task below).
-gulp.task('generate-favicon', function(done) {
-    $.realFavicon.generateFavicon({
-        masterPicture: cfg.paths.app + cfg.favicon.iconPath + cfg.favicon.masterPicture,
-        dest: cfg.paths.dist + cfg.favicon.iconPath,
-        iconsPath: '/',
-        design: {
-            ios: {
-                pictureAspect: 'backgroundAndMargin',
-                backgroundColor: cfg.favicon.ios,
-                margin: '14%',
-                assets: {
-                    ios6AndPriorIcons: false,
-                    ios7AndLaterIcons: false,
-                    precomposedIcons: false,
-                    declareOnlyDefaultIcon: true
-                }
-            },
-            desktopBrowser: {},
-            windows: {
-                pictureAspect: 'noChange',
-                backgroundColor: cfg.favicon.windows,
-                onConflict: 'override',
-                assets: {
-                    windows80Ie10Tile: false,
-                    windows10Ie11EdgeTiles: {
-                        small: false,
-                        medium: true,
-                        big: false,
-                        rectangle: false
-                    }
-                }
-            },
-            androidChrome: {
-                pictureAspect: 'backgroundAndMargin',
-                margin: '17%',
-                backgroundColor: cfg.favicon.androidBackground,
-                themeColor: cfg.favicon.androidColor,
-                manifest: {
-                    name: pkg.name,
-                    display: 'standalone',
-                    orientation: 'notSet',
-                    onConflict: 'override',
-                    declared: true
-                },
-                assets: {
-                    legacyIcon: false,
-                    lowResolutionIcons: false
-                }
-            },
-            safariPinnedTab: {
-                pictureAspect: 'blackAndWhite',
-                threshold: 52.34375,
-                themeColor: cfg.favicon.safariColor
-            }
-        },
-        settings: {
-            compression: 3,
-            scalingAlgorithm: 'Mitchell',
-            errorOnImageTooSmall: false
-        },
-        versioning: {
-            paramName: 'v',
-            paramValue: cfg.favicon.revisionKey
-        },
-        markupFile: FAVICON_DATA_FILE
-    }, function() {
-        done();
-    });
-});
-
-// Inject the favicon markups in your HTML pages. You should run
-// this task whenever you modify a page. You can keep this task
-// as is or refactor your existing HTML pipeline.
-gulp.task('inject-favicon-markups', function() {
-    gulp.src([ cfg.paths.app + cfg.favicon.html ])
-        .pipe($.realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(cfg.favicon.dataFile)).favicon.html_code))
-        .pipe(gulp.dest(cfg.paths.app + cfg.favicon.htmlDist));
-});
-
-// Check for updates on RealFaviconGenerator (think: Apple has just
-// released a new Touch icon along with the latest version of iOS).
-// Run this task from time to time. Ideally, make it part of your
-// continuous integration system.
-gulp.task('check-for-favicon-update', function(done) {
-    var currentVersion = JSON.parse(fs.readFileSync(cfg.favicon.dataFile)).version;
-    $.realFavicon.checkForUpdates(currentVersion, function(err) {
-        if (err) {
-            throw err;
-        }
-    });
-});
-
-
-/**
- * Build the Jekyll Site
- */
-gulp.task('jekyll-build', function (done) {
-    browserSync.notify(messages.jekyllBuild);
-    return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
-        .on('close', done);
-});
 
 gulp.task('browser-sync', function () {
     browserSync.init({
@@ -172,119 +49,14 @@ gulp.task('bs-reload', function () {
     browserSync.reload();
 });
 
-gulp.task('styles', () => {
-    return gulp.src(cfg.paths.app + 'sass/main.scss')
-        .pipe($.plumber())
-        .pipe($.sourcemaps.init())
-        .pipe($.sass.sync({
-            outputStyle: 'expanded',
-            precision: 10,
-            includePaths: [cfg.paths.src]
-        }).on('error', $.sass.logError))
-        .pipe($.autoprefixer({browsers: ['last 1 version']}))
-        //.pipe($.csscomb())
-        .pipe(gulp.dest(cfg.paths.dist + 'styles/'))
-        .pipe($.cssnano())
-        .pipe($.rename({
-            basename: pkg.name,
-            suffix: '.min'
-        }))
-        .pipe($.sourcemaps.write())
-        .pipe(gulp.dest(cfg.paths.dist + 'styles/'))
-        .pipe(browserSync.reload({stream: true}))
-});
-
-gulp.task('scripts', () => {
-    return gulp.src(isProduction ? sourcesJS.all : sourcesJS.base)
-        .pipe($.plumber({
-            errorHandler: function (error) {
-                console.log(error.message);
-                this.emit('end');
-            }
-        }))
-        // .pipe($.jshint())
-        // .pipe($.jshint.reporter('default'))
-        .pipe($.concat(pkg.name + '.js'))
-        .pipe(gulp.dest(cfg.paths.dist + 'scripts/'))
-        .pipe($.rename({suffix: '.min'}))
-        .pipe($.uglify())
-        .pipe(gulp.dest(cfg.paths.dist + 'scripts/'))
-        .pipe(browserSync.reload({stream: true}));
-})
-;
-
-gulp.task('images', () => {
-    return gulp.src(cfg.paths.app + 'assets/img/**/*')
-        .pipe($.if($.if.isFile, $.cache($.imagemin({
-            progressive: true,
-            interlaced: true,
-            // don't remove IDs from SVGs, they are often used
-            // as hooks for embedding and styling
-            svgoPlugins: [{cleanupIDs: false}]
-        }))
-            .on('error', function (err) {
-                console.log(err);
-                this.end();
-            })))
-        .pipe(gulp.dest(cfg.paths.dist + 'assets/img'));
-})
-;
-
-gulp.task('collect-scripts', () => {
-    var scriptSources = cfg.scripts.base;
-    return es.merge(scriptSources.map(function(obj) {
-        return gulp.src(cfg.paths.src + obj)
-            .pipe($.plumber({
-                errorHandler: function (error) {
-                    console.log(error.message);
-                    this.emit('end');
-                }
-            }))
-            .pipe(gulp.dest(cfg.paths.dist + 'scripts/'))
-    }));
-})
-;
-
-gulp.task('script', () => {
-    return gulp.src(cfg.paths.app + 'scripts/main.js')
-        .pipe($.uglify())
-        .pipe(gulp.dest(cfg.paths.dist + 'scripts/'));
-})
-;
-
-gulp.task('fonts', () => {
-    return gulp.src(cfg.paths.app + 'assets/fonts/**/*')
-        .pipe(gulp.dest('.tmp/fonts'))
-        .pipe(gulp.dest(cfg.paths.dist + 'assets/fonts'));
-})
-;
-
 gulp.task('extras', () => {
-    return gulp.src([
-        'app/*',
-        '!app/*.html'
-    ], {
-        dot: true
-    }).pipe(gulp.dest('dist'));
+  return gulp.src([
+    'app/*',
+    '!app/*.html'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist'));
 });
-
-gulp.task('html', ['replace'], () => {
-    return gulp.src(cfg.paths.dev + '{,*/}*.html')
-        .pipe($.minifyHtml())
-        .pipe(gulp.dest(cfg.paths.dist));
-})
-;
-
-gulp.task('cb', () => {
-    return gulp.src(cfg.paths.dist + 'styles/*.min.css')
-        .pipe($.rev())
-        .pipe(gulp.dest(cfg.paths.dist + 'styles'))
-        .pipe($.rev.manifest())
-        .pipe(revDel({dest: cfg.paths.dist + 'styles'}))
-        .pipe(gulp.dest(cfg.paths.dist + 'styles'))
-}
-)
-;
 
 gulp.task('revreplace', () => {
     var manifest = gulp.src(cfg.paths.dist + '/styles/rev-manifest.json');
@@ -294,41 +66,8 @@ return gulp.src(cfg.paths.dev + '/{,*/}*.html')
 })
 ;
 
-gulp.task('replace', () => {
-    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-        .pipe($.replaceTask({
-            patterns: cfg.replacementPatterns.server,
-            usePrefix: false,
-            preserveOrder: true
-        }))
-        .pipe(gulp.dest(cfg.paths.dev))
-});
 
-
-gulp.task('replace-pat', () => {
-    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-        .pipe($.replaceTask({
-            patterns: cfg.replacementPatterns.pat,
-            usePrefix: false,
-            preserveOrder: true
-        }))
-        .pipe(gulp.dest(cfg.paths.dev))
-});
-
-gulp.task('replace-server', () => {
-    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-        .pipe($.replaceTask({
-            patterns: cfg.replacementPatterns.server,
-            usePrefix: false,
-            preserveOrder: true
-        }))
-        .pipe(gulp.dest(cfg.paths.dev))
-});
-
-
-gulp.task('clean', del.bind(null, ['.tmp', cfg.paths.dist]));
-
-gulp.task('serve', ['styles', 'scripts', 'jekyll-build', 'replace', 'html'], () => {
+gulp.task('serve', ['styles', 'scripts', 'jekyll:build', 'replace', 'html'], () => {
     browserSync.init({
     notify: false,
     port: 9499,
@@ -350,7 +89,7 @@ gulp.watch([
 
 gulp.watch(cfg.paths.app + "sass/**/*.scss", ['styles']);
 gulp.watch(cfg.paths.app + "scripts/**/*.js", ['scripts']);
-gulp.watch(cfg.paths.app + "{,*/}*.html", ['jekyll-build', 'html']);
+gulp.watch(cfg.paths.app + "{,*/}*.html", ['jekyll:build', 'html']);
 });
 
 gulp.task('default', ['browser-sync'], function () {
@@ -361,7 +100,7 @@ gulp.task('default', ['browser-sync'], function () {
 
 
 gulp.task('watch-styles', ['styles'], function() {
-    return global.browserSync.reload('*.css');
+  return global.browserSync.reload('*.css');
 });
 
 
@@ -370,10 +109,10 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('build-init', function(done) {
+gulp.task('build:init', function(done) {
     runSequence(
-        'clean',
-        ['fonts', 'images'],
+        'clean:dist',
+        ['collect:fonts', 'collect:images'],
         done);
 });
 
@@ -382,7 +121,7 @@ gulp.task('build-dev', function(done) {
     runSequence(
         'clean',
         ['fonts', 'images'],
-        ['jekyll-build', 'styles', 'scripts'],
+        ['jekyll:build', 'styles', 'scripts'],
         'replace-pat',
         'html',
         done);
@@ -392,7 +131,7 @@ gulp.task('build-production', function(done) {
     runSequence(
         'clean',
         ['fonts', 'images'],
-        ['jekyll-build', 'styles', 'scripts'],
+        ['jekyll:build', 'styles', 'scripts'],
         'replace-server',
         'html',
         done);

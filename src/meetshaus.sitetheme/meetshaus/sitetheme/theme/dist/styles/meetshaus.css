@@ -20831,6 +20831,11 @@ h6
     font-family: 'AurulentSansRegular';
 }
 
+pre
+{
+    white-space: pre-wrap;
+}
+
 .hidden,
 .hiddenStructure
 {
@@ -21178,7 +21183,11 @@ h6
     text-align: right;
 }
 
-@media (min-width: 768px)
+.app-navbar
+{
+    padding-top: 0;
+}
+@media (min-width: 1200px)
 {
     .app-navbar
     {
@@ -21346,6 +21355,14 @@ h6
     text-align: center;
 }
 @media (min-width: 768px)
+{
+    .app-navitem,
+    .app-nav__item
+    {
+        text-align: right;
+    }
+}
+@media (min-width: 1200px)
 {
     .app-navitem,
     .app-nav__item
@@ -22013,7 +22030,7 @@ fonts--loaded .form__field--checkbox > .option > label
 .plone-toolbar-subnav a:hover
 {
     color: #d9d9d9;
-    background: rgba(26, 25, 25, .9);
+    background: rgba(26, 26, 26, .9);
 }
 .plone-toolbar-subnav li:last-child
 {
@@ -22055,7 +22072,7 @@ fonts--loaded .form__field--checkbox > .option > label
 
     content: '•';
 
-    color: rgba(77, 76, 76, .9);
+    color: rgba(77, 77, 77, .9);
 }
 .plone-toolbar-subnav li:not(.plone-toolbar-submenu-header) > a:hover:before
 {
