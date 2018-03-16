@@ -23726,6 +23726,26 @@ fieldset[disabled] a.button
     margin: 2rem auto;
 }
 
+.app-page__asset
+{
+    margin-right: auto; 
+    margin-left: auto;
+}
+@media (min-width: 768px)
+{
+    .app-page__asset
+    {
+        width: 75%;
+    }
+}
+@media (min-width: 992px)
+{
+    .app-page__asset
+    {
+        width: 66.6666%;
+    }
+}
+
 .embed-responsive
 {
     margin-bottom: 1rem;

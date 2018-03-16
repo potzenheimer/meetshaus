@@ -9,13 +9,16 @@ var cfg = require('./../config.json');
 // Dev task for injecting the CSS into the HTML
 gulp.task('inject:head:dev', () =>
     // Change the include file instead of all the HTML files
-    gulp.src(cfg.paths.base + cfg.paths.dev + '**/*.html')
+    gulp.src(cfg.paths.base + cfg.paths.app + '**/*.html')
     // Look for any CSS files in the 'stylesheets' directory
     // Don't read the files for performance and ignore the base directory
-    .pipe($.inject(gulp.src(cfg.paths.base + cfg.paths.dist + 'styles/**/*.css',
-        {read: false}), {relative: true}, {ignorePath: '../' + cfg.paths.dist}))
+    .pipe($.inject(gulp.src(cfg.paths.base + cfg.paths.dist + 'styles/' + pkg.name + '.css',
+        {read: false}),
+        {relative: true},
+        {ignorePath: '../' + cfg.paths.dist}
+        ))
     // Output the file back into it's directory
-    .pipe(gulp.dest(cfg.paths.base + cfg.paths.dev))
+    .pipe(gulp.dest(cfg.paths.base + cfg.paths.app))
 );
 
 
@@ -26,7 +29,7 @@ gulp.task('inject:head:dist', () =>
 gulp.src(cfg.paths.base + cfg.paths.dev + '**/*.html')
 // Look for any CSS files in the 'stylesheets' directory
 // Don't read the files for performance and ignore the base directory
-    .pipe($.inject(gulp.src(cfg.paths.base + cfg.paths.dist + 'styles/**/*.css',
+    .pipe($.inject(gulp.src(cfg.paths.base + cfg.paths.dist + 'styles/' + pkg.name + '.css',
         {read: false}),
         {relative: false},
         {removeTags: true},

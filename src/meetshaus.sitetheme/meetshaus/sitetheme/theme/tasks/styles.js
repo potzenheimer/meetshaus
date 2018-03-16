@@ -11,7 +11,7 @@ var cfg = require('./../config.json');
 var pkg = require('./../package.json');
 
 // Styles build task
-gulp.task('styles', () => {
+gulp.task('styles:dist', () => {
     return gulp.src(cfg.paths.base + cfg.paths.app + 'sass/main.scss')
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
@@ -20,7 +20,7 @@ gulp.task('styles', () => {
             precision: 10,
             includePaths: [cfg.paths.base + cfg.paths.src]
         }).on('error', $.sass.logError))
-        .pipe($.autoprefixer({browsers: ['last 1 version']}))
+        .pipe($.autoprefixer({browsers: ['last 4 version']}))
         //.pipe($.csscomb())
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
         .pipe($.cssnano())
@@ -28,6 +28,23 @@ gulp.task('styles', () => {
             basename: pkg.name,
             suffix: '.min'
         }))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
+        .pipe(browserSync.reload({stream: true}))
+});
+
+gulp.task('styles:dev', () => {
+    return gulp.src(cfg.paths.base + cfg.paths.app + 'sass/main.scss')
+        .pipe($.plumber())
+        .pipe($.sourcemaps.init())
+        .pipe($.sass.sync({
+            outputStyle: 'expanded',
+            precision: 10,
+            includePaths: [cfg.paths.base + cfg.paths.src]
+        }).on('error', $.sass.logError))
+        .pipe($.autoprefixer({browsers: ['last 4 version']}))
+        //.pipe($.csscomb())
+        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
         .pipe(browserSync.reload({stream: true}))

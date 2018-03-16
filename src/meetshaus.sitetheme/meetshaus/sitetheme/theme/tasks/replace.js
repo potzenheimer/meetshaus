@@ -25,3 +25,20 @@ gulp.task('replace:pat', () => {
         }))
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dev))
 });
+
+// Asset revision replacements
+gulp.task('replace:revision:styles', () => {
+    var manifest = gulp.src(cfg.paths.dist + '/styles/rev-manifest.json');
+return gulp.src(cfg.paths.dev + '/{,*/}*.html')
+    .pipe($.revReplace({manifest: manifest}))
+    .pipe(gulp.dest(cfg.paths.dev));
+})
+;
+
+gulp.task('replace:revision:scripts', () => {
+    var manifest = gulp.src(cfg.paths.dist + '/scripts/rev-manifest.json');
+return gulp.src(cfg.paths.dev + '/{,*/}*.html')
+    .pipe($.revReplace({manifest: manifest}))
+    .pipe(gulp.dest(cfg.paths.dev));
+})
+;

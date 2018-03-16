@@ -6,9 +6,24 @@ var es = require('event-stream');
 var cfg = require('./../config.json');
 
 var scriptSources = cfg.scripts.src;
+var scriptSourcesApp = cfg.scripts.app;
 
-gulp.task('collect:scripts', () => {
+gulp.task('collect:scripts:vendor', () => {
     return es.merge(scriptSources.map(function(obj) {
+        return gulp.src(cfg.paths.base + cfg.paths.src + obj)
+            .pipe($.plumber({
+                errorHandler: function (error) {
+                    console.log(error.message);
+                    this.emit('end');
+                }
+            }))
+            .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'scripts/'))
+    }));
+})
+;
+
+gulp.task('collect:scripts:app', () => {
+    return es.merge(scriptSourcesApp.map(function(obj) {
         return gulp.src(cfg.paths.base + cfg.paths.src + obj)
             .pipe($.plumber({
                 errorHandler: function (error) {

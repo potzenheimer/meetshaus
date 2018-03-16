@@ -107,6 +107,17 @@
     max-width: 100%;
 }
 
+.app-page__asset {
+    margin-left: auto;
+    margin-right: auto;
+    @include media-breakpoint-up(md) {
+        width: 75%;
+    }
+    @include media-breakpoint-up(lg) {
+        width: 66.6666%;
+    }
+}
+
 // DEPRECATED
 // Should be replaced with the more generic
 // .app-page-embed class

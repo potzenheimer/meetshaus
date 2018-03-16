@@ -16,16 +16,13 @@ html {
 // Adjust font weight for initialized webfonts
 body {
     background-color: $color-geyser;
-    .wf-active & {
-        font-weight: 300;
-    }
 }
 
 // Set font weights if webfont is active
-.wf-active {
+.app-fonts--loaded {
     b,
     strong {
-        font-family: $app-font-family-strong;
+        font-family: $app-font-family-base;
     }
 }
 
@@ -33,9 +30,6 @@ body {
 b,
 strong {
     font-weight: 700;
-    .wf-active & {
-        font-weight: 500;
-    }
 }
 
 // Transition link color on :hover state

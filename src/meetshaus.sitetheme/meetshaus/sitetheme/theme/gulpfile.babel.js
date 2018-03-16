@@ -58,13 +58,7 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
-gulp.task('revreplace', () => {
-    var manifest = gulp.src(cfg.paths.dist + '/styles/rev-manifest.json');
-return gulp.src(cfg.paths.dev + '/{,*/}*.html')
-    .pipe($.revReplace({manifest: manifest}))
-    .pipe(gulp.dest(cfg.paths.dev));
-})
-;
+
 
 
 gulp.task('serve', ['styles', 'scripts', 'jekyll:build', 'replace', 'html'], () => {
@@ -117,42 +111,62 @@ gulp.task('build:init', function(done) {
 });
 
 
-gulp.task('build-dev', function(done) {
+gulp.task('build:dev', function(done) {
     runSequence(
-        'clean',
-        ['fonts', 'images'],
+        'clean:dev',
+        ['collect:fonts', 'collect:images'],
+        ['styles:dev', 'scripts'],
+        'inject:head:dev',
+        'jekyll:build',
+        'collect:html',
+        done);
+});
+
+gulp.task('build:diazo', function(done) {
+    runSequence(
+        'clean:dev',
+        ['collect:fonts', 'collect:images'],
         ['jekyll:build', 'styles', 'scripts'],
-        'replace-pat',
-        'html',
+        'replace:pat',
+        'collect:html',
         done);
 });
 
-gulp.task('build-production', function(done) {
+gulp.task('build:production', function(done) {
     runSequence(
-        'clean',
+        'build:init',
         ['fonts', 'images'],
-        ['jekyll:build', 'styles', 'scripts'],
-        'replace-server',
-        'html',
+        ['styles:dev', 'scripts'],
+        'inject:head:dist',
+        'jekyll:build',
+        'collect:html',
         done);
 });
 
-gulp.task('build-dist', function(done) {
+gulp.task('build:dist:full', function(done) {
     runSequence(
-        ['styles', 'scripts'],
-        'replace-server',
-        'html',
+        ['styles:dist', 'scripts'],
+        'inject:head:dist',
+        'jekyll:build',
+        'collect:html',
         done);
 });
 
+gulp.task('build:dist:base', function(done) {
+    runSequence(
+        ['styles:dist', 'scripts'],
+        'cb:styles',
+        done);
+});
 
-gulp.task('init', ['build-init']);
+// Top level tasks
+gulp.task('init', ['build:init']);
 
-gulp.task('develop', ['build-dist']);
+gulp.task('develop', ['build:dev']);
 
-gulp.task('dist', ['build-dist']);
+gulp.task('dist', ['build:dist:base']);
 
-gulp.task('build', ['build-production']);
+gulp.task('build', ['build:production']);
 
 gulp.task('default', ['watch']);
 

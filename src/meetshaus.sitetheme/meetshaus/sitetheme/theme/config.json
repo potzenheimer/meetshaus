@@ -2,6 +2,7 @@
     "name": "meetshaus",
     "paths": {
         "app": "app/",
+        "base": "../",
         "dev": "_site/",
         "dist": "dist/",
         "diazoPrefix": "/++theme++meetshaus.sitetheme/",
@@ -28,10 +29,14 @@
             "hideShowPassword/hideShowPassword.js",
             "lazysizes/lazysizes-umd.js",
             "lazysizes/plugins/parent-fit/ls.parent-fit.js",
-            "mailcheck/src/mailcheck.js",
             "requirejs/requires.js",
             "respimage/respimage.js"
 
+        ],
+        "app": [
+            "scripts/a25.js",
+            "scripts/a25.helpers.js",
+            "scripts/main.js"
         ],
         "base": [
             "jquery/dist/jquery.js",
