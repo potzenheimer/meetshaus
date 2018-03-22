@@ -17,7 +17,7 @@ gulp.task('revision:styles', () => {
 )
 ;
 
-gulp.task('revision:scripts, () => {
+gulp.task('revision:scripts', () => {
     return gulp.src(cfg.paths.base + cfg.paths.dist + 'scripts/' + pkg.name + 'min.js')
         .pipe($.rev())
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'scripts'))

@@ -55,7 +55,6 @@ gulp.task('collect:images', () => {
 
 gulp.task('collect:fonts', () => {
     return gulp.src(cfg.paths.base + cfg.paths.app + 'assets/fonts/**/*')
-        .pipe(gulp.dest('.tmp/fonts'))
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'assets/fonts'));
 })
 ;

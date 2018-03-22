@@ -13,6 +13,7 @@ hub([
     './tasks/jekyll.js',
     './tasks/collect.js',
     './tasks/replace.js',
+    './tasks/revision.js',
     './tasks/inject.js',
     './tasks/styles.js',
     './tasks/scripts.js'

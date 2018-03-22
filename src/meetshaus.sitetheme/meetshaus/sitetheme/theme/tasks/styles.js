@@ -45,6 +45,9 @@ gulp.task('styles:dev', () => {
         .pipe($.autoprefixer({browsers: ['last 4 version']}))
         //.pipe($.csscomb())
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
+        .pipe($.rename({
+            basename: pkg.name
+        }))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
         .pipe(browserSync.reload({stream: true}))

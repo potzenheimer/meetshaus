@@ -29,7 +29,7 @@ done();
 
 // Build Jekyll with production settings
 gulp.task('jekyll:prod', done => {
-    cp.spawnd('jekyll', ['build', '--config _config.yml'], {stdio: 'inherit', shell: true, cwd: '../'});
+   return cp.spawn('jekyll', ['build', '--config _config.yml'], {stdio: 'inherit', shell: true, cwd: '../'});
     done();
 });
 
