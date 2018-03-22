@@ -6,7 +6,7 @@ const $ = gulpLoadPlugins();
 var cfg = require('./../config.json');
 
 
-gulp.task('cb:styles', () => {
+gulp.task('revision:styles', () => {
     return gulp.src(cfg.paths.base + cfg.paths.dist + 'styles/*.min.css')
         .pipe($.rev())
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles'))
@@ -17,7 +17,7 @@ gulp.task('cb:styles', () => {
 )
 ;
 
-gulp.task('cb:scripts, () => {
+gulp.task('revision:scripts, () => {
     return gulp.src(cfg.paths.base + cfg.paths.dist + 'scripts/' + pkg.name + 'min.js')
         .pipe($.rev())
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'scripts'))

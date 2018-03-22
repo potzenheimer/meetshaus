@@ -125,8 +125,9 @@ gulp.task('build:dev', function(done) {
 gulp.task('build:diazo', function(done) {
     runSequence(
         'clean:dev',
-        ['collect:fonts', 'collect:images'],
-        ['jekyll:build', 'styles', 'scripts'],
+        ['collect:fonts', 'collect:images', 'collect:scripts:vendor'],
+        ['jekyll:build', 'styles:dev', 'collect:scripts:app'],
+        'inject:head:dev',
         'replace:pat',
         'collect:html',
         done);
@@ -135,27 +136,29 @@ gulp.task('build:diazo', function(done) {
 gulp.task('build:production', function(done) {
     runSequence(
         'build:init',
-        ['fonts', 'images'],
-        ['styles:dev', 'scripts'],
+        ['collect:fonts', 'collect:images', 'collect:scripts:vendor'],
+        ['jekyll:build', 'styles:dist', 'collect:scripts:app'],
         'inject:head:dist',
-        'jekyll:build',
+        'revision:styles',
+        'replace:revision:styles',
         'collect:html',
         done);
 });
 
 gulp.task('build:dist:full', function(done) {
     runSequence(
-        ['styles:dist', 'scripts'],
+        ['jekyll:build', 'styles:dist', 'collect:scripts:app'],
         'inject:head:dist',
-        'jekyll:build',
         'collect:html',
         done);
 });
 
 gulp.task('build:dist:base', function(done) {
     runSequence(
-        ['styles:dist', 'scripts'],
-        'cb:styles',
+        ['styles:dist', 'collect:scripts:app'],
+        'revision:styles',
+        'replace:revision:styles',
+        'collect:html',
         done);
 });
 
@@ -166,7 +169,7 @@ gulp.task('develop', ['build:dev']);
 
 gulp.task('dist', ['build:dist:base']);
 
-gulp.task('build', ['build:production']);
+gulp.task('build', ['build:dist:full']);
 
 gulp.task('default', ['watch']);
 
