@@ -114,10 +114,10 @@ gulp.task('build:init', function(done) {
 gulp.task('build:dev', function(done) {
     runSequence(
         'clean:dev',
-        ['collect:fonts', 'collect:images'],
-        ['styles:dev', 'scripts'],
+        ['collect:fonts', 'collect:images', 'collect:scripts:vendor'],
+        ['jekyll:build', 'styles:dev', 'collect:scripts:app'],
         'inject:head:dev',
-        'jekyll:build',
+        'replace:base',
         'collect:html',
         done);
 });

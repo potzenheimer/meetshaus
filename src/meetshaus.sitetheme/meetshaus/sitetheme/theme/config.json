@@ -54,6 +54,12 @@
         ]
     },
     "replacementPatterns": {
+        "base": [
+            {
+                "match": "/../dist/styles/",
+                "replacement": "/styles/"
+            }
+        ],
         "server": [
             {
                 "match": "../../assets/",

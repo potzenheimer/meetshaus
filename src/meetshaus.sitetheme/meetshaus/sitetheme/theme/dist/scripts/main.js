@@ -1,25 +1,45 @@
 requirejs(['require',
-'/++theme++meetshaus.sitetheme/dist/scripts/flickity.pkgd.js',
-'/++theme++meetshaus.sitetheme/dist/scripts/fontfaceobserver.js',
-'/++theme++meetshaus.sitetheme/dist/scripts/hideShowPassword.js',
-'/++theme++meetshaus.sitetheme/dist/scripts/jvfloat.js',
-'/++theme++meetshaus.sitetheme/dist/scripts/respimage.js',
-'/++theme++meetshaus.sitetheme/dist/scripts/ls.parent-fit.js',
-'/++theme++meetshaus.sitetheme/dist/scripts/lazysizes-umd.js',],
- function(require, Flickity) {
-'use strict';
-var font = new FontFaceObserver('Noto Sans');
-font.load().then(function () {
-    document.documentElement.className += " app-fonts--loaded";
-});
+        '/scripts/fontfaceobserver.js',
+        '/scripts/respimage.js',
+        '/scripts/hideShowPassword.js',
+        '/scripts/jvfloat.js',
+        '/scripts/ls.parent-fit.js',
+        '/scripts/lazysizes-umd.js',
+        '/scripts/a25.js',
+        '/scripts/a25.helpers.js'
+    ],
+    function(require) {
+        'use strict';
+        if (typeof a25 == 'undefined') {
+            var a25 = {};
+        }
+        // Trigger font face observer protection
+        var fontPrimary = new FontFaceObserver('Noto Sans');
+        var fontSecondary = new FontFaceObserver('AurulentSansRegular');
+        var fontSecondaryBold = new FontFaceObserver('AurulentSansBold');
+        var fontSecondaryItalic = new FontFaceObserver('AurulentSansItalic');
 
-// Anonymous only scripts (mainly used in login views)
-if ($(".userrole-anonymous")[0]) {
-    // Show password by default
-    $('input[type="password"]').hideShowPassword(true, 'focus');
-    //$('input[type="password"]').showPassword('focus', {});
-    // Float labels (requires corresponding css)
-    $('.app-signin-input').jvFloat();
+        fontPrimary.load().then(function () {
+            document.documentElement.className += " font__primary--loaded";
+        });
 
-};
-});
+        fontSecondary.load().then(function () {
+            document.documentElement.className += " font__secondary--loaded";
+        });
+
+        fontSecondary.load().then(function () {
+            document.documentElement.className += " font__secondary-bold--loaded";
+        });
+
+        fontSecondary.load().then(function () {
+            document.documentElement.className += " font__secondary-italic--loaded";
+        });
+
+        Promise.all([fontPrimary.load(),
+            fontSecondary.load(),
+            fontSecondaryBold.load(),
+            fontSecondaryItalic.load()]
+        ).then(function () {
+            document.documentElement.className += " fonts--loaded";
+        });
+    });

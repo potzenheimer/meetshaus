@@ -24,7 +24,7 @@ gulp.task('collect:scripts:vendor', () => {
 
 gulp.task('collect:scripts:app', () => {
     return es.merge(scriptSourcesApp.map(function(obj) {
-        return gulp.src(cfg.paths.base + cfg.paths.src + obj)
+        return gulp.src(cfg.paths.base + cfg.paths.app + obj)
             .pipe($.plumber({
                 errorHandler: function (error) {
                     console.log(error.message);
