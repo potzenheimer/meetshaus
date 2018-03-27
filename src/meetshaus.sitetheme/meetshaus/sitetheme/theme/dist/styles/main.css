@@ -17665,6 +17665,8 @@ fonts--loaded .form__field--checkbox > .option > label {
   height: 100%;
   width: 120px;
   background: rgba(0, 0, 0, 0.9);
+  border-left: 1px solid #e9ecef;
+  width: 62.5%;
 }
 
 .app-toolbar-header {

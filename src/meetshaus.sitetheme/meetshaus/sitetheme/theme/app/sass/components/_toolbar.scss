@@ -43,6 +43,8 @@ $plone-screen-lg-min:              1200px;
     height: 100%;
     width: 120px;
     background: $plone-toolbar-bg;
+    border-left: 1px solid $gray-200;
+    width: percentage(5/8);
 }
 
 //## Toolbar header with brand and/or cms title information
@@ -51,6 +53,7 @@ $plone-screen-lg-min:              1200px;
     padding: .25rem;
     color: #f2f2f2;
     border-bottom: 1px solid $gray-600;
+
 }
 
 //== Toolbar nav

@@ -59,6 +59,14 @@ $app-default:                 $app-primary-base;
 $app-danger:                    $app-red;
 
 
+// Custom webfonts
+// $app-font-family-light:     "DINRoundWeb-Light";
+$app-font-family-regular:       "AurulentSansRegular";
+$app-font-family-regular-em:    "AurulentSansItalic";
+$app-font-family-strong:        "AurulentSansBold";
+$app-font-family-base:          "Noto Sans";
+
+
 
 //== Font awesome font path
 $fa-font-path:                  "../assets/fonts";
