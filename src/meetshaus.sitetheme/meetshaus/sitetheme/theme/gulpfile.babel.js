@@ -110,8 +110,8 @@ gulp.task('build:collect', function(done) {
 
 gulp.task('build:base', function(done) {
     runSequence(
-        ['jekyll:build', 'styles:dev', 'collect:scripts:app'],
-        'inject:head:dev',
+        ['jekyll:build', 'styles:dist', 'collect:scripts:app'],
+        'inject:head:dist',
         done);
 });
 
@@ -167,7 +167,12 @@ gulp.task('build:dist:full', function(done) {
 // Base tasks
 
 // Clean distribution directory and start over
-gulp.task('init', ['build:init']);
+gulp.task('init', function(done) {
+    runSequence(
+        'build:init',
+        'build:base',
+        done);
+});
 
 // Run development build
 gulp.task('develop', ['build:dev']);
