@@ -35,7 +35,7 @@ export function styles(cb) {
     ], cb);
 };
 
-styles.description = 'Compile stylesheet from sass partials and minimize';
+styles.description = 'Compile stylesheet from sass partials and minimize for production';
 
 
 export function stylesDev() {
@@ -58,9 +58,9 @@ export function stylesDev() {
         .pipe(browserSync.reload({stream: true}))
 };
 
-stylesDev.description = 'Compile stylesheet from sass partials;
+stylesDev.description = 'Compile stylesheet from sass partials';
 
 
 // Stylesheet builds
-gulp.task('styles:dist', styles);
 gulp.task('styles:dev', stylesDev);
+gulp.task('styles:dist', styles);
