@@ -2,6 +2,7 @@
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import {create as bsCreate} from 'browser-sync';
+import {styles} from "./tasks/styles";
 
 var HubRegistry = require('gulp-hub');
 
@@ -55,6 +56,9 @@ const buildInit = gulp.series(
     'clean:dist',
     gulp.parallel('collect:fonts', 'collect:images', 'collect:scripts:vendor')
 );
+
+buildInit.description = 'Delete distribution and collect fresh copies of static assets';
+
 gulp.task('build:init', buildInit);
 
 // gulp.task('build:collect', function(done) {
@@ -62,10 +66,12 @@ gulp.task('build:init', buildInit);
 //         ['collect:fonts', 'collect:images', 'collect:scripts:vendor'],
 //         done);
 // });
-
-gulp.task('build:collect',
-    gulp.parallel('collect:fonts', 'collect:images', 'collect:scripts:vendor')
+const buildCollect = gulp.parallel(
+    'collect:fonts', 'collect:images', 'collect:scripts:vendor'
 );
+buildCollect.description = 'Collect static assets for production build';
+
+gulp.task('build:collect', buildCollect);
 
 // Base tasks
 

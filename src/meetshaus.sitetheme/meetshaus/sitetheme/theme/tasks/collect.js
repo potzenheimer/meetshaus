@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
+import {styles} from "./styles";
 const $ = gulpLoadPlugins();
 
 var es = require('event-stream');
@@ -62,6 +63,8 @@ export function collectFonts() {
     return gulp.src(cfg.paths.base + cfg.paths.app + 'assets/fonts/**/*')
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'assets/fonts'));
 };
+
+collectFonts.description = 'Copy custom web fonts to distribution directory';
 
 gulp.task('collect:fonts', collectFonts);
 
