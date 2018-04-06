@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import revDel from 'rev-del';
+import pump from 'pump';
 import {create as bsCreate} from 'browser-sync';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
@@ -11,29 +11,34 @@ var cfg = require('./../config.json');
 var pkg = require('./../package.json');
 
 // Styles build task
-gulp.task('styles:dist', () => {
-    return gulp.src(cfg.paths.base + cfg.paths.app + 'sass/main.scss')
-        .pipe($.plumber())
-        .pipe($.sourcemaps.init())
-        .pipe($.sass.sync({
+export function styles(cb) {
+    pump([
+        gulp.src('sass/main.scss',
+                {'cwd': cfg.paths.app}),
+        $.plumber(),
+        $.sourcemaps.init(),
+        $.sass.sync({
             outputStyle: 'expanded',
             precision: 10,
-            includePaths: [cfg.paths.base + cfg.paths.src]
-        }).on('error', $.sass.logError))
-        .pipe($.autoprefixer({browsers: ['last 4 version']}))
-        //.pipe($.csscomb())
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
-        .pipe($.cssnano())
-        .pipe($.rename({
+            includePaths: [cfg.paths.src]
+        }).on('error', $.sass.logError),
+        $.autoprefixer({browsers: ['last 4 version']}),
+        gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'),
+        $.cssnano(),
+        $.rename({
             basename: pkg.name,
             suffix: '.min'
-        }))
-        .pipe($.sourcemaps.write())
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
-        .pipe(browserSync.reload({stream: true}))
-});
+        }),
+        $.sourcemaps.write(),
+        gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'),
+        browserSync.reload({stream: true})
+    ], cb);
+};
 
-gulp.task('styles:dev', () => {
+styles.description = 'Compile stylesheet from sass partials and minimize';
+
+
+export function stylesDev() {
     return gulp.src(cfg.paths.base + cfg.paths.app + 'sass/main.scss')
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
@@ -51,15 +56,11 @@ gulp.task('styles:dev', () => {
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles/'))
         .pipe(browserSync.reload({stream: true}))
-});
+};
 
-gulp.task('styles:cb', () => {
-    return gulp.src(cfg.paths.base + cfg.paths.dist + 'styles/*.min.css')
-        .pipe($.rev())
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles'))
-        .pipe($.rev.manifest())
-        .pipe(revDel({dest: cfg.paths.base + cfg.paths.dist + 'styles'}))
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles'))
-}
-)
-;
+stylesDev.description = 'Compile stylesheet from sass partials;
+
+
+// Stylesheet builds
+gulp.task('styles:dist', styles);
+gulp.task('styles:dev', stylesDev);
