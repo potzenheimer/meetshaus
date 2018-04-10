@@ -2,7 +2,6 @@
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import {create as bsCreate} from 'browser-sync';
-import {styles} from "./tasks/styles";
 
 var HubRegistry = require('gulp-hub');
 
