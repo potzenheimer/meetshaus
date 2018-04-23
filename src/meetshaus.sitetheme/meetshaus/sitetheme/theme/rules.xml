@@ -160,8 +160,9 @@
         <replace css:content-children="#content"
             css:theme-children="#content" />
 
-        <after css:theme-children="#content"
-            css:content="#disqus_thread_wrapper" />
+        <!-- Disable Disqus (DSGVO) -->
+        <!--<after css:theme-children="#content"
+            css:content="#disqus_thread_wrapper" />-->
 
             <!-- Alert and portal messages -->
             <before css:content=".portalMessage" css:theme="#content" />

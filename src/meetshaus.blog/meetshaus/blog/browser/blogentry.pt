@@ -97,6 +97,7 @@
                 </tal:abstract>
             </section>
 
+            <tal:omit tal:content="nothing">
             <section class="app-page__section app-page__section--figure"
                  tal:condition="view/has_lead_image">
                 <div class="app-page-leadimage">
@@ -106,6 +107,7 @@
                     </div>
                 </div>
             </section>
+            </tal:omit>
 
 
             <section class="app-page__section app-page__body" id="content-core">

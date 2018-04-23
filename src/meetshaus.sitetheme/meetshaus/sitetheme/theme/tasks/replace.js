@@ -6,13 +6,13 @@ var cfg = require('./../config.json');
 
 
 gulp.task('replace:base', () => {
-    return gulp.src(cfg.paths.base + cfg.paths.dev + '/{,*/}*.html')
+    return gulp.src(cfg.paths.dev + '/{,*/}*.html')
         .pipe($.replaceTask({
             patterns: cfg.replacementPatterns.base,
             usePrefix: false,
             preserveOrder: true
         }))
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dev))
+        .pipe(gulp.dest(cfg.paths.dev))
 });
 
 gulp.task('replace:server', () => {
@@ -39,8 +39,8 @@ gulp.task('replace:pat', () => {
 // Asset revision replacements
 gulp.task('replace:revision:styles', () => {
     // var manifest = gulp.src(cfg.paths.base + cfg.paths.dist + '/styles/rev-manifest.json');
-    return gulp.src([cfg.paths.base + cfg.paths.dist + '/styles/rev-manifest.json',
-                    cfg.paths.base + cfg.paths.dev + '/**/*.html'])
+    return gulp.src([cfg.paths.dist + '/styles/rev-manifest.json',
+                    cfg.paths.dev + '/**/*.html'])
     // .pipe($.revReplace({manifest: manifest}))
     .pipe($.revCollector({
         replaceReved: true,
@@ -49,7 +49,7 @@ gulp.task('replace:revision:styles', () => {
             '/scripts': '/scripts'
         }
     }) )
-    .pipe(gulp.dest(cfg.paths.base + cfg.paths.dev));
+    .pipe(gulp.dest(cfg.paths.dev));
 })
 ;
 

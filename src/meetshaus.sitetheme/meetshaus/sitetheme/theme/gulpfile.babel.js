@@ -23,7 +23,6 @@ gulp.registry(hub);
 
 const $ = gulpLoadPlugins();
 const browserSync = bsCreate();
-var runSequence = require('run-sequence');
 
 // Load configuration
 var cfg = require('./config.json');
@@ -42,15 +41,7 @@ gulp.task('bs:reload', function (done) {
 });
 
 
-
 // Build tasks
-// gulp.task('build:init', function(done) {
-//     runSequence(
-//         'clean:dist',
-//         ['collect:fonts', 'collect:images', 'collect:scripts:vendor'],
-//         done);
-// });
-
 const buildInit = gulp.series(
     'clean:dist',
     gulp.parallel('collect:fonts', 'collect:images', 'collect:scripts:vendor')
@@ -60,11 +51,7 @@ buildInit.description = 'Delete distribution and collect fresh copies of static 
 
 gulp.task('build:init', buildInit);
 
-// gulp.task('build:collect', function(done) {
-//     runSequence(
-//         ['collect:fonts', 'collect:images', 'collect:scripts:vendor'],
-//         done);
-// });
+// Build collect
 const buildCollect = gulp.parallel(
     'collect:fonts', 'collect:images', 'collect:scripts:vendor'
 );
@@ -73,26 +60,91 @@ buildCollect.description = 'Collect static assets for production build';
 gulp.task('build:collect', buildCollect);
 
 // Base tasks
+const buildBase = gulp.series(
+    'jekyll:build',
+    gulp.parallel('styles:dist', 'collect:scripts:app'),
+    'inject:head'
+);
 
-// Clean distribution directory and start over
-// gulp.task('init', function(done) {
-//     runSequence(
-//         'build:init',
-//         'build:base',
-//         done);
-// });
+buildBase.description = 'Compile templates/styles and collect scripts for production';
+
+gulp.task('build:base', buildBase);
+
+
+const buildPat = gulp.series(
+    'build:base',
+    'replace:pat',
+    'collect:html'
+);
+buildPat.description = 'Build distribution for ++theme++ support';
+
+gulp.task('build:pat', buildPat);
+
+const buildDevelopment = gulp.series(
+    'build:base',
+    'replace:base',
+    'collect:html'
+);
+buildDevelopment.description = 'Build local development environment';
+
+gulp.task('build:dev', buildDevelopment);
+
+
+const buildDistBase = gulp.series(
+    'build:base',
+    'replace:base',
+    'revision:styles',
+    'replace:revision:styles',
+    'collect:html'
+);
+buildDistBase.description = 'Build production distribution';
+
+gulp.task('build:dist:base', buildDistBase);
+
+
+const buildDistFull = gulp.series(
+    'build:init',
+    'build:dist:base'
+);
+buildDistFull.description = 'Clean distribution and build full production bundle';
+
+gulp.task('build:dist:full', buildDistFull);
+
+
+gulp.task('dev:watch:styles', function () {
+    gulp.watch(cfg.paths.app + "sass/**/*.scss", gulp.series(
+        'styles:dist'
+        // browserSync.reload()
+        )
+    )
+});
+
+gulp.task('dev:watch', function () {
+    gulp.watch(cfg.paths.app + "sass/**/*.scss", gulp.series(
+        'styles:dist'
+    )
+    );
+    gulp.watch(cfg.paths.app + "scripts/**/*.js", gulp.series(
+        'collect:scripts:app'
+        )
+    );
+    gulp.watch(cfg.paths.app + "**/*.html", gulp.series(
+        'build:dist:base'
+        )
+    );
+});
 
 // Run development build
 // gulp.task('develop', ['build:dev']);
 
 // Build distribution versions of styles and scripts
-// gulp.task('dist', ['build:dist:base']);
+gulp.task('dist', buildDistBase);
 
 // Rebuild whole theme for distribution
-// gulp.task('build', ['build:dist:full']);
+gulp.task('build', buildDistFull);
 
 // Development build usable with standalone Plone backend
-// gulp.task('pat', ['build:pat']);
+gulp.task('pat', buildPat);
 
 // Development Server
 // gulp.task('serve', ['dev:serve']);
@@ -100,5 +152,9 @@ gulp.task('build:collect', buildCollect);
 // gulp.task('watch', ['dev:watch'])
 
 // Start working with the styles
-// gulp.task('default', ['dev:watch:styles']);
+gulp.task('default',
+    gulp.series(
+        'dev:watch:styles'
+    )
+);
 
