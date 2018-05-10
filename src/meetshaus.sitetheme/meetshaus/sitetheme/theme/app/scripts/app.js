@@ -21,11 +21,11 @@ fontSecondary.load().then(function () {
     document.documentElement.className += " font__secondary--loaded";
 });
 
-fontSecondary.load().then(function () {
+fontSecondaryBold.load().then(function () {
     document.documentElement.className += " font__secondary-bold--loaded";
 });
 
-fontSecondary.load().then(function () {
+fontSecondaryItalic.load().then(function () {
     document.documentElement.className += " font__secondary-italic--loaded";
 });
 

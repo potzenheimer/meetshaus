@@ -16828,7 +16828,12 @@ html {
 }
 
 body {
-  background-color: #d9e4e4;
+  font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", Arial, sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: normal !important;
+  line-height: 1.5 !important;
+  color: #212529 !important;
+  background-color: #d9e4e4 !important;
 }
 
 .app-fonts--loaded b,
@@ -17334,6 +17339,10 @@ pre {
 .app-footer {
   margin: 0 0 2rem;
   padding: 0;
+}
+
+.js-cc--visible .app-footer {
+  margin-bottom: 4rem;
 }
 
 .app-footer__content {
@@ -18853,6 +18862,16 @@ fieldset[disabled] a.button {
 
 .button + .button {
   margin-left: 1rem;
+}
+
+.cc-message {
+  font-size: 0.8rem !important;
+  line-height: 1 !important;
+}
+
+.cc-compliance > .cc-btn {
+  -ms-flex: none !important;
+      flex: none !important;
 }
 
 .app-layout-simple {

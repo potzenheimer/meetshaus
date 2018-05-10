@@ -5,6 +5,9 @@
 .app-footer {
   margin: 0 0 2rem;
   padding: 0;
+    @include when-inside('.js-cc--visible') {
+        margin-bottom: 4rem;
+    }
 }
 
 .app-footer__content {
