@@ -12,8 +12,8 @@ var fs = require('fs');
 // package (see the check-for-favicon-update task below).
 gulp.task('favicon:generate', function(done) {
     $.realFavicon.generateFavicon({
-        masterPicture: cfg.paths.base + cfg.paths.app + cfg.favicon.iconPath + cfg.favicon.masterPicture,
-        dest: cfg.paths.base + cfg.paths.dist + cfg.favicon.iconPath,
+        masterPicture: cfg.paths.app + cfg.favicon.iconPath + cfg.favicon.masterPicture,
+        dest: cfg.paths.dist + cfg.favicon.iconPath,
         iconsPath: '/',
         design: {
             ios: {
@@ -83,9 +83,9 @@ gulp.task('favicon:generate', function(done) {
 // this task whenever you modify a page. You can keep this task
 // as is or refactor your existing HTML pipeline.
 gulp.task('favicon:inject', function() {
-    gulp.src([ cfg.paths.base + cfg.paths.app + cfg.favicon.html ])
+    return gulp.src([ cfg.paths.app + cfg.favicon.html ])
         .pipe($.realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(cfg.favicon.dataFile)).favicon.html_code))
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.app + cfg.favicon.htmlDist));
+        .pipe(gulp.dest(cfg.paths.app + cfg.favicon.htmlDist));
 });
 
 // Check for updates on RealFaviconGenerator (think: Apple has just

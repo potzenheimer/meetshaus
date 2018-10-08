@@ -37,7 +37,8 @@
             <drop theme="/html/head/style" />
         </rules>
 
-        <drop css:theme="html body script[data-ui='static']" />
+        <drop theme="/html/body/script" />
+
 
         <!-- Custom favicon implementation -->
         <drop css:content="head link[rel='apple-touch-icon-precomposed']" />
@@ -159,6 +160,29 @@
         <!-- Document Content -->
         <replace css:content-children="#content"
             css:theme-children="#content" />
+
+        <!-- Drop iframe attributes in embedded elements -->
+        <drop attributes="width"
+              css:content="iframe" />
+        <drop attributes="height"
+              css:content="iframe" />
+        <drop attributes="frameborder"
+              css:content="iframe" />
+
+        <replace css:content="#content-core iframe">
+            <div class="app-figure app-figure--centered">
+                <div class="app-figure__embedded app-figure__embedded--16-9">
+                    <xsl:copy>
+                        <xsl:copy-of select="@*" />
+                        <xsl:attribute name="class">app-iframe</xsl:attribute>
+                        <xsl:attribute name="height">100%</xsl:attribute>
+                        <xsl:attribute name="width">100%</xsl:attribute>
+                        <xsl:apply-templates />
+                    </xsl:copy>
+                </div>
+            </div>
+        </replace>
+
 
         <!-- Disable Disqus (DSGVO) -->
         <!--<after css:theme-children="#content"

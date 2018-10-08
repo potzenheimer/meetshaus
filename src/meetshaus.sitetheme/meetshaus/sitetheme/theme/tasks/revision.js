@@ -10,25 +10,25 @@ var fs = require('fs');
 
 
 export function revisionStyles() {
-    if (fs.existsSync(cfg.paths.base + cfg.paths.dist + 'styles/rev-manifest.json')) {
-        var manifest = fs.readFileSync(cfg.paths.base + cfg.paths.dist + 'styles/rev-manifest.json', 'utf8')
-        del.sync(Object.values(JSON.parse(manifest)), {'cwd': cfg.paths.base + cfg.paths.dist + 'styles/'})
+    if (fs.existsSync(cfg.paths.dist + 'styles/rev-manifest.json')) {
+        var manifest = fs.readFileSync(cfg.paths.dist + 'styles/rev-manifest.json', 'utf8')
+        del.sync(Object.values(JSON.parse(manifest)), {'cwd': cfg.paths.dist + 'styles/'})
     }
-    return gulp.src(cfg.paths.base + cfg.paths.dist + 'styles/*.min.css')
+    return gulp.src(cfg.paths.dist + 'styles/*.min.css')
         .pipe($.rev())
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles'))
+        .pipe(gulp.dest(cfg.paths.dist + 'styles'))
         .pipe($.rev.manifest())
-        .pipe(revDel({dest: cfg.paths.base + cfg.paths.dist + 'styles'}))
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'styles'))
+        .pipe(revDel({dest: cfg.paths.dist + 'styles'}))
+        .pipe(gulp.dest(cfg.paths.dist + 'styles'))
 };
 
 export function revisionScripts() {
-    return gulp.src(cfg.paths.base + cfg.paths.dist + 'scripts/' + pkg.name + 'min.js')
+    return gulp.src(cfg.paths.dist + 'scripts/' + pkg.name + 'min.js')
         .pipe($.rev())
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'scripts'))
+        .pipe(gulp.dest(cfg.paths.dist + 'scripts'))
         .pipe($.rev.manifest())
-        .pipe(revDel({dest: cfg.paths.base + cfg.paths.dist + 'scripts'}))
-        .pipe(gulp.dest(cfg.paths.base + cfg.paths.dist + 'scripts'))
+        .pipe(revDel({dest: cfg.paths.dist + 'scripts'}))
+        .pipe(gulp.dest(cfg.paths.dist + 'scripts'))
 };
 
 // Revision and cache bust tasks

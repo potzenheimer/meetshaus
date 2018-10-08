@@ -10,7 +10,7 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
     <div class="app-blog-content blog-posting">
-      <div class="blog-posting-header" tal:content="nothing">
+      <div class="blog-posting-header">
         <h1 class="blog-posting-title">Taxonomy Selection</h1>
         <p class="lead blog-posting-lead">
           Select taxonomy terms that should be displayed and used as blog entry
@@ -20,7 +20,7 @@
            tal:attributes="href python:view.update_terms_action">Update list from database</a></p>
 
       </div>
-      <div class="blog-posting-main" tal:content="nothing">
+      <div class="blog-posting-main" tal:content="nothing" tal:omit-tag="">
           <h2 class="page__title">Available categories <small>${view/records_index}</small></h2>
         <form class="app-form app-form--taxonomy-selection"
                 method="post" role="form"
