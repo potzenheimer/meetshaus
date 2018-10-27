@@ -85,10 +85,10 @@
                                     <tal:block tal:define="count repeat/item/number;
                                         bodytext item/text/output;
                                             item_obj item/getObject;
-                                                rawtext item_obj/@@text-transform/text/text/plain">
+                                                rawtext item_obj/@@text-transform/text/plain">
                                         <div class="blogentry-body"
                                              tal:define="richtext python:context.restrictedTraverse('@@plone').cropText(rawtext, 320, '[...]')">
-                                            <p><span tal:replace="richtext" />
+                                            <p><span tal:replace="structure richtext" />
                                                 <a href="" tal:attributes="href item/getURL">weiterlesen</a>
                                             </p>
                                         </div>

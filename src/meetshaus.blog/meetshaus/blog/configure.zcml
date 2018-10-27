@@ -45,5 +45,9 @@
     />
 
   <!--<adapter factory=".subjects.SubjectsFieldWidget" />-->
+    <subscriber
+        for="Products.PluggableAuthService.interfaces.events.IUserLoggedInEvent"
+        handler="meetshaus.blog.postloginhandler.post_login_redirect"
+        />
 
 </configure>
