@@ -82,17 +82,7 @@
                                     </p>
                                 </tal:abstract>
                                 <section class="app-page__section app-page__body">
-                                    <tal:block tal:define="count repeat/item/number;
-                                        bodytext item/text/output;
-                                            item_obj item/getObject;
-                                                rawtext item_obj/@@text-transform/text/plain">
-                                        <div class="blogentry-body"
-                                             tal:define="richtext python:context.restrictedTraverse('@@plone').cropText(rawtext, 320, '[...]')">
-                                            <p><span tal:replace="structure richtext" />
-                                                <a href="" tal:attributes="href item/getURL">weiterlesen</a>
-                                            </p>
-                                        </div>
-                                    </tal:block>
+                                    <tal:excerpt tal:replace="structure python:view.post_content_snippet(item_uid)"></tal:excerpt>
                                 </section>
                             </div>
                         </div>

@@ -18,34 +18,39 @@ class FrontPageView(BrowserView):
     """ Blog front page """
 
     def __init__(self, context, request):
+        super(FrontPageView, self).__init__(context, request)
         self.context = context
         self.request = request
 
     def __call__(self, **kw):
-        self.year = int(self.request.form.get('year', 0))
-        self.month = int(self.request.form.get('month', 0))
-        self.subject = self.request.form.get('category', None)
-        self.b_start = self.request.form.get('b_start', 0)
+        self.year = int(self.request.form.get("year", 0))
+        self.month = int(self.request.form.get("month", 0))
+        self.subject = self.request.form.get("category", None)
+        self.b_start = self.request.form.get("b_start", 0)
         return self.render()
 
     def render(self):
         return self.index()
 
-    def _base_query(self):
+    @staticmethod
+    def _base_query():
         portal = api.portal.get()
-        blog = portal['blog']
+        blog = portal["blog"]
         obj_provides = IBlogPost.__identifier__
-        path = '/'.join(blog.getPhysicalPath())
-        return dict(path={'query': path, 'depth': 1},
-                    object_provides=obj_provides,
-                    sort_on='effective', sort_order='reverse')
+        path = "/".join(blog.getPhysicalPath())
+        return dict(
+            path={"query": path, "depth": 1},
+            object_provides=obj_provides,
+            sort_on="effective",
+            sort_order="reverse",
+        )
 
     def get_entries(self, year=None, month=None, subject=None):
         context = aq_inner(self.context)
-        catalog = getToolByName(context, 'portal_catalog')
+        catalog = getToolByName(context, "portal_catalog")
         query = self._base_query()
         if subject:
-            query['Subject'] = subject
+            query["Subject"] = subject
         if year:
             if month:
                 last_day = calendar.monthrange(year, month)[1]
@@ -54,17 +59,16 @@ class FrontPageView(BrowserView):
             else:
                 start_date = DateTime(year, 1, 1, 0, 0)
                 end_date = DateTime(year, 12, 31, 0, 0)
-            query['effective'] = dict(query=(start_date, end_date),
-                                      range='minmax')
+            query["effective"] = dict(
+                query=(start_date, end_date), range="minmax"
+            )
         results = catalog.searchResults(**query)
         return IContentListing(results)
 
     def blog_posts(self):
         """List all blog items as brains"""
         posts = self.get_entries(
-            year=self.year,
-            month=self.month,
-            subject=self.subject
+            year=self.year, month=self.month, subject=self.subject
         )
         return posts
 
@@ -93,36 +97,41 @@ class FrontPageView(BrowserView):
             return True
         return False
 
-
     @staticmethod
     def timestamp(uuid):
         context = api.content.get(UID=uuid)
         date = context.effective()
         date = pydt(date)
         timestamp = {
-            'day': date.strftime("%d"),
-            'month': get_localized_month_name(date.strftime("%B")),
-            'year': date.strftime("%Y"),
-            'date': date
+            "day": date.strftime("%d"),
+            "month": get_localized_month_name(date.strftime("%B")),
+            "year": date.strftime("%Y"),
+            "date": date,
         }
         return timestamp
 
     @staticmethod
     def _readable_text(uuid):
         context = api.content.get(UID=uuid)
-        meta = context.title + ' ' + context.description
+        meta = context.title + " " + context.description
         if context.text:
             html = context.text.raw
-            transforms = api.portal.get_tool(name='portal_transforms')
-            stream = transforms.convertTo('text/plain',
-                                          html,
-                                          mimetype='text/html')
+            transforms = api.portal.get_tool(name="portal_transforms")
+            stream = transforms.convertTo(
+                "text/plain", html, mimetype="text/html"
+            )
             text = stream.getData().strip()
-            body = meta + ' ' + text
+            body = meta + " " + text
         return body
 
     def reading_time(self, uuid):
         text = self._readable_text(uuid)
-        text_count = len(text.split(' '))
+        text_count = len(text.split(" "))
         rt = text_count / 200
         return rt
+
+    @staticmethod
+    def post_content_snippet(uuid):
+        context = api.content.get(UID=uuid)
+        snippet = context.restrictedTraverse('@@blog-entry-excerpt')()
+        return snippet

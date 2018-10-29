@@ -27,6 +27,15 @@
 
     <browser:page
         for="meetshaus.blog.blog.IBlog"
+        name="thema"
+        class=".blog.BlogCategoryView"
+        template="blog-category.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
         name="categories"
         class=".categories.BlogCategoriesView"
         template="categories.pt"
@@ -61,6 +70,15 @@
         permission="zope2.View"
         layer="..interfaces.IBlogTool"
     />
+
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="blog-entry-excerpt"
+        class=".blogentry.BlogEntryExcerpt"
+        template="blogentry-excerpt.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+     />
 
     <browser:page
         for="meetshaus.blog.blogpost.IBlogPost"

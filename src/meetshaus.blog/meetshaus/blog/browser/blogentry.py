@@ -55,8 +55,10 @@ class BlogEntryView(BrowserView):
         context = aq_inner(self.context)
         parent = aq_parent(context)
         try:
-            if (getattr(parent, 'getId', None) is None
-                    or parent.getId() == 'talkback'):
+            if (
+                getattr(parent, "getId", None) is None
+                or parent.getId() == "talkback"
+            ):
                 parent = aq_parent(aq_inner(parent))
             return parent
         except Unauthorized:
@@ -67,31 +69,50 @@ class BlogEntryView(BrowserView):
         date = context.effective()
         date = pydt(date)
         timestamp = {
-            'day': date.strftime("%d"),
-            'month': get_localized_month_name(date.strftime("%B")),
-            'year': date.strftime("%Y"),
-            'date': date
+            "day": date.strftime("%d"),
+            "month": get_localized_month_name(date.strftime("%B")),
+            "year": date.strftime("%Y"),
+            "date": date,
         }
         return timestamp
 
     def _readable_text(self):
         context = aq_inner(self.context)
-        meta = context.title + ' ' + context.description
+        meta = context.title + " " + context.description
         if context.text:
             html = context.text.raw
-            transforms = api.portal.get_tool(name='portal_transforms')
-            stream = transforms.convertTo('text/plain',
-                                          html,
-                                          mimetype='text/html')
+            transforms = api.portal.get_tool(name="portal_transforms")
+            stream = transforms.convertTo(
+                "text/plain", html, mimetype="text/html"
+            )
             text = stream.getData().strip()
-            body = meta + ' ' + text
+            body = meta + " " + text
         return body
 
     def reading_time(self):
         text = self._readable_text()
-        text_count = len(text.split(' '))
+        text_count = len(text.split(" "))
         rt = text_count / 200
         return rt
+
+
+class BlogEntryExcerpt(BrowserView):
+    """ A short excerpt of the main body text"""
+
+    def transformed_body_text(self, characters=320, ellipsis='[...]'):
+        context = aq_inner(self.context)
+        if context.text:
+            text = context.text.raw
+            portal_transforms = api.portal.get_tool(name="portal_transforms")
+            # Output here is a single <p> which contains <br /> for newline
+            stream = portal_transforms.convertTo(
+                "text/plain", text, mimetype="text/html"
+            )
+            stream_data = stream.getData().strip()
+            cropped_text = context.restrictedTraverse('@@plone').cropText(
+                stream_data, characters, ellipsis
+            )
+            return cropped_text
 
 
 class BlogEntryContent(BrowserView):
@@ -131,8 +152,10 @@ class BlogEntryContent(BrowserView):
         context = aq_inner(self.context)
         parent = aq_parent(context)
         try:
-            if (getattr(parent, 'getId', None) is None
-                    or parent.getId() == 'talkback'):
+            if (
+                getattr(parent, "getId", None) is None
+                or parent.getId() == "talkback"
+            ):
                 parent = aq_parent(aq_inner(parent))
             return parent
         except Unauthorized:
@@ -143,29 +166,28 @@ class BlogEntryContent(BrowserView):
         date = context.effective()
         date = pydt(date)
         timestamp = {
-            'day': date.strftime("%d"),
-            'month': get_localized_month_name(date.strftime("%B")),
-            'year': date.strftime("%Y"),
-            'date': date
+            "day": date.strftime("%d"),
+            "month": get_localized_month_name(date.strftime("%B")),
+            "year": date.strftime("%Y"),
+            "date": date,
         }
         return timestamp
 
     def _readable_text(self):
         context = aq_inner(self.context)
-        meta = context.title + ' ' + context.description
+        meta = context.title + " " + context.description
         if context.text:
             html = context.text.raw
-            transforms = api.portal.get_tool(name='portal_transforms')
-            stream = transforms.convertTo('text/plain',
-                                          html,
-                                          mimetype='text/html')
+            transforms = api.portal.get_tool(name="portal_transforms")
+            stream = transforms.convertTo(
+                "text/plain", html, mimetype="text/html"
+            )
             text = stream.getData().strip()
-            body = meta + ' ' + text
+            body = meta + " " + text
         return body
 
     def reading_time(self):
         text = self._readable_text()
-        text_count = len(text.split(' '))
+        text_count = len(text.split(" "))
         rt = text_count / 200
         return rt
-

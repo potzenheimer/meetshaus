@@ -1,0 +1,12 @@
+<div class="o-excerpt blog-entry__excerpt">
+    <div class="o-excerpt__main blog-entry__excerpt-text"
+        tal:content="python:view.transformed_body_text()">
+        Blog Entry Excerpt
+    </div>
+    <div class="o-excerpt__aside blog-entry__excerpt-action">
+        <a class="blog-entry__link o-button o-button--default"
+            tal:attributes="href python:context.absolute_url()">
+            weiterlesen
+        </a>
+    </div>
+</div>

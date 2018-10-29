@@ -12,6 +12,8 @@ from plone import api
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.batching import Batch
 from plone.event.utils import pydt
+from zope.interface import implementer
+from zope.publisher.interfaces import IPublishTraverse
 
 
 class BlogView(BrowserView):
@@ -93,6 +95,137 @@ class BlogView(BrowserView):
             return True
         return False
 
+    @staticmethod
+    def timestamp(uuid):
+        context = api.content.get(UID=uuid)
+        date = context.effective()
+        date = pydt(date)
+        timestamp = {
+            'day': date.strftime("%d"),
+            'month': get_localized_month_name(date.strftime("%B")),
+            'year': date.strftime("%Y"),
+            'date': date
+        }
+        return timestamp
+
+    @staticmethod
+    def _readable_text(uuid):
+        context = api.content.get(UID=uuid)
+        meta = context.title + ' ' + context.description
+        if context.text:
+            html = context.text.raw
+            transforms = api.portal.get_tool(name='portal_transforms')
+            stream = transforms.convertTo('text/plain',
+                                          html,
+                                          mimetype='text/html')
+            text = stream.getData().strip()
+            body = meta + ' ' + text
+        return body
+
+    def reading_time(self, uuid):
+        text = self._readable_text(uuid)
+        text_count = len(text.split(' '))
+        rt = text_count / 200
+        return rt
+
+    @staticmethod
+    def post_content_snippet(uuid):
+        context = api.content.get(UID=uuid)
+        snippet = context.restrictedTraverse('@@blog-entry-excerpt')()
+        return snippet
+
+
+@implementer(IPublishTraverse)
+class BlogCategoryView(BrowserView):
+    """ Filtered blog entries based on category"""
+
+    def __init__(self, context, request):
+        super(BlogCategoryView, self).__init__(context, request)
+        self.sub_path = []
+        self.subject = ''
+
+    def __call__(self, **kw):
+        self.b_start = self.request.form.get('b_start', 0)
+        return self.render()
+
+    def render(self):
+        return self.index()
+
+    @property
+    def traverse_subpath(self):
+        return self.sub_path
+
+    def publishTraverse(self, request, name):
+        if not hasattr(self, 'subpath'):
+            self.sub_path = []
+        self.sub_path.append(name)
+        return self
+
+    def taxonomy_filter(self):
+        if len(self.sub_path):
+            self.subject = self.traverse_subpath[0]
+            return self.subject
+        return None
+
+    def active_filter(self):
+        if self.taxonomy_filter():
+            return True
+        return False
+
+    @staticmethod
+    def _base_query():
+        portal = api.portal.get()
+        blog = portal["blog"]
+        obj_provides = IBlogPost.__identifier__
+        path = "/".join(blog.getPhysicalPath())
+        return dict(
+            path={"query": path, "depth": 1},
+            object_provides=obj_provides,
+            sort_on="effective",
+            sort_order="reverse",
+        )
+
+    def get_entries(self, subject=None):
+        catalog = api.portal.get_tool("portal_catalog")
+        query = self._base_query()
+        if self.subject:
+            query["Subject"] = subject
+        results = catalog.searchResults(**query)
+        return IContentListing(results)
+
+    def blog_posts(self):
+        """List all blog items as brains"""
+        posts = self.get_entries(
+            subject=self.subject
+        )
+        return posts
+
+    def batch(self):
+        b_size = 10
+        items = self.blog_posts()[1:]
+        return Batch(items, b_size, self.b_start, orphan=1)
+
+    @staticmethod
+    def has_headline(uuid):
+        context = api.content.get(UID=uuid)
+        try:
+            headline = context.headline
+        except AttributeError:
+            headline = None
+        if headline is not None:
+            return True
+        return False
+
+    @staticmethod
+    def has_abstract(uuid):
+        context = api.content.get(UID=uuid)
+        try:
+            abstract = context.abstract
+        except AttributeError:
+            abstract = None
+        if abstract is not None:
+            return True
+        return False
 
     @staticmethod
     def timestamp(uuid):
@@ -126,3 +259,10 @@ class BlogView(BrowserView):
         text_count = len(text.split(' '))
         rt = text_count / 200
         return rt
+
+    @staticmethod
+    def post_content_snippet(uuid):
+        context = api.content.get(UID=uuid)
+        snippet = context.restrictedTraverse('@@blog-entry-excerpt')()
+        return snippet
+

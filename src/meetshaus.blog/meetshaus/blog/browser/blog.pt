@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <section class="app-page__main blog-entry__main" tal:define="categories item/Subject|nothing"
+                                <section class="app-page__main blog-entry__main" tal:define="categories item/subjects|nothing"
                                      tal:condition="categories">
                                     <div class="blog-entry__title--sm">Von</div>
                                     <div class="blog-entry__author">
@@ -49,7 +49,7 @@
                                                  class="blog-entry__tag blogentry-aside-category"
                                                  rel="nofollow"
                                                    tal:content="category"
-                                                   tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/themen/@@category/${category}">
+                                                   tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/blog/thema/${category}">
                                                 Category
                                               </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
                                             </span>
@@ -82,17 +82,7 @@
                                     </p>
                                 </tal:abstract>
                                 <section class="app-page__section app-page__body">
-                                    <tal:block tal:define="count repeat/item/number;
-                                        bodytext item/text/output;
-                                            item_obj item/getObject;
-                                                rawtext item_obj/@@text-transform/text/plain">
-                                        <div class="blogentry-body"
-                                             tal:define="richtext python:context.restrictedTraverse('@@plone').cropText(rawtext, 320, '[...]')">
-                                            <p><span tal:replace="structure richtext" />
-                                                <a href="" tal:attributes="href item/getURL">weiterlesen</a>
-                                            </p>
-                                        </div>
-                                    </tal:block>
+                                    <tal:excerpt tal:replace="structure python:view.post_content_snippet(item_uid)"></tal:excerpt>
                                 </section>
                             </div>
                         </div>

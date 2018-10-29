@@ -44,7 +44,7 @@
                                  class="blog-entry__tag blogentry-aside-category"
                                  rel="nofollow"
                                    tal:content="category"
-                                   tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/themen/@@category/${category}">
+                                   tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/blog/thema/${category}">
                                 Category
                               </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
                             </span>
