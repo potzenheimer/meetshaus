@@ -21013,6 +21013,10 @@ img[data-sizes="auto"] {
   text-align: center;
 }
 
+.app-timestamp__day--primary {
+  background-color: #74c4ea;
+}
+
 .app-timestamp__day_title {
   color: #fff;
   font-size: 2.5rem;

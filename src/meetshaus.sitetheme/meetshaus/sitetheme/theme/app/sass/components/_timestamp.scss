@@ -14,6 +14,9 @@
     border-radius: 50%;
     background-color: $app-secondary;
     text-align: center;
+    &--primary {
+        background-color: $app-primary;
+    }
 }
 
 .app-timestamp__day_title {

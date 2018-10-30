@@ -11,6 +11,7 @@ from meetshaus.blog.utils import get_localized_month_name
 from plone import api
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.batching import Batch
+from plone.dexterity.utils import safe_utf8
 from plone.event.utils import pydt
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
@@ -163,7 +164,8 @@ class BlogCategoryView(BrowserView):
 
     def taxonomy_filter(self):
         if len(self.sub_path):
-            self.subject = self.traverse_subpath[0]
+            requested_subject = self.traverse_subpath[0]
+            self.subject = safe_utf8(requested_subject)
             return self.subject
         return None
 
@@ -183,6 +185,7 @@ class BlogCategoryView(BrowserView):
             object_provides=obj_provides,
             sort_on="effective",
             sort_order="reverse",
+            review_state="published"
         )
 
     def get_entries(self, subject=None):
@@ -202,7 +205,7 @@ class BlogCategoryView(BrowserView):
 
     def batch(self):
         b_size = 10
-        items = self.blog_posts()[1:]
+        items = self.blog_posts()
         return Batch(items, b_size, self.b_start, orphan=1)
 
     @staticmethod
