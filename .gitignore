@@ -1,7 +1,8 @@
+!buil
 *-ck.js
 *.EGG
-*.EGG-INFO
 *.egg
+*.EGG-INFO
 *.egg-info
 *.mo
 *.pyc
@@ -15,7 +16,7 @@
 ba
 bin
 bower_components
-build
+build/ENV
 coverage
 develop-eggs
 dist
@@ -29,15 +30,15 @@ known-good-versions.cfg
 lib
 parts
 pip-*
-src/Plone
-src/Products.*
 src/ade25.*
 src/bobtemplates.*
 src/collective.*
 src/diazo
 src/mockup
+src/Plone
 src/plone.*
 src/plonetheme.*
+src/Products.*
 src/sauna.reload
 src/vwc.*
 src/watchdog
