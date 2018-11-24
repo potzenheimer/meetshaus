@@ -21,13 +21,13 @@ from meetshaus.blog.blogpost import IBlogPost
 from meetshaus.blog.taxonomy.interfaces import ITaxonomyTool
 
 
-
 class CategoryView(BrowserView):
     """ Category list """
 
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        super(CategoryView, self).__init__(context, request)
 
     def __call__(self):
         return self.render()
@@ -156,7 +156,7 @@ class UpdateCategoryStorage(BrowserView):
     def _build_archive_url(self, keyword):
         portal_url = api.portal.get().absolute_url()
         sub = urllib2.quote(keyword.encode('utf-8'))
-        url = '{0}/blog?category={1}'.format(portal_url, sub)
+        url = '{0}/blog/thema/{1}'.format(portal_url, sub)
         return url
 
     def _process_request(self):
@@ -189,6 +189,7 @@ class UpdateCategoryStorage(BrowserView):
                 # Update existing record
                 existing_record = next((item for item in records
                     if item["id"] == term_id))
+                existing_record['url'] = self._build_archive_url(kw)
                 if 'enabled' not in existing_record:
                     existing_record['enabled'] = True
             else:

@@ -19630,7 +19630,92 @@ fonts--loaded .form__field--checkbox > .option > label {
 }
 
 .form__control--checkbox {
-  margin-top: .5rem;
+  position: absolute;
+  left: -9999px;
+}
+
+.form__control--checkbox + label {
+  position: relative;
+  padding-left: 1.95em;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.form__control--checkbox + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #ced4da;
+  background: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form__control--checkbox + label:hover:before {
+  border: 1px solid #ced4da !important;
+}
+
+.form__control--checkbox + label:after {
+  content: url("../assets/images/ui_check.svg");
+  position: absolute;
+  top: .2rem;
+  left: .2rem;
+  z-index: 1;
+  font-size: 1.3em;
+  line-height: 0.8;
+  color: #000;
+  transition: all .2s;
+  background-color: transparent;
+}
+
+.app-field-required .form__control--checkbox + label {
+  margin-right: 2rem;
+}
+
+/* checked mark aspect changes */
+.form__control--checkbox:not(:checked) + label:after {
+  opacity: 0;
+  -ms-transform: scale(0);
+      transform: scale(0);
+}
+
+.form__control--checkbox:checked + label:after {
+  opacity: 1;
+  -ms-transform: scale(1);
+      transform: scale(1);
+}
+
+.form__control--checkbox:checked + label:before {
+  background-image: linear-gradient(135deg, #d3802a, #d3802a);
+}
+
+/* disabled checkbox */
+.form__control--checkbox:disabled:not(:checked) + label:before,
+.form__control--checkbox:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+
+.form__control--checkbox:disabled:checked + label:after {
+  color: #999;
+}
+
+.form__control--checkbox:disabled + label {
+  color: #aaa;
+}
+
+/* accessibility */
+.form__control--checkbox:checked:focus + label:before,
+.form__control--checkbox:not(:checked):focus + label:before {
+  border: 1px solid #ced4da;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #ced4da !important;
 }
 
 .form-field__select:not([multiple]) {
@@ -20566,6 +20651,32 @@ img[data-sizes="auto"] {
 
 .app-logo-mobile {
   padding: 1rem 1rem 0 1rem;
+}
+
+.c-action-bar {
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
+}
+
+.c-action-bar__item {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  background-color: #d3802a;
+  text-align: center;
+}
+
+.c-action-bar__item--primary {
+  background-color: #74c4ea;
 }
 
 .app-actions {

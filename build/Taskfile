@@ -95,3 +95,8 @@ task:halt() {
 task:shell() {
     docker:container_run web /bin/bash --login
 }
+
+# Database
+task:db:download() {
+    virtualenv:run fab get_data
+}

@@ -1,6 +1,27 @@
 //
 // Actionbar
 // -------------------------------------
+.c-action-bar {
+    position: fixed;
+    top: 1rem;
+    right: 4rem;
+}
+
+.c-action-bar__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    background-color: $app-secondary;
+    text-align: center;
+    &--primary {
+        background-color: $app-primary;
+    }
+}
 
 .app-actionbar {
 

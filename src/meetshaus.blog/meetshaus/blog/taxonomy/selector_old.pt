@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+     metal:use-macro="context/main_template/macros/master"
+     i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+    <metal:content-core define-macro="main">
+        <div class="app-blog-content blog-posting" tal:content="nothing" tal:omit-tag="">
+            <div class="blog-posting-header">
+                <h1 class="blog-posting-title">Taxonomy Selection</h1>
+                <p class="lead blog-posting-lead">
+                    Select taxonomy terms that should be displayed and used as blog entry
+                    categories by enabling the desired keywords.
+                </p>
+                <p><a class="button button--default pull-right" href="${view/update_terms_action}"
+                     tal:attributes="href python:view.update_terms_action">Update list from database</a></p>
+
+            </div>
+            <div class="blog-posting-main" tal:content="nothing" tal:omit-tag="">
+                <h2 class="page__title">Available categories <small>${view/records_index}</small></h2>
+                <form class="app-form app-form--taxonomy-selection"
+                      method="post" role="form"
+                     tal:attributes="action request/URL">
+                    <table class="table table-condensed" tal:condition="view/has_selectable_terms">
+                        <tbody tal:content="nothing">
+                        <tal:block tal:repeat="item view/records">
+                            <tr tal:define="item_idx repeat/item/number">
+                                <td tal:define="item_uid item/id;
+                                    item_enabled item/enabled | False">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="${item/id}" name="${item/id}"
+                                             tal:attributes="checked python:item_enabled and 'checked' or ''">
+                                        <label class="custom-control-label" for="customCheck1">${item/title}</label>
+                                    </div>
+                                </td>
+                                <td>${item/count} Blog Entries</td>
+                                <td hidden><code>${item}</code></td>
+                                <td><a class="button button--link" href="${item/url}">Review</a></td>
+                            </tr>
+                        </tal:block>
+                        </tbody>
+                    </table>
+                    <div class="app-form__group app-form__actions">
+                        <span tal:replace="structure context/@@authenticator/authenticator"/>
+                        <button class="button button--primary"
+                                name="form.button.Submit"
+                                id="form.button.Submit"
+                             i18n:translate="">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </metal:content-core>
+</metal:main>
+</body>
+</html>
