@@ -1,15 +1,61 @@
-// Reuse bs v4 breadcrumb component
-// to keep styles concise
-.app-breadcrumbs {
-    @include make-container();
-    @include make-container-max-widths();
-    @extend .breadcrumb;
-    padding-left: 30px;
+//
+// Pathbar stylesheet based on Plone 5 Styles
+// -----------------------------------------------
+
+.app-pathbar {
+    display: none;
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
+    @include when-inside('.template-search') {
+        display: none;
+    }
+    @extend .container;
+    margin-top: 0;
+    font-size: $font-size-sm;
+    border-radius: 0;
+    background-color: transparent;
+    padding-left: 0;
+    .breadcrumb {
+        background-color: transparent;
+        margin-bottom: 0;
+    }
+    > * > span { //you are here
+        display: inline-block;
+        color: $gray-400;
+        padding: 1rem 0 1rem 1rem;
+        font-weight: 100;
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
+    }
+    ol {
+        display: inline-block;
+        padding: 1rem;
+        list-style: none;
+        margin: 0;
+        > li {
+            font-weight: 300;
+            display: inline-block;
+            line-height: 0; // match ol & span height
+            position: relative;
+            padding: 0;
+            + li:before {
+                content: " > ";
+                padding: 0 0.5rem;
+                color: #000;
+            }
+        }
+        > #breadcrumbs-current {
+            color: $breadcrumb-active-color;
+        }
+    }
+
+    body.template-front-page-view & {
+        display: none;
+    } //not breadcrumbs on homepage
 }
 
-.app-breadcrumbs-item {
-    @extend .breadcrumb-item;
-    > a {
-        color: $gray-200;
-    }
+#breadcrumbs-you-are-here {
+    display: none;
 }

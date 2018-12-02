@@ -1,0 +1,6 @@
+.pagination {
+    flex-wrap: wrap;
+    @include media-breakpoint-up(md) {
+        flex-wrap: nowrap;
+    }
+}
