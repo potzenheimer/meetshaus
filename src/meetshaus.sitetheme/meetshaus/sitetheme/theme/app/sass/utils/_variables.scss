@@ -54,9 +54,11 @@ $app-secondary-lighter:           lighten($app-secondary-base, 15%) !default;
 
 //== Brand primary color schema used as default
 $app-default:                 $app-primary-base;
+$app-color-gray:               $app-gray;
 
 // Brand danger
 $app-danger:                    $app-red;
+
 
 
 // Custom webfonts

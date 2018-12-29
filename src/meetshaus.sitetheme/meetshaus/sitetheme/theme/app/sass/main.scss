@@ -7,6 +7,11 @@
 @import 'utils/functions';
 @import 'utils/mixins.scss';
 
+@import 'settings/settings.vendor.mq';
+// Object Settings
+@import 'settings/settings.object.page';
+
+@import 'vendors/mq';
 @import 'vendors/ionicons';
 @import 'vendors/bootstrap';
 @import 'vendors/ionicons';
@@ -23,6 +28,7 @@
 @import 'layout/footer';
 @import 'layout/forms';
 
+@import 'objects/object.page';
 @import 'objects/object.excerpt';
 
 @import 'components/toolbar';
@@ -32,6 +38,9 @@
 @import 'components/brand';
 @import 'components/component.actionbar';
 @import 'components/component.pagination';
+@import 'components/component.configlet';
+@import 'components/component.widget.base';
+@import 'components/component.cards';
 @import 'components/banner';
 @import 'components/cards';
 @import 'components/burger';

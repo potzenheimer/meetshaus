@@ -13,6 +13,8 @@
     <theme href="dist/signin/index.html" css:if-content="body.template-pwreset_form" />
     <theme href="dist/signin/index.html" css:if-content="body.template-pwreset_finish" />
 
+    <theme href="dist/newsletter/index.html" css:if-content="body.section-newsletter" />
+
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
 
@@ -349,6 +351,47 @@
                 <xsl:apply-templates />
             </ul>
         </replace>
+
+        <!-- Portlets-->
+        <replace css:content=".portletNavigationTree" css:if-content=".template-overview-controlpanel">
+            <div class="c-card">
+                <xsl:for-each css:select=".portlet > *">
+                    <div>
+                        <xsl:if test="@class[contains(.,'portletHeader')]">
+                            <xsl:attribute name="class">c-card__header</xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="@class[contains(.,'portletContent')]">
+                            <xsl:attribute name="class">c-card__main c-card__main--plain</xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="@class[contains(.,'portletFooter')]">
+                            <xsl:attribute name="class">c-card__footer</xsl:attribute>
+                        </xsl:if>
+                        <xsl:copy-of select="node()"/>
+                    </div>
+                </xsl:for-each>
+            </div>
+        </replace>
+
+        <!-- Portlets-->
+        <replace css:content=".portlet:not(.portletNavigationTree)" css:if-not-content=".template-prefs_install_products_form">
+            <div class="c-card">
+                <xsl:for-each css:select=".portlet > *">
+                    <div>
+                        <xsl:if test="@class[contains(.,'portletHeader')]">
+                            <xsl:attribute name="class">c-card__header</xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="@class[contains(.,'portletContent')]">
+                            <xsl:attribute name="class">c-card__main</xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="@class[contains(.,'portletFooter')]">
+                            <xsl:attribute name="class">c-card__footer</xsl:attribute>
+                        </xsl:if>
+                        <xsl:copy-of select="node()"/>
+                    </div>
+                </xsl:for-each>
+            </div>
+        </replace>
+
 
         <!-- Support cookie consent -->
         <after css:theme-children="#app-footer"

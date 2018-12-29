@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="meetshaus.blog">
+
+    <!-- Context preview widgets -->
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="content-widget-card-newsletter-subscription"
+        class=".card.NewsletterCardWidget"
+        template="card-newsletter.pt"
+        permission="zope2.View"
+        layer="meetshaus.blog.interfaces.IBlogTool"
+    />
+
+</configure>

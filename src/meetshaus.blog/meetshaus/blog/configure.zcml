@@ -8,20 +8,20 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="meetshaus.blog">
 
-  <!-- Include configuration for dependencies listed in setup.py -->
-  <includeDependencies package="." />
+    <!-- Include configuration for dependencies listed in setup.py -->
+    <includeDependencies package="." />
 
-  <!-- Include the sub-packages that use their own configure.zcml files. -->
-  <include package=".browser" />
-  <include package=".portlets" />
-  <include package=".taxonomy" />
+    <!-- Include the sub-packages that use their own configure.zcml files. -->
+    <include package=".browser" />
+    <include package=".portlets" />
+    <include package=".taxonomy" />
+
+    <include package=".widgets" />
 
     <!-- Custom db indexing for site contents -->
     <include file="indexers.zcml" />
 
-  <!-- Grok the package to initialise schema interfaces and content classes -->
 
-    <!--<grok:grok package="." />-->
 
   <i18n:registerTranslations directory="locales" />
 
