@@ -116,12 +116,6 @@
                 </div>
             </section>
 
-            <section class="app-page__section app-page__section--widgets">
-                <div class="app-page__widget--bottom">
-                    <tal:widget tal:replace="structure python:context.restrictedTraverse('@@content-widget-view')(widget_type='card-newsletter-subscription', identifier='card-newsletter-subscription', data_set=dict())"></tal:widget>
-                </div>
-            </section>
-
             <footer class="app-page__footer blog-entry__footer blogentry-actionbar text-center" tal:condition="view/parent_info">
                 <hr>
               <tal:block tal:define="parent view/parent_info">

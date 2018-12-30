@@ -19672,9 +19672,9 @@ fonts--loaded .form__field--checkbox > .option > label {
 }
 
 .o-form__control--secondary {
-  border-color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.75) !important;
   border-width: 0 0 .125rem 0 !important;
-  background-color: transparent !important;
+  background-color: rgba(255, 255, 255, 0.25) !important;
 }
 
 .form__control--checkbox {
@@ -20921,14 +20921,26 @@ body.template-front-page-view .app-pathbar {
 }
 
 .c-card--secondary {
-  margin-right: 2rem;
-  margin-left: 2rem;
   padding-right: 1rem;
   padding-left: 1rem;
   color: #fff;
-  background-color: #d3802a;
+  background-color: #74c4ea;
   border: 1px solid #fff;
   border-radius: .5rem;
+}
+
+@media (min-width: 48em) and (max-width: 61.99em) {
+  .c-card--secondary {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+}
+
+@media (min-width: 62em) {
+  .c-card--secondary {
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
 }
 
 .c-card__header {

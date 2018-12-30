@@ -1,6 +1,6 @@
 $c-card-margin-bottom:              1.5rem;
 $c-card-color-secondary:            #fff;
-$c-card-bg-secondary:               $app-secondary;
+$c-card-bg-secondary:               $app-primary;
 //
 // Cards displaying thumbnails and data collections
 // ------------------------------------------------------
@@ -10,14 +10,20 @@ $c-card-bg-secondary:               $app-secondary;
 }
 
 .c-card--secondary {
-    margin-right: 2rem;
-    margin-left: 2rem;
     padding-right: 1rem;
     padding-left: 1rem;
     color: $c-card-color-secondary;
     background-color: $c-card-bg-secondary;
     border: 1px solid #fff;
     border-radius: .5rem;
+    @include mq($from: md, $until: lg) {
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+    }
+    @include mq($from: lg) {
+        margin-right: 3rem;
+        margin-left: 3rem;
+    }
 }
 
 //== Card layout
