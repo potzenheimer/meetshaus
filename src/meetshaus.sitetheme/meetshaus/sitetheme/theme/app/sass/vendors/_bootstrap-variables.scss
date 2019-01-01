@@ -1,0 +1,80 @@
+//
+// Bootstrap variable overides
+//
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-flex:               true;
+$enable-rounded:            false;
+$enable-shadows:            false;
+$enable-gradients:          false;
+$enable-transitions:        false;
+$enable-hover-media-query:  false;
+$enable-grid-classes:       true;
+
+
+$font-family-base:            $app-font-family-base, $font-family-sans-serif, Arial, sans-serif;
+$headings-font-family:        $app-font-family-strong, $font-family-base;
+$headings-font-weight:        600;
+
+//## Reset and adjust existing variables
+$brand-primary:                 $app-primary;
+$link-color:                    $color-seagull;
+
+$blue:      $app-primary;
+
+$theme-colors: ();
+$theme-colors: map-merge((
+    "primary": $app-primary,
+    "secondary": $app-secondary,
+    "success": $green,
+    "info": $cyan,
+    "warning": $yellow,
+    "danger": $red,
+    "light": $gray-100,
+    "dark": $gray-800
+), $theme-colors);
+
+
+$link-color:            $app-primary;
+$link-decoration:       none;
+$link-hover-color:      darken($app-primary, 15%);
+$link-hover-decoration: none;
+
+
+$h1-font-size: 2.25rem;
+$h2-font-size: 2.15rem;
+$h3-font-size: 2rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
+
+
+//** Navbar toggle
+$navbar-default-toggle-hover-bg:           #ddd;
+$navbar-default-toggle-icon-bar-bg:        #888;
+$navbar-default-toggle-border-color:       #ddd;
+
+//** Button primary uses default link color not brand primary
+$btn-primary-bg:                 $app-primary;
+$btn-primary-border: 			        $app-primary;
+
+//** Pagination
+$pagination-color:                     $app-primary;
+$pagination-bg:                        $white !default;
+$pagination-border-width:              $border-width !default;
+$pagination-border-color:              #ddd !default;
+
+$pagination-hover-color:               darken($app-primary, 15%);
+$pagination-hover-bg:                  $gray-200 !default;
+$pagination-hover-border-color:        #ddd !default;
+
+$pagination-active-color:              $white !default;
+$pagination-active-bg:                 $app-primary;
+$pagination-active-border-color:       $app-primary;
+
+$pagination-disabled-color:            $gray-600 !default;
+$pagination-disabled-bg:               $white !default;
+$pagination-disabled-border-color: #ddd !default;

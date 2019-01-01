@@ -1,0 +1,175 @@
+//
+// Navbar
+// -----------------------------------------
+
+.app-navbar {
+  @extend .navbar;
+    padding-top: 0;
+  @include media-breakpoint-up(xl) {
+    background: transparent;
+      padding-top: 1rem;
+  }
+}
+
+//== Navbar header
+//
+//## Default display of global site navigation
+//## Hidden on larger displays
+.app-navbar-header {
+  @include clearfix;
+  display: none;
+  align-items: center;
+  padding: 0;
+  background: $app-primary;
+  &__toggle {
+    display: none;
+  }
+}
+
+//## Navbar toggle text
+.app-navbar-header-title {
+  flex: 0 0 75%;
+}
+
+//## Icon bar navigation toggle
+.app-navbar-header-toggle {
+  display: none;
+  flex: 0 0 25%;
+  text-align: center;
+}
+
+// Navbar toggle button visible on small displays
+.app-navbar-toggle {
+  width: 100%;
+  border-color: transparent;
+  background: transparent;
+  text-align: right;
+  &:hover,
+  &:focus {
+    background: transparent;
+    border-color: transparent;
+  }
+  .icon-bar {
+    background-color: $gray-300;
+  }
+  // Bars
+  .icon-bar {
+    display: block;
+    width: 44px;
+    height: 2px;
+    border-radius: 1px;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 12px;
+  }
+}
+
+// Navbar toggle button visible on small displays
+// Custom override for
+.navbar-toggleable {
+    &-xs {
+        @include media-breakpoint-up(sm) {
+            display: block !important;
+        }
+    }
+    &-sm {
+        @include media-breakpoint-up(md) {
+            display: block !important;
+        }
+    }
+    &-md {
+        @include media-breakpoint-up(lg) {
+            display: block !important;
+        }
+    }
+}
+
+// Navbar toggle
+//
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse
+// Bootstrap JavaScript plugin.
+
+.navbar-toggler {
+    padding: .5rem .75rem;
+    font-size: $font-size-lg;
+    line-height: 1;
+    background: none;
+    border: $border-width solid transparent;
+    @include border-radius($btn-border-radius);
+
+    @include hover-focus {
+        text-decoration: none;
+    }
+}
+
+// Unordered list main navigation
+.app-navbar-nav,
+.app-nav {
+  display: block;
+  margin-bottom: 0;
+  padding-left: 0; // Override default ul/ol
+  list-style: none;
+  @include clearfix;
+  @include media-breakpoint-up(lg) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+  }
+}
+
+//== Navitems
+//
+//## Color coded based on addon classes
+.app-navitem,
+.app-nav__item {
+  width: 100%;
+  padding-right: .25rem;
+  text-align: center;
+  @include media-breakpoint-up(md) {
+    text-align: right;
+  }
+    @include media-breakpoint-up(xl) {
+        text-align: left;
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}
+
+.app-navitem-tab,
+.app-nav__link {
+    display: inline-block;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    color: $app-primary;
+    background-color: transparent;
+    font-family: "AurulentSansBold";
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1;
+    text-align: center;
+    transition: background-color 0.5s ease;
+    &:hover {
+      color: $app-secondary;
+      margin-bottom: -1px;
+      border-bottom: 1px solid $app-primary;
+      text-decoration: none;
+    }
+    > span {
+      display: block;
+      margin: 0 auto;
+    }
+    @include media-breakpoint-up(lg) {
+        display: flex;
+        align-items: center;
+    }
+    @include when-inside('.active') {
+        color: $app-secondary;
+        border-bottom: 1px solid $app-secondary;
+        margin-bottom: -1px;
+        background-color: transparent;
+        text-decoration: none;
+    }
+}

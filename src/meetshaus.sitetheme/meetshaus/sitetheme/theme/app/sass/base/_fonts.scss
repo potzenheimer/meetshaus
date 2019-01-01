@@ -1,0 +1,88 @@
+// Custom application fonts
+// ------------------------
+
+/* @group custom font Noto Sans */
+
+/* noto-sans-regular - latin */
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Noto Sans'), local('NotoSans'),
+    url('../assets/fonts/noto-sans-v7-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../assets/fonts/noto-sans-v7-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* noto-sans-italic - latin */
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Noto Sans Italic'), local('NotoSans-Italic'),
+    url('../assets/fonts/noto-sans-v7-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../assets/fonts/noto-sans-v7-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* noto-sans-700 - latin */
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Noto Sans Bold'), local('NotoSans-Bold'),
+    url('../assets/fonts/noto-sans-v7-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../assets/fonts/noto-sans-v7-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+
+/* @group custom font AurulenSans */
+
+@font-face {
+    font-family: 'AurulentSansRegular';
+    src: url('../assets/fonts/AurulentSans-Regular-webfont.eot');
+    src: url('../assets/fonts/AurulentSans-Regular-webfont.eot?iefix') format('eot'),
+         url('../assets/fonts/AurulentSans-Regular-webfont.woff') format('woff'),
+         url('../assets/fonts/AurulentSans-Regular-webfont.ttf') format('truetype'),
+         url('../assets/fonts/AurulentSans-Regular-webfont.svg#webfont18nXzLYS') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AurulentSansItalic';
+    src: url('../assets/fonts/AurulentSans-Italic-webfont.eot');
+    src: url('../assets/fonts/AurulentSans-Italic-webfont.eot?iefix') format('eot'),
+         url('../assets/fonts/AurulentSans-Italic-webfont.woff') format('woff'),
+         url('../assets/fonts/AurulentSans-Italic-webfont.ttf') format('truetype'),
+         url('../assets/fonts/AurulentSans-Italic-webfont.svg#webfontjDtVmWpR') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AurulentSansBold';
+    src: url('../assets/fonts/AurulentSans-Bold-webfont.eot');
+    src: url('../assets/fonts/AurulentSans-Bold-webfont.eot?iefix') format('eot'),
+         url('../assets/fonts/AurulentSans-Bold-webfont.woff') format('woff'),
+         url('../assets/fonts/AurulentSans-Bold-webfont.ttf') format('truetype'),
+         url('../assets/fonts/AurulentSans-Bold-webfont.svg#webfontik3ET1p7') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AurulentSansBoldItalic';
+    src: url('../assets/fonts/AurulentSans-BoldItalic-webfont.eot');
+    src: url('../assets/fonts/AurulentSans-BoldItalic-webfont.eot?iefix') format('eot'),
+         url('../assets/fonts/AurulentSans-BoldItalic-webfont.woff') format('woff'),
+         url('../assets/fonts/AurulentSans-BoldItalic-webfont.ttf') format('truetype'),
+         url('../assets/fonts/AurulentSans-BoldItalic-webfont.svg#webfontb8ZKI1ph') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+

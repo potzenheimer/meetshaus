@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <xsl:template match="activity|add-profile-tab|bookmark|comments|friendpile|like|like-box|live-stream|login-button|pronoun|recommendations|serverFbml|profile-pic|user-status">
+      <xsl:element name="fb:{local-name()}" xmlns:fb="http://www.facebook.com/2008/fbml">
+        <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+    </xsl:template>
+    <xsl:template match="plusone">
+      <xsl:element name="g:{local-name()}" xmlns:g="http://base.google.com/ns/1.0">
+        <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+    </xsl:template>
+
+    <!-- Setup custom login form -->
+    <theme href="dist/signin/index.html" css:if-content="body.template-login_form" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-logged_out" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-login_failed" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-mail_password_form" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-mail_password_response" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-pwreset_form" />
+    <theme href="dist/signin/index.html" css:if-content="body.template-pwreset_finish" />
+    <!-- The default theme, used for standard Plone web pages -->
+    <theme href="dist/frontpage/index.html" css:if-content="body.section-front-page" />
+    <!--<theme href="contact.html" css:if-content="body.section-kontakt" />
+    <theme href="impressum.html" css:if-content="body.section-impressum" />-->
+
+    <!--<theme href="newtheme.html" css:if-content="body.section-blog" /> -->
+    <!--<theme href="dist/fullscreen/index.html" css:if-content="body.section-referenzen" />-->
+
+    <theme href="dist/blog/index.html" css:if-content="body.section-themen" />
+    <theme href="dist/blog/index.html" css:if-content="body.section-blog" />
+    <theme href="dist/blog/index.html" css:if-content="body.portaltype-meetshaus-blog-blogentry" />
+
+    <!-- Rules applying to a standard Plone web page -->
+    <rules css:if-content="#visual-portal-wrapper">
+
+        <notheme if="$ajax_load" />
+
+        <theme href="dist/blog/index.html" />
+
+        <notheme if="$host = 'cms.meetshaus.de'" />
+
+        <replace css:theme="title" css:content="title" />
+        <after theme="/html/head/title" css:content="base" />
+        <!-- Add meta tags -->
+        <!-- <drop theme="/html/head/meta" />-->
+        <drop css:content="meta[name='viewport']" />
+        <before content="/html/head/meta" theme="/html/head/title" />
+
+        <rules css:if-content="body.userrole-authenticated">
+            <after content="/html/head/link"
+                theme-children="/html/head"
+                />
+            <after
+                content="/html/head/script"
+                theme-children="/html/head"
+                />
+            <drop theme="/html/head/style" />
+            <!-- Drop scripts from theme footer if present -->
+            <drop theme="/html/body/script" />
+         </rules>
+
+        <!-- Custom favicon implementation -->
+        <drop css:content="head link[rel='apple-touch-icon']" />
+        <drop css:content="head link[rel='shortcut icon']" />
+        <after theme="/html/head">
+            <link rel="shortcut icon" href="/++theme++meetshaus.sitetheme/assets/ico/favicon.ico" type="images/x-icon" />
+        </after>
+
+        <!-- Copy over the id/class attributes on the body tag.
+             This is important for per-section styling -->
+        <merge attributes="class" css:content="body" css:theme="body" />
+        <copy attributes="*" css:content="body" css:theme="body" />
+
+        <!-- CMSUI Editbar replacements -->
+        <drop css:theme="#app-toolbar"
+            css:if-content=".userrole-anonymous" />
+
+        <!--<replace css:theme="#app-toolbar" css:content="#app-toolbar" />-->
+
+        <!-- toolbar -->
+        <replace css:theme="#app-toolbar"
+            css:content="#edit-bar"
+            css:if-not-content=".ajax_load"
+            css:if-content=".userrole-authenticated"/>
+
+        <!-- Logo (link target) -->
+        <copy attributes="href" css:content='#portal-logo' css:theme=".app-brand" />
+
+        <!-- Portal Messages -->
+        <before css:content=".portalMessage" css:theme="#content" />
+        <strip css:content=".portalMessage dd"/>
+        <replace css:content=".portalMessage" >
+          <xsl:choose>
+              <xsl:when css:test=".portalMessage[style]"/>
+              <xsl:when css:test=".portalMessage">
+                  <div class="app-callout app-callout-default alert-dismissable" role="alert">
+                      <xsl:choose>
+                          <xsl:when css:test=".info">
+                              <xsl:attribute name="class">app-callout app-callout-success alert-dismissable</xsl:attribute>
+                          </xsl:when>
+                          <xsl:when css:test=".error">
+                              <xsl:attribute name="class">app-callout app-callout-danger alert-dismissable</xsl:attribute>
+                          </xsl:when>
+                          <xsl:when css:test=".warning">
+                              <xsl:attribute name="class">app-callout app-callout-warning alert-dismissable</xsl:attribute>
+                          </xsl:when>
+                      </xsl:choose>
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                      <h4><xsl:apply-templates select="./dt/*"/></h4>
+                      <xsl:apply-templates />
+                  </div>
+              </xsl:when>
+          </xsl:choose>
+        </replace>
+        <!-- Document First Heading -->
+        <replace css:content=".documentFirstHeading">
+            <div class="app-page-header">
+                <h1 class="app-page-title">
+                    <xsl:apply-templates />
+                </h1>
+            </div>
+        </replace>
+        <!-- Document lead description -->
+        <replace css:content=".documentDescription">
+            <p class="app-page-abstract">
+                <xsl:apply-templates />
+            </p>
+        </replace>
+        <!-- Document byline (author and meta information) -->
+        <replace css:content=".documentByLine">
+            <div class="app-page-byline">
+                <xsl:apply-templates />
+            </div>
+        </replace>
+        <!-- Fix table styles -->
+        <replace css:content="table.listing">
+          <table>
+            <xsl:copy-of select="@*"/>
+            <xsl:attribute name="class">table table-hover</xsl:attribute>
+            <xsl:apply-templates />
+          </table>
+        </replace>
+        <!-- Form field transforms -->
+        <!-- Forms -->
+        <replace css:content=".formHelp">
+          <xsl:copy>
+            <xsl:copy-of select="@*" />
+            <xsl:attribute name="class"><xsl:value-of select="./@class" /> help-block</xsl:attribute>
+            <xsl:apply-templates />
+          </xsl:copy>
+        </replace>
+
+        <replace css:content="span.required">
+          <xsl:copy>
+            <xsl:copy-of select="@*" />
+            <xsl:attribute name="class"><xsl:value-of select="./@class" /> text-warning</xsl:attribute>
+            <xsl:apply-templates />
+          </xsl:copy>
+        </replace>
+
+        <replace content="//*[contains(@class, 'fieldRequired')]/@class">
+          <xsl:attribute name="class"><xsl:value-of select="." /> text-warning</xsl:attribute>
+        </replace>
+
+        <replace content="//div[@class='formQuestion label']/@class">
+          <xsl:attribute name="class">formQuestion</xsl:attribute>
+        </replace>
+
+        <drop content="//label/span[@class='label']/@class" />
+
+        <replace content="//div[@class='field']//div[@class='label']/@class">
+          <xsl:attribute name="class"><xsl:value-of select="." /> label-warning</xsl:attribute>
+        </replace>
+
+        <replace css:content="#portal-globalnav li"
+            css:theme-children="#app-brandbar-nav"
+            css:if-content="body.section-front-page" />
+
+        <replace css:content="#portal-globalnav li"
+            css:theme-children="#app-navbar-nav" />
+
+        <replace css:content-children="#infobar"
+                css:theme-children="#frontpage-about-section"
+                css:if-content="body.section-front-page" />
+
+        <!-- Login form rules -->
+        <replace css:content-children="#content-core"
+                css:theme-children="#app-signin-body"
+                css:if-content="body.template-login_form" />
+        <replace css:content-children="#content-core"
+                css:theme-children="#app-signin-body"
+                css:if-content="body.template-login_failed" />
+        <replace css:content-children="#content-core"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-logged_out" />
+        <replace css:content-children="#content"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-mail_password_form" />
+        <replace css:content-children="#content"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-mail_password_response" />
+        <replace css:content-children="#content"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-pwreset_form" />
+        <replace css:content-children="#content"
+                css:theme-children="#app-signin-content"
+                css:if-content="body.template-pwreset_finish" />
+
+        <rules css:if-content="body.portaltype-meetshaus-blog-blogentry">
+            <replace css:content-children="#content"
+                css:theme-children="#content" />
+            <replace css:content="#blogentry-aside"
+                css:theme="#blogentry-aside" />
+        </rules>
+
+        <rules css:if-content="body.section-front-page">
+            <replace css:content="#introduction" css:theme="#about-me" />
+            <replace css:content="#content-core" css:theme-children="#app-hero" />
+            <replace css:content="#content-blog-listing" css:theme-children="#content" />
+            <replace css:content-children="#portal-column-two > *"
+                css:theme-children="#app-sidebar" />
+        </rules>
+
+        <replace css:content="#content-core > *" css:theme="#contact-me"
+            css:if-content="body.section-impressum" />
+
+        <replace css:content="#content > *" css:theme="#content"
+            css:if-content="body.template-references-listing" />
+
+        <!-- Content -->
+        <replace css:content-children="#content"
+            css:theme-children="#content" />
+
+        <replace css:content-children="#content"
+            css:theme-children="#main-content" />
+
+        <after css:theme="#app-page-aside"
+            css:content="#disqus_thread_wrapper" />
+
+        <replace css:content-children="#portal-column-one > *"
+            css:theme-children="#app-sidebar" />
+
+        <!--<replace css:content-children="#portal-column-two > *"
+            css:theme-children="#about-me" />-->
+
+        <replace css:content-children="#infobar"
+            css:theme-children="#about-me" />
+
+        <replace css:content-children="#infobar-author"
+            css:theme-children="#app-brand-aside"
+            css:if-not-content="body.section-front-page" />
+
+        <before css:content=".portalMessage" css:theme="#content" />
+
+        <!-- Fix table styles -->
+        <replace css:content="table.listing">
+          <table>
+            <xsl:copy-of select="@*"/>
+            <xsl:attribute name="class">table table-hover</xsl:attribute>
+            <xsl:apply-templates />
+          </table>
+        </replace>
+
+        <replace css:content=".configlets">
+          <ul class="nav nav-list checkbox">
+            <xsl:apply-templates />
+          </ul>
+        </replace>
+
+        <!-- Form transforms -->
+
+        <replace css:content=".formHelp">
+              <xsl:copy>
+                <xsl:copy-of select="@*" />
+                <xsl:attribute name="class"><xsl:value-of select="./@class" /> help-block</xsl:attribute>
+                <xsl:apply-templates />
+              </xsl:copy>
+            </replace>
+
+        <!-- Required marker -->
+        <replace css:content="span.required">
+          <xsl:copy>
+            <xsl:copy-of select="@*" />
+            <xsl:attribute name="class"><xsl:value-of select="./@class" /> text-warning</xsl:attribute>
+            <xsl:apply-templates />
+          </xsl:copy>
+        </replace>
+
+        <replace content="//*[contains(@class, 'fieldRequired')]/@class">
+          <xsl:attribute name="class"><xsl:value-of select="." /> text-warning</xsl:attribute>
+        </replace>
+        <!-- Drop .label class for twbs compatibility -->
+        <drop content="//label/span[@class='label']/@class" />
+
+        <replace css:content=".field">
+          <xsl:copy>
+            <xsl:copy-of select="@*" />
+            <xsl:choose>
+               <xsl:when css:test=".error">
+                 <xsl:attribute name="class"><xsl:value-of select="./@class" /> form-group has-error</xsl:attribute>
+               </xsl:when>
+               <xsl:otherwise>
+                 <xsl:attribute name="class"><xsl:value-of select="./@class" /> form-group</xsl:attribute>
+               </xsl:otherwise>
+            </xsl:choose>
+            <xsl:if test="not(*[@class='widget']) and not(table)">
+              <xsl:choose>
+                  <xsl:when css:test="[type='xradio']">
+                      <xsl:attribute name="class">form-control radio</xsl:attribute>
+                  </xsl:when>
+                  <xsl:when css:test="[type='xcheckbox']">
+                      <xsl:attribute name="class">form-control checkbox</xsl:attribute>
+                  </xsl:when>
+              </xsl:choose>
+            </xsl:if>
+              <xsl:apply-templates />
+          </xsl:copy>
+              <!--
+            <label>
+              <xsl:copy-of select="./label/@*" />
+              <xsl:attribute name="class"><xsl:value-of select="./label/@class" /> control-label</xsl:attribute>
+              <xsl:apply-templates select="./label/text()"/>
+              <xsl:apply-templates select="./span[@class='fieldRequired']"/>
+            </label>
+            <div class="controls">
+              <xsl:apply-templates select="./*[not(self::label) and not(@class='fieldRequired')]"/>
+            </div>
+              -->
+
+        </replace>
+
+
+        <!-- Replace input elements (submit buttons and checkboxes) -->
+        <replace css:content="input">
+            <xsl:choose>
+                <xsl:when css:test="[type='submit'],[type='button']">
+                    <button>
+                        <xsl:copy-of select="@*" />
+                        <xsl:choose>
+                            <xsl:when css:test=".delete, .destructive, [value='Delete']">
+                                <xsl:attribute name="class"><xsl:value-of select="./@class" /> btn btn-danger</xsl:attribute>
+                            </xsl:when>
+                            <xsl:when css:test=".searchButton, .context">
+                                <xsl:attribute name="class"><xsl:value-of select="./@class" /> btn btn-primary</xsl:attribute>
+                            </xsl:when>
+                            <xsl:when css:test=".standalone, [type='file']">
+                                <xsl:attribute name="class"><xsl:value-of select="./@class" /> btn btn-default</xsl:attribute>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:attribute name="class"><xsl:value-of select="./@class" /> btn btn-default</xsl:attribute>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                        <xsl:value-of select="./@value"/>
+                    </button>
+                </xsl:when>
+                <xsl:when css:test="[type='text'][name$='.title'],#title, textarea">
+                    <xsl:copy>
+                        <xsl:copy-of select="@*" />
+                        <xsl:attribute name="class"><xsl:value-of select="./@class" /> form-control</xsl:attribute>
+                        <xsl:apply-templates />
+                    </xsl:copy>
+                </xsl:when>
+                <xsl:when css:test="[class='label checkboxType']">
+                    <xsl:copy>
+                        <xsl:copy-of select="@*" />
+                        <xsl:attribute name="class">checkboxType</xsl:attribute>
+                        <xsl:apply-templates />
+                    </xsl:copy>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="."/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </replace>
+
+
+        <!-- Contact Form -->
+        <replace css:content=".formid-kontakt" css:theme="#contact-me"
+            css:if-content="body.section-kontakt" />
+
+    </rules>
+
+</rules>

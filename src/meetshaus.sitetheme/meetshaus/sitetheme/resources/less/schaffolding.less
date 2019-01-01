@@ -1,0 +1,143 @@
+//
+// Basic scaffolding and resets
+// -----------------------------------------------
+
+
+// Set root font size
+
+html {
+    font-size: @font-size-root;
+    @media (min-width: @screen-sm-min) {
+        font-size: ceil((@font-size-root + 2));
+    }
+}
+
+
+// Change styling for elements that mix pixels and ems
+
+pre {
+  font-size: ( @font-size-base - (1 / @font-size-root) );
+}
+
+.form-control-feedback {
+  width: calc(@input-height-base ~" + 2px");
+  height: calc(@input-height-base ~" + 2px");
+}
+.input-lg + .form-control-feedback {
+  width: calc(@input-height-large ~" + 2px");
+  height: calc(@input-height-large ~" + 2px");
+}
+.input-sm + .form-control-feedback {
+  width: calc(@input-height-small ~" + 2px");
+  height: calc(@input-height-small ~" + 2px");
+}
+
+.form-control {
+    height: ceil(@input-height-base * 1.5);
+}
+
+.form-horizontal {
+    .radio, .checkbox, .radio-inline, .checkbox-inline {
+        padding: @padding-base-vertical;
+        border: 1px solid transparent;
+    }
+    .radio, .checkbox {
+        min-height: calc((@line-height-computed + @padding-base-vertical) ~"+ 1px");
+    }
+    .form-control-static {
+        padding-top: @padding-base-vertical;
+        border-top: 1px solid transparent;
+        padding-bottom: @padding-base-vertical;
+        border-bottom: 1px solid transparent;
+    }
+
+    @media (min-width: @screen-sm-min) {
+        .control-label {
+            padding-top: @padding-base-vertical;
+            border-top: 1px solid transparent;
+        }
+    }
+}
+
+
+body {
+    background-color: #D9E4E4;
+    // Reset grid negative margins for theming control panel
+    &.template-theming-controlpanel .row {
+        margin: 0 @line-height-computed;
+    }
+    // Increase line height on larger screens
+    @media (min-width: @screen-sm-min) {
+        line-height: 1.65;
+    }
+}
+
+// Set font weights if webfont is active
+.wf-active {
+    // Default twbs weight for headings 500 not provided by Open Sans
+    @headings-font-weight: 600;
+    b,
+    strong {
+        font-weight: 600;
+    }
+}
+// prevent fake bolds
+b,
+strong {
+    font-weight: 600;
+    .wf-active & {
+        font-weight: 600;
+    }
+}
+
+a {
+    outline: none;
+}
+
+a:hover {
+  .transition(color .5s linear);
+}
+
+.visualClear {
+    clear: both;
+}
+
+// Reenable tpye selection in navigation control panel
+.template-navigation-controlpanel .label:empty {
+    display: inline;
+}
+// Combat plone hidden element class via mixin
+.hiddenStructure {
+    .hidden();
+}
+
+// Set image inline mixin
+.image-inline {
+    .thumbnail();
+}
+
+// Styles for headroom script
+.headroom,
+.app-toolbar {
+    .transition(transform 200ms linear);
+}
+.headroom--pinned {
+    .translate(0%, 0%);
+}
+.headroom--unpinned {
+    .translate(0, -100%);
+}
+
+// Application highlight colors
+
+.app-primary {
+    color: @app-primary;
+}
+
+.app-secondary {
+    color: @app-brown;
+}
+
+.app-avatar {
+    border-color: @app-brown;
+}

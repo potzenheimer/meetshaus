@@ -1,0 +1,23 @@
+<div class="panel panel-default app-panel blog-panel-categories"
+    id="infobox-blog-categories"
+     i18n:domain="meetshaus.blog">
+    <div class="panel-heading app-panel-heading">
+         <span class="badge pull-right" tal:content="view/count_all_entries" />
+        <a i18n:translate="" tal:define="blog_url view/blog_url"
+            tal:attributes="href blog_url">Categories</a>
+    </div>
+    <div class="list-group" role="menu" aria-labelledby="blogCategories"
+        tal:define="keywords view/keywords">
+        <tal:block tal:repeat="item keywords">
+            <a tal:define="search_url python:view.archive_url(item);
+                            category request/category | nothing;
+                            active python: category == item"
+                tal:attributes="class python: active and 'list-group-item active' or 'list-group-item';
+                                role string:menuitem;
+                                href search_url">
+                <span class="badge" tal:content="python:view.count_entries(item)" />
+                  <span tal:content="item" />
+            </a>
+        </tal:block>
+    </div>
+</div>

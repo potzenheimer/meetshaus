@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="meetshaus.landingpage">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+
+
+        <section id="content-blog-listing">
+            <div id="blog-preview-listing"
+                tal:condition="view/has_blogentries">
+
+                <div class="blogentry-list" tal:define="item view/latest_blogentry">
+
+                  <div class="article__preview" tal:define="preview python:view.blog_entry_preview()">
+                    <span tal:replace="structure preview" />
+                  </div>
+
+                  <div class="blogentry-list-item" tal:content="nothing">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <div class="blogentry-aside" id="blogentry-aside"
+                          tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                      ts view/timestamp">
+                          <div class="blogentry-aside-section hidden-xs">
+                            <span class="fa-stack fa-3x text-secondary">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <strong class="fa-stack-1x timestamp-text" tal:content="ts/day">27</strong>
+                            </span>
+                            <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/month" i18n:domain="plone" i18n:translate="">August 2014</span>
+                            <br class="hidden-xs"><span class="h2 text-muted" tal:content="ts/year">August 2014</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-9">
+                        <div class="blogentry"
+                              tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                          ts view/timestamp">
+                          <div class="blogentry-header">
+                            <div class="visible-xs" tal:content="python:toLocalizedTime(ts['date'])" />
+                            <h2 class="blogentry-title" tal:content="item/Title" />
+                          </div>
+
+                          <p class="blogentry-abstract" tal:condition="item/Description">
+                            <span tal:content="item/Description">Desc</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-3">
+                          <div class="blogentry-aside-section" tal:define="categories item/Subject|nothing"
+                                tal:condition="categories">
+                              <div class="h6 blogentry-aside-title">Abgelegt unter</div>
+                              <p>
+                              <span tal:repeat="category categories">
+                                <a href=""
+                                   class="blogentry-aside-category"
+                                   rel="nofollow"
+                                   tal:content="category"
+                                   tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/themen/@@category/${category}">
+                                  Category
+                                </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
+                              </span>
+                              </p>
+                          </div>
+                          <div class="blogentry-aside-section"
+                            tal:define="item_uid item/UID">
+                            <div class="h6 blogentry-aside-title">Lesezeit:</div>
+                            <p class="blogentry-aside-text"><span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span></p>
+                          </div>
+                      </div>
+                      <div class="col-sm-9">
+                        <div class="blogentry">
+                           <div class="blogentry-body">
+                               <span tal:replace="structure item/text/output" />
+                           </div>
+                        </div>
+                      </div>
+                    </div><!-- /row -->
+                  </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="app-frontpage-actionbar text-center">
+                <a class="button button--primary" tal:attributes="href string:${view/portal_url}/themen">
+                 Weitere Themen durchstöbern
+                </a>
+                <a class="button button--primary" tal:attributes="href string:${view/portal_url}/blog">
+                    Ältere Beitrage zeigen
+                </a>
+            </div>
+        </section>
+
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

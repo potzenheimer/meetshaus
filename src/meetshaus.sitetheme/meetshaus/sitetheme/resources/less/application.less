@@ -1,0 +1,258 @@
+// Application specific styles
+// ---------------------------
+
+.app-container {
+    margin: 0 auto @line-height-computed;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background:url(../../assets/img/landscape.png) no-repeat 0% 100% #fff;
+    @media (min-width: @screen-sm-min) {
+        margin-top: ceil((@line-height-computed * 2));
+    }
+}
+
+// CMS toolbar resets
+.app-toolbar {
+  font-size: 0.75rem;
+  .dropdown-menu {
+    font-size: 0.75rem;
+  }
+}
+
+.app-toolbar + .app-container {
+    margin-top: @navbar-height + (@line-height-computed * 2);
+}
+
+.app-navbar {
+    border-top: 1px solid @app-gray;
+    border-bottom: 1px solid @app-gray;
+    @media (min-width: @screen-sm-min) {
+        border: none;
+    }
+}
+
+.text-secondary {
+    color: @app-brown;
+}
+
+.timestamp-text {
+    color: #fff;
+}
+
+.app-infobar {
+    padding: 0 @line-height-computed @line-height-computed;
+}
+
+.app-masthead {
+    padding: floor((@line-height-computed / 2));
+    @media (min-width: @screen-sm-min) {
+        padding: (@line-height-computed * 2);
+        font-size: 1.5rem;
+        line-height: 1.25;
+    }
+}
+
+#about-the-author {
+    padding: @line-height-computed * 2 @line-height-computed 0 0;
+    .tab-content {
+        padding: @line-height-computed 0;
+    }
+}
+
+#content-wrapper,
+#blog-teaser {
+    padding: @line-height-computed;
+}
+
+.app-page-header,
+.page-header {
+    background:url(../../assets/img/bird-blue-starting-left.png) 100% 50% no-repeat transparent;
+    h1, h2 {
+        color: #d3802a;
+    }
+}
+
+h1.documentFirstHeading {
+    color: @app-brown;
+    background:url(../../assets/img/bird-brown-left.png) 100% 100% no-repeat transparent;
+    padding-bottom: @line-height-computed / 2;
+    margin-bottom: @line-height-computed;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+#content {
+    img {
+        .img-responsive();
+    }
+}
+
+.app-content {
+    padding: 0 @padding-xs-horizontal;
+    @media (min-width: @screen-sm-min) {
+        padding: @line-height-computed;
+    }
+}
+
+.app-page {
+    margin-bottom: @navbar-height;
+}
+
+.app-content-body {
+    @media (min-width: @screen-md-min) {
+        p {
+            margin-bottom: ceil((@line-height-computed * 1.5));
+        }
+        ul,
+        ol {
+            margin-bottom: @line-height-computed;
+        }
+    }
+}
+
+.app-page-byline {
+    margin-bottom: @line-height-computed;
+    font-size: 0.9rem;
+    color: @gray-light;
+}
+
+.app-page-abstract,
+.app-page-lead {
+  margin-bottom: @line-height-computed;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.25;
+  @media (min-width: @screen-sm-min) {
+    font-size: 1.5rem;
+  }
+}
+
+
+#sidebar {
+    padding: @line-height-computed / 2;
+    .portlet,
+    .infobox {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: @line-height-computed;
+        .portletHeader {
+            font-size: @font-size-base * 1.5;
+            padding: @line-height-computed @line-height-computed @line-height-computed / 2;
+            color:#D3802A;
+            font-family:'AurulentSansBold';
+            border-bottom: 1px solid #ccc;
+        }
+        h4 {
+            font-size: @font-size-base;
+            padding: @line-height-computed / 2 @line-height-computed @line-height-computed / 2;
+            color:#D3802A;
+            font-family:'AurulentSansBold';
+            border-bottom: 1px solid #ccc;
+        }
+        .portletItem {
+            padding: 0px @line-height-computed / 2 @line-height-computed;
+            h3 {
+                font-size: 1.5rem;
+                line-height: 1.75rem;
+            }
+            .tweetText {
+                .text-muted();
+                font-size: @font-size-small;
+            }
+        }
+        .nav > li > a {
+            padding: 0 @line-height-computed;
+        }
+        .nav .divider {
+            border-color: @gray-lighter;
+        }
+        .nav-header {
+            font-size: 14px;
+        }
+        &.whitespaced {
+            .nav {
+                padding: @padding-small-vertical;
+            }
+        }
+        &.portletReferencesPortlet {
+            p {
+                .text-muted();
+            }
+        }
+    }
+}
+
+.app-sidebar {
+    font-size: (@font-size-base - 2);
+}
+
+.app-aside-header {
+    padding: @line-height-computed;
+    .text-center();
+}
+
+//== Workspace section
+//
+//## List and listitem component
+.ws-section-row {
+  .row();
+  border-bottom: 1px solid @gray-lighter;
+}
+
+.ws-section-content {
+  .make-sm-column(10);
+}
+
+.ws-section-block {
+  .row();
+}
+
+.ws-section-block-main,
+.ws-section-block-aside {
+  .make-sm-column(6);
+}
+
+.ws-section-desc {
+  color: @gray-light;
+  font-size: 0.8rem;
+  font-weight: 300;
+  word-wrap: break-word;
+  margin-right: 3rem;
+}
+
+.ws-section-chevron {
+  .make-sm-column(2);
+  text-align: right;
+  font-size: 1.5rem;
+  color: @gray-light;
+}
+
+.ws-aside {
+  //background: @app-gray-lighter;
+  padding-top: ceil((@line-height-computed * 2));
+}
+
+.app-field-editable {
+    margin-bottom: @line-height-computed;
+    > .editable {
+        padding: @line-height-computed;
+        min-height: 400px;
+        .resizable(vertical);
+        border: 2px solid @state-warning-border;
+        font-family: @font-family-monospace;
+    }
+}
+
+
+//== Tinymce plonebrowser usability fix
+//
+//## Plone image browser footer hides/disables
+//## image upload buttons and the search field is too narrow
+#plonebrowser {
+    #footer {
+        position: relative;
+    }
+    input[id="searchtext"] {
+        height: ceil((@line-height-computed * 1.5));
+    }
+}
+

@@ -1,0 +1,28 @@
+// Basic grid
+.app-grid {
+    margin-bottom: 1rem;
+    @include make-row();
+}
+//== Teaser grid column sizes
+$grid-item-sizes: (
+    w12: 1,
+    w16: 2,
+    w25: 3,
+    w33: 4,
+    w50: 6,
+    w66: 8,
+    w75: 9,
+    w100: 12,
+);
+
+@each $grid-item-size, $size-value in $grid-item-sizes {
+    .app-grid__item--#{$grid-item-size} {
+        @include when-inside('.app-grid') {
+            @include make-col-ready();
+            @include make-col(12);
+            @include media-breakpoint-up(lg) {
+                @include make-col($size-value);
+            }
+        }
+    }
+}

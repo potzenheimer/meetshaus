@@ -1,0 +1,39 @@
+.app-timestamp {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.app-timestamp__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    background-color: $app-secondary;
+    text-align: center;
+    &--primary {
+        background-color: $app-primary;
+    }
+}
+
+.app-timestamp__day_title {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.app-timestamp__month,
+.app-timestamp__year {
+    font-size: 2rem;
+    font-family: "AurulentSansRegular";
+    font-weight: 600;
+    line-height: 1;
+    color: $app-gray;
+}
+
+.app-timestamp__year {
+
+}

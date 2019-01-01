@@ -1,0 +1,36 @@
+<div class="app-socialsharing" id="app-socialsharing"
+    i18n:domain="meetshaus.blog">
+    <div class="app-socialsharing-list"
+        tal:define="url context/absolute_url;
+                    title context/Title;
+                    summary context/Description | nothing">
+
+        <a class="btn btn-socialshare btn-facebook"
+            target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=YOUR-URL"
+            tal:attributes="href string:https://www.facebook.com/sharer/sharer.php?u=${url}">
+            <i class="fa fa-facebook"></i>
+            Share on Facebook</a>
+
+        <a class="btn btn-socialshare btn-twitter"
+            target="_blank"
+            href="https://twitter.com/intent/tweet?text=YOUR-TITLE&url=YOUR-URL&via=TWITTER-HANDLE"
+            tal:attributes="href string:https://twitter.com/intent/tweet?text=${title}&url=${url}&via=ATIXAG">
+            <i class="fa fa-twitter"></i>
+            Tweet</a>
+
+        <a class="btn btn-socialshare btn-google"
+            target="_blank"
+            href="https://plus.google.com/share?url=YOUR-URL"
+            tal:attributes="href string:https://plus.google.com/share?url=${url}">
+            <i class="fa fa-google-plus"></i>
+            Plus on Google+</a>
+
+        <a class="btn btn-socialshare btn-xing"
+            target="_blank" href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://atix.de"
+            tal:attributes="href string:https://www.xing-share.com/app/user?op=share&sc_p=xing-share&url=${url}">
+            <i class="fa fa-xing"></i>
+            Share on Xing</a>
+
+    </div>
+</div>

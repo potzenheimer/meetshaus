@@ -1,0 +1,43 @@
+---
+layout: simple
+title: Sign in
+slug: signin
+base_url: "../../"
+---
+<main class="app-signin-wrapper">
+  <section class="app-signin page page-signin">
+    <article class="page-content" id="app-signin-content">
+      <header class="app-signin-header">
+          <div class="app-signin-header-content">
+              <h1 class="app-signin-title">
+                  Anmelden
+              </h1>
+          </div>
+      </header>
+      <div class="app-signin-content page-body" id="app-signin-body">
+        <form class="app-signin-form enableAutoFocus" action="." id="login_form" method="post">
+          <div class="app-signin-group" id="login-form">
+            <div class="control-group app-signin-control">
+              <div class="app-signin-field">
+              <label for="__ac_name">E-Mail-Adresse</label>
+              <input class="form-control" type="text" id="__ac_name" value="" name="__ac_name" size="15">
+              </div>
+            </div>
+            <div class="control-group app-signin-control">
+              <div class="app-signin-field">
+                <label for="__ac_password">Passwort</label>
+                <input  class="form-control" type="password" id="__ac_password" name="__ac_password" size="15">
+              </div>
+            </div>
+          </div>
+          <div class="app-signin-actions">
+            <div class="control-group">
+              <input class="btn btn-primary btn-lg" type="submit" value="Anmelden" name="submit">
+              <a class="btn btn-link btn-sm" href="/mail_password_form?userid=">Passwort vergessen?</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </article>
+  </section>
+</main>

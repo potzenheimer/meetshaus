@@ -1,0 +1,43 @@
+//
+// Sicial share buttons
+// ----------------------------------------------
+
+// Color variables
+
+@social-sharing-facebook:           #3B5998;
+@social-sharing-facebook-alt:       #6484B5;
+
+@social-sharing-twitter:            #0084B4;
+@social-sharing-twitter-alt:        #00ACED;
+
+@social-sharing-gplus:              #DD4B39;
+@social-sharing-gplus-alt:          #3079ED;
+
+.app-socialsharing {
+  margin-top: ceil((@navbar-height * 2));
+    margin-bottom: @line-height-computed;
+}
+
+.btn-socialshare {
+  display: block;
+  margin-bottom: floor((@line-height-computed / 3));
+}
+
+// Make button variants with twbs mixins
+// .button-variant(@color; @background; @border)
+
+.btn-facebook {
+    .button-variant(#fff; @social-sharing-facebook-alt; @social-sharing-facebook-alt);
+}
+
+.btn-twitter {
+    .button-variant(#fff; @social-sharing-twitter-alt; @social-sharing-twitter-alt);
+}
+
+.btn-google {
+    .button-variant(#fff; @social-sharing-gplus; @social-sharing-gplus);
+}
+
+.btn-xing {
+    .button-variant(#fff; #175e60; #175e60);
+}

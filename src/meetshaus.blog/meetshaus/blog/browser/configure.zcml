@@ -1,0 +1,132 @@
+
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="meetshaus.blog">
+
+
+    <!-- Frontpage Views -->
+    <browser:page
+        for="plone.app.layout.navigation.interfaces.INavigationRoot"
+        name="front-page-view"
+        class=".front-page.FrontPageView"
+        template="front-page.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="blog-listing"
+        class=".blog.BlogView"
+        template="blog.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="thema"
+        class=".blog.BlogCategoryView"
+        template="blog-category.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="categories"
+        class=".categories.BlogCategoriesView"
+        template="categories.pt"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="categories-manager"
+        class=".categories.BlogCategoriesManager"
+        template="categories-manager.pt"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <!-- Blog entry views -->
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="blog-entry-view"
+        class=".blogentry.BlogEntryView"
+        template="blogentry.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="blog-entry-content"
+        class=".blogentry.BlogEntryContent"
+        template="blogentry-content.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="blog-entry-excerpt"
+        class=".blogentry.BlogEntryExcerpt"
+        template="blogentry-excerpt.pt"
+        permission="zope2.View"
+        layer="..interfaces.IBlogTool"
+     />
+
+    <browser:page
+        for="meetshaus.blog.blogpost.IBlogPost"
+        name="gather-assets"
+        class=".migration.GatherAssetsView"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="collect-assets"
+        class=".migration.CollectAssets"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+  <!-- Blog migration view -->
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migrate-blog"
+      class=".migration.BlogMigrationView"
+      template="blogmigration.pt"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migrate-blog-posts"
+      class=".migration.BlogMigrationRunnerView"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
+  <browser:page
+      for="Products.CMFCore.interfaces.IContentish"
+      name="migration-finished"
+      class=".migration.BlogMigrationFinishedView"
+      template="blogmigrationfinished.pt"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBlogTool"
+      />
+    <browser:page
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        name="remove-portlet-assignments"
+        class=".migration.RemovePortletAssignments"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+
+</configure>

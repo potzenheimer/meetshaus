@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+      <div class="app-page__content--main" id="content-core">
+          <div class="app-editor-link text-right" tal:condition="view/authenticated">
+              <a class="btn btn-default" href=""
+                   tal:attributes="href string:${context/absolute_url}/@@manage-blog-categories">
+                  Manage categories
+              </a>
+          </div>
+          <div class="app-grid">
+              <div class="app-grid__item--w33">
+                  <div class="blogentry-aside text-center">
+                      <div class="h2 text-muted" tal:content="context/Title" />
+                      <div class="h1 text-secondary">
+                          <div class="app-timestamp__day app-date__day--dot">
+                              <div class="app-timestamp__day_title">i</div>
+                              <i class="icon ion ion-ios-bookmarks-outline"></i>
+                          </div>
+                          <span class="fa-stack fa-lg">
+              <i class="ion ion-ios-list-outline"></i>
+              <i class="fa fa-list fa-stack-1x fa-inverse"></i>
+            </span>
+                          <span class="hidden">Themen</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="app-grid__item--w66">
+                  <div class="blogentry-aside">
+                      <div class="ap-page__abstract blog-entry__abstract blogentry-abstract-standalone"
+                           tal:condition="context/Description"
+                           tal:content="context/Description" />
+                  </div>
+              </div>
+          </div>
+          <div class="row blogentry-list" tal:define="items view/records">
+              <tal:block tal:repeat="item items">
+                  <div class="col-xs-12 col-sm-6 blogentry-list-item">
+                      <div class="blogentry-aside">
+                          <a class="h2"
+                               tal:attributes="href string:${context/absolute_url}/@@category/${item/title}">
+                              <span tal:content="item/title" />
+                          </a>
+                          <p class="text-muted">
+                              <span tal:content="item/count" />
+                              Beiträge
+                          </p>
+                          <div class="blogentry-aside-body" tal:content="structure item/description" />
+                      </div>
+                  </div>
+                  <div class="clearfix" tal:condition="repeat/item/odd"></div>
+              </tal:block>
+          </div>
+      </div>
+
+  </metal:content-core>
+</metal:main>
+</body>
+</html>

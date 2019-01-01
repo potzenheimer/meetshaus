@@ -1,0 +1,61 @@
+$c-card-margin-bottom:              1.5rem;
+$c-card-color-secondary:            #fff;
+$c-card-bg-secondary:               $app-primary;
+//
+// Cards displaying thumbnails and data collections
+// ------------------------------------------------------
+
+.c-card {
+    margin-bottom: $c-card-margin-bottom;
+}
+
+.c-card--secondary {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    color: $c-card-color-secondary;
+    background-color: $c-card-bg-secondary;
+    border: 1px solid #fff;
+    border-radius: .5rem;
+    @include mq($from: md, $until: lg) {
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+    }
+    @include mq($from: lg) {
+        margin-right: 3rem;
+        margin-left: 3rem;
+    }
+}
+
+//== Card layout
+//
+//## Reflow card contents based on viewport size
+.c-card__header {
+    @include clearfix;
+    padding: $card-spacer-y $card-spacer-x;
+}
+
+//** Card content
+.c-card__main {
+    @include clearfix;
+    padding: $card-spacer-y $card-spacer-x;
+}
+
+//** Card footer
+.c-card__footer {
+    padding: $card-spacer-y $card-spacer-x;
+}
+
+// Card contents
+.c-card__title {
+    color: $app-primary;
+    font-size: 1.5rem;
+    font-family: "AurulentSansBold";
+    line-height: 1.25;
+    @include when-inside('.c-card--secondary') {
+        color: #fff;
+    }
+}
+
+.c-card__section {
+    margin-bottom: 1rem;
+}

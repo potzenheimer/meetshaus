@@ -1,0 +1,130 @@
+.app-page__header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    &:first-child {
+        border-top: 0;
+    }
+}
+
+//== Page styles
+//
+//## Define content specific styles
+.app-page__title {
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+    font-family: 'AurulentSansBold';
+    color: $color-brandy-punch;
+    &--center {
+        text-align: center;
+    }
+}
+
+
+// Use custom lead element for page desciptions
+// that has proper line-height on all media types
+.app-page__lead,
+.app-page__abstract {
+    margin-bottom: $spacer;
+    font-family: 'AurulentSansRegular';
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.25;
+    @include media-breakpoint-up(sm) {
+        font-size: 1.75rem;
+    }
+}
+
+.app-page__title,
+.app-page__abstract {
+    @include when-inside('.portaltype-document') {
+        @include media-breakpoint-up(md) {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        @include media-breakpoint-up(lg) {
+            padding-left: 3.5rem;
+            padding-right: 3.5rem;
+        }
+    }
+}
+
+
+//== Page section
+//
+//## Container providing visual separation
+.app-page-section,
+.app-page__section--primary {
+    margin-top: 2rem;
+    padding: 4em 0 2rem;
+}
+
+.app-page__section--separator {
+    position: relative;
+    &:before {
+        content: ' ';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: calc(50% - 10rem / 2);
+        width: 10rem;
+        height: 2px;
+        background-color: $app-gray;
+    }
+}
+
+.app-page__section--primary,
+.app-page__content--main {
+    @include media-breakpoint-up(md) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    @include media-breakpoint-up(lg) {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+}
+
+.app-page__section--widgets {
+    padding-top: 2rem;
+}
+
+.app-page__content--blog {
+    padding: 0;
+}
+
+.app-page__footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+//
+// Content specific image and media styles
+//
+// Should be removed or refacored to use proper base classes
+// e.g. app-img
+// Note: classes can easily be changed using the diazo transform chain
+// or the tinymce configuration
+.app-img {
+    display: block;
+    margin: 2rem auto;
+    max-width: 100%;
+}
+
+.app-page__asset {
+    margin-left: auto;
+    margin-right: auto;
+    @include media-breakpoint-up(md) {
+        width: 75%;
+    }
+    @include media-breakpoint-up(lg) {
+        width: 66.6666%;
+    }
+}
+
+// DEPRECATED
+// Should be replaced with the more generic
+// .app-page-embed class
+.embed-responsive {
+  margin-bottom: 1rem;
+}

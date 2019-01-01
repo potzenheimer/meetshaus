@@ -1,0 +1,6 @@
+<layers>
+  <layer
+    name="meethaus.blog.layer"
+    interface="meetshaus.blog.interfaces.IBlogTool"
+  />
+</layers>

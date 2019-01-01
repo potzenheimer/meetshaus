@@ -1,0 +1,102 @@
+//
+// Blog listing and entries
+// ------------------------------------
+
+
+.blogentry {
+  @media (min-width: @screen-md-min) {
+    padding-left: ceil((@line-height-computed * 2));
+  }
+}
+
+.blogentry-header {
+  padding-top: @line-height-computed;
+  padding-bottom: ((@line-height-computed / 2) - 1);
+  margin: @line-height-computed 0 @line-height-computed;
+  border-top: 1px solid @page-header-border-color;
+  &:first-child {
+    border-top: 0;
+  }
+  @media (min-width: @screen-md-min) {
+    margin-top: floor((@line-height-computed * 2));
+  }
+}
+
+.blogentry-title {
+  font-family:'AurulentSansBold';
+  color: @app-brown;
+}
+
+.blogentry-avatar {
+  .square(200px);
+  margin: @line-height-computed;
+}
+
+.blogentry-abstract {
+  margin-bottom: @line-height-computed;
+  font-family: 'AurulentSansRegular';
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: @line-height-large;
+  color: @gray;
+  &.blogentry-abstract-standalone {
+    margin-top: @line-height-computed;
+  }
+  @media (min-width: @screen-sm-min) {
+    font-size: 1.75rem;
+  }
+}
+
+.blogentry-body {
+  padding-top: @line-height-computed;
+  @media (min-width: @screen-sm-min) {
+    padding-top: 0;
+    h2,
+    h3 {
+      margin-top: ceil((@line-height-computed * 2));
+      margin-bottom: @line-height-computed;
+    }
+  }
+}
+
+.blogentry-aside {
+  margin-top: floor((@line-height-computed / 4));
+  margin-bottom: floor((@line-height-computed / 4));
+  &.blogentry-aside-default {
+    margin-top: 0;
+    border: none;
+  }
+  @media (min-width: @screen-sm-min) {
+    margin-top: floor((@line-height-computed * 2));
+    margin-bottom: @navbar-height;
+    padding-top: @line-height-computed;
+    border-top: 1px solid @page-header-border-color;
+  }
+}
+
+.blogentry-aside-section {
+  text-align: center;
+  font-size: 0.75rem;
+  @media (min-width: @screen-sm-min) {
+    font-size: 0.9rem;
+  }
+}
+
+.blogentry-aside-title {
+  font-family: @app-font-default;
+  color: lighten(@app-gray, 10%);
+}
+
+.blogentry-aside-text {
+  font-size: @font-size-large;
+  font-weight: 300;
+  line-height: @line-height-small;
+  color: @app-gray;
+}
+
+.blogentry-aside-body {
+  padding-right: @line-height-computed;
+  @media (min-width: @screen-sm-min) {
+    padding-right: ceil((@line-height-computed * 2));
+  }
+}

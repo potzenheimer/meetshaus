@@ -1,0 +1,46 @@
+
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="meetshaus.blog">
+
+
+    <!-- Tool providing utility functions for asset storage manipulation -->
+    <utility
+            factory=".tool.TaxonomyTool"
+            provides=".interfaces.ITaxonomyTool"/>
+    <utility
+            factory=".tool.CategoryManagementTool"
+            provides=".interfaces.ICategoryManagementTool"/>
+     <!--<utility
+                factory=".tool.CourseFilterUpdater"
+                provides=".interfaces.ICourseFilterUpdater"/>-->
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="update-taxonomy-terms"
+        class=".category.UpdateCategoryStorage"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="select-taxonomy-terms"
+        class=".category.TaxonomyTermSelection"
+        template="selector.pt"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+    <browser:page
+        for="meetshaus.blog.blog.IBlog"
+        name="manage-taxonomy-terms"
+        class=".category.TaxonomyTermManager"
+        template="manager.pt"
+        permission="cmf.ManagePortal"
+        layer="..interfaces.IBlogTool"
+    />
+
+</configure>

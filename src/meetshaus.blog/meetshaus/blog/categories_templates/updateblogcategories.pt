@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="meetshaus.blog">
+
+<head>
+    <metal:block metal:fill-slot="head_slot">
+        <link rel="stylesheet"
+            tal:attributes="href string:${context/@@plone_portal_state/portal_url}/++resource++meetshaus.blog/medium-editor.css" />
+        <script type="text/javascript" src="test.js"
+            tal:attributes="src string:${context/@@plone_portal_state/portal_url}/++resource++meetshaus.blog/medium-editor.min.js"></script>
+    </metal:block>
+</head>
+
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <div class="row" tal:define="info view/category">
+        <div class="app-item-editable">
+            <h1 tal:content="info/title">Theme editor</h1>
+
+            <p class="lead">
+                Edit blog category description
+            </p>
+
+            <div class="app-field-editable">
+                <div class="editable" id="editable-text"
+                    data-appui="content-editable"
+                    tal:content="structure view/getFieldData">
+                    Editable Content Section
+                </div>
+            </div>
+            <div class="app-item-editable-actions">
+                <form class="app-form js-form js-form-hidden"
+                    method="post" role="form"
+                    id="js-form"
+                    data-appui="content-editable-form"
+                    tal:attributes="action request/URL">
+                    <textarea class="form-control app-field-editable content-editable-form-body hidden"
+                        id="content-editable-form-body"
+                        name="content-editable-form-body">
+                        {{ text area }}
+                    </textarea>
+                    <input class="form-control" id="field-name"
+                        type="hidden" name="field-name"
+                        tal:attributes="value view/getFieldname">
+                    <span tal:replace="structure context/@@authenticator/authenticator"/>
+                    <button class="btn btn-primary"
+                            name="form.button.Submit"
+                            id="form.button.Submit"
+                            i18n:translate="">Save changes</button>
+                    <a class="btn btn-default"
+                        href="${context/absolute_url}/@@manage-blog-categories"
+                        i18n:translate="">Cancel</a>
+                </form>
+            </div>
+            <script>
+                // Medium editor
+                var $editor = new MediumEditor('.editable', {
+                    anchorInputPlaceholder: 'Type a link',
+                    buttons: ['bold', 'italic', 'anchor', 'quote', 'unorderedlist']
+                });
+                $('#js-form').submit(function (e) {
+                    // e.preventDefault();
+                    var contentObj = $('#editable-text').html();
+                    $("#content-editable-form-body").val(contentObj);
+                    // this.submit();
+                });
+            </script>
+        </div>
+    </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

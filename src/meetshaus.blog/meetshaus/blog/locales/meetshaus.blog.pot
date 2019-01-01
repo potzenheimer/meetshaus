@@ -1,0 +1,267 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-10-15 21:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: meetshaus.blog\n"
+
+#: ./../blogentry.py:27
+msgid ""
+msgstr ""
+
+#: ./../configure.zcml:29
+msgid "A blogging tool for meetshaus.de"
+msgstr ""
+
+#: ./../blog.py:29
+msgid "A short bio about the author of the blog."
+msgstr ""
+
+#: ./../profiles/default/types/meetshaus.blog.blogpost.xml
+msgid "A single blog post"
+msgstr ""
+
+#: ./../profiles/default/types/meetshaus.blog.blogentry.xml
+msgid "A sinlge blog entry."
+msgstr ""
+
+#: ./../blog.py:28
+msgid "About the Author"
+msgstr ""
+
+#: ./../blogpost.py:56
+msgid "Abstract"
+msgstr ""
+
+#: ./../utils.py:30
+msgid "April"
+msgstr ""
+
+#: ./../portlets/archive.py:39
+#: ./../portlets/categories.py:25
+msgid "Archive view"
+msgstr ""
+
+#: ./../utils.py:34
+msgid "August"
+msgstr ""
+
+#: ./../profiles/default/types/meetshaus.blog.blog.xml
+msgid "Blog"
+msgstr ""
+
+#: ./../portlets/archive.pt:5
+msgid "Blog Archive"
+msgstr ""
+
+#: ./../interfaces.py:17
+msgid "Blog Category JSON File"
+msgstr ""
+
+#: ./../blogentry.py:26
+msgid "Blog Entry"
+msgstr ""
+
+#: ./../portlets/archive.py:65
+msgid "Blog Monthly archive"
+msgstr ""
+
+#: ./../blogpost.py:48
+msgid "Blog entry description used in listings and as meta data description"
+msgstr ""
+
+#: ./../profiles/default/types/meetshaus.blog.blogentry.xml
+msgid "BlogEntry"
+msgstr ""
+
+#: ./../profiles/default/types/meetshaus.blog.blogpost.xml
+msgid "BlogPost"
+msgstr ""
+
+#: ./../profiles/default/types/meetshaus.blog.blog.xml
+msgid "Blogging folder to enable a complete sitewide blog."
+msgstr ""
+
+#: ./../categories_templates/updateblogcategories.pt:57
+msgid "Cancel"
+msgstr ""
+
+#: ./../portlets/categories.pt:6
+#: ./../portlets/categories.py:49
+msgid "Categories"
+msgstr ""
+
+#: ./../utils.py:38
+msgid "December"
+msgstr ""
+
+#: ./../blogpost.py:30
+msgid "Default content item title that will also be used as the meta data title tag"
+msgstr ""
+
+#: ./../portlets/blogrecent.py:23
+msgid "Entries"
+msgstr ""
+
+#: ./../configure.zcml:29
+msgid "Extension profile for A blogging tool for meetshaus.de"
+msgstr ""
+
+#: ./../utils.py:28
+msgid "February"
+msgstr ""
+
+#: ./../blogpost.py:37
+msgid "Headline"
+msgstr ""
+
+#: ./../utils.py:27
+msgid "January"
+msgstr ""
+
+#: ./../utils.py:33
+msgid "July"
+msgstr ""
+
+#: ./../utils.py:32
+msgid "June"
+msgstr ""
+
+#: ./../portlets/blogrecent.py:47
+msgid "Last entries"
+msgstr ""
+
+#: ./../configure.zcml:41
+msgid "Make all items of this type display simple sharing buttons"
+msgstr ""
+
+#: ./../utils.py:29
+msgid "March"
+msgstr ""
+
+#: ./../utils.py:31
+msgid "May"
+msgstr ""
+
+#: ./../utils.py:37
+msgid "November"
+msgstr ""
+
+#: ./../utils.py:36
+msgid "October"
+msgstr ""
+
+#: ./../blogpost.py:38
+msgid "Override the meta data title with a display title used in listings and views as main headline instead.The headline also supports the use of soft hyphens (&shy;) for more control of small screen display"
+msgstr ""
+
+#: ./../categories_templates/updateblogcategories.pt:53
+msgid "Save changes"
+msgstr ""
+
+#: ./../utils.py:35
+msgid "September"
+msgstr ""
+
+#: ./../configure.zcml:41
+msgid "Sisosha Simple Social Sharing"
+msgstr ""
+
+#: ./../blogpost.py:47
+msgid "Summary"
+msgstr ""
+
+#: ./../categories.py:266
+msgid "The item has successfully been updated"
+msgstr ""
+
+#: ./../portlets/archive.py:40
+#: ./../portlets/categories.py:26
+msgid "The name of the archive view"
+msgstr ""
+
+#: ./../portlets/blogrecent.py:24
+msgid "The number of entries to show"
+msgstr ""
+
+#: ./../categories.py:199
+msgid "This field is required"
+msgstr ""
+
+#: ./../blogpost.py:29
+msgid "Title"
+msgstr ""
+
+#: ./../blogpost.py:57
+msgid "Use the abstract tp override the default meta data  description in listings and blog entry views."
+msgstr ""
+
+#: ./../blogentry_templates/blogentryview.pt:63
+#: ./../blogpost_templates/blogpostview.pt:63
+#: ./../browser/blogentry.pt:57
+msgid "min"
+msgstr ""
+
+#: ./../portlets/archive.py:16
+msgid "month_1"
+msgstr ""
+
+#: ./../portlets/archive.py:25
+msgid "month_10"
+msgstr ""
+
+#: ./../portlets/archive.py:26
+msgid "month_11"
+msgstr ""
+
+#: ./../portlets/archive.py:27
+msgid "month_12"
+msgstr ""
+
+#: ./../portlets/archive.py:17
+msgid "month_2"
+msgstr ""
+
+#: ./../portlets/archive.py:18
+msgid "month_3"
+msgstr ""
+
+#: ./../portlets/archive.py:19
+msgid "month_4"
+msgstr ""
+
+#: ./../portlets/archive.py:20
+msgid "month_5"
+msgstr ""
+
+#: ./../portlets/archive.py:21
+msgid "month_6"
+msgstr ""
+
+#: ./../portlets/archive.py:22
+msgid "month_7"
+msgstr ""
+
+#: ./../portlets/archive.py:23
+msgid "month_8"
+msgstr ""
+
+#: ./../portlets/archive.py:24
+msgid "month_9"
+msgstr ""
+
+#: ./../helper.py:22
+msgid "{0} new postings created"
+msgstr ""

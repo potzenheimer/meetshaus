@@ -1,0 +1,21 @@
+{
+  "name": "roconsulting",
+  "version": "1.0.0",
+  "dependencies": {
+    "animate.css": "~3.2.0",
+    "blazy": "*",
+    "bootstrap": "git@github.com:twbs/bootstrap.git#master",
+    "diazo-plone": "git@github.com:ade25/diazo-plone.git#master",
+    "font-awesome": "4.2.0",
+    "headroom.js": "~0.6.0",
+    "holderjs": "~2.1.0",
+    "isotope": "~2.0.1",
+    "jquery": "~2.1.0",
+    "lazysizes": "git@github.com:aFarkas/lazysizes.git#master",
+    "medium-editor": "~2.1.3",
+    "modernizr": "~2.6.2"
+  },
+  "devDependencies": {
+    "chai": "1.7.2"
+  }
+}

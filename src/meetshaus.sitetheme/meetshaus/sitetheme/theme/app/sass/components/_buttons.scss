@@ -1,0 +1,73 @@
+.button,
+.c-button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: normal;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
+    @include transition($btn-transition);
+
+    // Share hover and focus styles
+    @include hover-focus {
+        text-decoration: none !important;
+    }
+    &:focus,
+    &.focus {
+        outline: 0;
+        box-shadow: $btn-focus-box-shadow;
+    }
+
+    // Disabled comes first so active can properly restyle
+    &.disabled,
+    &:disabled {
+        opacity: .65;
+        @include box-shadow(none);
+    }
+
+    &:active,
+    &.active {
+        background-image: none;
+        @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+
+    @include media-breakpoint-up(md) {
+        white-space: nowrap;
+    }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.button.disabled,
+fieldset[disabled] a.button {
+    pointer-events: none;
+}
+
+.button--default,
+.c-button--default {
+    @include button-outline-variant($app-gray);
+}
+
+.button--primary,
+.c-button--primary {
+    @include button-variant($app-gray, $app-gray);
+}
+
+.button--danger,
+ .c-button--danger {
+     @include button-outline-variant($app-danger);
+ }
+
+.button--inverse,
+.c-button--inverse {
+    background-color: transparent;
+    @include button-outline-variant(#fff);
+}
+
+.button + .button,
+.c-button + .o-button {
+    margin-left: 1rem;
+}

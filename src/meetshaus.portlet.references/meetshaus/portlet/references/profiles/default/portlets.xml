@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<portlets>
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="meetshaus.portlet.references.ReferencesPortlet"
+   title="References Portlet"
+   description="A portlet displaying Links to references."
+   />
+
+</portlets>

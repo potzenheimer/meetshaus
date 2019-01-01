@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+     metal:use-macro="context/main_template/macros/master"
+     i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+    <metal:content-core define-macro="main">
+        <div class="app-page__content app-page__content--main">
+            <div class="app-grid">
+                <div class="app-grid__item--w33">
+                    <div class="blog-entry__aside text-center">
+                        <h2 class="text-muted">
+                            Kategorien
+                        </h2>
+                        <div class="h1 text-secondary">
+                            <i class="ion ion-ios-information-outline"></i>
+                            <span class="hidden">Themen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-grid__item--w66">
+                    <div class="blogentry-aside">
+                        <div class="blogentry-abstract blogentry-abstract-standalone">
+                            Bearbeiten und Verwalten der Blog Kategorien
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <tal:records tal:condition="view/stored_data">
+                <div class="ws-section" tal:repeat="record view/records">
+                    <div class="ws-section-row"
+                         tal:define="kw_idx repeat/record/index">
+                        <div class="ws-section-content">
+                            <h3><a href="${context/absolute_url}/@@update-blog-category/${kw_idx}"
+                                 tal:attributes="href string:${context/absolute_url}/@@update-blog-categories/${kw_idx}"
+                                 tal:content="record/title">
+                                ${record/title}</a>
+                            </h3>
+                            <p class="ws-section-desc">
+                                <span tal:replace="record/count" /> Blogbeiträge
+                            </p>
+                        </div>
+                        <div class="ws-section-chevron">
+                            <a href="${context/absolute_url}/@@address-editor/${userinfo/rvs}"
+                                 tal:attributes="href string:${context/absolute_url}/@@update-blog-categories/${kw_idx}">
+                                <i class="ion ion-ios-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div><!-- /ws-section -->
+            </tal:records>
+        </div>
+
+    </metal:content-core>
+</metal:main>
+</body>
+</html>

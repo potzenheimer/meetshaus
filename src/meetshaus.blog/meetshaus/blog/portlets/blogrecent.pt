@@ -1,0 +1,24 @@
+<div class="infobox whitespaced"
+    id="splashbox-blog-recent"
+    i18n:domain="bh.blog">
+
+    <h4>
+        Letzte Blogbeitr&auml;ge
+    </h4>
+    <ul class="nav nav-list">
+      <tal:block define="plone_view context/@@plone;"
+        repeat="item view/items">
+        <li>
+          <p class="muted">
+            <small tal:content="python:plone_view.toLocalizedTime(item.Date)">
+              1779</small><br />
+            <span tal:content="item/Title">Entry Title</span><br />
+            <a tal:attributes="href python:view.item_url(item)" class="link-more">
+                mehr
+            </a>
+          </p>
+        </li>
+        <li class="divider"></li>
+      </tal:block>
+    </ul>
+</div>

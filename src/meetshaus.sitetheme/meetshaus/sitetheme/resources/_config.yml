@@ -1,0 +1,15 @@
+# Dependencies
+markdown:         rdiscount
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Server
+destination:      ./_site
+exclude:          [".editorconfig", ".gitignore", ".bowerrc", "jshintrc", "bower.json", "config.json", "Gruntfile.js", "package.json", "manifest.cfg", "rules.xml", "docs", "node_modules", "bower_components", "README.md", "dist", "assets", "less", "js", "overrides", "css", "Makefile"]
+port:             9001
+
+# Custom vars
+current_version:  1.0.0
+repo:             https://github.com/potzenheimer/meetshaus

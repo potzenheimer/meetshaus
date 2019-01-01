@@ -1,0 +1,84 @@
+//
+// Custom signin page styles
+// ---------------------------------------------------
+
+.app-layout-simple {
+  background: @gray-dark;
+}
+
+.app-signin-wrapper {
+  .center-block();
+  max-width: 480px;
+}
+
+.app-signin {
+  margin-top: (@navbar-height * 2);
+  //background: @navbar-default-bg;
+  // #gradient > .vertical(@start-color: #fff; @end-color: @gray-lighter);
+  border-radius: 0;
+}
+
+.app-signin-header {
+  color: @gray-dark;
+}
+.app-signin-title {
+  font-weight: 300;
+}
+
+.app-signin-content {
+  padding: @line-height-computed 0;
+}
+
+.app-signin-form {
+
+}
+
+.app-signin-group {
+  padding: 0;
+  // background: @navbar-default-bg;
+  &.app-signin-group-text {
+    margin-top: @line-height-computed;
+    padding: @line-height-computed 0;
+    border-top: 1px dotted @gray-light;
+  }
+  label,
+  .signin-label {
+    font-weight: 300;
+    color: @gray;
+  }
+}
+
+.app-signin-control {
+  padding: ceil((@line-height-computed / 2)) 0 @line-height-computed;
+  &.app-signin-control-bordered {
+    border-bottom: 1px dotted @gray-light;
+  }
+}
+
+.page-aside {
+  position:relative;
+  padding: ceil((@line-height-computed * 2)) @line-height-computed;
+}
+
+.page-signin {
+  color: @gray-light;
+}
+
+.page-signin .documentDescription {
+  margin-bottom: @line-height-computed;
+}
+.page-signin p {
+  .text-muted();
+}
+
+// registration
+.app-register {
+  margin-bottom: @navbar-height;
+  border-bottom: 5px solid @brand-success;
+}
+
+.app-signin-actions,
+.app-register-actions {
+  padding: @line-height-computed;
+}
+
