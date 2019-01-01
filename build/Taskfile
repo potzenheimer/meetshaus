@@ -47,6 +47,16 @@ task:deploy:setup() {
     virtualenv:run fab "$1" deploy_setup:"${2:-}"
 }
 
+task:deploy:restart() {
+    if [ -z "${1:-}" ]
+    then
+        echo "Usage: b5 deploy:setup <servername> [options]"
+        echo ""
+        b5:abort "Argument missing: server name"
+    fi
+    virtualenv:run fab "$1" restart:"${2:-}"
+}
+
 task:status() {
     if [ -z "${1:-}" ]
     then
