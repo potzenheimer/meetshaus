@@ -22,12 +22,12 @@ task:update:theme() {
     npm:install
 }
 
-task:deploy() {
+task:deploy:legacy() {
     cd .. && bin/fab deploy
 }
 
 # Run fabric based deployment
-task:deployer() {
+task:deploy() {
     if [ -z "${1:-}" ]
     then
         echo "Usage: b5 deploy <servername> [options]"
@@ -96,7 +96,12 @@ task:shell() {
     docker:container_run web /bin/bash --login
 }
 
-# Database
 task:db:download() {
-    virtualenv:run fab get_data
+    if [ -z "${1:-}" ]
+    then
+        echo "Usage: b5 download <servername> [options]"
+        echo ""
+        b5:abort "Argument missing: server name"
+    fi
+    virtualenv:run fab "$1" download:"${2:-}"
 }
