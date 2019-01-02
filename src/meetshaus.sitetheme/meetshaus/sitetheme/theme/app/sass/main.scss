@@ -7,6 +7,9 @@
 @import 'utils/functions';
 @import 'utils/mixins.scss';
 
+// Settings
+@import 'settings/settings.config';
+
 @import 'settings/settings.vendor.mq';
 // Object Settings
 @import 'settings/settings.object.page';

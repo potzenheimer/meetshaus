@@ -20,7 +20,9 @@ body {
     font-weight: $font-weight-base !important;
     line-height: $line-height-base !important;
     color: $body-color !important;
-    background-color: $color-geyser !important;
+    &:not(.mce-content-body ) {
+        background-color: $color-geyser !important;
+    }
 }
 
 // Set font weights if webfont is active
