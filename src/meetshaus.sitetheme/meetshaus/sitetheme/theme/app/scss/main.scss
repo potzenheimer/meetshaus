@@ -11,10 +11,12 @@
 @import 'settings/settings.config';
 
 @import 'settings/settings.vendor.mq';
+@import 'settings/settings.vendor.rfs';
 // Object Settings
 @import 'settings/settings.object.page';
 
 @import 'vendors/mq';
+@import 'vendors/rfs';
 @import 'vendors/ionicons';
 @import 'vendors/bootstrap';
 @import 'vendors/ionicons';

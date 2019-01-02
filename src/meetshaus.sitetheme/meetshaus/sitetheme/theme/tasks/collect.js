@@ -16,6 +16,13 @@ var scriptSourcesApp = {
 var scriptCollectionVendor = Object.keys(scriptSourcesVendor);
 var scriptCollectionApp = Object.keys(scriptSourcesApp);
 
+var styleSourcesVendor = {
+    'vendor': cfg.styles.src
+}
+
+var styleCollectionVendor = Object.keys(styleSourcesVendor);
+
+
 scriptCollectionVendor.forEach(function (libName) {
     gulp.task( 'scripts:'+libName, function () {
         return gulp.src(scriptSourcesVendor[libName], {'cwd': cfg.paths.src})
@@ -39,6 +46,19 @@ scriptCollectionApp.forEach(function (libName) {
 gulp.task('collect:scripts:app',
     gulp.parallel(
         scriptCollectionApp.map(function(name) { return 'scripts:'+name; })
+    )
+);
+
+styleCollectionVendor.forEach(function (libName) {
+    gulp.task( 'styles:'+libName, function () {
+        return gulp.src(styleSourcesVendor[libName], {'cwd': cfg.paths.src})
+            .pipe(gulp.dest(cfg.paths.app + 'scss/vendors/'));
+    });
+});
+
+gulp.task('collect:styles:vendor',
+    gulp.parallel(
+        styleCollectionVendor.map(function(name) { return 'styles:'+name; })
     )
 );
 

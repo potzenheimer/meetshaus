@@ -13,7 +13,7 @@ var pkg = require('./../package.json');
 // Styles build task
 export function styles(cb) {
     pump([
-        gulp.src(cfg.paths.app + 'sass/main.scss'),
+        gulp.src(cfg.paths.app + 'scss/main.scss'),
         $.plumber(),
         $.sourcemaps.init(),
         $.sass.sync({
@@ -34,11 +34,11 @@ export function styles(cb) {
     ], cb);
 };
 
-styles.description = 'Compile stylesheet from sass partials and minimize for production';
+styles.description = 'Compile stylesheet from scss partials and minimize for production';
 
 
 export function stylesDev() {
-    return gulp.src(cfg.paths.app + 'sass/main.scss')
+    return gulp.src(cfg.paths.app + 'scss/main.scss')
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.sass.sync({
@@ -57,7 +57,7 @@ export function stylesDev() {
         .pipe(browserSync.reload({stream: true}))
 };
 
-stylesDev.description = 'Compile stylesheet from sass partials';
+stylesDev.description = 'Compile stylesheet from scss partials';
 
 
 // Stylesheet builds
