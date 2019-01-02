@@ -62,7 +62,7 @@ gulp.task('build:collect', buildCollect);
 // Base tasks
 const buildBase = gulp.series(
     'jekyll:build',
-    gulp.parallel('styles:dist', 'collect:scripts:app'),
+    gulp.parallel('styles:dist', 'styles:editor', 'collect:scripts:app'),
     'inject:head'
 );
 
@@ -112,15 +112,15 @@ gulp.task('build:dist:full', buildDistFull);
 
 
 gulp.task('dev:watch:styles', function () {
-    gulp.watch(cfg.paths.app + "sass/**/*.scss", gulp.series(
-        'styles:dist'
+    gulp.watch(cfg.paths.app + "scss/**/*.scss", gulp.series(
+        'build:dev'
         // browserSync.reload()
         )
     )
 });
 
 gulp.task('dev:watch', function () {
-    gulp.watch(cfg.paths.app + "sass/**/*.scss", gulp.series(
+    gulp.watch(cfg.paths.app + "scss/**/*.scss", gulp.series(
         'styles:dist'
         )
     );

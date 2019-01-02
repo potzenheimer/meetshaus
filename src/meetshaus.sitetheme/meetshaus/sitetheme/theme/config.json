@@ -53,6 +53,12 @@
             "flickity/dist/flickity.pkgd.js"
         ]
     },
+    "styles": {
+        "src": [
+            "rfs/scss/_rfs.scss",
+            "sass-mq/_mq.scss"
+        ]
+    },
     "replacementPatterns": {
         "base": [
             {
@@ -114,32 +120,6 @@
             {
                 "match": "scripts/",
                 "replacement": "/++theme++meetshaus.sitetheme/scripts/"
-            }
-        ],
-        "server": [
-            {
-                "match": "../../assets/",
-                "replacement": "/assets/"
-            },
-            {
-                "match": "../../assets/",
-                "replacement": "assets/"
-            },
-            {
-                "match": "../../dist/styles/",
-                "replacement": "/styles/"
-            },
-            {
-                "match": "../dist/styles/",
-                "replacement": "/styles/"
-            },
-            {
-                "match": "../../dist/scripts/",
-                "replacement": "/scripts/"
-            },
-            {
-                "match": "../dist/scripts/",
-                "replacement": "/scripts/"
             }
         ]
     }

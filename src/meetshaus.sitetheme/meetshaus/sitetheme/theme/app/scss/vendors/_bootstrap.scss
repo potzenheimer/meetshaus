@@ -2,6 +2,7 @@
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 
+@import "../settings/settings.vendor.bootstrap";
 @import "bootstrap-variables.scss";
 
 @import "bootstrap/scss/mixins";
@@ -11,7 +12,7 @@
 
 // Core CSS
 @import "bootstrap/scss/reboot";
-@import "bootstrap/scss/type";
+// @import "bootstrap/scss/type";
 @import "bootstrap/scss/images";
 @import "bootstrap/scss/code";
 @import "bootstrap/scss/grid";

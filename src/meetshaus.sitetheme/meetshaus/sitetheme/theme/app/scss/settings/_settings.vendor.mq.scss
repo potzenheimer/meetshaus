@@ -16,4 +16,6 @@ $mq-static-breakpoint: lg;
 // If you want to display the currently active breakpoint in the top
 // right corner of your site during development, add the breakpoints
 // to this list, ordered by width, e.g. (mobile, tablet, desktop).
-$mq-show-breakpoints: (sm, md, lg, xl);
+@if (app-config(debug) == true) {
+    $mq-show-breakpoints: (sm, md, lg, xl);
+}

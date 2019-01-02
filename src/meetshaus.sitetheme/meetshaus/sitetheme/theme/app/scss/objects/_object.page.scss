@@ -9,6 +9,7 @@
     font-size: $o-page-font-size-base;
     font-weight: $o-page-font-weight;
     line-height: $o-page-line-height;
+    word-break: $o-page-header-word-break;
     @include mq($from: md) {
         font-size: $o-page-font-size-lg;
     }
