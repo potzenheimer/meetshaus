@@ -4,7 +4,7 @@
         Blog Entry Excerpt
     </div>
     <div class="o-excerpt__aside blog-entry__excerpt-action">
-        <a class="blog-entry__link o-button o-button--default"
+        <a class="blog-entry__link c-button c-button--default"
             tal:attributes="href python:context.absolute_url()">
             weiterlesen
         </a>

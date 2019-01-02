@@ -11,7 +11,7 @@
     border: 1px solid transparent;
     @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
     @include transition($btn-transition);
-
+    @include responsive-font-size($app-font-size-base);
     // Share hover and focus styles
     @include hover-focus {
         text-decoration: none !important;
