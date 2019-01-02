@@ -15,12 +15,12 @@ html {
 
 // Adjust font weight for initialized webfonts
 body {
-    font-family: $font-family-base !important;
+    font-family: $font-family-base;
     // font-size: $font-size-base !important;
-    @include rfs($font-size-base, true);
-    font-weight: $font-weight-base !important;
-    line-height: $line-height-base !important;
-    color: $body-color !important;
+    @include rfs($font-size-base);
+    font-weight: $font-weight-base;
+    line-height: $line-height-base;
+    color: $body-color;
     &:not(.mce-content-body ) {
         background-color: $color-geyser !important;
     }
@@ -40,14 +40,10 @@ strong {
     font-weight: 700;
 }
 
-// Transition link color on :hover state
-a:hover {
-    transition: color 0.5s linear;
-}
 
-h2, h3, h4, h5, h6 {
-    font-family: $app-font-family-regular;
-}
+// h2, h3, h4, h5, h6 {
+//     font-family: $app-font-family-regular;
+// }
 
 pre {
     white-space: pre-wrap;

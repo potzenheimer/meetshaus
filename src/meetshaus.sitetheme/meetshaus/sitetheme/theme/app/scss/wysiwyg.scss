@@ -40,47 +40,29 @@
 // Elements
 @import 'elements/element.html';
 @import 'elements/element.body';
-@import 'elements/element.headings';
-@import 'elements/element.hr';
 @import 'elements/element.strong';
 @import 'elements/element.button';
 @import 'elements/element.a';
 @import 'elements/element.img';
 @import 'elements/element.p';
 
-@import 'layout/header';
-@import 'layout/navbar';
-@import 'layout/footer';
 @import 'layout/forms';
 
 @import 'objects/object.page';
-@import 'objects/object.grid';
 @import 'objects/object.excerpt';
 
-@import 'components/toolbar';
 @import 'components/media';
 @import 'components/callouts';
-@import 'components/pathbar';
-@import 'components/brand';
-@import 'components/component.actionbar';
-@import 'components/component.pagination';
-@import 'components/component.configlet';
 @import 'components/component.widget.base';
 @import 'components/component.cards';
 @import 'components/banner';
 @import 'components/cards';
-@import 'components/burger';
-@import 'components/socialbar';
 @import 'components/timestamp';
 @import 'components/component.buttons';
-@import 'components/cookieconsent';
 
-@import 'pages/signin';
-@import 'pages/workspace';
 @import 'pages/contentpage';
 @import 'pages/blog';
 
 @import 'themes/theme';
-@import 'themes/styleguide';
 
 @import 'shame.scss';

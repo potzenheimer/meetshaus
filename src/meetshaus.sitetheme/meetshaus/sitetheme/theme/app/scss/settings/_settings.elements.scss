@@ -1,0 +1,31 @@
+// Body
+$element-body-color:                    $app-color-text;
+$element-body-background-color:         $color-geyser;
+
+// Headings
+$app-headings-margin-bottom:            .5rem;
+$app-headings-line-height:              1.2;
+$app-headings-font-family:              $app-font-family-strong;
+$app-headings-font-weight:              600;
+$app-headings-color:                    $app-color-primary;
+
+// Hr
+$app-hr-margin:                             1rem;
+$app-hr-border-color:                       rgba(#000, .1);
+$app-hr-border-width:                       1px;
+
+// Strong text
+$app-strong-font-weight:                    $app-font-weight-strong;
+
+// Anchor element
+$anchor-color-default:          $app-color-primary;
+$anchor-color-highlight:        $app-color-primary-darker;
+$anchor-text-transform:         underline;
+$anchor-transitions-active:     true;
+$anchor-transition:             color 0.5s linear;
+
+// Paragraph
+$app-paragraph-word-break:        normal;
+
+// WYSIWYG Styles
+$app-wysiwyg-editor-padding:    1rem;

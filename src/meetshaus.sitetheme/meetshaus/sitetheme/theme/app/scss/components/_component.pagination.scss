@@ -1,6 +1,6 @@
 .pagination {
     flex-wrap: wrap;
-    @include media-breakpoint-up(md) {
+    @include mq($from: md) {
         flex-wrap: nowrap;
     }
 }

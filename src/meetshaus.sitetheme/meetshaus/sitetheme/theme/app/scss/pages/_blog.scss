@@ -18,7 +18,9 @@
 
 .blog-entry__content {
     padding-top: .75rem;
-    padding-left: 1rem;
+    @include mq($from: lg) {
+        padding-left: 1rem;
+    }
 }
 
 .blog-entry__aside {
