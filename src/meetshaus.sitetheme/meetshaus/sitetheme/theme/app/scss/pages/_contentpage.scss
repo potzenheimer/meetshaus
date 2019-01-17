@@ -109,16 +109,18 @@
     display: block;
     margin: 2rem auto;
     max-width: 100%;
+    border: 1px solid $app-color-gray;
+    border-radius: .5rem;
 }
 
 .app-page__asset {
     margin-left: auto;
     margin-right: auto;
     @include media-breakpoint-up(md) {
-        width: 75%;
+        width: 400px;
     }
     @include media-breakpoint-up(lg) {
-        width: 66.6666%;
+        width: 400px;
     }
 }
 

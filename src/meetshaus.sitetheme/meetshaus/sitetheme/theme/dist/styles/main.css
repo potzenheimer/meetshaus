@@ -4807,7 +4807,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-family: "Noto Sans", "Noto Sans", Trebuchet MS, Arial, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
@@ -6450,7 +6450,7 @@ input[type="color"], .app-searchbox-field {
   width: 100%;
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -7993,7 +7993,7 @@ input[type="button"].btn-block {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   color: #212529;
   text-align: left;
   list-style: none;
@@ -9007,7 +9007,7 @@ input[type="color"]:focus, .input-group > .app-searchbox-field:focus,
       align-items: center;
   padding: 0.375rem 0.75rem;
   margin-bottom: 0;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
@@ -9077,7 +9077,7 @@ input[type="color"], .input-group-sm > .app-searchbox-field,
 .custom-control {
   position: relative;
   display: block;
-  min-height: 1.875rem;
+  min-height: 1.6875rem;
   padding-left: 1.5rem;
 }
 
@@ -9122,7 +9122,7 @@ input[type="color"], .input-group-sm > .app-searchbox-field,
 
 .custom-control-label::before {
   position: absolute;
-  top: 0.4375rem;
+  top: 0.34375rem;
   left: -1.5rem;
   display: block;
   width: 1rem;
@@ -9138,7 +9138,7 @@ input[type="color"], .input-group-sm > .app-searchbox-field,
 
 .custom-control-label::after {
   position: absolute;
-  top: 0.4375rem;
+  top: 0.34375rem;
   left: -1.5rem;
   display: block;
   width: 1rem;
@@ -14085,7 +14085,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 html {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 
 @media (min-width: 576px) {
@@ -14096,7 +14096,7 @@ html {
 
 body {
   font-family: "Noto Sans", "Noto Sans", Trebuchet MS, Arial, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
@@ -14104,7 +14104,7 @@ body {
 
 @media (max-width: 1200px) {
   body {
-    font-size: calc(1.05rem + 0.2666666667vw) ;
+    font-size: calc(1.025rem + 0.1333333333vw) ;
   }
 }
 
@@ -14324,7 +14324,7 @@ pre {
 }
 
 html {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   /* [1] */
   overflow-y: scroll;
   /* [2] */
@@ -14346,13 +14346,13 @@ html {
 
 body {
   color: #212529;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 400;
 }
 
 @media (max-width: 1200px) {
   body {
-    font-size: calc(1.05rem + 0.2666666667vw) ;
+    font-size: calc(1.025rem + 0.1333333333vw) ;
   }
 }
 
@@ -15012,7 +15012,7 @@ label:hover:before {
           user-select: none;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.5;
   border-radius: 0;
 }
@@ -16857,10 +16857,10 @@ body.template-front-page-view .app-pathbar {
           user-select: none;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.5;
   border-radius: 0;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -16873,7 +16873,7 @@ body.template-front-page-view .app-pathbar {
 @media (max-width: 1200px) {
   .button,
   .c-button {
-    font-size: calc(1.05rem + 0.2666666667vw) ;
+    font-size: calc(1.025rem + 0.1333333333vw) ;
   }
 }
 
@@ -17453,6 +17453,8 @@ fieldset[disabled] a.button {
   display: block;
   margin: 2rem auto;
   max-width: 100%;
+  border: 1px solid #5a5f64;
+  border-radius: .5rem;
 }
 
 .app-page__asset {
@@ -17462,13 +17464,13 @@ fieldset[disabled] a.button {
 
 @media (min-width: 768px) {
   .app-page__asset {
-    width: 75%;
+    width: 400px;
   }
 }
 
 @media (min-width: 992px) {
   .app-page__asset {
-    width: 66.6666%;
+    width: 400px;
   }
 }
 
