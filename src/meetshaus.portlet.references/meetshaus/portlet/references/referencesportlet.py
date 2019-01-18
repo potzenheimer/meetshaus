@@ -6,7 +6,6 @@ from plone.app.portlets.portlets import base
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-from Products.ATContentTypes.interfaces import IATLink
 
 
 class IReferencesPortlet(IPortletDataProvider):
@@ -58,8 +57,7 @@ class Renderer(base.Renderer):
     def _linkData(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        results = catalog(object_provides=IATLink.__identifier__,
-                          review_state='published')
+        results = []
         return results
 
 
