@@ -17,6 +17,10 @@
     color: $color-brandy-punch;
     &--center {
         text-align: center;
+        @include mq($from: lg) {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
     }
 }
 

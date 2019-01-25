@@ -53,6 +53,13 @@ class BlogEntryView(BrowserView):
             return True
         return False
 
+    @property
+    def display_cover_image(self):
+        context = aq_inner(self.context)
+        if self.has_lead_image() and context.image_display:
+            return True
+        return False
+
     def parent_info(self):
         context = aq_inner(self.context)
         parent = aq_parent(context)

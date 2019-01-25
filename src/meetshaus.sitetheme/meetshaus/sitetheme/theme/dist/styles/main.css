@@ -17468,6 +17468,13 @@ fieldset[disabled] a.button {
   text-align: center;
 }
 
+@media (min-width: 62em) {
+  .app-page__title--center {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 .app-page__lead,
 .app-page__abstract {
   margin-bottom: 1rem;
