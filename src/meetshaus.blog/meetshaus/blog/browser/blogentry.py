@@ -3,8 +3,10 @@
 from AccessControl import Unauthorized
 from Acquisition import aq_inner, aq_parent
 from Products.Five import BrowserView
+from meetshaus.blog.interfaces import IContentInfoProvider
 from meetshaus.blog.utils import get_localized_month_name
 from plone import api
+from plone.dexterity.utils import safe_utf8
 from plone.event.utils import pydt
 
 
@@ -64,36 +66,15 @@ class BlogEntryView(BrowserView):
         except Unauthorized:
             return None
 
-    def timestamp(self):
+    def time_stamp(self):
         context = aq_inner(self.context)
-        date = context.effective()
-        date = pydt(date)
-        timestamp = {
-            "day": date.strftime("%d"),
-            "month": get_localized_month_name(date.strftime("%B")),
-            "year": date.strftime("%Y"),
-            "date": date,
-        }
-        return timestamp
-
-    def _readable_text(self):
-        context = aq_inner(self.context)
-        meta = context.title + " " + context.description
-        if context.text:
-            html = context.text.raw
-            transforms = api.portal.get_tool(name="portal_transforms")
-            stream = transforms.convertTo(
-                "text/plain", html, mimetype="text/html"
-            )
-            text = stream.getData().strip()
-            body = meta + " " + text
-        return body
+        content_info_provider = IContentInfoProvider(context)
+        return content_info_provider.time_stamp()
 
     def reading_time(self):
-        text = self._readable_text()
-        text_count = len(text.split(" "))
-        rt = text_count / 200
-        return rt
+        context = aq_inner(self.context)
+        reading_time_provider = IContentInfoProvider(context)
+        return reading_time_provider.reading_time()
 
 
 class BlogEntryExcerpt(BrowserView):

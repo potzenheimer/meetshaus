@@ -6,12 +6,12 @@ from Acquisition import aq_inner
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from meetshaus.blog.blogpost import IBlogPost
-from meetshaus.blog.utils import get_localized_month_name
 from plone import api
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.batching import Batch
-from plone.event.utils import pydt
+
+from meetshaus.blog.blogpost import IBlogPost
+from meetshaus.blog.interfaces import IContentInfoProvider
 
 
 class FrontPageView(BrowserView):
@@ -98,37 +98,16 @@ class FrontPageView(BrowserView):
         return False
 
     @staticmethod
-    def timestamp(uuid):
+    def time_stamp(uuid):
         context = api.content.get(UID=uuid)
-        date = context.effective()
-        date = pydt(date)
-        timestamp = {
-            "day": date.strftime("%d"),
-            "month": get_localized_month_name(date.strftime("%B")),
-            "year": date.strftime("%Y"),
-            "date": date,
-        }
-        return timestamp
+        content_info_provider = IContentInfoProvider(context)
+        return content_info_provider.time_stamp()
 
     @staticmethod
-    def _readable_text(uuid):
+    def reading_time(uuid):
         context = api.content.get(UID=uuid)
-        meta = context.title + " " + context.description
-        if context.text:
-            html = context.text.raw
-            transforms = api.portal.get_tool(name="portal_transforms")
-            stream = transforms.convertTo(
-                "text/plain", html, mimetype="text/html"
-            )
-            text = stream.getData().strip()
-            body = meta + " " + text
-        return body
-
-    def reading_time(self, uuid):
-        text = self._readable_text(uuid)
-        text_count = len(text.split(" "))
-        rt = text_count / 200
-        return rt
+        reading_time_provider = IContentInfoProvider(context)
+        return reading_time_provider.reading_time()
 
     @staticmethod
     def post_content_snippet(uuid):
