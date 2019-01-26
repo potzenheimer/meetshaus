@@ -1,0 +1,81 @@
+$o-figure-color:                $gray-600;
+$o-figure-font-size:            .85rem;
+
+.o-figure {
+    display: block;
+    @include media-breakpoint-up(md) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    @include media-breakpoint-up(lg) {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+}
+
+.o-figure__content {
+    border: 1px solid #fff;
+    border-radius: .5rem;
+}
+
+.o-figure__caption {
+    padding-left: .5rem;
+    padding-right: .5rem;
+    color: $o-figure-color;
+    @include responsive-font-size($o-figure-font-size);
+    line-height: 1.2;
+}
+
+
+//== Page figure element
+// Embedded media variant
+.o-figure__embedded {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    &::before {
+        display: block;
+        content: "";
+    }
+
+    iframe,
+    embed,
+    object,
+    video {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+.o-figure__embedded--21by9 {
+    &::before {
+        padding-top: percentage(9 / 21);
+    }
+}
+
+.o-figure__embedded--16by9 {
+    &::before {
+        padding-top: percentage(9 / 16);
+    }
+}
+
+.o-figure__embedded--4by3 {
+    &::before {
+        padding-top: percentage(3 / 4);
+    }
+}
+
+.o-figure__embedded--1by1 {
+    &::before {
+        padding-top: percentage(1 / 1);
+    }
+}

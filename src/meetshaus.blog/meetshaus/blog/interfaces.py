@@ -16,3 +16,12 @@ class IBlogToolSettings(Interface):
     blog_categories = schema.TextLine(
         title=_(u"Blog Category JSON File")
     )
+
+
+class IContentInfoProvider(Interface):
+
+    def reading_time(self):
+        """ Get estimated reading time.
+
+        @return: a time value in minutes
+        """

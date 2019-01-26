@@ -21,14 +21,16 @@
 
 .app-timestamp__day_title {
     color: #fff;
-    font-size: 2.5rem;
+    // font-size: 2.5rem;
+    @include responsive-font-size(2.5rem);
     font-weight: bold;
 }
 
 .app-timestamp__month,
 .app-timestamp__year {
-    font-size: 2rem;
-    font-family: "AurulentSansRegular";
+    // font-size: 2rem;
+    @include responsive-font-size(2rem);
+    font-family: $app-font-family-medium;
     font-weight: 600;
     line-height: 1;
     color: $app-gray;

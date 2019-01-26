@@ -22,7 +22,7 @@
                             <div class="blog-entry__meta">
                                 <div class="blogentry-aside blog-entry__aside" id="blogentry-aside">
                                     <div class="blogentry-aside-section"
-                                         tal:define="ts python:view.timestamp(item_uid)">
+                                         tal:define="ts python:view.time_stamp(item_uid)">
                                         <div class="app-page__timestamp app-page__timestamp--lg blogentry-aside" id="blogentry-aside">
                                             <div class="blogentry-aside-section hidden-xs">
                                                 <div class="app-timestamp">
@@ -57,7 +57,8 @@
                                     <div class="blogentry-aside-section">
                                         <div class="blog-entry__title--sm">Lesezeit:</div>
                                         <p class="blog-entry__reading-time">
-                                            <span tal:replace="python:view.reading_time(item_uid)" /> <span i18n:translate="">min</span>
+                                            <span tal:replace="python:view.reading_time(item_uid)" />
+                                            <span i18n:translate="">min</span>
                                         </p>
                                     </div>
                                 </section>
