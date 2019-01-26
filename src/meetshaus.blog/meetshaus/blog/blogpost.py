@@ -83,7 +83,7 @@ class IBlogPost(form.Schema, IImageScaleTraversable):
 
     image_display = schema.Bool(
         title=_(u"Display Cover image"),
-        default=True,
+        default=False,
         required=False
     )
 
