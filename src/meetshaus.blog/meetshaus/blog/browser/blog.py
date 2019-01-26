@@ -105,14 +105,14 @@ class BlogView(BrowserView):
     @staticmethod
     def reading_time(uuid):
         context = api.content.get(UID=uuid)
-        reading_time_provider = IContentInfoProvider(context)
-        return reading_time_provider.reading_time()
+        content_info_provider = IContentInfoProvider(context)
+        return content_info_provider.reading_time()
 
     @staticmethod
     def post_content_snippet(uuid):
         context = api.content.get(UID=uuid)
-        snippet = context.restrictedTraverse('@@blog-entry-excerpt')()
-        return snippet
+        content_info_provider = IContentInfoProvider(context)
+        return content_info_provider.content_snippet()
 
 
 @implementer(IPublishTraverse)

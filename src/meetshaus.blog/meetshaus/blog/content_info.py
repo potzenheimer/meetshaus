@@ -47,3 +47,18 @@ class ContentInfoProvider(object):
         text_count = len(text.split(' '))
         rt = text_count / 200
         return rt
+
+    def content_snippet(self, characters=320, content_ellipsis='[...]'):
+        context = aq_inner(self.context)
+        if context.text:
+            text = context.text.raw
+            portal_transforms = api.portal.get_tool(name="portal_transforms")
+            # Output here is a single <p> which contains <br /> for newline
+            stream = portal_transforms.convertTo(
+                "text/plain", text, mimetype="text/html"
+            )
+            stream_data = stream.getData().strip()
+            cropped_text = context.restrictedTraverse('@@plone').cropText(
+                stream_data, characters, content_ellipsis
+            )
+            return cropped_text

@@ -12,6 +12,7 @@ from plone.batching import Batch
 
 from meetshaus.blog.blogpost import IBlogPost
 from meetshaus.blog.interfaces import IContentInfoProvider
+from plone.memoize.view import memoize
 
 
 class FrontPageView(BrowserView):
@@ -97,20 +98,16 @@ class FrontPageView(BrowserView):
             return True
         return False
 
-    @staticmethod
-    def time_stamp(uuid):
+    @memoize
+    def content_info_provider(self, uuid):
         context = api.content.get(UID=uuid)
-        content_info_provider = IContentInfoProvider(context)
-        return content_info_provider.time_stamp()
+        return IContentInfoProvider(context)
 
-    @staticmethod
-    def reading_time(uuid):
-        context = api.content.get(UID=uuid)
-        reading_time_provider = IContentInfoProvider(context)
-        return reading_time_provider.reading_time()
+    def time_stamp(self, uuid):
+        return self.content_info_provider(uuid).time_stamp()
 
-    @staticmethod
-    def post_content_snippet(uuid):
-        context = api.content.get(UID=uuid)
-        snippet = context.restrictedTraverse('@@blog-entry-excerpt')()
-        return snippet
+    def reading_time(self, uuid):
+        return self.content_info_provider(uuid).reading_time()
+
+    def post_content_snippet(self, uuid):
+        return self.content_info_provider(uuid).content_snippet()
