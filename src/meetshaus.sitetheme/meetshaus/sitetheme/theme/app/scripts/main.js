@@ -13,13 +13,16 @@ requirejs(['require',
         if (typeof a25 == 'undefined') {
             var a25 = {};
         }
+
         // Trigger font face observer protection
-        var fontPrimary = new FontFaceObserver('Noto Sans');
+        var fontPrimary = new FontFaceObserver('Noto Sans', {
+            weight: 400
+        });
         var fontSecondary = new FontFaceObserver('AurulentSansRegular');
         var fontSecondaryBold = new FontFaceObserver('AurulentSansBold');
         var fontSecondaryItalic = new FontFaceObserver('AurulentSansItalic');
 
-        fontPrimary.load().then(function () {
+        fontPrimary.load(null, 3000).then(function () {
             document.documentElement.className += " font__primary--loaded";
         });
 
@@ -27,18 +30,20 @@ requirejs(['require',
             document.documentElement.className += " font__secondary--loaded";
         });
 
-        fontSecondary.load().then(function () {
+        fontSecondaryBold.load().then(function () {
             document.documentElement.className += " font__secondary-bold--loaded";
         });
 
-        fontSecondary.load().then(function () {
+        fontSecondaryItalic.load().then(function () {
             document.documentElement.className += " font__secondary-italic--loaded";
         });
 
-        Promise.all([fontPrimary.load(),
-            fontSecondary.load(),
-            fontSecondaryBold.load(),
-            fontSecondaryItalic.load()]
+        Promise.all([
+            fontPrimary.load(null, 3000),
+            fontSecondary.load(null, 3000),
+            fontSecondaryBold.load(null, 3000),
+            fontSecondaryItalic.load(null, 3000)
+            ]
         ).then(function () {
             document.documentElement.className += " fonts--loaded";
         });

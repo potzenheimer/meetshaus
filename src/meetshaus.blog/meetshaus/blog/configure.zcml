@@ -48,6 +48,13 @@
     />
 
   <!--<adapter factory=".subjects.SubjectsFieldWidget" />-->
+
+    <adapter
+        for="Products.CMFCore.interfaces.IContentish"
+        provides="meetshaus.blog.interfaces.IContentInfoProvider"
+        factory=".content_info.ContentInfoProvider"
+    />
+
     <subscriber
         for="Products.PluggableAuthService.interfaces.events.IUserLoggedInEvent"
         handler="meetshaus.blog.postloginhandler.post_login_redirect"
