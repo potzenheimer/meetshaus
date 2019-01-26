@@ -6,12 +6,13 @@ from Acquisition import aq_inner
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from meetshaus.blog.blogpost import IBlogPost
-from meetshaus.blog.utils import get_localized_month_name
 from plone import api
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.batching import Batch
-from plone.event.utils import pydt
+
+from meetshaus.blog.blogpost import IBlogPost
+from meetshaus.blog.interfaces import IContentInfoProvider
+from plone.memoize.view import memoize
 
 
 class FrontPageView(BrowserView):
@@ -97,41 +98,16 @@ class FrontPageView(BrowserView):
             return True
         return False
 
-    @staticmethod
-    def timestamp(uuid):
+    @memoize
+    def content_info_provider(self, uuid):
         context = api.content.get(UID=uuid)
-        date = context.effective()
-        date = pydt(date)
-        timestamp = {
-            "day": date.strftime("%d"),
-            "month": get_localized_month_name(date.strftime("%B")),
-            "year": date.strftime("%Y"),
-            "date": date,
-        }
-        return timestamp
+        return IContentInfoProvider(context)
 
-    @staticmethod
-    def _readable_text(uuid):
-        context = api.content.get(UID=uuid)
-        meta = context.title + " " + context.description
-        if context.text:
-            html = context.text.raw
-            transforms = api.portal.get_tool(name="portal_transforms")
-            stream = transforms.convertTo(
-                "text/plain", html, mimetype="text/html"
-            )
-            text = stream.getData().strip()
-            body = meta + " " + text
-        return body
+    def time_stamp(self, uuid):
+        return self.content_info_provider(uuid).time_stamp()
 
     def reading_time(self, uuid):
-        text = self._readable_text(uuid)
-        text_count = len(text.split(" "))
-        rt = text_count / 200
-        return rt
+        return self.content_info_provider(uuid).reading_time()
 
-    @staticmethod
-    def post_content_snippet(uuid):
-        context = api.content.get(UID=uuid)
-        snippet = context.restrictedTraverse('@@blog-entry-excerpt')()
-        return snippet
+    def post_content_snippet(self, uuid):
+        return self.content_info_provider(uuid).content_snippet()
