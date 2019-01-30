@@ -7,8 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 4rem;
-    height: 4rem;
+    width: 2rem;
+    height: 2rem;
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
@@ -17,19 +17,25 @@
     &--primary {
         background-color: $app-primary;
     }
+    @include mq($from: md) {
+        width: 4rem;
+        height: 4rem;
+    }
 }
 
 .app-timestamp__day_title {
     color: #fff;
-    // font-size: 2.5rem;
-    @include responsive-font-size(2.5rem);
+    font-size: 1rem;
+    @include mq($from: md) {
+        @include font-size(2.5rem);
+    }
     font-weight: bold;
 }
 
 .app-timestamp__month,
 .app-timestamp__year {
     // font-size: 2rem;
-    @include responsive-font-size(2rem);
+    @include font-size(2rem);
     font-family: $app-font-family-medium;
     font-weight: 600;
     line-height: 1;

@@ -210,41 +210,19 @@ class BlogCategoryView(BrowserView):
         return False
 
     @staticmethod
-    def timestamp(uuid):
+    def time_stamp(uuid):
         context = api.content.get(UID=uuid)
-        date = context.effective()
-        date = pydt(date)
-        timestamp = {
-            'day': date.strftime("%d"),
-            'month': get_localized_month_name(date.strftime("%B")),
-            'year': date.strftime("%Y"),
-            'date': date
-        }
-        return timestamp
+        content_info_provider = IContentInfoProvider(context)
+        return content_info_provider.time_stamp()
 
     @staticmethod
-    def _readable_text(uuid):
+    def reading_time(uuid):
         context = api.content.get(UID=uuid)
-        meta = context.title + ' ' + context.description
-        if context.text:
-            html = context.text.raw
-            transforms = api.portal.get_tool(name='portal_transforms')
-            stream = transforms.convertTo('text/plain',
-                                          html,
-                                          mimetype='text/html')
-            text = stream.getData().strip()
-            body = meta + ' ' + text
-        return body
-
-    def reading_time(self, uuid):
-        text = self._readable_text(uuid)
-        text_count = len(text.split(' '))
-        rt = text_count / 200
-        return rt
+        content_info_provider = IContentInfoProvider(context)
+        return content_info_provider.reading_time()
 
     @staticmethod
     def post_content_snippet(uuid):
         context = api.content.get(UID=uuid)
-        snippet = context.restrictedTraverse('@@blog-entry-excerpt')()
-        return snippet
-
+        content_info_provider = IContentInfoProvider(context)
+        return content_info_provider.content_snippet()

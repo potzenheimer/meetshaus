@@ -7,6 +7,8 @@
 }
 
 .blog-entry__meta {
+    // display: flex;
+    // justify-content: space-between;
     @include media-breakpoint-up(md) {
         display: flex;
         justify-content: space-between;
@@ -48,21 +50,28 @@
 
 .blog-entry__title--sm {
     font-family: "AurulentSansRegular";
-    font-size: .85rem;
+    @include font-size(.85rem);
     color: $app-gray;
     text-align: center;
+}
+
+.blog-entry__title--author {
+    display: block;
+    @include mq($from: md) {
+        display: block;
+    }
 }
 
 .blog-entry__abstract {
     font-family: "AurulentSansRegular";
     font-weight: 300;
-    font-size: 1.25rem;
+    @include font-size(1.25rem);
     color: $app-gray;
     line-height: 1.3333;
 }
 
 .blog-entry__reading-time {
-    font-size: 1.25rem;
+    @include font-size(1.25rem);
     font-weight: 400;
     line-height: 1.1;
     text-align: center;
@@ -75,11 +84,15 @@
 }
 
 .blog-entry__tag {
-    font-size: .85rem;
+    @include font-size(.85rem);
 }
 
 .blog-entry__author {
+    display: none;
     text-align: center;
+    @include mq($from: md) {
+        display: block;
+    }
 }
 
 .blob-entry__link {
