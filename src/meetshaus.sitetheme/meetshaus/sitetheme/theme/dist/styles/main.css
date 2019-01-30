@@ -14388,6 +14388,9 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 600;
   line-height: 1.2;
   color: inherit;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
 }
 
 h1, .h1 {
@@ -17484,10 +17487,10 @@ fieldset[disabled] a.button {
   line-height: 1.25;
 }
 
-@media (min-width: 576px) {
+@media (max-width: 1200px) {
   .app-page__lead,
   .app-page__abstract {
-    font-size: 1.75rem;
+    font-size: calc(1.1rem + 0.5333333333vw) ;
   }
 }
 
@@ -17638,7 +17641,7 @@ fieldset[disabled] a.button {
 
 .blog-entry__title--sm {
   font-family: "AurulentSansRegular";
-  font-size: .85rem;
+  font-size: 0.85rem;
   color: #5a5f64;
   text-align: center;
 }
@@ -17651,11 +17654,23 @@ fieldset[disabled] a.button {
   line-height: 1.3333;
 }
 
+@media (max-width: 1200px) {
+  .blog-entry__abstract {
+    font-size: calc(1.05rem + 0.2666666667vw) ;
+  }
+}
+
 .blog-entry__reading-time {
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.1;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .blog-entry__reading-time {
+    font-size: calc(1.05rem + 0.2666666667vw) ;
+  }
 }
 
 .blog-entry__tags {
@@ -17665,7 +17680,7 @@ fieldset[disabled] a.button {
 }
 
 .blog-entry__tag {
-  font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 .blog-entry__author {

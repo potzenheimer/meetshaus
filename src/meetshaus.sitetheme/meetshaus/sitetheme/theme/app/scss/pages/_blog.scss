@@ -48,7 +48,7 @@
 
 .blog-entry__title--sm {
     font-family: "AurulentSansRegular";
-    font-size: .85rem;
+    @include font-size(.85rem);
     color: $app-gray;
     text-align: center;
 }
@@ -56,13 +56,13 @@
 .blog-entry__abstract {
     font-family: "AurulentSansRegular";
     font-weight: 300;
-    font-size: 1.25rem;
+    @include font-size(1.25rem);
     color: $app-gray;
     line-height: 1.3333;
 }
 
 .blog-entry__reading-time {
-    font-size: 1.25rem;
+    @include font-size(1.25rem);
     font-weight: 400;
     line-height: 1.1;
     text-align: center;
@@ -75,7 +75,7 @@
 }
 
 .blog-entry__tag {
-    font-size: .85rem;
+    @include font-size(.85rem);
 }
 
 .blog-entry__author {
