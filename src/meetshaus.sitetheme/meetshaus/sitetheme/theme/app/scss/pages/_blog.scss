@@ -7,6 +7,8 @@
 }
 
 .blog-entry__meta {
+    // display: flex;
+    // justify-content: space-between;
     @include media-breakpoint-up(md) {
         display: flex;
         justify-content: space-between;
@@ -53,6 +55,13 @@
     text-align: center;
 }
 
+.blog-entry__title--author {
+    display: block;
+    @include mq($from: md) {
+        display: block;
+    }
+}
+
 .blog-entry__abstract {
     font-family: "AurulentSansRegular";
     font-weight: 300;
@@ -79,7 +88,11 @@
 }
 
 .blog-entry__author {
+    display: none;
     text-align: center;
+    @include mq($from: md) {
+        display: block;
+    }
 }
 
 .blob-entry__link {
