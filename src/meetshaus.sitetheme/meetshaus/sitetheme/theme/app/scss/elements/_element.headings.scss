@@ -8,11 +8,21 @@ h1, h2, h3, h4, h5, h6,
     font-weight: $headings-font-weight;
     line-height: $headings-line-height;
     color: $headings-color;
+    hyphens: auto;
 }
 
-h1, .h1 { @include responsive-font-size($app-font-size-h1); }
-h2, .h2 { @include responsive-font-size($app-font-size-h2); }
-h3, .h3 { @include responsive-font-size($app-font-size-h3); }
-h4, .h4 { @include responsive-font-size($app-font-size-h4); }
-h5, .h5 { @include responsive-font-size($app-font-size-h5); }
-h6, .h6 { @include responsive-font-size($app-font-size-h6); }
+@if $enable-responsive-font-sizes == true {
+    h1, .h1 { @include font-size($app-font-size-h1); }
+    h2, .h2 { @include font-size($app-font-size-h2); }
+    h3, .h3 { @include font-size($app-font-size-h3); }
+    h4, .h4 { @include font-size($app-font-size-h4); }
+    h5, .h5 { @include font-size($app-font-size-h5); }
+    h6, .h6 { @include font-size($app-font-size-h6); }
+} @else {
+    h1, .h1 { font-size: $app-font-size-h1; }
+    h2, .h2 { font-size: $app-font-size-h2; }
+    h3, .h3 { font-size: $app-font-size-h3; }
+    h4, .h4 { font-size: $app-font-size-h4; }
+    h5, .h5 { font-size: $app-font-size-h5; }
+    h6, .h6 { font-size: $app-font-size-h6; }
+}

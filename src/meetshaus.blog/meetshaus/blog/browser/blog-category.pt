@@ -43,7 +43,7 @@
                                 <div class="blog-entry__meta">
                                     <div class="blogentry-aside blog-entry__aside" id="blogentry-aside">
                                         <div class="blogentry-aside-section"
-                                             tal:define="ts python:view.timestamp(item_uid)">
+                                             tal:define="ts python:view.time_stamp(item_uid)">
                                             <div class="app-page__timestamp app-page__timestamp--lg blogentry-aside" id="blogentry-aside">
                                                 <div class="blogentry-aside-section hidden-xs">
                                                     <div class="app-timestamp">

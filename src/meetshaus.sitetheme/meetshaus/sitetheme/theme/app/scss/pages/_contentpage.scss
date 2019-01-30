@@ -31,12 +31,9 @@
 .app-page__abstract {
     margin-bottom: $spacer;
     font-family: 'AurulentSansRegular';
-    font-size: 1.5rem;
+    @include font-size(1.5rem);
     font-weight: 300;
     line-height: 1.25;
-    @include media-breakpoint-up(sm) {
-        font-size: 1.75rem;
-    }
 }
 
 .app-page__title,

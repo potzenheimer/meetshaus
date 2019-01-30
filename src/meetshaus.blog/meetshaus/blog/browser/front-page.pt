@@ -38,7 +38,7 @@
                                 </div>
                                 <section class="app-page__main blog-entry__main" tal:define="categories item/subjects|nothing"
                                      tal:condition="categories">
-                                    <div class="blog-entry__title--sm">Von</div>
+                                    <div class="blog-entry__title--sm blog-entry__title--author">Von</div>
                                     <div class="blog-entry__author">
                                         <a class="blog-entry__link blog-entry__link--author" href="${context/portal_url}/about-me">Lisa Figas</a>
                                     </div>
