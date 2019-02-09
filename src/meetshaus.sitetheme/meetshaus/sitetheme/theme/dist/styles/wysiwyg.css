@@ -14767,6 +14767,16 @@ label:hover:before {
   outline: transparent;
 }
 
+div.riform .label {
+  float: none;
+}
+
+.pattern-pickadate-wrapper .picker__select--month,
+.pattern-pickadate-wrapper .picker__select--year {
+  display: inline-block;
+  font-size: 0.875rem;
+}
+
 .o-page {
   display: block;
 }
