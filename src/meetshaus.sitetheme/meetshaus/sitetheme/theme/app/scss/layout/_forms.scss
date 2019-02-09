@@ -330,3 +330,14 @@ label:hover:before {
   color: #555;
   outline: transparent;
 }
+
+// Fix recurrence widget overlay styling
+div.riform .label {
+    float: none;
+}
+// Fix datepicker header year + month select
+.pattern-pickadate-wrapper .picker__select--month,
+.pattern-pickadate-wrapper .picker__select--year {
+    display: inline-block;
+    font-size: $font-size-sm;
+}
