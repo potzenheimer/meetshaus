@@ -15,5 +15,17 @@ modules:
   docker:
       data_path: ../_docker_data
       docker_compose_config_overrides: localhost
+      commands:
+          npm: &npm
+              workdir: /app/build/gulp
+              bin: npm
+              service: node
+          gulp:
+              <<: *npm
+              bin: ./node_modules/.bin/gulp
+          jekyll: &jekyll
+              workdir: /app/theme
+              bin: jekyll
+              service: jekyll
   npm:
       base_path: ../src/meetshaus.sitetheme/meetshaus/sitetheme/theme

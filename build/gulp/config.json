@@ -1,0 +1,137 @@
+{
+  "name": "lra",
+  "paths": {
+    "app": "../../theme/",
+    "base": "../../src/lra.sitetheme/lra/sitetheme/resources",
+    "dev": "../../theme/_site/",
+    "dist": "../../src/lra.sitetheme/lra/sitetheme/resources/",
+    "diazoPrefix": "/++theme++lra.sitetheme/",
+    "src": "node_modules/",
+    "theme": "../../theme/"
+  },
+  "favicon": {
+    "dataFile": "faviconData.json",
+    "masterPicture": "favicon.png",
+    "iconPath": "assets/ico/",
+    "ios": "#ffffff",
+    "windows": "#2d89ef",
+    "androidBackground": "#ffffff",
+    "androidColor": "#ffffff",
+    "safariColor": "#5bbad5",
+    "revisionKey": "iet7OjeChoz1",
+    "html": "_includes/base/head.html",
+    "htmlDist": "_includes/base/"
+  },
+  "scripts": {
+    "app": [
+        "scripts/app.js",
+        "scripts/main.js"
+        ],
+    "src": [
+      "choices.js/public/assets/scripts/choices.min.js",
+      "dropmic/dist/dropmic.js",
+      "flickity/dist/flickity.pkgd.js",
+      "fontfaceobserver/fontfaceobserver.js",
+      "lazysizes/lazysizes-umd.js",
+      "lazysizes/plugins/parent-fit/ls.parent-fit.js",
+      "respimage/respimage.js",
+      "svg4everybody/dist/svg4everybody.js",
+      "vh-check/dist/vh-check.min.js"
+    ],
+    "base": [
+      "jquery/dist/jquery.js",
+      "modernizr/modernizr.js",
+      "tether/dist/js/tether.min.js",
+      "bootstrap/dist/js/bootstrap.js",
+      "fontfaceobserver/fontfaceobserver.js",
+      "mailcheck/src/mailcheck.js",
+      "JVFloat/jvfloat.js",
+      "hideShowPassword/hideShowPassword.js",
+      "lazysizes/plugins/ls.parent-fit.js",
+      "lazysizes/lazysizes.js",
+      "respimage/respimage.js",
+      "flickity/dist/flickity.pkgd.js"
+    ]
+  },
+  "styles": {
+      "src": [
+          "rfs/scss/_rfs.scss",
+          "sass-mq/_mq.scss"
+      ]
+  },
+  "replacementPatterns": {
+        "base": [
+            {
+                "match": "/../../src/lra.sitetheme/lra/sitetheme/resources/styles/",
+                "replacement": "/styles/"
+            },
+            {
+                "match": "/dist/styles/",
+                "replacement": "/styles/"
+            }
+        ],
+        "server": [
+            {
+                "match": "../../assets/",
+                "replacement": "../assets/"
+            },
+            {
+                "match": "../../dist/styles/",
+                "replacement": "/styles/"
+            },
+            {
+                "match": "../dist/styles/",
+                "replacement": "/styles/"
+            },
+            {
+                "match": "../../dist/scripts/",
+                "replacement": "/scripts/"
+            },
+            {
+                "match": "../dist/scripts/",
+                "replacement": "/scripts/"
+            }
+        ],
+        "pat": [
+            {
+                "match": "../assets/",
+                "replacement": "assets/"
+            },
+            {
+                "match": "assets/",
+                "replacement": "/++theme++hfph.sitetheme//dist/assets/"
+            },
+            {
+                "match": "../styles/",
+                "replacement": "/++theme++hfph.sitetheme/dist/styles/"
+            },
+            {
+                "match": "styles/",
+                "replacement": "/++theme++hfph.sitetheme/dist/styles/"
+            },
+            {
+                "match": "/styles/",
+                "replacement": "/++theme++hfph.sitetheme/dist/styles/"
+            },
+            {
+                "match": "../scripts/",
+                "replacement": "/++theme++hfph.sitetheme/scripts/"
+            },
+            {
+                "match": "scripts/",
+                "replacement": "/++theme++hfph.sitetheme/scripts/"
+            }
+        ]
+    },
+    "sprite": {
+        "mode": {
+            "symbol": {
+                "prefix": "o-icon__",
+                "example": true,
+                "render": {
+                    "scss": true
+                }
+            }
+        }
+    }
+}
