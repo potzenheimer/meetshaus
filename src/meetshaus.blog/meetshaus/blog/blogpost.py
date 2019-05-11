@@ -58,7 +58,7 @@ class IBlogPost(model.Schema, IImageScaleTraversable):
     fieldset(
         'media',
         label=_(u"Media"),
-        fields=['image', 'image_caption']
+        fields=['image', 'image_caption', 'image_display']
     )
 
     image = named_file.NamedBlobImage(
@@ -70,6 +70,12 @@ class IBlogPost(model.Schema, IImageScaleTraversable):
     )
     image_caption = schema.TextLine(
         title=_(u"Cover Image Caption"),
+        required=False
+    )
+
+    image_display = schema.Bool(
+        title=_(u"Display Cover image"),
+        default=False,
         required=False
     )
 
