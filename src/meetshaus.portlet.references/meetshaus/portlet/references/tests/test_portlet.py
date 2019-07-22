@@ -37,7 +37,7 @@ class TestPortlet(TestCase):
             name='meetshaus.portlet.references.ReferencesPortlet')
         mapping = self.portal.restrictedTraverse(
             '++contextportlets++plone.leftcolumn')
-        for m in mapping.keys():
+        for m in list(mapping.keys()):
             del mapping[m]
         addview = mapping.restrictedTraverse('+/' + portlet.addview)
 
@@ -48,7 +48,7 @@ class TestPortlet(TestCase):
         addview.createAndAdd(data={})
 
         self.assertEquals(len(mapping), 1)
-        self.failUnless(isinstance(mapping.values()[0],
+        self.failUnless(isinstance(list(mapping.values())[0],
                                    referencesportlet.Assignment))
 
     def test_invoke_edit_view(self):
