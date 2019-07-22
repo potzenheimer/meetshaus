@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """Module providing blog entry views"""
+import six
 from AccessControl import Unauthorized
 from Acquisition import aq_inner, aq_parent
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_unicode
 from Products.Five import BrowserView
 from meetshaus.blog.interfaces import IContentInfoProvider
 from meetshaus.blog.utils import get_localized_month_name
 from plone import api
+from plone.app.textfield import IRichText, IRichTextValue
 from plone.dexterity.utils import safe_utf8
 from plone.event.utils import pydt
 
@@ -82,6 +86,25 @@ class BlogEntryView(BrowserView):
         context = aq_inner(self.context)
         reading_time_provider = IContentInfoProvider(context)
         return reading_time_provider.reading_time()
+
+    def entry_body_text(self):
+        context = aq_inner(self.context)
+        text = u''
+        rich_text = getattr(context, 'text', None)
+        if rich_text:
+            if IRichTextValue.providedBy(rich_text):
+                transforms = getToolByName(self, 'portal_transforms')
+                # Before you think about switching raw/output
+                # or mimeType/outputMimeType, first read
+                # https://github.com/plone/Products.CMFPlone/issues/2066
+                #raw = safe_unicode(rich_text.raw)
+                #if six.PY2:
+                #    raw = raw.encode('utf-8', 'replace')
+                text = transforms.convertTo(
+                    'text/html',
+                    rich_text.raw_encoded
+                ).getData().strip()
+        return safe_unicode(text)
 
 
 class BlogEntryExcerpt(BrowserView):
