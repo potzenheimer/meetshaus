@@ -1,3 +1,4 @@
+from builtins import str
 from zope.interface import implements
 
 from plone.portlets.interfaces import IPortletDataProvider
@@ -110,11 +111,11 @@ class Renderer(base.Renderer):
             months[month] = allmonths[year, month]
 
     def years(self):
-        return sorted(self._counts.keys(), reverse=True)
+        return sorted(list(self._counts.keys()), reverse=True)
 
     def months(self, year):
         # sort as integers, return as strings
-        _months = sorted([int(m) for m in self._counts[year].keys()],
+        _months = sorted([int(m) for m in list(self._counts[year].keys())],
                          reverse=True)
         return [str(m) for m in _months]
 

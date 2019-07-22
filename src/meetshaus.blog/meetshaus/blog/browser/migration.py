@@ -231,5 +231,5 @@ class RemovePortletAssignments(BrowserView):
                 manager = getUtility(IPortletManager, name=manager_name)
                 assignment_mapping = getMultiAdapter((obj, manager),
                                                      IPortletAssignmentMapping)
-                for item in assignment_mapping.keys():
+                for item in list(assignment_mapping.keys()):
                     del assignment_mapping[item]

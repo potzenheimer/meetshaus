@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 """Module providing blog category views and management"""
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
 import json
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 import time
 
@@ -45,7 +48,7 @@ class BlogCategoriesView(BrowserView):
     def keywords(self):
         catalog = self.catalog()
         keywords = catalog.uniqueValuesFor('Subject')
-        keywords = [unicode(k, 'utf-8') for k in keywords]
+        keywords = [str(k, 'utf-8') for k in keywords]
         return keywords
 
     def count_entries(self, subject):
@@ -56,7 +59,7 @@ class BlogCategoriesView(BrowserView):
 
     def archive_url(self, subject):
         portal_url = api.portal.get().absolute_url()
-        sub = urllib2.quote(subject.encode('utf-8'))
+        sub = urllib.parse.quote(subject.encode('utf-8'))
         url = '{0}/blog?category={1}'.format(portal_url, sub)
         return url
 
@@ -92,7 +95,7 @@ class UpdateBlogCategoryStorage(BrowserView):
     def keywords(self):
         catalog = api.portal.get_tool(name='portal_catalog')
         keywords = catalog.uniqueValuesFor('Subject')
-        keywords = [unicode(k, 'utf-8') for k in keywords]
+        keywords = [str(k, 'utf-8') for k in keywords]
         return keywords
 
     def _normalize_keyword(self, keyword):
@@ -107,7 +110,7 @@ class UpdateBlogCategoryStorage(BrowserView):
 
     def _build_archive_url(self, keyword):
         portal_url = api.portal.get().absolute_url()
-        sub = urllib2.quote(keyword.encode('utf-8'))
+        sub = urllib.parse.quote(keyword.encode('utf-8'))
         url = '{0}/blog?category={1}'.format(portal_url, sub)
         return url
 

@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 """Module providing reading time adapter"""
+from __future__ import division
+from builtins import object
+from past.utils import old_div
 from Acquisition import aq_inner
 from meetshaus.blog.utils import get_localized_month_name
 from plone import api
@@ -45,7 +48,7 @@ class ContentInfoProvider(object):
         context = aq_inner(self.context)
         text = self._readable_text(context)
         text_count = len(text.split(' '))
-        rt = text_count / 200
+        rt = old_div(text_count, 200)
         return rt
 
     def content_snippet(self, characters=320, content_ellipsis='[...]'):

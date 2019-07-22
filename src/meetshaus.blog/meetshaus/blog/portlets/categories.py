@@ -1,4 +1,7 @@
-import urllib2
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+import urllib.request, urllib.error, urllib.parse
 from zope.interface import implements
 
 from plone.portlets.interfaces import IPortletDataProvider
@@ -62,7 +65,7 @@ class Renderer(base.Renderer):
     def keywords(self):
         catalog = getToolByName(self.context, 'portal_catalog')
         keywords = catalog.uniqueValuesFor('Subject')
-        keywords = [unicode(k, 'utf-8') for k in keywords]
+        keywords = [str(k, 'utf-8') for k in keywords]
         return keywords
 
     def archive_url(self, subject):
@@ -72,7 +75,7 @@ class Renderer(base.Renderer):
         if assignment_context is None:
             assignment_context = self.context
         self.folder_url = assignment_context.absolute_url()
-        sub = urllib2.quote(subject.encode('utf-8'))
+        sub = urllib.parse.quote(subject.encode('utf-8'))
         url = '%s/%s?category=%s' % (self.folder_url,
                                      self.data.archive_view,
                                      sub)

@@ -1,10 +1,15 @@
 # -*- coding: UTF-8 -*-
 """ Module listing available and asigned blog categories """
+from __future__ import division
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from past.utils import old_div
 import datetime
 import json
 import time
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
@@ -46,7 +51,7 @@ class BlogCategories(grok.View):
     def keywords(self):
         catalog = self.catalog()
         keywords = catalog.uniqueValuesFor('Subject')
-        keywords = [unicode(k, 'utf-8') for k in keywords]
+        keywords = [str(k, 'utf-8') for k in keywords]
         return keywords
 
     def count_entries(self, subject):
@@ -57,7 +62,7 @@ class BlogCategories(grok.View):
 
     def archive_url(self, subject):
         portal_url = api.portal.get().absolute_url()
-        sub = urllib2.quote(subject.encode('utf-8'))
+        sub = urllib.parse.quote(subject.encode('utf-8'))
         url = '{0}/blog?category={1}'.format(portal_url, sub)
         return url
 
@@ -152,7 +157,7 @@ class BlogCategory(grok.View):
     def reading_time(self, uid):
         text = self._readable_text(uid)
         text_count = len(text.split(' '))
-        rt = text_count / 200
+        rt = old_div(text_count, 200)
         return rt
 
 
@@ -277,7 +282,7 @@ class SetupBlogCategoryStorage(grok.View):
     def keywords(self):
         catalog = api.portal.get_tool(name='portal_catalog')
         keywords = catalog.uniqueValuesFor('Subject')
-        keywords = [unicode(k, 'utf-8') for k in keywords]
+        keywords = [str(k, 'utf-8') for k in keywords]
         return keywords
 
     def _normalize_keyword(self, keyword):
@@ -292,7 +297,7 @@ class SetupBlogCategoryStorage(grok.View):
 
     def _build_archive_url(self, keyword):
         portal_url = api.portal.get().absolute_url()
-        sub = urllib2.quote(keyword.encode('utf-8'))
+        sub = urllib.parse.quote(keyword.encode('utf-8'))
         url = '{0}/blog?category={1}'.format(portal_url, sub)
         return url
 

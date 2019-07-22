@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Module providing blog entry views"""
+from __future__ import division
+from past.utils import old_div
 import six
 from AccessControl import Unauthorized
 from Acquisition import aq_inner, aq_parent
@@ -200,5 +202,5 @@ class BlogEntryContent(BrowserView):
     def reading_time(self):
         text = self._readable_text()
         text_count = len(text.split(" "))
-        rt = text_count / 200
+        rt = old_div(text_count, 200)
         return rt
