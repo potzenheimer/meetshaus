@@ -1,5 +1,5 @@
 from builtins import str
-from zope.interface import implements
+from zope.interface import implementer
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -44,14 +44,13 @@ class IArchivePortlet(IPortletDataProvider):
     )
 
 
+@implementer(IArchivePortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
-    implements(IArchivePortlet)
 
     archive_view = u'blog_view'
 

@@ -1,4 +1,4 @@
-from zope.interface import implements
+from zope.interface import implements, implementer
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -27,14 +27,13 @@ class IBlogRecentPortlet(IPortletDataProvider):
     )
 
 
+@implementer(IBlogRecentPortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
-    implements(IBlogRecentPortlet)
 
     def __init__(self, entries=5):
         self.entries = entries
