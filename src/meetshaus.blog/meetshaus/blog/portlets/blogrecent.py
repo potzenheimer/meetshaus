@@ -1,4 +1,4 @@
-from zope.interface import implements
+from zope.interface import implements, implementer
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -35,7 +35,6 @@ class Assignment(base.Assignment):
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
 
     def __init__(self, entries=5):
         self.entries = entries

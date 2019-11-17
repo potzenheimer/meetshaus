@@ -1,5 +1,5 @@
 from builtins import str
-from zope.interface import implements
+from zope.interface import implementer
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base

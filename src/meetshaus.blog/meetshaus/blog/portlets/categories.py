@@ -5,7 +5,7 @@ from zope.interface.declarations import implementer
 standard_library.install_aliases()
 from builtins import str
 import urllib.request, urllib.error, urllib.parse
-from zope.interface import implements
+from zope.interface import implements, implementer
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
