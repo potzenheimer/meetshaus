@@ -11,7 +11,7 @@ var cfg = require('./../config.json');
 
 var font_downloader_options = {
     fontsDir: './assets/fonts',
-    cssDir: './sass/generic/',
+    cssDir: './scss/generic/',
     cssFilename: '_generic.fonts.custom.scss'
 };
 

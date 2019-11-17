@@ -12,6 +12,7 @@ from meetshaus.blog.utils import find_portlet_assignment_context
 from meetshaus.blog.blogentry import IBlogEntry
 
 from meetshaus.blog import MessageFactory as _
+from zope.interface.declarations import implementer
 
 MONTHVOCAB = {
     'month_1': _(u'month_1'),
@@ -44,14 +45,13 @@ class IArchivePortlet(IPortletDataProvider):
     )
 
 
+@implementer(IArchivePortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
-    implements(IArchivePortlet)
 
     archive_view = u'blog_view'
 

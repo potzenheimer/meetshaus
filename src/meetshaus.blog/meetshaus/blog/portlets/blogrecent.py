@@ -10,6 +10,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from meetshaus.blog.blogentry import IBlogEntry
 
 from meetshaus.blog import MessageFactory as _
+from zope.interface.declarations import implementer
 
 
 class IBlogRecentPortlet(IPortletDataProvider):
@@ -27,6 +28,7 @@ class IBlogRecentPortlet(IPortletDataProvider):
     )
 
 
+@implementer(IBlogRecentPortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
@@ -34,7 +36,6 @@ class Assignment(base.Assignment):
     with columns.
     """
 
-    implements(IBlogRecentPortlet)
 
     def __init__(self, entries=5):
         self.entries = entries

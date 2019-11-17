@@ -1,4 +1,7 @@
 from future import standard_library
+
+from zope.interface.declarations import implementer
+
 standard_library.install_aliases()
 from builtins import str
 import urllib.request, urllib.error, urllib.parse
@@ -32,14 +35,13 @@ class IBlogCategoriesPortlet(IPortletDataProvider):
     )
 
 
+@implementer(IBlogCategoriesPortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
-    implements(IBlogCategoriesPortlet)
 
     def __init__(self, archive_view=u'blog-view'):
         self.archive_view = archive_view
