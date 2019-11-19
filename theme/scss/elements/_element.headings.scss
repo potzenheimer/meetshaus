@@ -3,11 +3,12 @@
 //
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin-bottom: $headings-margin-bottom;
-    font-family: $headings-font-family;
-    font-weight: $headings-font-weight;
-    line-height: $headings-line-height;
-    color: $headings-color;
+    margin-bottom: $app-headings-margin-bottom;
+    font-family: $app-headings-font-family;
+    font-weight: $app-headings-font-weight;
+    line-height: $app-headings-line-height;
+    color: $app-headings-color;
+    text-transform: $app-headings-text-transform;
 }
 
 h3, h4, h5, h6,

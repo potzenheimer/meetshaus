@@ -10,10 +10,11 @@ $app-hr-border-width:                   1px;
 // Headings
 $app-headings-margin-bottom:            .5rem;
 $app-headings-line-height:              1.2;
-$app-headings-font-family:              $app-font-family-strong;
-$app-headings-font-family-secondary:    $app-font-family-medium;
-$app-headings-font-weight:              400;
+$app-headings-font-family:              $app-font-family-light;
+$app-headings-font-family-secondary:    $app-font-family-light;
+$app-headings-font-weight:              300;
 $app-headings-color:                    $app-color-primary;
+$app-headings-text-transform:           uppercase;
 
 // Strong text
 

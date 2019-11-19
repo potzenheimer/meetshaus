@@ -10,8 +10,24 @@ $color-firebrick:               rgba(139, 0, 0, 1) !default; // #8b0000
 //== Colors
 //
 //## Brand colors used across the project
-$color-jackson-purple:          rgba(24, 47, 122, 1) !default; // #182F7A
-$color-ronchi:                  rgba(238, 211, 67, 1) !default; // #EED343
+$color-cadetblue:               rgba(95,158,160,1) !default; // #5F9EA0
+
+$color-powderblue:              rgba(176,224,230,1) !default; // #B0E0E6
+
+$color-firebrick:               rgba(139, 0, 0, 1) !default; // #8b0000
+
+// Light blue gray body background
+$color-geyser:                  rgba(217, 228, 228, 1); // #d9e4e4
+
+// App blue
+$color-seagull:                 rgba(116, 196, 234, 1); // #74c4ea
+// App brown
+$color-brandy-punch:            rgba(211, 128, 42, 1); // #d3802a
+
+
+// Gray
+$color-shuttle-gray:            rgba(90, 95, 100, 1); // #5a5f64;
+$color-iron:                    rgba(227, 228, 229, 1); // #e3e4e5;
 
 // Adjusted brand color versions for better contrast and visibility
 $color-midnight-blue:               rgba(0, 51, 102, 1); // #003366;
@@ -19,7 +35,7 @@ $color-sun-glow:                    rgba(255, 204, 51, 1); // #ffcc33
 $color-tundora:                     rgba(64, 64, 64, 1); // #404040
 $color-shuttle-gray:                rgba(90, 95, 100, 1); // #5A5F64
 $color-dusty-gray:                  rgba(153, 153, 153, 1); // #999999
-$color-gallery:                     rgba(239, 239, 239, 1); // #efefef
+$color-gallery:                     rgba(239, 239, 239, 1); // #5A5F64
 $color-wild-sand:                   rgba(245, 245, 245, 1); // #f5f5f5
 $color-alto:						rgba(224, 224, 224, 1); // #e0e0e0
 
@@ -39,10 +55,10 @@ $app-color-gray-light:				        $color-gallery;
 $app-color-gray-lighter:				    $color-dusty-gray;
 $app-color-gray-lightest:				    $color-wild-sand;
 
-$app-color-white:                   #fff !default;
+$app-color-white:                        #fff !default;
 
 // Main text color value (initially setup to mirror bootstraps gray 900 color
-$app-color-text:                       #212529;
+$app-color-text:                        #212529;
 
 
 //== Brand and Section specific variables
@@ -50,7 +66,7 @@ $app-color-text:                       #212529;
 //## Used in mixin and modifier classes
 
 //** Primary brand color
-$app-color-primary-base:              $color-jackson-purple !default;
+$app-color-primary-base:              $color-seagull !default;
 $app-color-primary-darker:            darken($app-color-primary-base, 15%)  !default;
 $app-color-primary-dark:              darken($app-color-primary-base, 7.5%) !default;
 $app-color-primary:                   $app-color-primary-base               !default; // #274d38
@@ -58,7 +74,7 @@ $app-color-primary-light:             lighten($app-color-primary-base, 7.5%) !de
 $app-color-primary-lighter:           lighten($app-color-primary-base, 15%) !default;
 
 //** Secondary brand color
-$app-color-secondary-base:              $color-ronchi !default;
+$app-color-secondary-base:              $color-brandy-punch !default;
 $app-color-secondary-darker:            darken($app-color-secondary-base, 15%)  !default;
 $app-color-secondary-dark:              darken($app-color-secondary-base, 7.5%) !default;
 $app-color-secondary:                   $app-color-secondary-base               !default; // #588c73
