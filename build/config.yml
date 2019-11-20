@@ -23,7 +23,10 @@ application:
       - vh-check/dist/vh-check.min.js
       - x-ray/dist/js/x-ray.js
     app:
+      - scripts/accordion.js
       - scripts/app.js
+      - scripts/collapsible.js
+      - scripts/navbar.js
       - scripts/paneleditor.js
       - scripts/polyfills.js
       - scripts/slider.js

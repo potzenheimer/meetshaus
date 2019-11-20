@@ -1,8 +1,6 @@
 requirejs(['require',
         '/scripts/svg4everybody.js',
         '/scripts/flickity.pkgd.js',
-        '/scripts/eventbox.js',
-        '/scripts/interdependentselect.js',
         '/scripts/navbar.js',
         '/scripts/dropdown.js',
         '/scripts/collapsible.js',
@@ -21,10 +19,10 @@ requirejs(['require',
         'use strict';
 
         // Trigger font face observer protection
-        var fontPrimary = new FontFaceObserver('adobe-garamond-pro', {
+        var fontPrimary = new FontFaceObserver('Lora', {
             weight: 400
         });
-        var fontSecondary = new FontFaceObserver('Taz-SemiBold');
+        var fontSecondary = new FontFaceObserver('Montserrat');
         var fontTertiary = new FontFaceObserver('Taz-SemiLight');
 
         fontPrimary.load(null, 3000).then(function () {
@@ -35,13 +33,8 @@ requirejs(['require',
             document.documentElement.className += " font__secondary--loaded";
         });
 
-        fontTertiary.load(null, 3000).then(function () {
-            document.documentElement.className += " font__tertiary--loaded";
-        });
-
         Promise.all([fontPrimary.load(null, 3000),
-            fontSecondary.load(null, 3000),
-            fontTertiary.load(null, 3000)
+            fontSecondary.load(null, 3000)
         ])
             .then(function () {
                 document.documentElement.className += " fonts--loaded";
