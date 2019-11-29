@@ -1,6 +1,6 @@
 import random
 from Acquisition import aq_inner
-from zope.interface import implements
+from zope.interface import implementer
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 
@@ -16,14 +16,13 @@ class IReferencesPortlet(IPortletDataProvider):
     """
 
 
+@implementer(IReferencesPortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
-    implements(IReferencesPortlet)
 
     def __init__(self):
         pass

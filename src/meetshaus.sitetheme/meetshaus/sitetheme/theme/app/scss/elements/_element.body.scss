@@ -1,7 +1,11 @@
 //** Adjust font weight for initialized webfonts
 body {
     color: $element-body-color;
-    @include responsive-font-size($app-font-size-base);
+    @if $enable-responsive-font-sizes == true {
+        @include font-size($app-font-size-base);
+    } @else {
+        font-size: $app-font-size-base;
+    }
     font-weight: $app-font-weight-base;
     @include when-inside('.fonts--loaded') {
         font-weight: $app-font-weight-base-custom;

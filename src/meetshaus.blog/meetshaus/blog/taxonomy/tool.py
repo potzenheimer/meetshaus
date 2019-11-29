@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Module providing a json data storage api for categories"""
+from builtins import str
+from builtins import object
 import datetime
 import json
 import time
@@ -98,12 +100,12 @@ class TaxonomyTool(object):
         stored_data = self.get_record(uuid)
         storage_blacklist = ('degree', 'info', 'theme')
         data = list()
-        for course_key, course_value in stored_data.items():
+        for course_key, course_value in list(stored_data.items()):
             course_title = self.get_degree_course_title(course_key)
             course_name = str(course_title)
             if course_value:
                 module_titles = list()
-                for module_name, module_theme in course_value.items():
+                for module_name, module_theme in list(course_value.items()):
                     module_name_rendered = self.get_learning_modules(
                         course_key,
                         module_name

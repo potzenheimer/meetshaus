@@ -43,4 +43,5 @@ src/sauna.reload
 src/vwc.*
 src/watchdog
 src/z3c.*
+src/zodbupdate
 var

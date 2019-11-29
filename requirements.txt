@@ -1,3 +1,4 @@
-setuptools==40.2.0
-zc.buildout==2.12.2
 Fabric==1.14.0
+setuptools==41.6.0
+towncrier==19.2.0
+zc.buildout==2.13.2

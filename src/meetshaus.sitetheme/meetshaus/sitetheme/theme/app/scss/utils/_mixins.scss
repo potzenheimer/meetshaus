@@ -11,6 +11,10 @@
     }
 }
 
+@mixin font-size($fs, $important: false) {
+    @include rfs($fs, $important);
+}
+
 @mixin aspect-ratio($width, $height) {
   position: relative;
   &:before {

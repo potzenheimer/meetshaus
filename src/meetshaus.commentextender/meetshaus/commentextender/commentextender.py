@@ -7,7 +7,7 @@ from zope import schema
 
 from zope.annotation import factory
 from zope.component import adapts
-from zope.interface import Interface
+from zope.interface import Interface, implementer
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 from plone.z3cform.fieldsets import extensible
@@ -20,8 +20,8 @@ class ICommentExtenderFields(Interface):
     website = schema.TextLine(title=u"Website", required=False)
 
 # Persistent class that implements the ICommentExtenderFields interface
+@implementer(ICommentExtenderFields)
 class CommentExtenderFields(Persistent):
-    interface.implements(ICommentExtenderFields)
     adapts(Comment)
     website = u""
 

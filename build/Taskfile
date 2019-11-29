@@ -1,25 +1,37 @@
 #!/usr/bin/env bash
 # b5 Taskfile, see https://git.team23.de/build/b5 for details
 SITE_THEME="${CONFIG_paths_site_theme:-'I have no theme configuration'}"
+SITE_THEME_DIST="${CONFIG_paths_site_theme_dist:-'I have no theme dist directory configuration'}"
+GULP_LOCATION="${CONFIG_paths_gulp_location:-'I have no gulp location'}"
+ALLOWED_SETUP_REQUIRED=("yes", "no")
+DEFAULT_SETUP_REQUIRED="no"
+
+task:setup() {
+    cp ${SITE_THEME}/package.json ${GULP_LOCATION}
+}
 
 task:install() {
-    cd .. && chmod 775 ./bootstrap.sh && ./bootstrap.sh
+    cd .. && chmod 775 ./bootstrap.sh && ./bootstrap.sh -c development.cfg
     virtualenv:install
     docker:install
-    npm:install
+    docker:command:npm install
+    template:render --overwrite ask-if-older templates/config.local.yml.jinja2 config.local.yml
 }
 
 task:install:theme() {
-    npm:install
+    task:setup
+    docker:command:npm install
 }
 
 task:update() {
     virtualenv:update
     docker:update
+    docker:command:npm install
+    template:render --overwrite ask-if-older templates/config.local.yml.jinja2 config.local.yml
 }
 
 task:update:theme() {
-    npm:install
+    docker:command:npm install
 }
 
 task:deploy:legacy() {
@@ -47,16 +59,6 @@ task:deploy:setup() {
     virtualenv:run fab "$1" deploy_setup:"${2:-}"
 }
 
-task:deploy:restart() {
-    if [ -z "${1:-}" ]
-    then
-        echo "Usage: b5 deploy:setup <servername> [options]"
-        echo ""
-        b5:abort "Argument missing: server name"
-    fi
-    virtualenv:run fab "$1" restart:"${2:-}"
-}
-
 task:status() {
     if [ -z "${1:-}" ]
     then
@@ -71,22 +73,95 @@ task:build() {
     cd ../ && bin/buildout -Nc development.cfg
 }
 
+task:build:full() {
+    cd ../ && bin/buildout -c development.cfg
+}
+
 task:plone() {
     cd ../ && bin/instance-debug fg
 }
 
 task:css() {
-    cd ${SITE_THEME} && npm:run gulp dist
-    cd ..
+    docker:command:gulp styles
 }
 
 task:gulp() {
-    cd ${SITE_THEME} && npm:run gulp "$@"
-    cd ..
+    docker:command:gulp "$@"
+}
+
+task:gulp:tasks() {
+    docker:command:gulp --tasks
 }
 
 task:watch() {
     virtualenv:run fab watch
+}
+
+######################################################
+##### Theme build
+######################################################
+
+task:theme:init() {
+    echo "*** Initalize theme ***"
+    echo ""
+    echo "Please make sure you have already made base configurations in config.yml"
+    echo "This task will resets manifest.cfg and rules.xml to factory defaults. Use wisely."
+    echo ""
+    # SETUP TYPE
+    while [ -z "$SETUP_REQUIRED" ]; do
+        read -e -p "Initialize diazo theme from templates (yes or no) [no]: " SETUP_REQUIRED
+        [ -z "$SETUP_REQUIRED" ] && SETUP_REQUIRED="$DEFAULT_SETUP_REQUIRED"
+        case $SETUP_REQUIRED in
+            yes ) echo "Generate diazo theme default setup";;
+            no ) echo "Cancel setup";;
+            * ) echo "Illegal input, only yes or no allowed";unset SETUP_REQUIRED;;
+        esac
+    done
+    if [ "$SETUP_REQUIRED" == "no" ];
+      then
+        echo ""
+        b5:abort "Theme initialization cancelled."
+    fi
+    echo ""
+    template:render --overwrite ask-if-older templates/manifest.cfg.jinja2 ${SITE_THEME_DIST}/manifest.cfg
+    echo "Generated manifest.cfg"
+    template:render --overwrite ask-if-older templates/rules.xml.jinja2 ${SITE_THEME_DIST}/rules.xml
+    echo "Generated rules.xml"
+    echo ""
+    echo "Next run b5 theme:setup() to generate theme build configuration"
+}
+
+task:theme:setup() {
+    template:render --overwrite ask-if-older templates/config.json.jinja2 ${GULP_LOCATION}/config.json
+}
+
+task:theme:html() {
+    docker:command:jekyll build
+}
+
+task:theme:css() {
+    docker:command:gulp styles
+}
+
+task:theme:js() {
+    docker:command:gulp collect:scripts:app
+}
+
+task:theme:assets() {
+    docker:command:gulp collect
+}
+
+task:theme:dist() {
+    docker:command:jekyll build
+    docker:command:gulp dist
+}
+
+task:npm() {
+    docker:command:npm "$@"
+}
+
+task:jekyll() {
+    docker:command:jekyll "$@"
 }
 
 task:fab() {
@@ -114,4 +189,11 @@ task:db:download() {
         b5:abort "Argument missing: server name"
     fi
     virtualenv:run fab "$1" download:"${2:-}"
+}
+
+task:venv:reset() {
+    cd ../ &&
+    rm -rf ./bin &&
+    rm -rf ./lib &&
+    rm -rf ./include
 }
