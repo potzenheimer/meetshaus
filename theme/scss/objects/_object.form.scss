@@ -29,7 +29,7 @@ input, button, select, textarea {
 
 .o-form__label {
     font-family: $o-form-font-family-highlight;
-    font-weight: 400;
+    font-weight: $app-font-weight-strong;
     line-height: 1.25;
 }
 
@@ -78,6 +78,7 @@ input, button, select, textarea {
     display: block;
     font-family: $app-font-family-base;
     @include font-size($app-font-size-base);
+    font-weight: $app-font-weight-base;
     color: $app-color-gray;
 }
 
@@ -155,7 +156,7 @@ input, button, select, textarea {
         margin-right: 1rem;
         > label {
             margin-left: .5rem;
-            font-weight: 400;
+            font-weight: $app-font-weight-strong;
         }
     }
 }
@@ -189,7 +190,7 @@ input, button, select, textarea {
     &:after {
         content: url('../assets/images/icon-check.svg');
         position: absolute;
-        top: .2rem;
+        top: 0;
         left: .2rem;
         z-index: 1;
         font-size: 1.3em;

@@ -278,7 +278,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: local("Lora Regular"), local("Lora-Regular"), url(/assets/fonts/Lora-normal-400.woff) format("woff");
+  src: local("Lora Regular"), local("Lora-Regular"), url(../assets/fonts/Lora-normal-400.woff) format("woff");
   unicode-range: U+0-10FFFF;
 }
 
@@ -287,7 +287,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: auto;
-  src: local("Lora Bold"), local("Lora-Bold"), url(/assets/fonts/Lora-normal-700.woff) format("woff");
+  src: local("Lora Bold"), local("Lora-Bold"), url(../assets/fonts/Lora-normal-700.woff) format("woff");
   unicode-range: U+0-10FFFF;
 }
 
@@ -296,7 +296,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: auto;
-  src: local("Montserrat Light"), local("Montserrat-Light"), url(/assets/fonts/Montserrat-normal-300.woff) format("woff");
+  src: local("Montserrat Light"), local("Montserrat-Light"), url(../assets/fonts/Montserrat-normal-300.woff) format("woff");
   unicode-range: U+0-10FFFF;
 }
 
@@ -10090,7 +10090,7 @@ input, button, select, textarea {
 
 .o-form__label {
   font-family: "Lora";
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -10153,6 +10153,7 @@ input, button, select, textarea {
   display: block;
   font-family: "Lora";
   font-size: 1.25rem;
+  font-weight: 400;
   color: #5a5f64;
 }
 
@@ -10241,7 +10242,7 @@ input, button, select, textarea {
 
 .form__field--checkbox .option > label {
   margin-left: .5rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .o-form__control--checkbox {
@@ -10280,7 +10281,7 @@ input, button, select, textarea {
 .o-form__control--checkbox + label:after {
   content: url("../assets/images/icon-check.svg");
   position: absolute;
-  top: .2rem;
+  top: 0;
   left: .2rem;
   z-index: 1;
   font-size: 1.3em;

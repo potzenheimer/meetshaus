@@ -9,6 +9,7 @@
 
 .app-footer__content {
     padding: $app-spacer-base;
+    background:url(../assets/images/landscape.png) no-repeat 0% 100% #fff;
     &--primary {
         color: $white;
         background-color: $app-color-primary;

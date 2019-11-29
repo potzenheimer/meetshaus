@@ -1,9 +1,6 @@
 .o-burger {
     display: $o-burger-display;
     margin-top: $o-burger-margin-top;
-    @include mq($from: md) {
-        margin-top: 5.5rem;
-    }
     @include mq($from: xl) {
         margin-top: 0;
     }

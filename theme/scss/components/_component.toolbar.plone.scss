@@ -1,0 +1,11 @@
+.app-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 60px;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .5);
+    color: $app-color-white;
+}

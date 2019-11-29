@@ -94,19 +94,19 @@ class BlogEntryView(BrowserView):
         text = u''
         rich_text = getattr(context, 'text', None)
         if rich_text:
-            if IRichTextValue.providedBy(rich_text):
-                transforms = getToolByName(self, 'portal_transforms')
-                # Before you think about switching raw/output
-                # or mimeType/outputMimeType, first read
-                # https://github.com/plone/Products.CMFPlone/issues/2066
-                #raw = safe_unicode(rich_text.raw)
-                #if six.PY2:
-                #    raw = raw.encode('utf-8', 'replace')
-                text = transforms.convertTo(
-                    'text/html',
-                    rich_text.raw_encoded
-                ).getData().strip()
-        return safe_unicode(text)
+            #if IRichTextValue.providedBy(rich_text):
+            #    transforms = getToolByName(self, 'portal_transforms')
+            #    # Before you think about switching raw/output
+            #    # or mimeType/outputMimeType, first read
+            #    # https://github.com/plone/Products.CMFPlone/issues/2066
+            #    #raw = safe_unicode(rich_text.raw)
+            #    #if six.PY2:
+            #    #    raw = raw.encode('utf-8', 'replace')
+            #    text = transforms.convertTo(
+            #        'text/html',
+            #        rich_text.raw_encoded
+            #    ).getData().strip()
+            return rich_text.output
 
 
 class BlogEntryExcerpt(BrowserView):

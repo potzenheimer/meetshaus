@@ -15,8 +15,15 @@
 <!-- inject:svg -->
 <!-- endinject -->
 <!-- inject:css -->
-<link rel="stylesheet" href="/styles/meetshaus-a624aba69b.min.css">
+<link rel="stylesheet" href="/styles/meetshaus-22952926a9.min.css">
 <!-- endinject -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
 
 </head>
 <body>
@@ -42,48 +49,15 @@
     </div>
     <div class="app-toolbar-navbar">
         <ul class="app-toolbar-nav">
-          <li class="active"><a href="#">Inhalte</a></li>
-          <li><a href="#about">Anzeigen</a></li>
-          <li><a href="#contact">Bearbeiten</a></li>
-          <li><a href="#contact">Zugriff</a></li>
-        </ul>
-        <ul class="app-toolbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hinzufügen <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Folder</a></li>
-                <li><a href="#">Document</a></li>
-                <li><a href="#">Image</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Settings</li>
-                <li><a href="#">Filter options</a></li>
-                <li><a href="#">Add...</a></li>
-              </ul>
-            </li>
-        </ul>
-        <ul class="app-toolbar-nav">
-          <li id="plone-personal-actions" class="dropdown dropdown-userinfo">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="/author/123456789">
-              <span>Benutzer</span>
-              <b class="caret">
-            </b></a>
-            <ul class="dropdown-menu"><li id="plone-personal-actions-dashboard">
-                <a href="/dashboard">My workspace</a>
-              </li>
-              <li id="plone-personal-actions-preferences">
-                <a href="/preferences">Settings</a>
-              </li>
-              <li id="plone-personal-actions-plone_setup">
-                <a href="/controlpanel">Configuration</a>
-              </li>
-              <li id="plone-personal-actions-logout">
-                <a href="/logout">Signout</a>
-              </li>
-            </ul></li>
+          <li class="active"><a href="#">A</a></li>
+          <li><a href="#about">B</a></li>
+          <li><a href="#contact">C</a></li>
+          <li><a href="#contact">D</a></li>
         </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>
+
 
 <main class="app-main app-main--fullscreen" role="main">
     <div class="o-page o-page--sign-in">
@@ -101,31 +75,29 @@
 
         </header>
         <div class="c-sign-in__main" id="content">
-            <form class="app-signin-form enableAutoFocus" action="." id="login_form" method="post">
-                <div class="app-signin-group" id="login-form">
-                    <div class="control-group app-signin-control dim-in dim-in-1">
-                        <div class="app-signin-field">
+            <form class="o-form o-form--signin enableAutoFocus" action="." id="login_form" method="post">
+                <div class="o-form__main" id="login-form">
+                    <div class="o-form__group app-signin-control dim-in dim-in-1">
+                        <div class="o-form__field">
                             <label class="sr-only" for="__ac_name">E-Mail-Adresse</label>
-                            <input class="form-control app-signin-input" id="ac-name"
+                            <input class="o-form__control app-signin-input" id="ac-name"
                                    placeholder="E-Mail-Adresse"
                                    type="text" id="__ac_name" value="" name="__ac_name" size="15">
                             <a href="#app-signin-content" class="app-signin-suggestion animated hidden" id="app-signin-suggestion"></a>
                         </div>
                     </div>
-                    <div class="control-group app-signin-control dim-in dim-in-2">
-                        <div class="app-signin-field">
+                    <div class="o-form__group app-signin-control dim-in dim-in-2">
+                        <div class="o-form__field">
                             <label class="sr-only" for="__ac_password">Passwort</label>
-                            <input  class="form-control app-signin-input"
+                            <input  class="o-form__control app-signin-input"
                                     placeholder="Passwort"
                                     type="password" id="__ac_password" name="__ac_password" size="15">
                         </div>
                     </div>
                 </div>
-                <div class="app-signin-actions">
-                    <div class="control-group app-signin-control dim-in dim-in-3">
-                        <input class="btn btn-primary btn-block btn-lg app-signin-btn" type="submit" value="Anmelden" name="submit">
+                <div class="o-form__actions">
+                        <input class="c-button c-button--primary c-button--block btn-lg app-signin-btn" type="submit" value="Anmelden" name="submit">
                         <a class="btn btn-link btn-sm" href="/mail_password_form?userid=">Passwort vergessen?</a>
-                    </div>
                 </div>
             </form>
         </div>
