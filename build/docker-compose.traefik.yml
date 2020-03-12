@@ -8,6 +8,17 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik_gateway
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-static.rule=Host(`static.${COMPOSE_PROJECT_NAME}.t23dev`)
+
+  static:
+      networks:
+          - default
+          - traefik_gateway
+      labels:
+          - traefik.enable=true
+          - traefik.docker.network=traefik_gateway
+          - traefik.http.routers.${COMPOSE_PROJECT_NAME}-web.rule=Host(`web.${COMPOSE_PROJECT_NAME}.t23dev`)
+
 networks:
   default:
   traefik_gateway:

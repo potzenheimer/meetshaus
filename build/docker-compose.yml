@@ -7,6 +7,12 @@ services:
     volumes:
       - ../:/app:cached
 
+  static:
+    build:
+      context: docker/nginx-static
+    volumes:
+      - ../:/app:cached
+
   node:
     image: node:11
     volumes:

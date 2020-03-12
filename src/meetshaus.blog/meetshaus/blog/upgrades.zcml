@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="meetshaus.blog">
+
+    <genericsetup:upgradeStep
+        title="Cleanup site after Plone 5.2 migration"
+        description="Update extensions and tools to prepare Python3 support'"
+        source="1"
+        destination="1001"
+        profile="meethaus.blog:default"
+        handler="meetshaus.blog.upgrades.upgrade_1001"
+        sortkey="1"
+    />
+
+</configure>
