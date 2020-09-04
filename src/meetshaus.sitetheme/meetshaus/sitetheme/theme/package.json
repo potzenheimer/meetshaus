@@ -71,7 +71,7 @@
         "gulp-rev-collector": "^1.2.4",
         "hideshowpassword": "^2.0.10",
         "ionicons": "^3.0.0",
-        "jquery": "^3.3.0",
+        "jquery": "^3.5.0",
         "lazysizes": "^2.0.2",
         "mailcheck": "^1.1.1",
         "medium-editor": "^5.13.0",
