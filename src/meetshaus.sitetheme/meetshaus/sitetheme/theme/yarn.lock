@@ -4805,9 +4805,9 @@ lazy-req@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/lazy-req/-/lazy-req-1.1.0.tgz#bdaebead30f8d824039ce0ce149d4daa07ba1fac"
 
-lazysizes@^2.0.2:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-2.0.7.tgz#9cca4ef86a924afc350cf02a0088904eceff6a80"
+lazysizes@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-5.2.1.tgz#f450e36a995efb5817acb8c904f3d2f2efc29ffa"
 
 lazystream@^1.0.0:
   version "1.0.0"
