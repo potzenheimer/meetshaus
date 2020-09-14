@@ -2,18 +2,38 @@
 """Module providing base class migration for blog entry content"""
 import lxml
 from Acquisition import aq_inner
+from Products.Five import BrowserView
 from five import grok
 from plone import api
 from Products.CMFCore.interfaces import IContentish
 from Products.statusmessages.interfaces import IStatusMessage
 
 from meetshaus.blog.blogentry import IBlogEntry
+from plone.protect.utils import addTokenToUrl
 
 
-class MigrateBlogEntries(grok.View):
-    grok.context(IContentish)
-    grok.require('cmf.ManagePortal')
-    grok.name('migrate-blog-enties')
+class AvailableTools(BrowserView):
+    """ Migrate panel page content
+
+    Query the catalog for legacy content impending removal
+    """
+
+    def __call__(self):
+        return self.render()
+
+    def render(self):
+        return self.index()
+
+    def protect_action_url(self, action_url):
+        context = aq_inner(self.context)
+        action_url = '{0}/@@{1}'.format(
+            context.absolute_url(),
+            action_url
+        )
+        return addTokenToUrl(action_url)
+
+
+class MigrateBlogEntries(BrowserView):
 
     def render(self):
         context = aq_inner(self.context)

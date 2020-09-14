@@ -5,6 +5,7 @@ SITE_THEME_DIST="${CONFIG_paths_site_theme_dist:-'I have no theme dist directory
 GULP_LOCATION="${CONFIG_paths_gulp_location:-'I have no gulp location'}"
 ALLOWED_SETUP_REQUIRED=("yes", "no")
 DEFAULT_SETUP_REQUIRED="no"
+WEBROOT="${CONFIG_paths_web:-../}"
 
 task:setup() {
     cp ${SITE_THEME}/package.json ${GULP_LOCATION}
@@ -179,6 +180,26 @@ task:halt() {
 
 task:shell() {
     docker:container_run web /bin/bash --login
+}
+
+task:db:download:data() {
+	# !!! caution staging path not defined
+    if [ "$1" = "production" ]
+             then rsync -avzhe 'ssh -F ssh_config' --exclude='_processed_/' production.meetshaus:/opt/sites/meetshaus/buildout.meetshaus/var/filestorage/Data.fs ${WEBROOT}/var/filestorage/
+        elif [ "$1" = "staging" ]
+        	 then echo "staging path not defined"
+        else echo "Argument missing: server name"
+    fi
+}
+
+task:db:download:blobs() {
+	# !!! caution staging path not defined
+    if [ "$1" = "production" ]
+             then rsync -avzhe 'ssh -F ssh_config' --exclude='_processed_/' production.meetshaus:/opt/sites/meetshaus/buildout.meetshaus/var/blobstorage/* ${WEBROOT}/var/blobstorage/
+        elif [ "$1" = "staging" ]
+        	 then echo "staging path not defined"
+        else echo "Argument missing: server name"
+    fi
 }
 
 task:db:download() {

@@ -155,5 +155,15 @@ def cleanup_in_plone52(context=None):
 
 
 def upgrade_1001(setup):
+    # Update registry settings
+    setup.runImportStepFromProfile(default_profile, 'plone.app.registry')
+
+
+def upgrade_1002(setup):
     # Cleanup installation
     cleanup_in_plone52()
+
+
+def upgrade_1003(setup):
+    # Cleanup installation
+    remove_ploneformgen()

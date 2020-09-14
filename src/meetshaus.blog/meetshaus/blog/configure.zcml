@@ -22,7 +22,6 @@
     <include file="indexers.zcml" />
 
 
-
   <i18n:registerTranslations directory="locales" />
 
   <!-- Register an extension profile to make the product installable
@@ -34,6 +33,9 @@
       description="Extension profile for A blogging tool for meetshaus.de"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+
+    <!-- Custom upgrade handler for package cleanups -->
+    <include file="upgrades.zcml" />
 
   <!-- -*- extra stuff goes here -*- -->
 

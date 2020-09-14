@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="meetshaus.blog">
+
+    <!-- Control panels -->
+    <browser:page
+        name="blog-upgrade"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class="meetshaus.blog.migration.migration.AvailableTools"
+        permission="cmf.ManagePortal"
+        template="migration.pt"
+    />
+
+    <browser:page
+        name="blog-upgrade-runner"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class="meetshaus.blog.migration.migration.UpgradeCleanupRunner"
+        permission="cmf.ManagePortal"
+    />
+
+</configure>

@@ -5,12 +5,32 @@
     i18n_domain="meetshaus.blog">
 
     <genericsetup:upgradeStep
-        title="Cleanup site after Plone 5.2 migration"
+        title="Upgrade versioning scheme"
         description="Update extensions and tools to prepare Python3 support'"
         source="1"
         destination="1001"
         profile="meethaus.blog:default"
         handler="meetshaus.blog.upgrades.upgrade_1001"
+        sortkey="1"
+    />
+
+    <genericsetup:upgradeStep
+        title="Cleanup site after Plone 5.2 migration"
+        description="Update extensions and tools to prepare Python3 support'"
+        source="1001"
+        destination="1002"
+        profile="meethaus.blog:default"
+        handler="meetshaus.blog.upgrades.upgrade_1002"
+        sortkey="1"
+    />
+
+    <genericsetup:upgradeStep
+        title="Plone 5.2 migration: remove formgen tool"
+        description="Update to remove PloneFormGen traces"
+        source="1002"
+        destination="1003"
+        profile="meethaus.blog:default"
+        handler="meetshaus.blog.upgrades.upgrade_1003"
         sortkey="1"
     />
 
