@@ -190,31 +190,33 @@
         <!--<after css:theme-children="#content"
             css:content="#disqus_thread_wrapper" />-->
 
-            <!-- Alert and portal messages -->
-            <before css:content=".portalMessage" css:theme="#content" />
-            <strip css:content=".portalMessage dd"/>
-            <replace css:content=".portalMessage" >
-              <xsl:choose>
-                  <xsl:when css:test=".portalMessage[style]"/>
-                  <xsl:when css:test=".portalMessage">
-                      <div class="app-callout app-callout-default alert-dismissable" role="alert">
-                          <xsl:choose>
-                              <xsl:when css:test=".info">
-                                  <xsl:attribute name="class">app-callout app-callout-success alert-dismissable</xsl:attribute>
-                              </xsl:when>
-                              <xsl:when css:test=".error">
-                                  <xsl:attribute name="class">app-callout app-callout-danger alert-dismissable</xsl:attribute>
-                              </xsl:when>
-                              <xsl:when css:test=".warning">
-                                  <xsl:attribute name="class">app-callout app-callout-warning alert-dismissable</xsl:attribute>
-                              </xsl:when>
-                          </xsl:choose>
-                          <h4><xsl:apply-templates select="./dt/*"/></h4>
-                          <xsl:apply-templates />
-                      </div>
-                  </xsl:when>
-              </xsl:choose>
-            </replace>
+        <!-- Alert and portal messages -->
+        <strip css:content=".portalMessage dd"/>
+        <replace css:content=".portalMessage" method="raw">
+            <xsl:choose>
+                <xsl:when css:test=".portalMessage[style]"/>
+                <xsl:when css:test=".portalMessage">
+                    <div class="c-alert c-alert--default c-alert--dismissable" role="alert">
+                        <xsl:choose>
+                            <xsl:when css:test=".info">
+                                <xsl:attribute name="class">app-callout app-callout-default</xsl:attribute>
+                            </xsl:when>
+                            <xsl:when css:test=".error">
+                                <xsl:attribute name="class"> app-callout app-callout-danger</xsl:attribute>
+                            </xsl:when>
+                            <xsl:when css:test=".warning">
+                                <xsl:attribute name="class"> app-callout app-callout-warning</xsl:attribute>
+                            </xsl:when>
+                        </xsl:choose>
+                        <h4><xsl:apply-templates select="./dt/*"/></h4>
+                        <xsl:apply-templates />
+                    </div>
+                </xsl:when>
+            </xsl:choose>
+        </replace>
+        <rules css:if-not-content=".template-prefs_install_products_form">
+            <before css:content=".portalMessage" css:theme-children="#content" />
+        </rules>
 
             <!-- Fix table styles -->
                 <replace css:content="table.listing">

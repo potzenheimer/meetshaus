@@ -7,27 +7,23 @@ $color-powderblue:              rgba(176,224,230,1) !default; // #B0E0E6
 
 $color-firebrick:               rgba(139, 0, 0, 1) !default; // #8b0000
 
-//== Colors
-//
-//## Brand colors used across the project
-$color-cadetblue:               rgba(95,158,160,1) !default; // #5F9EA0
-
-$color-powderblue:              rgba(176,224,230,1) !default; // #B0E0E6
-
-$color-firebrick:               rgba(139, 0, 0, 1) !default; // #8b0000
-
 // Light blue gray body background
 $color-geyser:                  rgba(217, 228, 228, 1); // #d9e4e4
 
 // App blue
 $color-seagull:                 rgba(116, 196, 234, 1); // #74c4ea
+$color-matisse:                 rgba(31, 127, 162, 1); // #1f7fa2
+$color-orient:                  rgba(0, 95, 129, 1); // #005f81
 // App brown
 $color-brandy-punch:            rgba(211, 128, 42, 1); // #d3802a
-
+$color-mai-tai:                 rgba(175, 98, 3, 1);  // #af6203
+$color-brown:                   rgba(138, 68, 0, 1); // ##8a4400
 
 // Gray
+$color-shark:                   rgba(33, 37, 41, 1); // #212529
 $color-shuttle-gray:            rgba(90, 95, 100, 1); // #5a5f64;
 $color-iron:                    rgba(227, 228, 229, 1); // #e3e4e5;
+$color-mine-shaft:              rgba(44, 44, 44, 0);  // #2c2c2c
 
 // Adjusted brand color versions for better contrast and visibility
 $color-midnight-blue:               rgba(0, 51, 102, 1); // #003366;
@@ -52,7 +48,9 @@ $app-color-gray-light:				        $color-gallery;
 $app-color-white:                        #fff !default;
 
 // Main text color value (initially setup to mirror bootstraps gray 900 color
-$app-color-text:                        #212529;
+$app-color-text:                        $color-shark;
+$app-color-gray-contrast:               $color-tundora;
+$app-color-gray-contrast-secondary:     $color-mine-shaft;
 
 
 //== Brand and Section specific variables

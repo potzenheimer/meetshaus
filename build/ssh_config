@@ -1,0 +1,9 @@
+Host production.meetshaus
+  HostName z7.ade25.de
+  User root
+  Port 22222
+
+Host staging.meetshaus
+  HostName z17.ade25.de
+  User root
+  Port 22222

@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 """Module providing blog category management"""
+from future import standard_library
+standard_library.install_aliases()
+from builtins import next
+from builtins import str
 import datetime
 import json
 import time
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
@@ -93,7 +97,7 @@ class TaxonomyTermSelection(BrowserView):
         records = self.records()
         for record in records:
             record_id = record['id']
-            if record_id in form_data.keys():
+            if record_id in list(form_data.keys()):
                 record['enabled'] = True
             else:
                 record['enabled'] = False
@@ -140,7 +144,7 @@ class UpdateCategoryStorage(BrowserView):
     def keywords(self):
         catalog = api.portal.get_tool(name='portal_catalog')
         keywords = catalog.uniqueValuesFor('Subject')
-        keywords = [unicode(k, 'utf-8') for k in keywords]
+        keywords = [str(k, 'utf-8') for k in keywords]
         return keywords
 
     def _normalize_keyword(self, keyword):
@@ -155,7 +159,7 @@ class UpdateCategoryStorage(BrowserView):
 
     def _build_archive_url(self, keyword):
         portal_url = api.portal.get().absolute_url()
-        sub = urllib2.quote(keyword.encode('utf-8'))
+        sub = urllib.parse.quote(keyword.encode('utf-8'))
         url = '{0}/blog/thema/{1}'.format(portal_url, sub)
         return url
 

@@ -1,12 +1,11 @@
 import random
 from Acquisition import aq_inner
-from zope.interface import implements
+from zope.interface import implementer
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-from Products.ATContentTypes.interfaces import IATLink
 
 
 class IReferencesPortlet(IPortletDataProvider):
@@ -17,14 +16,13 @@ class IReferencesPortlet(IPortletDataProvider):
     """
 
 
+@implementer(IReferencesPortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
-    implements(IReferencesPortlet)
 
     def __init__(self):
         pass
@@ -58,8 +56,7 @@ class Renderer(base.Renderer):
     def _linkData(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        results = catalog(object_provides=IATLink.__identifier__,
-                          review_state='published')
+        results = []
         return results
 
 

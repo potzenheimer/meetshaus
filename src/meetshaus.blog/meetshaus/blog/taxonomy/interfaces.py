@@ -1,11 +1,5 @@
 # -*- coding: UTF-8 -*-
 """Lecture edit form schema interfaces"""
-
-from plone.directives import form
-from plone.namedfile.field import NamedBlobFile
-from plone.theme.interfaces import IDefaultPloneLayer
-from z3c.form.browser.checkbox import CheckBoxFieldWidget
-from zope import schema
 from zope.interface import Interface
 
 from meetshaus.blog import MessageFactory as _
@@ -84,7 +78,7 @@ class ICategoryManagementTool(Interface):
         """
 
 
-class ICourseFilterUpdater(Interface):
+class ICategoryFilterUpdater(Interface):
     """ Course filter session updater
 
         General tool providing CRUD operations for storing module filters
