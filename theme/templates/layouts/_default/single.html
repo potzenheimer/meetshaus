@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="de"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+    {{ partial "head/html.html" . }}
+</head>
+<body>
+
+{{ partial "header/app-header" . }}
+
+<main class="app-main" id="app-main" role="main">
+    <aside class="app-sidebar" id="app-sidebar">
+        <div class="o-aside" id="app-sidebar-content"></div>
+    </aside>
+    <section class="app-content" id="app-content">
+        {{ .Content }}
+    </section>
+</main>
+
+{{ partial "footer/app-footer" . }}
+</body>
+</html>

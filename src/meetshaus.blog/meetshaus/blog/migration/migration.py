@@ -2,18 +2,74 @@
 """Module providing base class migration for blog entry content"""
 import lxml
 from Acquisition import aq_inner
-from five import grok
+from Products.Five import BrowserView
+from meetshaus.blog import upgrades
 from plone import api
 from Products.CMFCore.interfaces import IContentish
 from Products.statusmessages.interfaces import IStatusMessage
 
 from meetshaus.blog.blogentry import IBlogEntry
+from plone.protect.interfaces import IDisableCSRFProtection
+from plone.protect.utils import addTokenToUrl
+from zope.component import getMultiAdapter
+
+from meetshaus.blog import MessageFactory as _
+from zope.interface import alsoProvides
 
 
-class MigrateBlogEntries(grok.View):
-    grok.context(IContentish)
-    grok.require('cmf.ManagePortal')
-    grok.name('migrate-blog-enties')
+class AvailableTools(BrowserView):
+    """ Migrate panel page content
+
+    Query the catalog for legacy content impending removal
+    """
+
+    def __call__(self):
+        return self.render()
+
+    def render(self):
+        return self.index()
+
+    def protect_action_url(self, action_url):
+        context = aq_inner(self.context)
+        action_url = '{0}/@@{1}'.format(
+            context.absolute_url(),
+            action_url
+        )
+        return addTokenToUrl(action_url)
+
+
+class UpgradeCleanupRunner(BrowserView):
+    """ Migrate blog components to Python3
+
+    Run custom handlers to cleanup the site
+    """
+
+    def __call__(self):
+        alsoProvides(self.request, IDisableCSRFProtection)
+        return self.render()
+
+    def render(self):
+        context = aq_inner(self.context)
+        base_url = context.absolute_url()
+        authenticator = getMultiAdapter((context, self.request),
+                                        name=u"authenticator")
+        next_url = '{0}/@@blog-upgrade?_authenticator={1}'.format(
+            base_url, authenticator.token())
+        self._cleanup_plone52()
+        api.portal.show_message(
+            message=_(u"The site has successfully been cleaned for Plone5.2.2"),
+            request=self.request
+        )
+        return self.request.response.redirect(next_url)
+
+    @staticmethod
+    def _cleanup_plone52():
+        upgrades.cleanup_in_plone52()
+        upgrades.remove_ploneformgen()
+        return
+
+
+class MigrateBlogEntries(BrowserView):
 
     def render(self):
         context = aq_inner(self.context)

@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+         metal:use-macro="context/main_template/macros/master"
+         i18n:domain="meetshaus.blog">
+<body>
+
+<metal:main fill-slot="main">
+    <metal:content-core define-macro="main">
+
+        <div class="o-page__header">
+
+            <div class="o-page__title">
+                <h1 class="o-page__headline">
+                    Migration Tools
+                </h1>
+            </div>
+            <div class="o-page__subtitle">
+                <p class="o-page__abstract">
+                    Available tools to aid in moving the site to newer Plone versions
+                    and keeping the system clean
+                </p>
+            </div>
+
+        </div>
+
+        <div class="o-page__main o-page__main--panels">
+
+            <section class="o-page__section o-page__section--main-content">
+                <div class="c-alert c-alert--default">
+                    Available tools will be linked here
+                </div>
+
+                <div class="c-control-panels">
+                    <div class="o-page__section c-control-panel c-control-panel--primary">
+                        <div class="c-control-panel__header">
+                            <h3 class="app-control-panel__title" i18n:translate="">
+                                Cleanup Plone 5.2
+                            </h3>
+                        </div>
+                        <div class="c-control-panel__main">
+                            <p>Remove leftover legacy tools and implement current best practices</p>
+                        </div>
+                        <div class="c-control-panel__aside">
+                            <a class="c-button c-button--default link-parent"
+                                     tal:attributes="href python:context.absolute_url() + '/@@blog-upgrade-runner'"
+                                     i18n:translate="">
+                                Run cleanup tool
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+
+    </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

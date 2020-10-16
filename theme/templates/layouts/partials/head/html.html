@@ -1,0 +1,12 @@
+{{ partial "head/meta.html" . }}
+<script>
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    window.lazySizesConfig.lazyClass = 'lazy-load';
+    window.lazySizesConfig.loadedClass = 'o-image--loaded';
+</script>
+{{ "<!-- inject:svg -->" | safeHTML }}
+{{ "<!-- endinject -->" | safeHTML }}
+{{ "<!-- inject:css -->" | safeHTML }}
+{{ "<!-- endinject -->" | safeHTML }}
+
+{{ partial "head/favicon.html" . }}

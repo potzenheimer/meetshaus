@@ -1,5 +1,11 @@
-import urllib2
-from zope.interface import implements
+from future import standard_library
+
+from zope.interface.declarations import implementer
+
+standard_library.install_aliases()
+from builtins import str
+import urllib.request, urllib.error, urllib.parse
+from zope.interface import implements, implementer
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -29,14 +35,13 @@ class IBlogCategoriesPortlet(IPortletDataProvider):
     )
 
 
+@implementer(IBlogCategoriesPortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
-    implements(IBlogCategoriesPortlet)
 
     def __init__(self, archive_view=u'blog-view'):
         self.archive_view = archive_view
@@ -62,7 +67,7 @@ class Renderer(base.Renderer):
     def keywords(self):
         catalog = getToolByName(self.context, 'portal_catalog')
         keywords = catalog.uniqueValuesFor('Subject')
-        keywords = [unicode(k, 'utf-8') for k in keywords]
+        keywords = [str(k, 'utf-8') for k in keywords]
         return keywords
 
     def archive_url(self, subject):
@@ -72,7 +77,7 @@ class Renderer(base.Renderer):
         if assignment_context is None:
             assignment_context = self.context
         self.folder_url = assignment_context.absolute_url()
-        sub = urllib2.quote(subject.encode('utf-8'))
+        sub = urllib.parse.quote(subject.encode('utf-8'))
         url = '%s/%s?category=%s' % (self.folder_url,
                                      self.data.archive_view,
                                      sub)

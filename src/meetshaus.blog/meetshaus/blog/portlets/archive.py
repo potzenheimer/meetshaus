@@ -1,4 +1,5 @@
-from zope.interface import implements
+from builtins import str
+from zope.interface import implementer
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -11,6 +12,7 @@ from meetshaus.blog.utils import find_portlet_assignment_context
 from meetshaus.blog.blogentry import IBlogEntry
 
 from meetshaus.blog import MessageFactory as _
+from zope.interface.declarations import implementer
 
 MONTHVOCAB = {
     'month_1': _(u'month_1'),
@@ -43,14 +45,13 @@ class IArchivePortlet(IPortletDataProvider):
     )
 
 
+@implementer(IArchivePortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
-    implements(IArchivePortlet)
 
     archive_view = u'blog_view'
 
@@ -110,11 +111,11 @@ class Renderer(base.Renderer):
             months[month] = allmonths[year, month]
 
     def years(self):
-        return sorted(self._counts.keys(), reverse=True)
+        return sorted(list(self._counts.keys()), reverse=True)
 
     def months(self, year):
         # sort as integers, return as strings
-        _months = sorted([int(m) for m in self._counts[year].keys()],
+        _months = sorted([int(m) for m in list(self._counts[year].keys())],
                          reverse=True)
         return [str(m) for m in _months]
 

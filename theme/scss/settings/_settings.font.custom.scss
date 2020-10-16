@@ -1,0 +1,16 @@
+///* ========================================================================
+//   #CONFIG
+//   ======================================================================== */
+// Custom web font
+// $app-font-family-base:              "EB Garamond";
+$app-font-family-base:              "Lora";
+$app-font-family-light:             "Montserrat";
+$app-font-family-medium:            "Lora";
+$app-font-family-strong:            "Lora";
+
+// Configure site font stack
+$app-font-family-serif:             $app-font-family-base, "Times New Roman", Times, Georgia, serif;
+$app-font-family-sans-serif:        $app-font-family-light, "Lucida Grande", Tahoma, Sans-Serif;
+
+$app-font-weight-base-custom:       $app-font-weight-base;
+$app-font-weight-strong-custom:     700;

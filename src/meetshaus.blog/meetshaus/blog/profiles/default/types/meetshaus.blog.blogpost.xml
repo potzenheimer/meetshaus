@@ -24,15 +24,14 @@
      <element value="plone.app.contenttypes.behaviors.richtext.IRichText" />
      <element value="plone.app.dexterity.behaviors.metadata.ICategorization" />
      <element value="plone.app.dexterity.behaviors.metadata.IPublication"/>
-     <element value="plone.app.referenceablebehavior.referenceable.IReferenceable" />
    </property>
 
   <!-- View information -->
   <property name="link_target"></property>
   <property name="immediate_view">view</property>
-  <property name="default_view">view</property>
+  <property name="default_view">blog-entry-view</property>
   <property name="view_methods">
-   <element value="view"/>
+   <element value="blog-entry-view"/>
   </property>
   <property name="default_view_fallback">False</property>
   <property name="add_permission">cmf.AddPortalContent</property>

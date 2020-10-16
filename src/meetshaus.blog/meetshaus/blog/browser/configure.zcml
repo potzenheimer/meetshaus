@@ -10,7 +10,7 @@
     <browser:page
         for="plone.app.layout.navigation.interfaces.INavigationRoot"
         name="front-page-view"
-        class=".front-page.FrontPageView"
+        class="meetshaus.blog.browser.frontpage.FrontPageView"
         template="front-page.pt"
         permission="zope2.View"
         layer="..interfaces.IBlogTool"
