@@ -1,4 +1,4 @@
-!buil
+!build
 *-ck.js
 *.EGG
 *.egg
@@ -13,6 +13,7 @@
 .installed.cfg
 .mr.developer.cfg
 .svn
+.jekyll-cache
 ba
 bin
 bower_components
