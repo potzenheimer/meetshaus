@@ -1,0 +1,11 @@
+{{ partial "head/meta.html" . }}
+<script>
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    window.lazySizesConfig.lazyClass = 'lazy-load';
+    window.lazySizesConfig.loadedClass = 'o-image--loaded';
+</script>
+{{ "<!-- inject:svg -->" | safeHTML }}
+{{ "<!-- endinject -->" | safeHTML }}
+{{ "<!-- inject:css --><link rel="stylesheet" href="/../../resources/theme/meetshaus.theme/styles/meetshaus-1ba992b6f2.min.css"><!-- endinject -->" | safeHTML }}
+
+{{ partial "head/favicon.html" . }}

@@ -28,7 +28,8 @@
                 <div class="app-page__title app-page__title--center">
                     <h1 class="app-page__headline blog-entry__title" tal:condition="view/has_headline"
                       tal:content="structure python:context.headline">${context/headline}</h1>
-                    <h1 class="app-page__headline blog-entry__title" tal:condition="not:view/has_headline">${context/Title}</h1>
+                    <h1 class="app-page__headline blog-entry__title" tal:condition="not:view/has_headline"
+                        tal:content="structure python:context.title">${context/Title}</h1>
                 </div>
             </header>
             <section class="app-page__main blog-entry__main" tal:define="categories context/subjects|nothing"
@@ -108,9 +109,11 @@
             </section>
 
 
-            <section class="app-page__section app-page__body" id="content-core">
-                <div class="blog-entry__body">
-                    <div tal:replace="structure context/text/output" />
+            <section class="app-page__section app-page__body" id="content-core"
+                tal:condition="python:context.text">
+                <div class="blog-entry__body"
+                    tal:define="body_text python:view.entry_body_text()">
+                    <div tal:replace="structure body_text" />
                 </div>
             </section>
 

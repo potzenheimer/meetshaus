@@ -8,6 +8,23 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik_gateway
+
+  static:
+    networks:
+      - default
+      - traefik_gateway
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik_gateway
+
+  thumbor:
+    networks:
+      - default
+      - traefik_gateway
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik_gateway
+
 networks:
   default:
   traefik_gateway:
