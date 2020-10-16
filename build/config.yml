@@ -63,5 +63,9 @@ modules:
           workdir: /app/theme
           bin: jekyll
           service: jekyll
+        hugo:
+          workdir: /app/theme
+          bin: hugo
+          service: hugo
   pipenv:
   template:

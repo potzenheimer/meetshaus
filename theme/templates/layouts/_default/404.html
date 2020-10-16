@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="de"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+    {{ partial "head/html.html" . }}
+</head>
+<body>
+
+{{ partial "header/app-header.html" . }}
+
+<main class="app-main app-main--fullscreen" role="main">
+    {{ .Content }}
+</main>
+
+{{ partial "footer/app-footer" . }}
+
+</body>
+</html>

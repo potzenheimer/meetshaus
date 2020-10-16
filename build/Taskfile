@@ -94,6 +94,14 @@ task:gulp:tasks() {
     docker:command:gulp --tasks
 }
 
+hugo() {
+  docker:command:hugo "$@"
+}
+
+task:hugo() {
+  hugo "$@"
+}
+
 task:watch() {
     virtualenv:run fab watch
 }

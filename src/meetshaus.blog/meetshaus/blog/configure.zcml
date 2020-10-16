@@ -15,6 +15,7 @@
     <include package=".browser" />
     <include package=".portlets" />
     <include package=".taxonomy" />
+    <include package=".migration" />
 
     <include package=".widgets" />
 

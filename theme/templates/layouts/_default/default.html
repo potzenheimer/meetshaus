@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="de"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+    {{ partial "head/html.html" . }}
+</head>
+<body>
+
+{{ partial "header/app-header" . }}
+
+<main class="app-main" id="app-main" role="main">
+    <aside class="app-sidebar" id="app-sidebar">
+        <div class="o-aside" id="app-sidebar-content"></div>
+    </aside>
+    <section class="app-content" id="app-content">
+        <header class="o-page__header">
+            <div class="c-page-header">
+                <div class="c-page-header__title">
+                    <h1 class="c-page-header__headline c-page-header__headline--primary">
+                        {{.Title}}
+                    </h1>
+                </div>
+                <p class="c-page-header__abstract">
+                    {{ .Params.abstract }}.
+                </p>
+            </div>
+        </header>
+        {{ .Content }}
+    </section>
+</main>
+
+{{ partial "footer/app-footer" . }}
+</body>
+</html>

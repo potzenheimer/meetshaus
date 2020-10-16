@@ -1,0 +1,11 @@
+<header class="app-header" id="app-header" role="banner">
+    <div class="app-header__content">
+        <section class="app-header__section app-header__section--brand">
+            {{ partial "header/app-brand" . }}
+        </section>
+        <section class="app-header__section app-header__section--navigation">
+            {{ partial "objects/burger.html" . }}
+        </section>
+    </div>
+    {{ partial "header/app-nav-bar.html" . }}
+</header>
